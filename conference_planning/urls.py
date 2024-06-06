@@ -14,4 +14,5 @@ urlpatterns = [
     path('speakers/', views.speakers, name='speakers'),
     path('sponsors/', views.sponsors, name='sponsors'),
     path('registration/', include((registration_patterns, 'registration'), namespace='registration')),   
+    path('register/', views.register, name='register'),
 ]

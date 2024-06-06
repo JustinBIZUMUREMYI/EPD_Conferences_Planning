@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import register
+from .models import Attendees
 
 def index(request):
     return render(request, 'conference_planning/index.html')
@@ -30,3 +32,23 @@ def international_registration(request):
 
 def students_registration(request):
     return render(request, 'conference_planning/registration/registration_students.html')
+
+
+def register(request):
+    if request.method == 'POST':
+        form = register(request.POST)
+        if form.is_valid():
+            attendee = Attendees(
+                name=form.cleaned_data['name'],
+                identity=form.cleaned_data['identity'],
+                email=form.cleaned_data['email'],
+                country_code=form.cleaned_data['countryCode'],
+                phone=form.cleaned_data['phone'],
+                country=form.cleaned_data['country'],
+                organization=form.cleaned_data['company']
+            )
+            attendee.save()
+            return redirect('index')
+    else:
+        form = register()
+    return render(request, 'registration.html', {'form': form})
