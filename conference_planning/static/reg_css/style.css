@@ -272,7 +272,10 @@ body {
   margin: 0 55px; }
 
 .form-title {
-  margin-bottom: 33px; }
+  margin-bottom: 33px;
+  color: #3b5998;
+
+}
 
 .signup-image {
   margin-top: 45px; }
@@ -300,6 +303,10 @@ figure {
 
 #signin {
   margin-top: 16px; }
+
+  .sign-in{
+    margin-top: 100px;
+  }
 
 .signup-image-link {
   font-size: 14px;
@@ -593,7 +600,10 @@ label.valid {
     padding: 0 30px; }
 
   .form-title {
-    text-align: center; } }
+    text-align: center; 
+    color: darkblue;
+  
+  } }
 @media screen and (max-width: 400px) {
   .social-login {
     flex-direction: column;
