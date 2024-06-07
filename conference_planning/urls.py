@@ -15,4 +15,5 @@ urlpatterns = [
     path('sponsors/', views.sponsors, name='sponsors'),
     path('registration/', include((registration_patterns, 'registration'), namespace='registration')),   
     path('register/', views.register, name='register'),
+    path('registered/', views.registered, name='registered'),
 ]

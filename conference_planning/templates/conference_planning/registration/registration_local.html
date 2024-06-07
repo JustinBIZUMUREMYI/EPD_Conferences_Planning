@@ -30,7 +30,14 @@
               >
                 Local - Registration
               </h2>
-              <form method="POST" class="register-form" id="register-form">
+              <form
+                method="POST"
+                class="register-form"
+                id="register-form"
+                action="{% url 'register' %}"
+              >
+                {% csrf_token %}
+
                 <div class="form-group">
                   <label for="name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -39,20 +46,37 @@
                     type="text"
                     name="name"
                     id="name"
+                    value="{{ form.name.value }}"
                     placeholder="Your Name"
+                    required
                   />
                 </div>
+
+                {% if form.name.errors %}
+                <p class="error" style="">
+                  {% for error in form.name.errors %} {{ error }} {% endfor %}
+                </p>
+                {% endif %}
+
                 <div class="form-group">
                   <label for="identity"
                     ><i class="zmdi zmdi-account material-icons-name"></i
                   ></label>
                   <input
                     type="text"
-                    name="name"
+                    name="identity"
                     id="identity"
+                    value="{{ form.identity.value }}"
                     placeholder="Your ID or Passport"
                   />
                 </div>
+
+                {% if form.identity.errors %}
+                <p class="error" style="">
+                  {% for error in form.identity.errors %} {{ error }} {% endfor %}
+                </p>
+                {% endif %}
+
                 <div class="form-group">
                   <label for="email"><i class="zmdi zmdi-email"></i></label>
                   <input
@@ -60,11 +84,20 @@
                     name="email"
                     id="email"
                     placeholder="Your Email"
+                    value="{{ form.email.value }}"
+                    required
                   />
                 </div>
 
+                {% if form.email.errors %}
+                <p class="error" style="">
+                  {% for error in form.email.errors %} {{ error }} {% endfor %}
+                </p>
+                {% endif %}
+
                 <div class="form-group" style="display: flex; gap: 1em">
-                  <select name="countryCode" id="" required>
+                  <select name="countryCode" id=""  value="{{ form.country_code.value }}"
+                  required>
                       <option data-countryCode="DZ" value="213">Algeria (+213)</option>
                       <option data-countryCode="AD" value="376">Andorra (+376)</option>
                       <option data-countryCode="AO" value="244">Angola (+244)</option>
@@ -281,18 +314,25 @@
                       <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
                   </select>
 
-                <div class="form-group" style="width: 100%">
-                  <input
-                  style="padding: 5px"
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    placeholder="Phone number"
-                    required
-                  />
+                  <div class="form-group" style="width: 100%">
+                    <input
+                      style="padding: 5px"
+                      type="text"
+                      name="phone"
+                      id="phone"
+                      value="{{ form.phone.value }}"
+                      placeholder="Phone number"
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
-                <!-- <input type="password" name="pass" id="pass" placeholder="Password"/> -->
+
+                {% if form.phone.errors %}
+                <p class="error" style="">
+                  {% for error in form.phone.errors %} {{ error }} {% endfor %}
+                </p>
+                {% endif %}
+
                 <div class="form-group">
                   <label for="country"
                     ><i class="zmdi zmdi-flag material-icons-name"></i
@@ -301,40 +341,71 @@
                     type="text"
                     name="country"
                     id="country"
+                    value="{{ form.country.value }}"
                     placeholder="Name of your country"
+                    required
                   />
                 </div>
+
+                {% if form.country.errors %}
+                <p class="error" style="">
+                  {% for error in form.country.errors %} {{ error }} {% endfor %}
+                </p>
+                {% endif %}
+
                 <div class="form-group">
                   <label for="company"
                     ><i class="zmdi zmdi-city material-icons-name"></i
                   ></label>
                   <input
                     type="text"
-                    name="company"
+                    name="organization"
                     id="company"
+                    value="{{ form.organization.value }}"
                     placeholder="are you from which organization"
                   />
                 </div>
+
+                {% if form.organization.errors %}
+                <p class="error" style="">
+                  {% for error in form.name.errors %} {{ error }} {% endfor %}
+                </p>
+                {% endif %}
+
                 <div class="form-group">
                   <input
                     type="checkbox"
-                    name="agree-term"
+                    name="agree_term"
                     id="agree-term"
                     class="agree-term"
+                    {% if form.agree_term.value %} checked {% endif %}
+                    required
                   />
                   <label for="agree-term" class="label-agree-term"
                     ><span><span></span></span>I agree all statements in
                     <a href="#" class="term-service">Terms of service</a></label
                   >
                 </div>
+
+                {% if form.agree_term.errors %}
+                    <p class="error">
+                        {% for error in form.agree_term.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            
+
                 <div class="form-group form-button">
-                  <input
+                  <button
+                    style="border: none"
                     type="submit"
                     name="register"
                     id="register"
                     class="form-submit"
-                    value="Register"
-                  />
+                  >
+                    Register
+                  </button>
                 </div>
               </form>
             </div>

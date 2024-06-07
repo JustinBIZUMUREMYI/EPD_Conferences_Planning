@@ -1,11 +1,19 @@
 from django import forms
 
-class register(forms.Form):
-    name = forms.CharField(max_length=100, required=True)
+class registerForm(forms.Form):
+    name = forms.CharField(max_length=200, required=True)
     identity = forms.CharField(max_length=100, required=True)
     email = forms.EmailField(required=True)
-    countryCode = forms.CharField(max_length=10, required=True)
+    country_code = forms.CharField(max_length=10, required=True)
     phone = forms.CharField(max_length=20, required=True)
+    university = forms.CharField(max_length=100, required=False)
     country = forms.CharField(max_length=100, required=True)
-    company = forms.CharField(max_length=100, required=False)
+    student_number = forms.CharField(max_length=50, required=False)
+    organization = forms.CharField(max_length=100, required=False)
     agree_term = forms.BooleanField(required=True, initial=True)
+    
+    def clean_agree_term(self):
+        agree_term = self.cleaned_data.get('agree_term')
+        if not agree_term:
+            raise forms.ValidationError("You need to accept the terms of service.")
+        return agree_term
