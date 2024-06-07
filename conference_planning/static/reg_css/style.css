@@ -360,19 +360,19 @@ input {
     input:focus:-moz-placeholder {
       color: #222; }
 
-input[type=checkbox]:not(old) {
+/* input[type=checkbox]:not(old) {
   width: 2em;
   margin: 0;
   padding: 0;
   font-size: 1em;
-  display: none; }
+  display: none; } */
 
 input[type=checkbox]:not(old) + label {
   display: inline-block;
   line-height: 1.5em;
   margin-top: 6px; }
 
-input[type=checkbox]:not(old) + label > span {
+/* input[type=checkbox]:not(old) + label > span {
   display: inline-block;
   width: 13px;
   height: 13px;
@@ -390,14 +390,14 @@ input[type=checkbox]:not(old) + label > span {
   background-image: -o-linear-gradient(white, white);
   background-image: -webkit-linear-gradient(white, white);
   background-image: linear-gradient(white, white);
-  vertical-align: bottom; }
+  vertical-align: bottom; } */
 
 input[type=checkbox]:not(old):checked + label > span {
   background-image: -moz-linear-gradient(white, white);
   background-image: -ms-linear-gradient(white, white);
   background-image: -o-linear-gradient(white, white);
   background-image: -webkit-linear-gradient(white, white);
-  background-image: linear-gradient(white, white); }
+  background-image: linear-gradient(white, white); } */
 
 input[type=checkbox]:not(old):checked + label > span:before {
   content: '\f26b';
@@ -615,7 +615,6 @@ label.valid {
   .social-label {
     margin-right: 0px;
     margin-bottom: 10px; } }
-
   
 
 /*# sourceMappingURL=style.css.map */

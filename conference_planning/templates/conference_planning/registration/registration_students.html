@@ -23,6 +23,13 @@
         <div class="container">
           <div class="signup-content">
             <div class="signup-form">
+              <div style="margin-bottom: 2em">
+                {% if message %}
+                <div class="alert alert-primary" role="alert">
+                  {{ message }}
+                </div>
+                {% endif %}
+              </div>
               <h2
                 class="form-title"
                 style="color: darkblue; font-size: 20px; font-weight: bold"
@@ -395,6 +402,7 @@
                     name="agree_term"
                     id="agree-term"
                     class="agree-term"
+                    style="margin: 7px 10px 0px 0px"
                     {% if form.agree_term.value %} checked {% endif %}
                     required
                   />

@@ -2,9 +2,9 @@ from django.db import models
 
 class Attendees(models.Model):
     class AttendeeType(models.TextChoices):
-        LOCAL = "LCL", "Local"
-        INTERNATIONAL = "INTL", "International"
-        STUDENT = "STUD", "Student"
+        LOCAL = "Local", "Local"
+        INTERNATIONAL = "International", "International"
+        STUDENT = "Student", "Student"
         
     names = models.CharField(max_length=250)
     email = models.EmailField()

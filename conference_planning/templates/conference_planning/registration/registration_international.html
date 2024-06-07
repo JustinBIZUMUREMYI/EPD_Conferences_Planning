@@ -16,6 +16,24 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="{% static 'reg_css/style.css' %}" />
+    <style>
+      .alert {
+        padding: 0.4em;
+        border-radius: 4px
+      }
+      .alert.alert-primary {
+        color: #004085;
+        background-color: #cce5ff;
+        border-color: #b8daff;
+      }
+      .alert.alert-primary hr {
+        border-top-color: #9fcdff;
+      }
+      .alert.alert-primary .alert-link {
+        color: #002752;
+      }
+      
+    </style>
   </head>
   <body>
     <div class="main">
@@ -24,6 +42,13 @@
         <div class="container">
           <div class="signup-content">
             <div class="signup-form">
+              <div style="margin-bottom: 2em">
+                {% if message %}
+                <div class="alert alert-primary" role="alert">
+                  {{ message }}
+                </div>
+                {% endif %}
+              </div>
               <h2
                 class="form-title"
                 style="color: darkblue; font-size: 20px; font-weight: bold"
@@ -790,16 +815,15 @@
                 </p>
                 {% endif %}
 
-                <div class="form-group">
+                <div class="form-group" style="display: flex; align-items: center">
                   <input
                     type="checkbox"
-                    name="agree_term"
-                    id="agree-term"
                     class="agree-term"
+                    style="margin: 7px 10px 0px 0px"
                     {% if form.agree_term.value %} checked {% endif %}
                     required
                   />
-                  <label for="agree-term" class="label-agree-term"
+                  <label class="label-agree-term"
                     ><span><span></span></span>I agree all statements in
                     <a href="#" class="term-service">Terms of service</a></label
                   >
@@ -847,13 +871,12 @@
 
     <!-- JS -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
     <script>
-      document.getElementById('myForm').addEventListener('submit', function(event) {
+      document.getElementById('register-form').addEventListener('submit', function(event) {
           var checkBox = document.getElementById('agree-term');
           if (!checkBox.checked) {
               alert('Please agree to the terms');
-              event.preventDefault(); // Prevent form submission
+              event.preventDefault();
           }
       });
       </script>

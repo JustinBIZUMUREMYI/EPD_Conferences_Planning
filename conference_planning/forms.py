@@ -17,3 +17,8 @@ class registerForm(forms.Form):
         if not agree_term:
             raise forms.ValidationError("You need to accept the terms of service.")
         return agree_term
+    
+    
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100, required=True)
+    password = forms.CharField(widget=forms.PasswordInput, required=True)
