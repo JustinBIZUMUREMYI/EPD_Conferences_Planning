@@ -327,7 +327,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{% static 'administration/img/undraw_profile.svg' %}">
                             </a>
@@ -368,7 +368,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Registered attendees</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -399,7 +399,7 @@
                                             <td>{{ attendee.names }}</td>
                                             <td>{{ attendee.phone }}</td>
                                             <td>{{ attendee.email }}</td>
-                                            <td>{{ attendee.id }}</td>
+                                            <td>{{ attendee.identity }}</td>
                                             <td>{{ attendee.attendee_type }}</td>
                                             <td>{{ attendee.registered_on }}</td>
                                         </tr>

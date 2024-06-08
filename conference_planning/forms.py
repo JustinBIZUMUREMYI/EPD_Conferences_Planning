@@ -11,6 +11,7 @@ class registerForm(forms.Form):
     student_number = forms.CharField(max_length=50, required=False)
     organization = forms.CharField(max_length=100, required=False)
     agree_term = forms.BooleanField(required=True, initial=True)
+    return_url = forms.CharField(required=True)
     
     def clean_agree_term(self):
         agree_term = self.cleaned_data.get('agree_term')

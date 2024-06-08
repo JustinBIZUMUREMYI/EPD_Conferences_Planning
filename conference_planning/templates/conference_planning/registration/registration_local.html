@@ -16,6 +16,41 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="{% static 'reg_css/style.css' %}" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+
+    <style>
+      .alert {
+        padding: 0.4em;
+        border-radius: 4px
+      }
+      .alert.alert-primary {
+        color: #004085;
+        background-color: #cce5ff;
+        border-color: #b8daff;
+      }
+      .alert.alert-primary hr {
+        border-top-color: #9fcdff;
+      }
+      .alert.alert-primary .alert-link {
+        color: #002752;
+      }
+      
+    </style>
+    {% if messages %}
+      <script>
+        $(document).ready(function(){
+          $("#success").modal('show');
+        });
+      </script>
+      {% endif %}
+
   </head>
   <body>
     <div class="main">
@@ -24,13 +59,6 @@
         <div class="container">
           <div class="signup-content">
             <div class="signup-form">
-              <div style="margin-bottom: 2em">
-                {% if message %}
-                <div class="alert alert-primary" role="alert">
-                  {{ message }}
-                </div>
-                {% endif %}
-              </div>
               <h2
                 class="form-title"
                 style="color: darkblue; font-size: 20px; font-weight: bold"
@@ -103,7 +131,7 @@
                 {% endif %}
 
                 <div class="form-group" style="display: flex; gap: 1em">
-                  <select name="countryCode" id=""  value="{{ form.country_code.value }}"
+                  <select name="country_code" id=""  value="{{ form.country_code.value }}"
                   required>
                       <option data-countryCode="DZ" value="213">Algeria (+213)</option>
                       <option data-countryCode="AD" value="376">Andorra (+376)</option>
@@ -334,6 +362,12 @@
                   </div>
                 </div>
 
+                {% if form.country_code.errors %}
+                <p class="error" style="">
+                  {% for error in form.country_code.errors %} {{ error }} {% endfor %}
+                </p>
+                {% endif %}
+
                 {% if form.phone.errors %}
                 <p class="error" style="">
                   {% for error in form.phone.errors %} {{ error }} {% endfor %}
@@ -402,6 +436,8 @@
                         {% endfor %}
                     </p>
                 {% endif %}
+
+                <input type="hidden" name="return_url" value="conference_planning/registration/registration_local.html">
             
 
                 <div class="form-group form-button">
@@ -434,8 +470,35 @@
       </section>
     </div>
 
+    <div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Successfully registered.</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {% if messages %}
+                  {% for message in messages %}
+                    {{ message }}
+                  {% endfor %}
+              {% endif %}
+          </div>
+          <div class="modal-footer">
+            <a type="button" class="btn btn-secondary" href="{% url 'index' %}">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- JS -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
   </body>
   <!-- This templates was made by Colorlib (https://colorlib.com) -->

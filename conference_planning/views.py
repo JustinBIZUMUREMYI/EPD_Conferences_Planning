@@ -47,20 +47,20 @@ def register(request):
     if request.method == 'POST':
         form = registerForm(request.POST)
         if form.is_valid():
-            attendee_type = 'LCL'
+            attendee_type = 'Local'
             stud_number = None
             school = None
             
             if form.cleaned_data['country_code'] != '250':
-                attendee_type = 'INTL'
+                attendee_type = 'International'
             
             if 'student_number' in form.cleaned_data and form.cleaned_data['student_number']:
                 stud_number = form.cleaned_data['student_number']
-                attendee_type = 'STUD'
+                attendee_type = 'Student'
                 
             if 'university' in form.cleaned_data and form.cleaned_data['university']:
                 school = form.cleaned_data['university']
-                attendee_type = 'STUD'
+                attendee_type = 'Student'
             
             attendee = Attendees(
                 names=form.cleaned_data['name'],
@@ -75,15 +75,16 @@ def register(request):
             )
             attendee.save()
             success_message = 'Successfully registered. You will receive an email with more details about the event.'
-            redirect_url = request.META.get('HTTP_REFERER', '/') + '?message=' + success_message
+            redirect_url = request.META.get('HTTP_REFERER', '/')
+            messages.success(request, success_message)
             return redirect(redirect_url)
         else:
-            return_url = request.META.get('HTTP_REFERER', '/')
-            return render(request, 'conference_planning/registration/registration_international.html', {'form': form})
+            return_url = form.cleaned_data['return_url']
+            return render(request, return_url, {'form': form})
     else:
         form = registerForm()
     
-    return render(request, 'conference_planning/registration/registration_international.html', {'form': form})
+    return render(request, return_url, {'form': form})
 
 
 def login_view(request):
@@ -114,7 +115,7 @@ def dashboard(request):
 
 @login_required
 def attendees(request):
-    attendees_list = Attendees.objects.all()
+    attendees_list = Attendees.objects.all().order_by('id')
     context = {'attendees': attendees_list}
     
     return render(request, 'conference_planning/administration/attends.html', context)
