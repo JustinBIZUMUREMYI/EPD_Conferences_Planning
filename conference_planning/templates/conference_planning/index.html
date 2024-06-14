@@ -46,8 +46,8 @@
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-      id="ftco-navbar"
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " 
+      id="ftco-navbar" 
     >
       <div class="container">
         <img
@@ -59,7 +59,6 @@
         <a
           class="navbar-brand animate-charcter"
           href="{% url 'index' %}"
-          style="color: #107fdd"
           >Energy Week <span> 4th Edition</span></a
         >
         <button
@@ -89,11 +88,8 @@
                 The Conference
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Videos</a>
-                <a class="dropdown-item" href="#">Photos</a>
-                <a class="dropdown-item" href="#">Venues</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Organizers</a>
+                <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
+                <a class="dropdown-item" href="{% url 'photos' %}">Photos</a>
               </div>
             </li>
             <li class="nav-item">
@@ -102,14 +98,29 @@
             <li class="nav-item">
               <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
             </li>
-            <li class="nav-item">
-              <a href="{% url 'sponsors' %}" class="nav-link">Sponsors</a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Partners
+              </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'partners' %}">Official partners</a>
+              <a class="dropdown-item" href="{% url 'sponsors'%}">Sponsors</a>
+              <a class="dropdown-item" href="{% url 'sponsorships' %}">Sponsorship Packages</a>
+            </div>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Exhibition</a>
+              <a href="{% url 'exhbition' %}" class="nav-link">Exhibition</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Lighting homes</a>
+              <a href="{% url 'lighting_homes' %}" class="nav-link">Lighting homes</a>
             </li>
             <li class="nav-item"><a href="#" class="nav-link"></a></li>
             <li class="nav-item cta mr-md-2">
@@ -146,20 +157,23 @@
           >
             <h1
               class="mb-4"
-              data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"
+              data-scrollax="properties: { translateY: '50%', opacity: 1.6 }"
+              style="text-decoration: underline; font-size: 40px;"
             >
-              Energy Week <br />
-              4th Edition<br /><span>Conference 2024</span>
+              Energy Week 
+              <span style="text-decoration: underline; font-size: 40px;">4th Edition</span><br /><br /><span>Conference 2024</span> 
             </h1>
+
             <p
               class="mb-4"
               data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"
             >
-              September 09-11, Kigali - Rwanda
+              September 09-11, Kigali Marriott Hotel - Rwanda
             </p>
             <div id="timer" class="d-flex mb-3" style="width: 800px">
+              
               <div class="time" id="days">2 Months</div>
-              <div class="time pl-4" id="hours">8 Days</div>
+              <div class="time pl-4" id="hours">25 Days</div>
               <!-- <div class="time pl-4" id="minutes"></div>
 						  <div class="time pl-4" id="seconds"></div> -->
             </div>
@@ -191,7 +205,7 @@
           <div class="col-md-6 d-flex">
             <div
               class="img d-flex align-self-stretch"
-              style="background-image: url({% static 'images/img2.jpeg' %})"
+              style="background-image: url({% static 'images/chairman.jpeg' %})"
             ></div>
           </div>
           <div class="col-md-6 pl-md-5 py-5">
@@ -213,7 +227,7 @@
                     >
                       <span class="flaticon-guest"></span>
                     </div>
-                    <strong class="number" data-number="0">0</strong>
+                    <strong class="number">{{speaker_number}}</strong>
                     <span>Speakers</span>
                   </div>
                 </div>
@@ -228,8 +242,8 @@
                     >
                       <span class="flaticon-handshake"></span>
                     </div>
-                    <strong class="number" data-number="0">0</strong>
-                    <span>Sponsors</span>
+                    <strong class="number">{{panalist_number}}</strong>
+                    <span>Panalists</span>
                   </div>
                 </div>
               </div>
@@ -243,7 +257,7 @@
                     >
                       <span class="flaticon-chair"></span>
                     </div>
-                    <strong class="number" data-number="0">0</strong>
+                    <strong class="number">{{partner_number}}</strong>
                     <span>Partners</span>
                   </div>
                 </div>
@@ -258,8 +272,8 @@
                     >
                       <span class="flaticon-chair"></span>
                     </div>
-                    <strong class="number" data-number="0">0</strong>
-                    <span>Members</span>
+                    <strong class="number">{{sponsor_number}}</strong>
+                    <span>Sponsors</span>
                   </div>
                 </div>
               </div>
@@ -273,7 +287,7 @@
                     >
                       <span class="flaticon-chair"></span>
                     </div>
-                    <strong class="number" data-number="0">0</strong>
+                    <strong class="number">{{number_attendees}}</strong>
                     <span>Attends</span>
                   </div>
                 </div>
@@ -288,7 +302,7 @@
                     >
                       <span class="flaticon-idea"></span>
                     </div>
-                    <strong class="number" data-number="0">0</strong>
+                    <strong class="number">0</strong>
                     <span>Topics</span>
                   </div>
                 </div>
@@ -553,11 +567,13 @@
         <div class="row ftco-animate">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel ftco-owl">
+              
+              {% for testimonial in testimonials %}
               <div class="item">
                 <div class="testimony-wrap text-center py-4 pb-5">
                   <div
                     class="user-img mb-4"
-                    style="background-image: url({% static 'images/speakers/img2.jpeg' %})"
+                    style="background-image: url('{{testimonial.picture.url}}')"
                   >
                     <span
                       class="quote d-flex align-items-center justify-content-center"
@@ -566,88 +582,14 @@
                     </span>
                   </div>
                   <div class="text">
-                    <p class="mb-4">Testimony</p>
-                    <p class="name">Name</p>
-                    <span class="position">Title or Postion</span>
+                    <p class="mb-4">{{testimonial.testimony}}</p>
+                    <p class="name">{{testimonial.names}}</p>
+                    <span class="position">{{testimonial.title}}</span>
                   </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div
-                    class="user-img mb-4"
-                    style="background-image: url({% static 'images/speakers/speaker1.jpeg' %})"
-                  >
-                    <span
-                      class="quote d-flex align-items-center justify-content-center"
-                    >
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4">Testimony</p>
-                    <p class="name">Name</p>
-                    <span class="position">Title or Postion</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div
-                    class="user-img mb-4"
-                    style="background-image: url({% static 'images/speakers/speaker2.jpeg'})"
-                  >
-                    <span
-                      class="quote d-flex align-items-center justify-content-center"
-                    >
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4">Testimony</p>
-                    <p class="name">Name</p>
-                    <span class="position">Title or Postion</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div
-                    class="user-img mb-4"
-                    style="background-image: url({% static 'images/speaker-3.jpg' %})"
-                  >
-                    <span
-                      class="quote d-flex align-items-center justify-content-center"
-                    >
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4">Testimony</p>
-                    <p class="name">Name</p>
-                    <span class="position">Title or Postion</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap text-center py-4 pb-5">
-                  <div
-                    class="user-img mb-4"
-                    style="background-image: url({% static 'images/speakers/speaker5.jpeg' %})"
-                  >
-                    <span
-                      class="quote d-flex align-items-center justify-content-center"
-                    >
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-4">Testimony</p>
-                    <p class="name">Name</p>
-                    <span class="position">Title or Postion</span>
-                  </div>
-                </div>
-              </div>
+             {% endfor %}
+            
             </div>
           </div>
         </div>
@@ -664,7 +606,7 @@
           <div class="col-md-7 heading-section ftco-animate text-center">
             <span class="subheading">Registration Fee</span>
             <h2 class="mb-1" style="color: wheat">
-              <span>Our</span> Categories
+              <span>Categories</span> 
             </h2>
           </div>
         </div>
@@ -745,10 +687,10 @@
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <span class="subheading"
+            <!-- <span class="subheading"
               >Would you like to review the previous conferences?</span
-            >
-            <h2><span>Here</span> you are!</h2>
+            > -->
+            <h2><span>Previous</span> Conferences!</h2>
           </div>
         </div>
         <div class="row d-flex">
@@ -768,7 +710,7 @@
                     <span class="day">2017</span>
                   </div>
                 </div>
-                <h3 class="heading mt-2"><a href="#">1st Edition</a></h3>
+                <h3 class="heading mt-2"><a href="{% url 'edition' %}">1st Edition</a></h3>
                 <p>Matchmaking Conference and Exhibition</p>
               </div>
             </div>
@@ -793,7 +735,7 @@
 						<span class="mos">M</span>
               		</div> -->
                 </div>
-                <h3 class="heading mt-2"><a href="#"> 2nd Edition</a></h3>
+                <h3 class="heading mt-2"><a href="{% url 'edition' %}"> 2nd Edition</a></h3>
                 <p>Accelerating Investment in the Clean Cooking Sector</p>
               </div>
             </div>
@@ -818,7 +760,7 @@
               			<span class="mos">M</span>
               		</div> -->
                 </div>
-                <h3 class="heading mt-2"><a href="#">3rd Edition</a></h3>
+                <h3 class="heading mt-2"><a href="{% url 'edition' %}">3rd Edition</a></h3>
                 <p>Achieving Universal Green Energy Access in Africa</p>
               </div>
             </div>
@@ -828,9 +770,7 @@
     </section>
 
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button>
+
 
     <!-- <section class="ftco-gallery">
     	<div class="container-wrap">

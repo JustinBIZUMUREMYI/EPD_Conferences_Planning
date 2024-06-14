@@ -89,11 +89,8 @@
                 The Conference
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Videos</a>
-                <a class="dropdown-item" href="#">Photos</a>
-                <a class="dropdown-item" href="#">Venues</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Organizers</a>
+                <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
+                <a class="dropdown-item" href="{% url 'photos' %}">Photos</a>
               </div>
             </li>
             <li class="nav-item">
@@ -102,14 +99,29 @@
             <li class="nav-item">
               <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
             </li>
-            <li class="nav-item">
-              <a href="{% url 'sponsors' %}" class="nav-link">Sponsors</a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Partners
+              </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'partners' %}">Official partners</a>
+              <a class="dropdown-item" href="{% url 'sponsors'%}">Sponsors</a>
+              <a class="dropdown-item" href="{% url 'sponsorships' %}">Sponsorship Packages</a>
+            </div>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Exhibition</a>
+              <a href="{% url 'exhbition' %}" class="nav-link">Exhibition</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Lighting homes</a>
+              <a href="{% url 'lighting_homes' %}" class="nav-link">Lighting homes</a>
             </li>
             <li class="nav-item"><a href="#" class="nav-link"></a></li>
             <li class="nav-item cta mr-md-2">

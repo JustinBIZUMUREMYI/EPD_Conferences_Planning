@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>Attends</title>
 
     <!-- Custom fonts for this template -->
     <link href="{% static 'administration/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -59,13 +59,17 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                 aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Conference</span>
+                <span>Registration</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Roles</h6>
-                    <a class="collapse-item" href="#">Sponsors</a>
-                    <a class="collapse-item" href="#">Speakers</a>
+                    <h6 class="collapse-header">All</h6>
+                    <a class="collapse-item" href="{% url 'admin:partner' %}">Official partner</a>
+                    <a class="collapse-item" href="{% url 'admin:sponsor' %}">Sponsor</a>
+                    <a class="collapse-item" href="{% url 'admin:speaker' %}">Speaker</a>
+                    <a class="collapse-item" href="{% url 'admin:panalist' %}">Panalist</a>
+                    <a class="collapse-item" href="{% url 'admin:testimonial' %}">Testimonial</a>
+                    <a class="collapse-item" href="{% url 'admin:booth' %}">Exhbition Booth</a>
                 </div>
             </div>
         </li>
@@ -75,15 +79,15 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                 aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span>Organization</span>
+                <span>Categories</span>
             </a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Main parts</h6>
-                    <a class="collapse-item" href="#">Agenda</a>
-                    <a class="collapse-item" href="#">Exhbition</a>
-                    <a class="collapse-item" href="#">Testimonials</a>
+                    <h6 class="collapse-header">Attendees categories</h6>
+                    <a class="collapse-item" href="{% url 'admin:locals' %}">Locals</a>
+                    <a class="collapse-item" href="{% url 'admin:internationals' %}">Internationals</a>
+                    <a class="collapse-item" href="{% url 'admin:students' %}">Students</a>
                     
                 </div>
             </div>
@@ -102,18 +106,21 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>On registrations</span>
+                <span>Data</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">All</h6>
-                    <a class="collapse-item" href="#">Speakers</a>
-                    <a class="collapse-item" href="#">Sponsors</a>
-                    <a class="collapse-item" href="#">Exhbitors</a>
-                    <a class="collapse-item" href="#">Testimonies</a>
+                    <a class="collapse-item" href="{% url 'admin:partners_list' %}">Official Partners</a>
+                    <a class="collapse-item" href="{% url 'admin:sponsors_list' %}">Sponsors</a>
+                    <a class="collapse-item" href="{% url 'admin:speakers_list' %}">Speakers</a>
+                    <a class="collapse-item" href="{% url 'admin:panalists_list' %}">Panalists</a>
+                    <a class="collapse-item" href="{% url 'admin:testimonials_list' %}">Testimonies</a>
+                    <a class="collapse-item" href="{% url 'admin:booths_list' %}">Exhbition Booths</a>
                 </div>
             </div>
         </li>
+
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
@@ -124,9 +131,9 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="attends.html">
+            <a class="nav-link" href="{% url 'admin:attendees' %}">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Attends</span></a>
+                <span>Attendees list</span></a>
         </li>
 
         <!-- Divider -->
@@ -327,7 +334,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.email }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{% static 'administration/img/undraw_profile.svg' %}">
                             </a>
@@ -381,18 +388,10 @@
                                             <th>ID/Passport</th>
                                             <th>Type</th>
                                             <th>Registered on</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Names</th>
-                                            <th>Phone number</th>
-                                            <th>Email</th>
-                                            <th>ID/Passport</th>
-                                            <th>Type</th>
-                                            <th>Registered on</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         {% for attendee in attendees %}
                                         <tr>
@@ -402,6 +401,10 @@
                                             <td>{{ attendee.identity }}</td>
                                             <td>{{ attendee.attendee_type }}</td>
                                             <td>{{ attendee.registered_on }}</td>
+                                            <td>Unpaid</td>
+                                            <td>
+                                                <button type="submit">Paid</button>
+                                            </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -420,7 +423,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Energy Private Developers (Conference administration) 4th Edition</span>
                     </div>
                 </div>
             </footer>

@@ -89,31 +89,43 @@
                 The Conference
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Videos</a>
-                <a class="dropdown-item" href="#">Photos</a>
-                <a class="dropdown-item" href="#">Venues</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Organizers</a>
+                <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
+                <a class="dropdown-item" href="{% url 'photos' %}">Photos</a>
               </div>
             </li>
             <li class="nav-item">
-				<a href="{% url 'agenda' %}" class="nav-link">Agenda</a>
-			  </li>
-			  <li class="nav-item">
-				<a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
-			  </li>
-			  <li class="nav-item">
-				<a href="{% url 'sponsors' %}" class="nav-link">Sponsors</a>
-			  </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Exhibition</a>
+              <a href="{% url 'agenda' %}" class="nav-link">Agenda</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Lighting homes</a>
+              <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Partners
+              </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'partners' %}">Official partners</a>
+              <a class="dropdown-item" href="{% url 'sponsors'%}">Sponsors</a>
+              <a class="dropdown-item" href="{% url 'sponsorships' %}">Sponsorship Packages</a>
+            </div>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'exhbition' %}" class="nav-link">Exhibition</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'lighting_homes' %}" class="nav-link">Lighting homes</a>
             </li>
             <li class="nav-item"><a href="#" class="nav-link"></a></li>
             <li class="nav-item cta mr-md-2">
-              <a href="#" class="nav-link">REGISTER</a>
+              <a href="#register" class="nav-link">REGISTER</a>
             </li>
 
             <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
@@ -153,21 +165,32 @@
           <div class="row">
             <div class="col-md-12 nav-link-wrap">
               <div
-                class="nav nav-pills d-flex text-center"
+                class="nav nav-pills d-flex text-center col-md-12"
                 id="v-pills-tab"
                 role="tablist"
                 aria-orientation="vertical"
               >
                 <a
                   class="nav-link ftco-animate active"
-                  id="v-pills-1-tab"
+                  id="v-pills-0-tab"
                   data-toggle="pill"
-                  href="#v-pills-1"
+                  href="#v-pills-0"
                   role="tab"
-                  aria-controls="v-pills-1"
+                  aria-controls="v-pills-0"
                   aria-selected="true"
-                  >Day 01 <span>September 09th,2024</span></a
+                  >Sunday <span>September 08th,2024</span></a
                 >
+
+                <a
+                class="nav-link ftco-animate"
+                id="v-pills-1-tab"
+                data-toggle="pill"
+                href="#v-pills-1"
+                role="tab"
+                aria-controls="v-pills-1"
+                aria-selected="true"
+                >Day 01 <span>September 09th,2024</span></a
+              >
 
                 <a
                   class="nav-link ftco-animate"
@@ -199,15 +222,82 @@
                   role="tab"
                   aria-controls="v-pills-4"
                   aria-selected="false"
-                  >Before and After <span> The conference</span></a
+                  >Thursday<span> September 12, 2024</span></a
+                >
+                <a
+                  class="nav-link ftco-animate"
+                  id="v-pills-5-tab"
+                  data-toggle="pill"
+                  href="#v-pills-5"
+                  role="tab"
+                  aria-controls="v-pills-5"
+                  aria-selected="false"
+                  >Friday<span> September 13, 2024</span></a
                 >
               </div>
             </div>
             <div class="col-md-12 tab-wrap">
               <div class="tab-content" id="v-pills-tabContent">
+                <!-- sunday -- the day before the conference -->
+                <div
+                class="tab-pane fade show active"
+                id="v-pills-0"
+                role="tabpanel"
+                aria-labelledby="v-pills-day-0-tab"
+              >
+                <div class="speaker-wrap ftco-animate d-flex">
+                  <div
+                    class="img speaker-img"
+                    style="background-image: url(images/epdlogo.jpeg)"
+                  ></div>
+                  <div class="text pl-md-5">
+                    <span class="time">Sunday, September 8, 2024</span>
+                    <h5>• Registration & Budges Distribution</h5>
+                    <h5>• Conference room set-up</h5>
+                    <h5>• Booths Set-up</h5>
+                    <h5>• Welcoming International Delegates</h5>
+
+                    <h7 class="speaker-name"
+                      >&mdash; <a href="#">Event Management</a>
+                      <span class="position"></span
+                    ></h7>
+                  </div>
+                </div>
+                <div class="speaker-wrap ftco-animate d-flex">
+                  <div
+                    class="img speaker-img"
+                    style="background-image: url(images/epdlogo.jpeg)"
+                  ></div>
+                  <div class="text pl-md-5">
+                    <span class="time"
+                      > (09:00am – 05:00am)</span
+                    >
+                    <h5>• Hydropower Plant</h5>
+                    <h5>• Minigrid</h5>
+                    <h5>• PURE (Productive Use of Renewable Energy)</h5>
+                    <h5>• E-mobility Assembling Plant</h5>
+                    <h5>
+                      • CSR: Corporate Social responsibility (lighting for 100
+                      homes)
+                    </h5>
+                    <br />
+                    <span class="time">Friday, Sept 13, 2024</span>
+                    <h5>• Akagera National Park</h5>
+                    <h5>• Volcanoes National Park</h5>
+                    <h5>• Nyandungu Eco Park</h5>
+                    <h5>• E-mobility Assembling Plant</h5>
+                    <h5>• UniPod UR-makerspace</h5>
+                    <h7 class="speaker-name"
+                      >&mdash; <a href="#">Event Management</a>
+                      <span class="position"></span
+                    ></h7>
+                  </div>
+                </div>
+              </div>
+
                 <!-- First day -->
                 <div
-                  class="tab-pane fade show active"
+                  class="tab-pane fade"
                   id="v-pills-1"
                   role="tabpanel"
                   aria-labelledby="day-1-tab"
@@ -1116,7 +1206,7 @@
                     ></div>
                     <div class="text pl-md-5">
                       <span class="time"
-                        >Thursday, Sept 12, 2024 (09:00am – 05:00am)</span
+                        > (09:00am – 05:00am)</span
                       >
                       <h5>• Hydropower Plant</h5>
                       <h5>• Minigrid</h5>
@@ -1126,20 +1216,40 @@
                         • CSR: Corporate Social responsibility (lighting for 100
                         homes)
                       </h5>
-                      <br />
-                      <span class="time">Friday, Sept 13, 2024</span>
-                      <h5>• Akagera National Park</h5>
-                      <h5>• Volcanoes National Park</h5>
-                      <h5>• Nyandungu Eco Park</h5>
-                      <h5>• E-mobility Assembling Plant</h5>
-                      <h5>• UniPod UR-makerspace</h5>
-                      <h7 class="speaker-name"
-                        >&mdash; <a href="#">Event Management</a>
-                        <span class="position"></span
-                      ></h7>
+                      
                     </div>
                   </div>
                 </div>
+
+                <!-- Friday -->
+                <div
+                class="tab-pane fade"
+                id="v-pills-5"
+                role="tabpanel"
+                aria-labelledby="v-pills-day-5-tab"
+              >
+              
+                <div class="speaker-wrap ftco-animate d-flex">
+                  <div
+                    class="img speaker-img"
+                    style="background-image: url(images/epdlogo.jpeg)"
+                  ></div>
+                  <div class="text pl-md-5">
+                    <span class="time">Friday, Sept 13, 2024</span>
+                    <h5>• Akagera National Park</h5>
+                    <h5>• Volcanoes National Park</h5>
+                    <h5>• Nyandungu Eco Park</h5>
+                    <h5>• E-mobility Assembling Plant</h5>
+                    <h5>• UniPod UR-makerspace</h5>
+                    <h7 class="speaker-name"
+                      >&mdash; <a href="#">Event Management</a>
+                      <span class="position"></span
+                    ></h7>
+                  </div>
+                </div>
+              </div>
+
+
                 <!-- END OF AGENDA -->
               </div>
             </div>

@@ -46,87 +46,99 @@
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-      id="ftco-navbar"
-    >
-      <div class="container">
-        <img
-          src="images/background-images/epdlogo.png"
-          alt="..."
-          height="50px"
-          width="50px"
-        />
-        <a
-          class="navbar-brand animate-charcter"
-          href="{% url 'index' %}"
-          style="color: #107fdd"
-          >Energy Week <span> 4th Edition</span></a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#ftco-nav"
-          aria-controls="ftco-nav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="oi oi-menu"></span> Menu
-        </button>
+    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+    id="ftco-navbar"
+  >
+    <div class="container">
+      <img
+        src="{% static 'images/background-images/epdlogo.png' %}"
+        alt="..."
+        height="50px"
+        width="50px"
+      />
+      <a
+        class="navbar-brand animate-charcter"
+        href="{% url 'index' %}"
+        style="color: #107fdd"
+        >Energy Week <span> 4th Edition</span></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#ftco-nav"
+        aria-controls="ftco-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="oi oi-menu"></span> Menu
+      </button>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                The Conference
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Videos</a>
-                <a class="dropdown-item" href="#">Photos</a>
-                <a class="dropdown-item" href="#">Venues</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Organizers</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'agenda' %}" class="nav-link">Agenda</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'sponsors' %}" class="nav-link">Sponsors</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Exhibition</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Lighting homes</a>
-            </li>
-            <li class="nav-item"><a href="#" class="nav-link"></a></li>
-            <li class="nav-item cta mr-md-2">
-              <a href="#" class="nav-link">REGISTER</a>
-            </li>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              The Conference
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
+              <a class="dropdown-item" href="{% url 'photos' %}">Photos</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'agenda' %}" class="nav-link">Agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Partners
+            </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'partners' %}">Official partners</a>
+            <a class="dropdown-item" href="{% url 'sponsors'%}">Sponsors</a>
+            <a class="dropdown-item" href="{% url 'sponsorships' %}">Sponsorship Packages</a>
+          </div>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'exhbition' %}" class="nav-link">Exhibition</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'lighting_homes' %}" class="nav-link">Lighting homes</a>
+          </li>
+          <li class="nav-item"><a href="#" class="nav-link"></a></li>
+          <li class="nav-item cta mr-md-2">
+            <a href="#register" class="nav-link">REGISTER</a>
+          </li>
 
-            <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">Speakers</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">Schedule</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta mr-md-2"><a href="#" class="nav-link">Register</a></li> -->
-          </ul>
-        </div>
+          <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Speakers</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Schedule</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+          <li class="nav-item cta mr-md-2"><a href="#" class="nav-link">Register</a></li> -->
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
     <!-- END nav -->
 
     <section class="ftco-section bg-light">
@@ -368,42 +380,7 @@
         </div>
       </div>
     </section> -->
-    <section class="ftco-section-parallax">
-      <div class="parallax-img d-flex align-items-center">
-        <div class="container">
-          <div class="row d-flex justify-content-center">
-            <div
-              class="col-md-7 text-center heading-section heading-section-white ftco-animate"
-            >
-              <h2>Subcribe to our Newsletter</h2>
-              <p>
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts. Separated
-                they live in
-              </p>
-              <div class="row d-flex justify-content-center mt-4 mb-4">
-                <div class="col-md-8">
-                  <form action="#" class="subscribe-form">
-                    <div class="form-group d-flex">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter email address"
-                      />
-                      <input
-                        type="submit"
-                        value="Subscribe"
-                        class="submit px-3"
-                      />
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <footer class="ftco-footer ftco-section" style="background-color: black">
       <div class="container">
