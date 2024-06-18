@@ -23,8 +23,9 @@ admin_urls = [
     path('booth', views.Register_booth.as_view(), name='booth'),
     path('event', views.Register_event.as_view(), name = 'event'),
     path('agendas', views.Register_agenda.as_view(), name = 'agendas'),
-    path('event_display', views.Display_event.as_view(), name = 'eventDisplay'),
-    path('agenda_display', views.Display_agenda.as_view(), name = 'agendaDisplay'),
+    path('register_eventday', views.Register_Eventday.as_view(), name = 'dayofevent'),
+    path('sponsorships', views.sponsorship.as_view(), name = 'sponsorships'),
+
 
     # report urls
     path('partners_list', views.partners_list.as_view(), name = 'partners_list'),
@@ -33,6 +34,8 @@ admin_urls = [
     path('panalists_list', views.panalists_list.as_view(), name = 'panalists_list'),
     path('testimonials_list', views.testimonials_list.as_view(), name = 'testimonials_list'),
     path('booths_list', views.booths_list.as_view(), name = 'booths_list'),
+    path('event_display', views.Display_event.as_view(), name = 'eventDisplay'),
+    path('agenda_display', views.Display_agenda.as_view(), name = 'agendaDisplay'),
 
     # Categories lists
     path('locals', views.locals, name = 'locals'),

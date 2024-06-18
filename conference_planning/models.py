@@ -37,7 +37,20 @@ class Partner(models.Model):
     def get_absolute_url(self):
         return reverse("partner-detail", kwargs={"pk": self.pk})
 
+
+class Sponsorships(models.Model):
+    kind = models.CharField(max_length=100)
+    amount = models.CharField(max_length=100)
+    benefits = models.TextField(max_length=100000)
+   
+    
+
+    def __str__(self) -> str:
+        return self.kind
+
+
 class Sponsor(models.Model):
+    sponsorship = models.ForeignKey(Sponsorships, on_delete=models.CASCADE, default='')
     organization_name = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15)
@@ -81,9 +94,20 @@ class Event(models.Model):
     def __str__(self) -> str:
         return self.event_title
     
+class Event_days(models.Model):
+    day_name = models.CharField(max_length=100)
+    day_date = models.DateField()
+    
+    class Meta:
+        verbose_name_plural = 'Event_days'
+
+    def __str__(self) -> str:
+        return self.day_name
+
 class Agenda(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    activity = models.TextField(default='',max_length=10000)
+    day_event= models.ForeignKey(Event_days, on_delete=models.CASCADE, default='')
+    activity = models.CharField(default='',max_length=10000)
     date = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
@@ -94,6 +118,9 @@ class Agenda(models.Model):
     def __str__(self) -> str:
         return self.event
     
+
+
+
 class Testimonial(models.Model):
     names = models.CharField(max_length=200)
     title = models.CharField(max_length=100)
@@ -128,3 +155,28 @@ class PreviousPhotos(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Document(models.Model):
+    title = models.CharField(max_length=1000)
+    pdf_document= models.FileField(upload_to='uploads/')
+    uploaded_at = models.DateTimeField(auto_now_add=True, )
+    
+    def __str__(self):
+        return self.title
+
+
+class BookSponsorship(models.Model):
+    sponsor_name = models.CharField(max_length = 100)
+    email = models.EmailField()
+    sponsorship = models.CharField(max_length=5000)
+    amount = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.sponsorships
+
+
+
+class Countdown(models.Model):
+    end_time = models.DateTimeField()
+

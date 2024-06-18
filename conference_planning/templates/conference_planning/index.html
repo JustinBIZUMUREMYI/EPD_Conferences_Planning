@@ -170,12 +170,9 @@
             >
               September 09-11, Kigali Marriott Hotel - Rwanda
             </p>
-            <div id="timer" class="d-flex mb-3" style="width: 800px">
-              
-              <div class="time" id="days">2 Months</div>
-              <div class="time pl-4" id="hours">25 Days</div>
-              <!-- <div class="time pl-4" id="minutes"></div>
-						  <div class="time pl-4" id="seconds"></div> -->
+            <div  class="d-flex mb-3" style="width: 800px; font-size: 20px; font-weight: 600; font-family: Arial, Helvetica, sans-serif; color:red; text-align: center;"  id="countdown-timer">
+            
+  
             </div>
           </div>
         </div>
@@ -202,13 +199,8 @@
     <section class="ftco-counter img" id="section-counter">
       <div class="container">
         <div class="row d-flex">
-          <div class="col-md-6 d-flex">
-            <div
-              class="img d-flex align-self-stretch"
-              style="background-image: url({% static 'images/chairman.jpeg' %})"
-            ></div>
-          </div>
-          <div class="col-md-6 pl-md-5 py-5">
+        
+          <div class="col-md-12 pl-md-5 py-5">
             <div class="row justify-content-start pb-3">
               <div class="col-md-12 heading-section ftco-animate">
                 <span class="subheading">Summary</span>
@@ -710,7 +702,7 @@
                     <span class="day">2017</span>
                   </div>
                 </div>
-                <h3 class="heading mt-2"><a href="{% url 'edition' %}">1st Edition</a></h3>
+                <h3 class="heading mt-2"><a href="#">1st Edition</a></h3>
                 <p>Matchmaking Conference and Exhibition</p>
               </div>
             </div>
@@ -735,7 +727,7 @@
 						<span class="mos">M</span>
               		</div> -->
                 </div>
-                <h3 class="heading mt-2"><a href="{% url 'edition' %}"> 2nd Edition</a></h3>
+                <h3 class="heading mt-2"><a href="#"> 2nd Edition</a></h3>
                 <p>Accelerating Investment in the Clean Cooking Sector</p>
               </div>
             </div>
@@ -760,7 +752,7 @@
               			<span class="mos">M</span>
               		</div> -->
                 </div>
-                <h3 class="heading mt-2"><a href="{% url 'edition' %}">3rd Edition</a></h3>
+                <h3 class="heading mt-2"><a href="#">3rd Edition</a></h3>
                 <p>Achieving Universal Green Energy Access in Africa</p>
               </div>
             </div>
@@ -1009,5 +1001,32 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="{% static 'js/google-map.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+      // Get the countdown end time from the context
+      const endTime = new Date("{{ end_time }}").getTime();
+
+      // Update the countdown every second
+      const countdownInterval = setInterval(() => {
+          const now = new Date().getTime();
+          const distance = endTime - now;
+
+          // Calculate days, hours, minutes, and seconds
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Display the result
+          document.getElementById("countdown-timer").innerHTML = 
+              days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+          // If the countdown is over, display a message
+          if (distance < 0) {
+              clearInterval(countdownInterval);
+              document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+          }
+      }, 1000);
+  </script>
   </body>
 </html>

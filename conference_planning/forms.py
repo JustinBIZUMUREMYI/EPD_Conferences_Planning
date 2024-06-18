@@ -1,5 +1,5 @@
 from django import forms
-from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda 
+from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship 
 
 class registerForm(forms.Form):
     name = forms.CharField(max_length=200, required=True)
@@ -55,12 +55,12 @@ class boothForm(forms.ModelForm):
 class VideoForm(forms.ModelForm):
     class Meta:
         model =  PreviousVideos
-        fields = ['title', 'video_file']
+        fields = '__all__'
 
 class PhotoForm(forms.ModelForm):
     class Meta:
         model =  PreviousPhotos
-        fields = ['title', 'photo_file']
+        fields = '__all__'
 
 class EventForm(forms.ModelForm):
     class Meta:
@@ -72,6 +72,24 @@ class AgendaForm(forms.ModelForm):
         model = Agenda
         fields = "__all__"
 
-    
+class RegisterdayForm(forms.ModelForm):
+    class Meta:
+        model = Event_days
+        fields = "__all__"   
 
+class SponsorshipForm(forms.ModelForm):
+    class Meta:
+        model = Sponsorships
+        fields = '__all__'
+
+class PDFFileForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ['title', 'pdf_document']
+
+
+class BookSponsorshipForm(forms.ModelForm):
+    class Meta:
+        model = BookSponsorship
+        fields = '__all__'
 

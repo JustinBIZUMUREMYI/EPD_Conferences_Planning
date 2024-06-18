@@ -2,9 +2,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm
+from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm 
 from django.contrib import messages
-from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event
+from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown 
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, TemplateView
 from django.views.generic.edit import FormView
@@ -30,7 +30,9 @@ def index(request):
     # fetching testimonials
     testimonials = Testimonial.objects.all()
 
+    # counting down timer
 
+    countdown = Countdown.objects.first()  # Assuming you only have one countdown
 
 
     context = {'number_attendees': attendees, 
@@ -41,33 +43,72 @@ def index(request):
              'sponsor_number': total_sponsors,
              'partner_number': total_partners,
              'panalist_number': total_panalists,
-             'speaker_number': total_speakers}
+             'speaker_number': total_speakers,
+              'end_time': countdown.end_time.isoformat()
+             }
     return render(request, 'conference_planning/index.html', context)
 
 
 def agenda(request):
+    activity = Agenda.objects.filter
     return render(request, 'conference_planning/schedule.html')
 
 
 def speakers(request):
     list_speakers = Speaker.objects.all()
+    list_panelists = Panalist.objects.all()
+
     context = {
-        'speakers_list': list_speakers
+        'speakers_list': list_speakers,
+        'panelists_list': list_panelists
     }
     return render(request, 'conference_planning/speakers.html', context)
 
 
 def sponsors(request):
-    return render(request, 'conference_planning/sponsors.html')
+    list_sponsors = Sponsor.objects.all()
+    context = {
+        'sponsors_list': list_sponsors
+    }
+    return render(request, 'conference_planning/sponsors.html', context)
 
 def official_partners(request):
-    return render(request, 'conference_planning/official_partners.html')
+    list_officialpartners = Partner.objects.all()
+    context = {
+        'partners_list': list_officialpartners
+    }
+    return render(request, 'conference_planning/official_partners.html', context)
 
 def sponsorship_packages(request):
-    return render(request, 'conference_planning/sponsorship_packages.html')
+    
+    if request.method == 'POST':
+        form =  BookSponsorshipForm(request.POST)
+        if form.is_valid():
+            
+            sponsorship = BookSponsorship(
+                name=form.cleaned_data['name'],
+                email=form.cleaned_data['email'],
+                sponsorship=form.cleaned_data['sponsorship'],
+                amount=form.cleaned_data['amount'],
+            )
+            sponsorship.save()
+            success_message = 'Successfully registered.'
+            redirect_url = request.META.get('HTTP_REFERER', '/')
+            messages.success(request, success_message)
+            return redirect(redirect_url)
+
+    sponsorships = Sponsorships.objects.all()
+    context = {
+        'sponsorships': sponsorships
+    }
+    return render(request, 'conference_planning/sponsorship_packages.html', context)
 
 def exhbition(request):
-    return render(request, 'conference_planning/exhbitions.html')
+    exhibition = booth.objects.all()
+    context = {
+        'booths':  exhibition
+    }
+    return render(request, 'conference_planning/exhbitions.html', context)
 
 def lighting_homes(request):
     return render(request, 'conference_planning/lighting_homes.html')
@@ -281,6 +322,12 @@ class Display_event(ListView):
     model = Event
     context_object_name = 'events'  
 
+class Register_Eventday(CreateView):
+    form_class = RegisterdayForm 
+    success_url = reverse_lazy('admin:dayofevent')
+    template_name = 'conference_planning/administration/register_dayevent.html'
+    model = Event_days
+
 
 # previous conferences videos and photos
 class videos(CreateView):
@@ -293,8 +340,25 @@ class photos(CreateView):
     success_url = reverse_lazy('admin:photo')
     template_name = 'conference_planning/administration/previous_photos.html'
     model =  PreviousPhotos
-    
 
+# sponsorship packages  
+class sponsorship(CreateView):
+    form_class = SponsorshipForm
+    success_url = reverse_lazy('admin:sponsorships')
+    template_name = 'conference_planning/administration/sponsorships.html'
+    model = Sponsorships
+
+# uploading a document
+class uploadPDF(CreateView):
+    form_class = PDFFileForm
+    success_url = reverse_lazy('admin:sponsorships')
+    template_name =  'conference_planning/administration/sponsorships.html'
+    model = Document
+
+class PDFFile(ListView):
+    model = Document
+    template_name = 'conference_planning/sponsorship_packages.html'
+    context_object_name = 'pdf_document'
 
 # Locals list
 @login_required

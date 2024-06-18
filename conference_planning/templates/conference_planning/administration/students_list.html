@@ -56,19 +56,25 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Categories</span>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Registration</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                data-parent="#accordionSidebar">
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Attendees categories</h6>
-                    <a class="collapse-item" href="{% url 'admin:locals' %}">Locals</a>
-                    <a class="collapse-item" href="{% url 'admin:internationals' %}">Internationals</a>
-                    <a class="collapse-item" href="{% url 'admin:students' %}">Students</a>
-                    
+                    <h6 class="collapse-header">All</h6>
+                    <a class="collapse-item" href="{% url 'admin:partner' %}">Official partner</a>
+                    <a class="collapse-item" href="{% url 'admin:sponsor' %}">Sponsor</a>
+                    <a class="collapse-item" href="{% url 'admin:speaker' %}">Speaker</a>
+                    <a class="collapse-item" href="{% url 'admin:panalist' %}">Panalist</a>
+                    <a class="collapse-item" href="{% url 'admin:testimonial' %}">Testimonial</a>
+                    <a class="collapse-item" href="{% url 'admin:booth' %}">Exhbition Booth</a>
+                    <a class="collapse-item" href="{% url 'admin:event' %}">Event</a>
+                    <a class="collapse-item" href="{% url 'admin:agendas' %}">Agenda</a>
+                    <a class="collapse-item" href="{% url 'admin:dayofevent' %}">Event Days</a>
+                    <a class="collapse-item" href="{% url 'admin:sponsorships' %}">Sponsorships</a>
+
                 </div>
             </div>
         </li>
@@ -116,10 +122,11 @@
                     <a class="collapse-item" href="{% url 'admin:panalists_list' %}">Panalists</a>
                     <a class="collapse-item" href="{% url 'admin:testimonials_list' %}">Testimonies</a>
                     <a class="collapse-item" href="{% url 'admin:booths_list' %}">Exhbition Booths</a>
+                    <a class="collapse-item" href="{% url 'admin:eventDisplay' %}">Event</a>
+                    <a class="collapse-item" href="{% url 'admin:agendaDisplay' %}">Agenda</a>
                 </div>
             </div>
         </li>
-
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">

@@ -75,6 +75,9 @@
                         <a class="collapse-item" href="{% url 'admin:booth' %}">Exhbition Booth</a>
                         <a class="collapse-item" href="{% url 'admin:event' %}">Event</a>
                         <a class="collapse-item" href="{% url 'admin:agendas' %}">Agenda</a>
+                        <a class="collapse-item" href="{% url 'admin:dayofevent' %}">Event Days</a>
+                        <a class="collapse-item" href="{% url 'admin:sponsorships' %}">Sponsorships</a>
+
                     </div>
                 </div>
             </li>
@@ -384,7 +387,14 @@
                       
                               <div class="card" style="border-radius: 15px;">
                                 <div class="card-body">
-                      
+                                    
+                                    <form
+                                    method="post"
+                                    class="register-form"
+                                    enctype="multipart/form-data"
+                                  
+                                  >
+                                    {% csrf_token %}
                                   <div class="row align-items-center pt-4 pb-3">
                                     <div class="col-md-3 ps-5">
                       
@@ -394,6 +404,19 @@
                                     <div class="col-md-9 pe-5">
                       
                                         {{ form.event|as_crispy_field }}
+                      
+                                    </div>
+                                  </div>
+
+                                  <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+                      
+                                      <h6 class="mb-0">Day of the event</h6>
+                      
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+                      
+                                        {{ form.day_event|as_crispy_field }}
                       
                                     </div>
                                   </div>
@@ -466,7 +489,7 @@
                                   <div class="px-5 py-4">
                                     <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Save</button>
                                   </div>
-                      
+                                    </form>
                                 </div>
                               </div>
                       

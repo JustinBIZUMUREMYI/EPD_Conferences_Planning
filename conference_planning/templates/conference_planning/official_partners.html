@@ -152,7 +152,9 @@
             </h2>
           </div>
         </div>
-        <div class="sponsors">
+
+        {% for  partner in partners_list%}
+        <div class="sponsors" >
           <div class="row">
             <div
               class="tab-pane fade show active"
@@ -162,173 +164,40 @@
             >
               <div
                 class="speaker-wrap ftco-animate d-flex"
-                style="border: 1px darkblue; border-radius: 40px"
+                style="border: 1px white; border-radius: 40px; background-color: darkblue;color:white;font-family: Arial, Helvetica, sans-serif;"
               >
                 <!-- <div class="img speaker-img" style="background-image: url(images/sponsors_logos/mininfra.svg);"></div> -->
                 <img
-                  src="{% static 'images/sponsors_logos/mininfra.svg' %}"
+                  src="{{partner.logo.url}}"
                   alt=""
                   height="150px"
-                  width="150px"
+                  width="200px"
                 />
                 <hr />
                 <div
                   class="text pl-md-5"
-                  style="color: darkblue; border-radius: 20px"
+                  style="border-radius: 20px"
                 >
                   <h5>
                     <a
-                      href="https://www.mininfra.gov.rw"
-                      style="color: darkblue; font-weight: bold"
-                      >MININFRA</a
+                      href="{{partner.url}}"
+                      style="font-weight: bold; color: wheat;"
+                      >{{partner.organization_name}}</a
                     >
-                    <a href="https://www.mininfra.gov.rw" class="icon-link"></a>
+                    <a href="{{partner.url}}" class="icon-link" style="color:wheat"></a>
                   </h5>
                   <p>
-                    The Mission of the Ministry of infrastructure is to ensure
-                    sustainable infrastruct=ure development covering transport,
-                    energy, water supply and sanitation, housing and human
-                    settlement sectors aiming to drive Rwanda’s economic growth
-                    and enhance quality of life of the citizen. Vision To
-                    provide modern infrastructures for sustainable economic
-                    growth and socio-economic development.
+                    {{partner.summary}}
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="sponsors">
-          <div class="row">
-            <div
-              class="tab-pane fade show active"
-              id="v-pills-1"
-              role="tabpanel"
-              aria-labelledby="day-1-tab"
-            >
-              <div
-                class="speaker-wrap ftco-animate d-flex"
-                style="border: 1px darkblue; border-radius: 40px"
-              >
-                <!-- <div class="img speaker-img" style="background-image: url(images/sponsors_logos/strathclyde.png);"></div> -->
-                <img
-                  src="{% static 'images/sponsors_logos/strathclyde.png' %}"
-                  alt=""
-                  height="80px"
-                  width="200px"
-                />
-                <hr />
-                <div
-                  class="text pl-md-5"
-                  style="color: darkblue; border-radius: 20px"
-                >
-                  <h5>
-                    <a
-                      href="https://isc.strath.ac.uk"
-                      style="color: darkblue; font-weight: bold"
-                      >University of Strathclyde</a
-                    ><a href="https://isc.strath.ac.uk" class="icon-link"></a>
-                  </h5>
-                  <p>
-                    The University of Strathclyde International Study Centre
-                    offers specialist tuition in English language, study skills
-                    and subject preparation. Alongside other international
-                    students, you'll study programmes developed in collaboration
-                    with the University of Strathclyde in preparation for your
-                    university degree. 95% of students who completed their
-                    pathway programme at the International Study Centre were
-                    offered progression to a degree course at the University of
-                    Strathclyde in 2023.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
 
-        <div class="sponsors">
-          <div class="row">
-            <div
-              class="tab-pane fade show active"
-              id="v-pills-1"
-              role="tabpanel"
-              aria-labelledby="day-1-tab"
-            >
-              <div
-                class="speaker-wrap ftco-animate d-flex"
-                style="border: 1px darkblue; border-radius: 40px"
-              >
-                <!-- <div class="img speaker-img" style="background-image: url(images/sponsors_logos/chalmers.png);"></div> -->
-                <img
-                  src="{% static 'images/sponsors_logos/chalmers.png' %}"
-                  alt=""
-                  height="80px"
-                  width="200px"
-                />
-                <hr />
-                <div
-                  class="text pl-md-5"
-                  style="color: darkblue; border: #107fdd 1px"
-                >
-                  <h5>
-                    <a
-                      href="https://www.chalmers.se/en"
-                      style="color: darkblue; font-weight: bold"
-                      >Chalmers University of Technology</a
-                    ><a href="https://www.chalmers.se/en" class="icon-link"></a>
-                  </h5>
-                  <p>
-                    We push for solutions to important societal challenges every
-                    day, test new ideas and contribute to the development of a
-                    sustainable future.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="sponsors">
-          <div class="row">
-            <div
-              class="tab-pane fade show active"
-              id="v-pills-1"
-              role="tabpanel"
-              aria-labelledby="day-1-tab"
-            >
-              <div
-                class="speaker-wrap ftco-animate d-flex"
-                style="border: 1px darkblue; border-radius: 40px"
-              >
-                <!-- <div class="img speaker-img" style="background-image: url(images/sponsors_logos/gridur.png);"></div> -->
-                <img
-                  src="{% static 'images/sponsors_logos/gridur.png' %}"
-                  alt=""
-                  height="100px"
-                  width="200px"
-                />
-                <hr />
-                <div
-                  class="text pl-md-5"
-                  style="color: darkblue; border-radius: 20px"
-                >
-                  <h5>
-                    <a
-                      href="https://giih.ur.ac.rw"
-                      style="color: darkblue; font-weight: bold"
-                      >UR Grid Innovation Incubation Hub</a
-                    ><a href="https://giih.ur.ac.rw" class="icon-link"></a>
-                  </h5>
-                  <p>
-                    Driving Energy7: Challenges and Opportunities"Driving
-                    Energy7: Challenges and Opportunities"Driving Energy7:
-                    Challenges and Opportunities"
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
 

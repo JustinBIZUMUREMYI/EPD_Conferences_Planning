@@ -1,6 +1,8 @@
 
-{% load static %}
 
+{% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Panalist registration</title>
+    <title>Booth registration</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'administration/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -76,6 +78,9 @@
                         <a class="collapse-item" href="{% url 'admin:booth' %}">Exhbition Booth</a>
                         <a class="collapse-item" href="{% url 'admin:event' %}">Event</a>
                         <a class="collapse-item" href="{% url 'admin:agendas' %}">Agenda</a>
+                        <a class="collapse-item" href="{% url 'admin:dayofevent' %}">Event Days</a>
+                        <a class="collapse-item" href="{% url 'admin:sponsorships' %}">Sponsorships</a>
+
                     </div>
                 </div>
             </li>
@@ -381,20 +386,23 @@
                           <div class="row d-flex justify-content-center align-items-center h-100">
                             <div class="col-xl-9">
                       
-                                <h1 class="h3 mb-4 text-gray-800">Exhbition Booth registration</h1>
+                                <h1 class="h3 mb-4 text-gray-800">Exhibition Booths</h1>
                       
                               <div class="card" style="border-radius: 15px;">
                                 <div class="card-body">
                       
+                                    <form
+                                    method="post"
+                                    class="register-form"
+                                    enctype="multipart/form-data"
+                                  
+                                  >
+                                    {% csrf_token %}
                                   <div class="row align-items-center pt-4 pb-3">
-                                    <div class="col-md-3 ps-5">
-                      
-                                      <h6 class="mb-0">Name</h6>
-                      
-                                    </div>
+                                    
                                     <div class="col-md-9 pe-5">
                       
-                                      <input type="text" class="form-control form-control-lg" />
+                                        {{ form.name|as_crispy_field }}
                       
                                     </div>
                                   </div>
@@ -402,14 +410,10 @@
                                   <hr class="mx-n3">
                       
                                   <div class="row align-items-center py-3">
-                                    <div class="col-md-3 ps-5">
-                      
-                                      <h6 class="mb-0">size</h6>
-                      
-                                    </div>
+                                    
                                     <div class="col-md-9 pe-5">
                       
-                                      <input type="email" class="form-control form-control-lg" />
+                                        {{ form.size|as_crispy_field }}
                       
                                     </div>
                                   </div>
@@ -417,54 +421,53 @@
                                   <hr class="mx-n3">
                       
                                   <div class="row align-items-center py-3">
-                                    <div class="col-md-3 ps-5">
-                      
-                                      <h6 class="mb-0">Booth_number</h6>
-                      
-                                    </div>
+                                    
                                     <div class="col-md-9 pe-5">
                       
-                                      <input type="phone" class="form-control form-control-lg"/>
+                                        {{ form.amount|as_crispy_field }}
                       
                                     </div>
                                   </div>
-                      
+
                                   <hr class="mx-n3">
                       
                                   <div class="row align-items-center py-3">
-                                    <div class="col-md-3 ps-5">
-                      
-                                      <h6 class="mb-0">Descriptin</h6>
-                      
-                                    </div>
+                                    
                                     <div class="col-md-9 pe-5">
                       
-                                      <textarea class="form-control" rows="3" placeholder="write someone's testimonial here"></textarea>
+                                        {{ form.booth_number|as_crispy_field }}
                       
                                     </div>
                                   </div>
-                      
+
                                   <hr class="mx-n3">
                       
                                   <div class="row align-items-center py-3">
-                                    <div class="col-md-3 ps-5">
-                      
-                                      <h6 class="mb-0">Booth  Picture</h6>
-                      
-                                    </div>
+                                    
                                     <div class="col-md-9 pe-5">
                       
-                                        <input type="file" class="form-control-file" id="imageUpload" accept="image/*">
+                                        {{ form.description|as_crispy_field }}
                       
                                     </div>
                                   </div>
+
+                                  <hr class="mx-n3">
                       
+                                  <div class="row align-items-center py-3">
+                                    
+                                    <div class="col-md-9 pe-5">
                       
+                                        {{ form.picture|as_crispy_field }}
+                      
+                                    </div>
+                                  </div>
+                    
                                   <hr class="mx-n3">
                       
                                   <div class="px-5 py-4">
                                     <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Save</button>
                                   </div>
+                                   </form>
                       
                                 </div>
                               </div>

@@ -75,6 +75,11 @@
                         <a class="collapse-item" href="{% url 'admin:panalist' %}">Panalist</a>
                         <a class="collapse-item" href="{% url 'admin:testimonial' %}">Testimonial</a>
                         <a class="collapse-item" href="{% url 'admin:booth' %}">Exhbition Booth</a>
+                        <a class="collapse-item" href="{% url 'admin:event' %}">Event</a>
+                        <a class="collapse-item" href="{% url 'admin:agendas' %}">Agenda</a>
+                        <a class="collapse-item" href="{% url 'admin:dayofevent' %}">Event Days</a>
+                        <a class="collapse-item" href="{% url 'admin:sponsorships' %}">Sponsorships</a>
+
                     </div>
                 </div>
             </li>
@@ -122,6 +127,8 @@
                         <a class="collapse-item" href="{% url 'admin:panalists_list' %}">Panalists</a>
                         <a class="collapse-item" href="{% url 'admin:testimonials_list' %}">Testimonies</a>
                         <a class="collapse-item" href="{% url 'admin:booths_list' %}">Exhbition Booths</a>
+                        <a class="collapse-item" href="{% url 'admin:eventDisplay' %}">Event</a>
+                        <a class="collapse-item" href="{% url 'admin:agendaDisplay' %}">Agenda</a>
                     </div>
                 </div>
             </li>
@@ -395,15 +402,15 @@
                                     </thead>
                                     <tbody>
                                         
-                                        {% for speaker in speakers %}
+                                        {% for panelist in panalists %}
                                         <tr>
 
-                                            <td>{{ speaker.names }}</td>
-                                            <td>{{ speaker.phone_number }}</td>
-                                            <td>{{ speaker.email }}</td>
-                                            <td>{{ speaker.title }}</td>
-                                            <td>{{ speaker.bio }}</td>
-                                            <td>{{ speaker.picture }}</td>
+                                            <td>{{ panelist.names }}</td>
+                                            <td>{{ panelist.phone_number }}</td>
+                                            <td>{{ panelist.email }}</td>
+                                            <td>{{ panelist.title }}</td>
+                                            <td>{{ panelist.bio }}</td>
+                                            <td>{{ panelist.picture }}</td>
                 
                                         </tr>
                                         {% endfor %}
