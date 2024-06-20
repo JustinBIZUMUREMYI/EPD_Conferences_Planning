@@ -46,8 +46,8 @@
   </head>
   <body>
     <nav
-    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-    id="ftco-navbar"
+    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " 
+    id="ftco-navbar" 
   >
     <div class="container">
       <img
@@ -59,7 +59,6 @@
       <a
         class="navbar-brand animate-charcter"
         href="{% url 'index' %}"
-        style="color: #107fdd"
         >Energy Week <span> 4th Edition</span></a
       >
       <button
@@ -125,7 +124,7 @@
           </li>
           <li class="nav-item"><a href="#" class="nav-link"></a></li>
           <li class="nav-item cta mr-md-2">
-            <a href="#register" class="nav-link">REGISTER</a>
+            <a href="{% url 'registration:registration' %}" class="nav-link">REGISTER</a>
           </li>
 
           <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>

@@ -46,99 +46,98 @@
   </head>
   <body>
     <nav
-    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-    id="ftco-navbar"
-  >
-    <div class="container">
-      <img
-        src="{% static 'images/background-images/epdlogo.png' %}"
-        alt="..."
-        height="50px"
-        width="50px"
-      />
-      <a
-        class="navbar-brand animate-charcter"
-        href="{% url 'index' %}"
-        style="color: #107fdd"
-        >Energy Week <span> 4th Edition</span></a
-      >
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#ftco-nav"
-        aria-controls="ftco-nav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="oi oi-menu"></span> Menu
-      </button>
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " 
+      id="ftco-navbar" 
+    >
+      <div class="container">
+        <img
+          src="{% static 'images/background-images/epdlogo.png' %}"
+          alt="..."
+          height="50px"
+          width="50px"
+        />
+        <a
+          class="navbar-brand animate-charcter"
+          href="{% url 'index' %}"
+          >Energy Week <span> 4th Edition</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              The Conference
-            </a>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                The Conference
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
+                <a class="dropdown-item" href="{% url 'photos' %}">Photos</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'agenda' %}" class="nav-link">Agenda</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Partners
+              </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
-              <a class="dropdown-item" href="{% url 'photos' %}">Photos</a>
+              <a class="dropdown-item" href="{% url 'partners' %}">Official partners</a>
+              <a class="dropdown-item" href="{% url 'sponsors'%}">Sponsors</a>
+              <a class="dropdown-item" href="{% url 'sponsorships' %}">Sponsorship Packages</a>
             </div>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'agenda' %}" class="nav-link">Agenda</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Partners
-            </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'partners' %}">Official partners</a>
-            <a class="dropdown-item" href="{% url 'sponsors'%}">Sponsors</a>
-            <a class="dropdown-item" href="{% url 'sponsorships' %}">Sponsorship Packages</a>
-          </div>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'exhbition' %}" class="nav-link">Exhibition</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'lighting_homes' %}" class="nav-link">Lighting homes</a>
-          </li>
-          <li class="nav-item"><a href="#" class="nav-link"></a></li>
-          <li class="nav-item cta mr-md-2">
-            <a href="#register" class="nav-link">REGISTER</a>
-          </li>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'exhbition' %}" class="nav-link">Exhibition</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'lighting_homes' %}" class="nav-link">Lighting homes</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link"></a></li>
+            <li class="nav-item cta mr-md-2">
+              <a href="{% url 'registration:registration' %}" class="nav-link">REGISTER</a>
+            </li>
 
-          <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Speakers</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Schedule</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-            <li class="nav-item cta mr-md-2"><a href="#" class="nav-link">Register</a></li> -->
-        </ul>
+            <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Speakers</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Schedule</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+	          <li class="nav-item cta mr-md-2"><a href="#" class="nav-link">Register</a></li> -->
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
     <!-- END nav -->
 
     <section class="ftco-section bg-light">
@@ -148,7 +147,7 @@
           <div class="col-md-7 text-center heading-section ftco-animate">
             <span class="subheading">Energy Week</span>
             <h2 class="mb-4" style="color: #107fdd">
-              <span>Our</span> Sponsors
+              <span>Official Partners</span> 
             </h2>
           </div>
         </div>

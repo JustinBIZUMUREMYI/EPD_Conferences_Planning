@@ -152,99 +152,98 @@ h1.heading {
   <body>
     
     <nav
-    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-    id="ftco-navbar"
-  >
-    <div class="container">
-      <img
-        src="{% static 'images/background-images/epdlogo.png' %}"
-        alt="..."
-        height="50px"
-        width="50px"
-      />
-      <a
-        class="navbar-brand animate-charcter"
-        href="{% url 'index' %}"
-        style="color: #107fdd"
-        >Energy Week <span> 4th Edition</span></a
-      >
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#ftco-nav"
-        aria-controls="ftco-nav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="oi oi-menu"></span> Menu
-      </button>
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " 
+      id="ftco-navbar" 
+    >
+      <div class="container">
+        <img
+          src="{% static 'images/background-images/epdlogo.png' %}"
+          alt="..."
+          height="50px"
+          width="50px"
+        />
+        <a
+          class="navbar-brand animate-charcter"
+          href="{% url 'index' %}"
+          >Energy Week <span> 4th Edition</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              The Conference
-            </a>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                The Conference
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
+                <a class="dropdown-item" href="{% url 'photos' %}">Photos</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'agenda' %}" class="nav-link">Agenda</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Partners
+              </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
-              <a class="dropdown-item" href="{% url 'photos' %}">Photos</a>
+              <a class="dropdown-item" href="{% url 'partners' %}">Official partners</a>
+              <a class="dropdown-item" href="{% url 'sponsors'%}">Sponsors</a>
+              <a class="dropdown-item" href="{% url 'sponsorships' %}">Sponsorship Packages</a>
             </div>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'agenda' %}" class="nav-link">Agenda</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'speakers' %}" class="nav-link">Speakers</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Partners
-            </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'partners' %}">Official partners</a>
-            <a class="dropdown-item" href="{% url 'sponsors'%}">Sponsors</a>
-            <a class="dropdown-item" href="{% url 'sponsorships' %}">Sponsorship Packages</a>
-          </div>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'exhbition' %}" class="nav-link">Exhibition</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'lighting_homes' %}" class="nav-link">Lighting homes</a>
-          </li>
-          <li class="nav-item"><a href="#" class="nav-link"></a></li>
-          <li class="nav-item cta mr-md-2">
-            <a href="#register" class="nav-link">REGISTER</a>
-          </li>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'exhbition' %}" class="nav-link">Exhibition</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'lighting_homes' %}" class="nav-link">Lighting homes</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link"></a></li>
+            <li class="nav-item cta mr-md-2">
+              <a href="{% url 'registration:registration' %}" class="nav-link">REGISTER</a>
+            </li>
 
-          <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Speakers</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Schedule</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-          <li class="nav-item cta mr-md-2"><a href="#" class="nav-link">Register</a></li> -->
-        </ul>
+            <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Speakers</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Schedule</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+	          <li class="nav-item cta mr-md-2"><a href="#" class="nav-link">Register</a></li> -->
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
     <!-- END nav -->
     
     <!-- the speaker section -->
@@ -267,7 +266,7 @@ h1.heading {
             <div>
                 
                 <h1 class="heading" style="font-size: 30px;color:wheat;">
-                    Exhibition
+                    Exhibition Booths and Accessories 
                 </h1>
                 <br>
             </div>
@@ -278,14 +277,43 @@ h1.heading {
                         {% for booth in booths %}
                         <div class="col-xs-12 col-sm-4">
                             <div class="card">
-                                <a class="img-card" data-toggle="modal" data-target="#registrationModal">
-                                <img src="{{booth.picture.url}}"/>
+                                <a class="img-card" data-toggle="modal" data-target="#registrationModal" height="50" width="50" alt="Booth Image">
+                                <img class="card-img-top img-fluid" src="{{booth.picture.url}}"  height="50" width="50" alt="Booth Image"/>
                               </a>
                                 <div class="card-content">
+                                  {% if booth.booth_number <= 2 %}  
                                     <h4 class="card-title">
-                                        <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">  {{booth.name}}: {{booth.size}}
+                                      
+                                        <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
+                                          
+                                          <p class="text-center" style="font-size: 20px;"> 
+                                      
+                                            {{booth.booth_number}}
+
+                                          </p> 
+                                          
+                                          {{booth.name}}: {{booth.size}}
+
+                                        
                                       </a>
                                     </h4>
+                                    {% else %}
+                                    <h4 class="card-title">
+                                      
+                                      <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
+                                        
+                        
+                                        
+                                        {{booth.name}}: {{booth.size}}
+
+                                      
+                                    </a>
+                                  </h4>
+                                  {% endif %}
+                                    
+                                    
+
+
                                     <h4 class="card-title">
                                         
                                     <p>{{booth.amount}}</p>

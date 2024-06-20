@@ -232,6 +232,12 @@ def previous_photos(request):
     }
     return render(request, 'conference_planning/photos.html', context)
 
+
+
+# regustration forms
+class registration_froms(TemplateView):
+    template_name = 'conference_planning/registration/registration.html'
+
 # Sponsors
 class Register_sponsor(CreateView):
     form_class = SponsorForm

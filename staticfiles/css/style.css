@@ -7338,7 +7338,7 @@ h1, h2, h3, h4, h5,
     padding-bottom: .9rem;
     padding-left: 15px;
     padding-right: 1px;
-    color: #107FDD;
+    color: ;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     opacity: 2 !important; }
@@ -7488,7 +7488,7 @@ h1, h2, h3, h4, h5,
       -o-transition: .3s all ease-out;
       transition: .3s all ease-out; }
     .ftco-navbar-light.scrolled .navbar-brand {
-      color: #000000; }
+      color: white; }
 
   .dropdown-item{
       color: #107FDD;

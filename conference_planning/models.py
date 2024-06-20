@@ -136,7 +136,7 @@ class booth(models.Model):
     picture = models.ImageField(upload_to='images/')
     description = models.TextField(max_length=10000)
     amount = models.CharField(max_length=1000)
-    booth_number= models.CharField(max_length=100, default='')
+    booth_number= models.IntegerField(default= '')
 
     def __str__(self) -> str:
         return self.name

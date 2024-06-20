@@ -40,10 +40,9 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
-    
     <nav
-    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-    id="ftco-navbar"
+    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " 
+    id="ftco-navbar" 
   >
     <div class="container">
       <img
@@ -55,7 +54,6 @@
       <a
         class="navbar-brand animate-charcter"
         href="{% url 'index' %}"
-        style="color: #107fdd"
         >Energy Week <span> 4th Edition</span></a
       >
       <button
@@ -121,7 +119,7 @@
           </li>
           <li class="nav-item"><a href="#" class="nav-link"></a></li>
           <li class="nav-item cta mr-md-2">
-            <a href="#register" class="nav-link">REGISTER</a>
+            <a href="{% url 'registration:registration' %}" class="nav-link">REGISTER</a>
           </li>
 
           <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
@@ -157,15 +155,26 @@
           	<span class="subheading">Energy Week</span>
             <h2 class="mb-4" style="color:#107FDD; font-size: 20px;font-family: sans-serif;">Videos of EPD's previous conferences</h2>
           </div>
+        
+        </div>
+
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2 class="mb-4" style="color:#107FDD; font-size: 20px;font-family: sans-serif;">Renewable Energy 3rd Edition</h2>
+          </div>
+       
         </div>
         <div class="row">
+          
+         
           {% for video_list in videos_list %}
           <div class="col-md-4 speaker border rounded">
+
           <video height="320" width="320" controls>
             <source src="{{video_list.video_file.url}}" type="video/mp4">
           </video>
           <div class="card-body"> 
-            <p class="card-text">{{video_list.title}}</p>
+            
           </div>
         		</div>
         {% endfor %}

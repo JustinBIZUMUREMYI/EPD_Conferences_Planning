@@ -10,6 +10,7 @@ registration_patterns = [
     path('local/', views.local_registration, name='local_registration'),
     path('international/', views.international_registration, name='international_registration'),
     path('students/', views.students_registration, name='students_registration'),
+    path('registration/', views.registration_froms.as_view(), name = 'registration')
 ]
 
 admin_urls = [

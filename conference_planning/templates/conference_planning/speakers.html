@@ -40,10 +40,9 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
-    
     <nav
-    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-    id="ftco-navbar"
+    class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " 
+    id="ftco-navbar" 
   >
     <div class="container">
       <img
@@ -55,7 +54,6 @@
       <a
         class="navbar-brand animate-charcter"
         href="{% url 'index' %}"
-        style="color: #107fdd"
         >Energy Week <span> 4th Edition</span></a
       >
       <button
@@ -121,7 +119,7 @@
           </li>
           <li class="nav-item"><a href="#" class="nav-link"></a></li>
           <li class="nav-item cta mr-md-2">
-            <a href="#register" class="nav-link">REGISTER</a>
+            <a href="{% url 'registration:registration' %}" class="nav-link">REGISTER</a>
           </li>
 
           <!-- <li class="nav-item active"><a href="index.html" class="nav-link">CONFERENCE</a></li>
@@ -160,37 +158,36 @@
         </div>
         <div class="row">
           {% for speaker_list in speakers_list %}
-        	<div class="col-md-3 speaker border rounded">
-            <a href="#" data-toggle="modal" data-target="#exampleModalLong">
-        		<img src="{{ speaker_list.picture.url}}" class="img-fluid " alt="speaker">
-        		<div class="text text-center pt-3">
-        			<h3>{{ speaker_list.names }}</h3>
-        			<span class="position">{{ speaker_list.title}}</span>
+          <div class="col-md-3 speaker border rounded">
+            <a href="#" class="biography" data-toggle="modal" data-biography="{{ speaker_list.bio }}" data-target="#exampleModalLong">
+              <img src="{{ speaker_list.picture.url}}" class="img-fluid" alt="speaker">
+              <div class="text text-center pt-3">
+                <h3>{{ speaker_list.names }}</h3>
+                <span class="position">{{ speaker_list.title }}</span>
+              </div>
             </a>
-        		</div>
-        	</div>
-       
-          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Profile</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  {{ speaker_list.bio}}
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  
-                </div>
+          </div>
+        {% endfor %}
+        
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p id="bio"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
-          {% endfor %}
-
+        </div>
+        
         </div>
     	</div>
     </section>
@@ -213,7 +210,7 @@
 
           {% for panelist in panelists_list %}
         	<div class="col-md-2 speaker border rounded">
-            <a href="#">
+            <a href="#" class="panelist" data-toggle="modal" data-biography="{{ panelist.bio }}" data-target="#exampleModalLong">
         		<img src="{{ panelist.picture.url }}" class="img-fluid" alt="speaker">
         		<div class="text text-center pt-3">
         			<h3>{{panelist.names}}</h3>
@@ -306,7 +303,7 @@
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+</script>
 
   <script src="{% static 'js/jquery.min.js' %}"></script>
   <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
@@ -325,6 +322,21 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{% static 'js/google-map.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
+
+  <script>
+    document.querySelectorAll('.biography').forEach(bioBtn => {
+        bioBtn.addEventListener('click', () => {
+            document.getElementById('bio').textContent = bioBtn.getAttribute('data-biography');
+        });
+    });
+</script>
     
+ <script>
+    document.querySelectorAll('.panelist').forEach(bioBtn => {
+        bioBtn.addEventListener('click', () => {
+            document.getElementById('bio').textContent = bioBtn.getAttribute('data-biography');
+        });
+    });
+</script>
   </body>
 </html>
