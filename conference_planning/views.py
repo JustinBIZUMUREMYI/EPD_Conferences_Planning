@@ -81,21 +81,6 @@ def official_partners(request):
 
 def sponsorship_packages(request):
     
-    if request.method == 'POST':
-        form =  BookSponsorshipForm(request.POST)
-        if form.is_valid():
-            
-            sponsorship = BookSponsorship(
-                name=form.cleaned_data['name'],
-                email=form.cleaned_data['email'],
-                sponsorship=form.cleaned_data['sponsorship'],
-                amount=form.cleaned_data['amount'],
-            )
-            sponsorship.save()
-            success_message = 'Successfully registered.'
-            redirect_url = request.META.get('HTTP_REFERER', '/')
-            messages.success(request, success_message)
-            return redirect(redirect_url)
 
     sponsorships = Sponsorships.objects.all()
     context = {
