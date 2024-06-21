@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e406!im%dbjup%q%45ll-m#8t@0g%4_ey(nd*4tfck&z%!2tt$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.epdconference.com', 'epdconference.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition

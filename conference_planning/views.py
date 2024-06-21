@@ -159,7 +159,7 @@ def register(request):
                 organization=form.cleaned_data['organization']
             )
             attendee.save()
-            success_message = 'Successfully registered. You will receive an email with more details about the event.'
+            success_message = "Greetings from Energy Private Developers Association (EPD), We Thank you for registering to be part of Renewable Energy Week Conference Sept 2024. We are pleased to inform you that you have completed the first step (1/2) of the registration process. Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. We appreciate your step and look forward to hosting you. Best regards, EPD"
             redirect_url = request.META.get('HTTP_REFERER', '/')
             messages.success(request, success_message)
             return redirect(redirect_url)
