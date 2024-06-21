@@ -157,15 +157,14 @@
             <h2 class="mb-4" style="color:#107FDD; font-size: 20px;">Photos of EPD's previous conferences</h2>
           </div>
         </div>
+        
         <div class="row">
+          <div class="col-md-12">Renewable Energy </div>
           {% for photo_list in photos_list %}
           <div class="col-md-4 speaker border rounded">
         
             <img src="{{ photo_list.photo_file.url}}" class="img-fluid " alt="">
          
-          <!-- <div class="card-body"> 
-            <p class="card-text">{{photo_list.title}}</p>
-          </div> -->
         		</div>
         {% endfor %}
         </div>
