@@ -7450,7 +7450,7 @@ h1, h2, h3, h4, h5,
       }
       .ftco-navbar-light.scrolled .nav-item.cta > a span {
         display: inline-block;
-        color: #fff !important; }
+        color: green !important; }
     .ftco-navbar-light.scrolled .nav-item.cta.cta-colored span {
       border-color: #6b76ff; }
     @media (max-width: 991.98px) {
