@@ -159,7 +159,23 @@
             <span class="subheading">Energy Week</span>
             <h2 class="mb-4" style="color: #107fdd"><span></span> Agenda</h2>
           </div>
+
         </div>
+        <div class="row">
+          {% for  document in documents %}
+          <div class="col-md-12 ">
+
+            <button type="button" class="btn btn-primary "><a href="{{ document.pdf_document.url }}" target="_blank" style="color:white;font-family: Arial, Helvetica, sans-serif;font-weight:bold ;"">Agenda PDF</a></button>
+              
+          
+          </div>
+        
+      
+          {% endfor %}
+  
+      </div>
+      <br>
+      
         <div class="ftco-search">
           <div class="row">
             <div class="col-md-12 nav-link-wrap">
@@ -258,10 +274,10 @@
                     <h5>• Booths Set-up</h5>
                     <h5>• Welcoming International Delegates</h5>
 
-                    <h7 class="speaker-name"
+                    <!-- <h7 class="speaker-name"
                       >&mdash; <a href="#">Event Management</a>
                       <span class="position"></span
-                    ></h7>
+                    ></h7> -->
                   </div>
                 </div>
             
@@ -286,15 +302,16 @@
                           >Participants’ registration & Welcome Coffee</a
                         >
                       </h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">EPD</a>
                         <span class="position"
                           >Event Management and Staff
                         </span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
+                  
                   <div class="speaker-wrap ftco-animate d-flex">
                     <div
                       class="img speaker-img"
@@ -307,11 +324,11 @@
                       <h2>
                         <a href="#">Inroom engagement and Having Seats</a>
                       </h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">MC</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -324,11 +341,11 @@
                     <div class="text pl-md-5">
                       <span class="time">09:00am - 09:05am</span>
                       <h2><a href="#">Welcome Remarks</a></h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">EPD</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -341,11 +358,11 @@
                     <div class="text pl-md-5">
                       <span class="time">09:05am - 09:15am</span>
                       <h2><a href="#">Remarks</a></h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">Partner 1</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -358,11 +375,11 @@
                     <div class="text pl-md-5">
                       <span class="time">09:15am - 09:25am</span>
                       <h2><a href="#">Remarks</a></h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">Partner 2</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -375,11 +392,11 @@
                     <div class="text pl-md-5">
                       <span class="time">09:25am - 09:35am</span>
                       <h2><a href="#">Remarks</a></h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">Sponsor 1</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -392,11 +409,11 @@
                     <div class="text pl-md-5">
                       <span class="time">09:35am - 09:45am</span>
                       <h2><a href="#">Remarks</a></h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">EPD</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -409,11 +426,11 @@
                     <div class="text pl-md-5">
                       <span class="time">09:45am - 10:00am</span>
                       <h2><a href="#">Official Opening</a></h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">Minifra</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -424,38 +441,40 @@
                       "
                     ></div>
                     <div class="text pl-md-5">
-                      <span class="time">10:00am - 10:30am</span>
-                      <h2>
-                        <a href="#">
-                          Group Photo, Networking Coffee & Exhibition Tour</a
-                        >
-                      </h2>
-                      <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">Event Management</a>
-                        <span class="position"></span>
-                      </h3>
-                    </div>
-                  </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div>
-                    <div class="text pl-md-5">
-                      <span class="time">10:30am - 11:30am</span>
+                      <span class="time">10:00am - 10:11am</span>
+                      
+
                       <h2><a href="#">Panel Discussion: Panelists - TBC</a></h2>
                       <h5>
                         Driving Energy Transition towards Achieving COP28 Goals
                         and SDG 7: Challenges and Opportunities"
                       </h5>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
+                      <h3 class="speaker-name">
+                        &mdash; <a href="#">Event Management</a>
+                        <span class="position"></span>
+                      </h3> -->
+                    </div>
+                  </div>
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div
+                      class="img speaker-img"
+                      style="
+                        background-image: url(images/speakers/speaker4.jpeg);
+                      "
+                    ></div>
+                    <div class="text pl-md-5">
+                      <span class="time">11:00am - 11:30am</span>
+                      <h2>
+                        <a href="#">
+                          Group Photo, Networking Coffee & Exhibition Tour</a
+                        >
+                      </h2>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -472,12 +491,12 @@
                         Strategies for Developing Green and Sustainable Industry
                         Policies"
                       </h5>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#"></a> Moderator<span
                           class="position"
                         ></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -490,11 +509,11 @@
                     <div class="text pl-md-5">
                       <span class="time"> 12:30pm - 01:30pm</span>
                       <h2><a href="#">Networking Lunch</a></h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">All</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -513,11 +532,11 @@
                           Energy"</a
                         >
                       </h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">MC</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -536,11 +555,11 @@
                           Nexus"</a
                         >
                       </h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -558,11 +577,11 @@
                           Ongoing MC Initiatives for Green Investment"</a
                         >
                       </h2>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">MC</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -584,10 +603,10 @@
                         COP28 Goals and Achieving SDG 7"
                       </h5>
                       <p>Description</p>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -603,31 +622,16 @@
                       <h5>
                         Empowering Women for an Inclusive Energy Transition
                       </h5>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div>
-                    <div class="text pl-md-5">
-                      <span class="time">06:00pm - 07:00pm</span>
-                      <h2><a href="#">Cocktail by Invitation</a></h2>
-                      <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">Event Management & EPD staff</a>
-                        <span class="position"></span>
-                      </h3>
-                    </div>
                   </div>
-                </div>
+
+                 
 
                 <!-- Second day -->
                 <div
@@ -644,17 +648,37 @@
                       "
                     ></div>
                     <div class="text pl-md-5">
-                      <span class="time">09:00am - 09:30am</span>
-                      <h2><a href="#">Presentation by companies</a></h2>
-                      <h5>
-                        Exploring Cutting-Edge Solar Technologies for Commercial
-                        and Industrial Applications and their business models
-                      </h5>
-                      <p>Description</p>
+                      <span class="time">09:00am - 09:10am</span>
+                      <h5>Keynote speech</h5>
+                      
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">MC</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
+                    </div>
+                  </div>
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div
+                      class="img speaker-img"
+                      style="
+                        background-image: url(images/speakers/speaker1.jpeg);
+                      "
+                    ></div>
+                    <div class="text pl-md-5">
+                      <span class="time">09:10am - 09:30am</span>
+                     
+                      <h2><a href="#">Presentation</a></h2>
+                      <h5>
+                        Driving Towards Sustainability: Innovations and
+                        Initiatives in Green Transport for a Greener Future
+                      </h5>
+                      
+                      <!-- <p>Description</p>
+                      <h3 class="speaker-name">
+                        &mdash; <a href="#">Moderator</a>
+                        <span class="position"></span>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -668,75 +692,16 @@
                       <span class="time">09:30am - 10:15am</span>
                       <h2><a href="#">Panel Discussion</a></h2>
                       <h5>
-                        Innovative Renewable Energy Solutions on Solar for
-                        Commercial and Industrial Zones towards COP28 and SDG 7
-                        Objectives
-                      </h5>
-                      <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">Moderator</a>
-                        <span class="position"></span>
-                      </h3>
-                    </div>
-                  </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker1.jpeg);
-                      "
-                    ></div>
-                    <div class="text pl-md-5">
-                      <span class="time">10:15am - 10:45am</span>
-                      <h2><a href="#">Presentation</a></h2>
-                      <h5>
-                        Driving Towards Sustainability: Innovations and
-                        Initiatives in Green Transport for a Greener Future
-                      </h5>
-                      <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">MC</a>
-                        <span class="position"></span>
-                      </h3>
-                    </div>
-                  </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker1.jpeg);
-                      "
-                    ></div>
-                    <div class="text pl-md-5">
-                      <span class="time"> 10:45am - 11:15am</span>
-                      <h2><a href="#">Coffee Break</a></h2>
-                      <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">Event management & EPD Staff</a>
-                        <span class="position"></span>
-                      </h3>
-                    </div>
-                  </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker1.jpeg);
-                      "
-                    ></div>
-                    <div class="text pl-md-5">
-                      <span class="time">11:15am - 12:00am</span>
-                      <h2><a href="#">Panel Discussion</a></h2>
-                      <h5>
                         Towards Sustainable Mobility: Opportunities,
                         Tehcnologies, and challenges in green Transport for
                         Energy Transition.
                       </h5>
-                      <p>Description</p>
+                     
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
-                        &mdash; <a href="#">Event management & EPD Staff</a>
+                        &mdash; <a href="#">MC</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -747,19 +712,86 @@
                       "
                     ></div>
                     <div class="text pl-md-5">
-                      <span class="time">12:00am - 12:30pm</span>
+                      <span class="time"> 10:15am - 10:45am</span>
+                      
+
+                      <h2><a href="#">Presentation by companies</a></h2>
+                      
+                      <h5>
+                        Exploring Cutting-Edge Solar Technologies for Commercial
+                        and Industrial Applications and their business models
+                      </h5>
+                      <!-- <p>Description</p>
+                      <h3 class="speaker-name">
+                        &mdash; <a href="#">Event management & EPD Staff</a>
+                        <span class="position"></span>
+                      </h3> -->
+                    </div>
+                  </div>
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div
+                      class="img speaker-img"
+                      style="
+                        background-image: url(images/speakers/speaker1.jpeg);
+                      "
+                    ></div>
+                    <div class="text pl-md-5">
+                      <span class="time">10:45am - 11:15am</span>
+                      <h2><a href="#">Coffee Break</a></h2>
+                     
+                      <!-- <p>Description</p>
+                      <h3 class="speaker-name">
+                        &mdash; <a href="#">Event management & EPD Staff</a>
+                        <span class="position"></span>
+                      </h3> -->
+                    </div>
+                  </div>
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div
+                      class="img speaker-img"
+                      style="
+                        background-image: url(images/speakers/speaker1.jpeg);
+                      "
+                    ></div>
+                    <div class="text pl-md-5">
+                      <span class="time">11:15am - 12:00pm</span>
+                      <h2><a href="#">Panel Discussion</a></h2>
+                      <h5>
+                        Innovative Renewable Energy Solutions on Solar for
+                        Commercial and Industrial Zones towards COP28 and SDG 7
+                        Objectives
+                      </h5>
+                     
+                      <!-- <p>Description</p>
+                      <h3 class="speaker-name">
+                        &mdash; <a href="#">MC</a>
+                        <span class="position"></span>
+                      </h3> -->
+                    </div>
+                  </div>
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div
+                      class="img speaker-img"
+                      style="
+                        background-image: url(images/speakers/speaker1.jpeg);
+                      "
+                    ></div>
+                    <div class="text pl-md-5">
+                      <span class="time">12:00pm - 12:30pm</span>
                       <h2><a href="#">Presentation</a></h2>
                       <h5>
                         Green Hydrogen Opportunities & Challenges in Africa: -
                         Case Study, Rwanda.
                       </h5>
-                      <p>Description</p>
+                     
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
-                        &mdash; <a href="#">MC</a>
+                        &mdash; <a href="#">Event Management & EPD Staff</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
+
                   <div class="speaker-wrap ftco-animate d-flex">
                     <div
                       class="img speaker-img"
@@ -769,14 +801,17 @@
                     ></div>
                     <div class="text pl-md-5">
                       <span class="time">12:30pm - 01:30pm</span>
+                      
                       <h2><a href="#">Networking Lunch</a></h2>
-                      <p>Description</p>
+
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">Event Management & EPD Staff</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
+                 
                   <div class="speaker-wrap ftco-animate d-flex">
                     <div
                       class="img speaker-img"
@@ -792,11 +827,11 @@
                         Partners Driving Energy Transition for Sustainable
                         Futures"
                       </h5>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash;<a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -814,10 +849,10 @@
                         Solutions, Technologies, and related programs for Clean
                         Cooking
                       </h5>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash;<a href="#">MC</a> <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -835,11 +870,11 @@
                         Collaborative Efforts to Ensure Universal Access to
                         Clean Cooking for All
                       </h5>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash;<a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -857,10 +892,10 @@
                         Hackathon for hydro and minigrid projects, to achieve
                         sustainable development goal
                       </h5>
-                      <p>Description</p>
+                      <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash;<a href="#">MC</a> <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -879,13 +914,14 @@
                           Invitation</a
                         >
                       </h2>
-                      <p>Event Management & EPD Staff</p>
+                      <!-- <p>Event Management & EPD Staff</p>
                       <h3 class="speaker-name">
                         &mdash;<a href="#">MC</a> <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
-                </div>
+                 </div>
+                
 
                 <!-- Third day -->
                 <div
@@ -904,9 +940,9 @@
                     <div class="text pl-md-5">
                       <span class="time">09:00am - 09:05am</span>
                       <h2><a href="#">Welcome Remarks by EPD</a></h2>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">MC</a><span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -919,11 +955,11 @@
                     <div class="text pl-md-5">
                       <span class="time">09:05am - 09:15am</span>
                       <h2><a href="#"> Remarks by UR-CST Principal</a></h2>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash;
                         <a href="#">Associate Professor Dr. Ignace Gatare</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -935,11 +971,11 @@
                     ></div>
                     <div class="text pl-md-5">
                       <span class="time">09:15am - 09:25am</span>
-                      <h2><a href="#">Remarks by Partner 1</a></h2>
+                      <h2><a href="#">Remarks </a></h2>
 
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#"></a> <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -954,13 +990,13 @@
                       <span class="time">09:25am - 09:35am</span>
                       <h2>
                         <a href="#"
-                          >Remarks by Professor Helen,Chalmers University</a
+                          >Remarks</a
                         >
                       </h2>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">MC</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -972,11 +1008,11 @@
                     ></div>
                     <div class="text pl-md-5">
                       <span class="time">09:35am - 09:45am</span>
-                      <h2><a href="#">Remarks by CMU/ Conventry</a></h2>
-                      <h3 class="speaker-name">
+                      <h2><a href="#">Remarks</a></h2>
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">MC</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -990,10 +1026,10 @@
                     <div class="text pl-md-5">
                       <span class="time">09:45am - 09:55am</span>
                       <h2><a href="#">Keynote Speech</a></h2>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">MINEDUC</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -1011,10 +1047,10 @@
                         Fostering Collaboration: Bridging Academia and Industry
                         for Innovation and Sustainability in the Energy Sector
                       </h5>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -1034,10 +1070,10 @@
                         >
                       </h2>
 
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">Event Management & EPD Staff</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -1055,10 +1091,10 @@
                         Driving Innovation: Universities' Contributions to
                         Advancing Sustainable Energy Solutions
                       </h5>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -1070,16 +1106,16 @@
                       "
                     ></div>
                     <div class="text pl-md-5">
-                      <span class="time">12:10am - 12:40pm</span>
+                      <span class="time">12:10am - 12:25pm</span>
                       <h2><a href="#">Presentation</a></h2>
                       <h5>
                         Project Development Program (PDP)- Energy Efficiency
                         Development
                       </h5>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">Moderator</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -1091,12 +1127,12 @@
                       "
                     ></div>
                     <div class="text pl-md-5">
-                      <span class="time">12:40pm - 01:30pm</span>
-                      <h2><a href="#">Networking Lunch</a></h2>
-                      <h3 class="speaker-name">
+                      <span class="time">12:25pm - 01:00pm</span>
+                      <h2><a href="#">Panel Discussion on Energy Efficiency Development</a></h2>
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">Event Management & EPD Staff</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -1108,7 +1144,24 @@
                       "
                     ></div>
                     <div class="text pl-md-5">
-                      <span class="time">01:30pm - 05:00pm</span>
+                      <span class="time">01:30pm - 02:00pm</span>
+                      <h2><a href="#">Networking Lunch</a></h2>
+                      <!-- <h3 class="speaker-name">
+                        &mdash; <a href="#">Event Management & EPD Staff</a>
+                        <span class="position"></span>
+                      </h3> -->
+                    </div>
+                  </div>
+
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div
+                      class="img speaker-img"
+                      style="
+                        background-image: url(images/speakers/speaker1.jpeg);
+                      "
+                    ></div>
+                    <div class="text pl-md-5">
+                      <span class="time">02:00pm - 05:00pm</span>
                       <h2>
                         <a href="#"
                           >Fostering Climate Resilience: Strengthening Capacity
@@ -1116,10 +1169,10 @@
                           Promoting Climate Justice</a
                         >
                       </h2>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">REMA, Carbon Offset Experts</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
 
@@ -1138,10 +1191,10 @@
                           members</a
                         >
                       </h2>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a href="#">Event Management & EPD staff</a>
                         <span class="position"></span>
-                      </h3>
+                      </h3> -->
                     </div>
                   </div>
                 </div>
@@ -1161,7 +1214,7 @@
                     ></div>
                     <div class="text pl-md-5">
                       <span class="time"
-                        > (09:00am – 05:00am)</span
+                        > Thursday, Sept 12,2024 (09:00am – 05:00am)</span
                       >
                       <h5>• Hydropower Plant</h5>
                       <h5>• Minigrid</h5>
@@ -1175,6 +1228,7 @@
                     </div>
                   </div>
                 </div>
+                
 
                 <!-- Friday -->
                 <div
@@ -1202,7 +1256,8 @@
                     ></h7>
                   </div>
                 </div>
-              </div>
+                </div>
+              
 
 
                 <!-- END OF AGENDA -->

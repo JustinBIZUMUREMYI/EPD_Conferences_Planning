@@ -444,7 +444,7 @@
                   />
                   <label for="agree-term" class="label-agree-term"
                     ><span><span></span></span>I agree all statements in
-                    <a href="#" class="term-service">Terms of service</a></label
+                    <a href="#" class="" data-toggle="modal" data-target=".bd-example-modal-lg">Terms of service</a></label
                   >
                 </div>
 
@@ -455,6 +455,81 @@
                         {% endfor %}
                     </p>
                 {% endif %}
+
+                <div class="modal fade bd-example-modal-lg w-100" 
+                id="exampleModalLong" tabindex="-1" 
+                role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" width = "10000">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Terms and Conditions</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body w-100">
+                        <p>Welcome to the Energy Week conference registration. By accessing our website and registering for the conference, 
+                        you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
+                        <b>Registration and Payment</b>
+                        <ul>
+                          <li><b>Registration:</b>Participants must complete the registration form and submit the required payment to attend the conference.
+                          </li>
+                          <li><b>Payment:</b>Payments can be made through our secure online payment system. 
+                          </li>
+                          <li><b>Refund Policy: </b>Payment is non-refundable 15 days to the conference week, 30% refund if requested 30 days to the conference week, 80% refund if requested more than 30 days to the conference week. 
+                          </li>
+                        </ul>
+                        <br>
+                        <b>Hotel Booking</b>
+                        <ul>
+                        <li><b>Booking: </b>Our website provides information and links for booking hotels. These bookings are managed by third-party providers, and we are not responsible for any issues related to hotel reservations.
+
+                        </li>
+                        <li><b>Cancellation: </b>Please refer to the individual hotel's cancellation policy. 
+                        </li>
+
+                      </ul>
+
+
+                      <b>Conference Media</b>
+                      <ul><li><b>Photography and Videography:</b> By attending the conference, you consent to being photographed and filmed. The images and videos may be used for promotional purposes on our website, social media, and other marketing materials.
+                    </li></ul>
+                    <b>Personal Data
+                    </b>
+                        <ul><li><b>Data Collection & Privacy:</b>We collect personal information during the registration process. This data is used solely for organising the conference and will not be shared with third parties without your consent.
+                        </li></ul>
+                        <b>Code of Conduct</b>
+                        <ul><li><b>Behaviour:</b> All participants are expected to behave respectfully towards others. Any form of harassment or inappropriate behaviour will not be tolerated and may result in expulsion from the conference without a refund.
+
+                       </li></ul>
+                       <ul><li><b>Compliance:</b> 
+                        Participants must comply with all local laws and regulations.
+
+                       </li></ul>
+                        <b>Liability</b>
+                        <ul><li><b>Disclaimer:</b>We are not liable for any loss or damage arising from your attendance at the conference, including travel and accommodation expenses.
+                        </li></ul>
+                        <ul><li><b>Indemnity / Guarantee / Insurance: </b>
+                          By registering, you agree to hold us harmless from any claims arising out of your participation in the conference.
+                        </li></ul>
+                        <b>Changes to Terms
+                        </b>
+                        <ul><li>We reserve the right to update these terms and conditions at any time. Any changes will be posted on this page.
+                        </li></ul>
+                        <b>Contact Us</b>
+                        <ul><li>If you have any questions or concerns about these terms and conditions, please contact us at info@epdrwanda.com.
+                        </li></ul>
+
+
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
 
                 <input type="hidden" name="return_url" value="conference_planning/registration/registration_students.html">
 

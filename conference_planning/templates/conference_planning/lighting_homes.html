@@ -191,6 +191,20 @@ By lighting up 100 homes, we can:
             
           </div>
           </div>
+          <div class="row">
+            {% for  document in documents %}
+            <div class="col-md-12 text-center">
+
+             <a href="{{ document.pdf_document.url }}" target="_blank">Read More >></a>
+                
+            
+            </div>
+          
+        
+            {% endfor %}
+    
+        </div>
+        <br>
         </div>
       </div>
     </section>

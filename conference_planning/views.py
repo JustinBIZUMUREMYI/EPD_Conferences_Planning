@@ -2,9 +2,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm 
+from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm 
 from django.contrib import messages
-from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown 
+from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, TemplateView
 from django.views.generic.edit import FormView
@@ -50,8 +50,11 @@ def index(request):
 
 
 def agenda(request):
-    activity = Agenda.objects.filter
-    return render(request, 'conference_planning/schedule.html')
+    pdf = Document.objects.filter(title = 'agenda')
+    context = {
+        'documents': pdf
+    }
+    return render(request, 'conference_planning/schedule.html', context)
 
 
 def speakers(request):
@@ -80,23 +83,30 @@ def official_partners(request):
     return render(request, 'conference_planning/official_partners.html', context)
 
 def sponsorship_packages(request):
-    
 
+    pdf = Document.objects.filter(title = 'sponsorships')
     sponsorships = Sponsorships.objects.all()
     context = {
-        'sponsorships': sponsorships
+        'sponsorships': sponsorships,
+        'documents': pdf
     }
     return render(request, 'conference_planning/sponsorship_packages.html', context)
 
 def exhbition(request):
+    pdf = Document.objects.filter(title = 'exhibition')
     exhibition = booth.objects.all()
     context = {
-        'booths':  exhibition
+        'booths':  exhibition,
+         'documents': pdf
     }
     return render(request, 'conference_planning/exhbitions.html', context)
 
 def lighting_homes(request):
-    return render(request, 'conference_planning/lighting_homes.html')
+    pdf = Document.objects.filter(title = 'lighting')
+    context = {
+        'documents': pdf
+    }
+    return render(request, 'conference_planning/lighting_homes.html', context)
 
 class ConferenceEdition(TemplateView):
     template_name = 'conference_planning/editions.html'

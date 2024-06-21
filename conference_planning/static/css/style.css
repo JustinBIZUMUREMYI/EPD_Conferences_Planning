@@ -7394,7 +7394,7 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav > .nav-item.cta > a:hover {
       background: none;
       border: 1px solid green; 
-      color: green;
+      color: blue;
     }
       
   .ftco-navbar-light .navbar-nav > .nav-item.cta.cta-colored a {
@@ -7446,6 +7446,7 @@ h1, h2, h3, h4, h5,
       .ftco-navbar-light.scrolled .nav-item.cta> a:hover {
         background-color: none;
         color: blue;
+        
        
       }
       .ftco-navbar-light.scrolled .nav-item.cta > a span {

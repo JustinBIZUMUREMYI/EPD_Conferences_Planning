@@ -272,6 +272,21 @@ h1.heading {
             </div>
             <div class="content">
                 <div class="container">
+                  <div class="row">
+                    {% for  document in documents %}
+                    <div class="col-md-12 text-right">
+
+                      <button type="button" class="btn btn-primary">
+                      <a href="{{ document.pdf_document.url }}" target="_blank" style="color: white;font-family: Arial, Helvetica, sans-serif;font-weight:bold ;">PDF Document</a></button>
+                        
+                    
+                    </div>
+                  
+                
+                    {% endfor %}
+            
+                </div>
+                <br>
                     <div class="row">
 
                         {% for booth in booths %}
@@ -286,7 +301,7 @@ h1.heading {
                                       
                                         <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
                                           
-                                          <p class="text-center" style="font-size: 20px;"> 
+                                          <p class="text-center" style="font-size: 25px;"> 
                                       
                                             {{booth.booth_number}}
 
@@ -304,7 +319,7 @@ h1.heading {
                                         
                         
                                         
-                                        {{booth.name}}: {{booth.size}}
+                                        {{booth.name}}
 
                                       
                                     </a>
