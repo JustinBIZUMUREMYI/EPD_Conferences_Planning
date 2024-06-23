@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group
 admin.site.register([Attendees])
 admin.site.register([Sponsorships])
 admin.site.register([Testimonial, PreviousPhotos,PreviousVideos])
-admin.site.register([Sponsor])
+admin.site.register([Sponsor]) 
 admin.site.register([Panalist])
 admin.site.register([booth])
 admin.site.register([BookSponsorship])

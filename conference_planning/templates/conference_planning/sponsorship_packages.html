@@ -1,4 +1,6 @@
 {% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -283,8 +285,13 @@ h1.heading {
                 <div class="container">
                  
                     <div class="row">
+                      <div class="col-md-6 text-left">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Become a sponsor
+                        </button>
+                    </div>
                         {% for  document in documents %}
-                        <div class="col-md-12 text-right">
+                        <div class="col-md-6 text-right">
 
                           <button type="button" class="btn btn-primary"> <a href="{{ document.pdf_document.url }}" target="_blank" style="color:white;font-family: Arial, Helvetica, sans-serif;font-weight:bold ;">Sponsorships PDF</a></button>
                             
@@ -314,74 +321,12 @@ h1.heading {
                                     </p>
                                 </div>
                                 <div class="card-read-more">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrationModal">
-                                        Register
+                                    <button type="button"   class="btn btn-primary" data-toggle="modal" data-target="#success">
+                                        Read more
                                     </button>
                                 </div>
  <!-- Modal -->
- <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="registrationModalLabel">Register</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="registrationForm" method="POST"
-                class="register-form"
-                action="{% url 'sponsorships' %}"
-                >
-                {% csrf_token %}
-                    <div class="form-group">
-                        <label for="username">Sponsor name</label>
-                        <input type="text" class="form-control" id="username" placeholder="" value="{{ form.name.value }}" required>
-                    </div>
-                    {% if form.name.errors %}
-                    <p class="error" style="">
-                      {% for error in form.name.errors %} {{ error }} {% endfor %}
-                    </p>
-                    {% endif %}
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" value="{{ form.email.value }}" required>
-                    </div>
 
-                    {% if form.email.errors %}
-                    <p class="error" style="">
-                      {% for error in form.email.errors %} {{ error }} {% endfor %}
-                    </p>
-                    {% endif %}
-    
-                    <div class="form-group">
-                        <label for="password">Sponsorship</label>
-                        <input type="text" class="form-control" id="password"  value="{{ form.sponsorship.value }}" required>
-                    </div>
-
-                    {% if form.email.errors %}
-                <p class="error" style="">
-                  {% for error in form.sponsorship.errors %} {{ error }} {% endfor %}
-                </p>
-                {% endif %}
-                    <div class="form-group">
-                        <label for="confirmPassword">Amount</label>
-                        <input type="text" class="form-control" id="confirmPassword"  value="{{ form.amount.value }}" required>
-                    </div>
-
-                    {% if form.email.errors %}
-                    <p class="error" style="">
-                      {% for error in form.amount.errors %} {{ error }} {% endfor %}
-                    </p>
-                    {% endif %}
-                    <input type="hidden" name="return_url" value="conference_planning/sponsorship_packages.html">
-
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
                             </div>
                         </div>
                     {% endfor %}
@@ -389,6 +334,80 @@ h1.heading {
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title text-center" id="registrationModalLabel">Registering for Sponsorship</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                         
+                                <form
+                                method="POST"
+                                class="register-form"
+                                enctype="multipart/form-data"
+                                id="myForm"
+                              
+                              >
+                                {% csrf_token %}
+                              <div class="row pt-4">
+                                
+                                <div class="col-md-12 pe-5">
+                  
+                                    {{ form.sponsor_name|as_crispy_field }}
+                  
+                                </div>
+                              </div>
+                  
+                              <hr class="mx-n3">
+                  
+                              <div class="row py-4">
+                                
+                                <div class="col-md-12 pe-5">
+                  
+                                    {{ form.email|as_crispy_field }}
+                  
+                                </div>
+                              </div>
+         
+                              <hr class="mx-n3">
+                  
+                              <div class="row py-4">
+                                
+                                <div class="col-md-12 pe-5">
+                  
+                                    {{ form.sponsorship|as_crispy_field }}
+                  
+                                </div>
+                              </div>
+                  
+                              <hr class="mx-n3">
+                  
+                              <div class="row py-4">
+                                
+                                <div class="col-md-12 pe-5">
+                  
+                                    {{ form.amount|as_crispy_field }}
+                  
+                                </div>
+                              </div>
+                           
+                  
+                  
+                              <hr class="mx-n3">
+                  
+                              <div class="px-5 py-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </div>
+                              </form>
+                              </div>
+              </div>
+          </div>
+      </div>
     </section>
     <div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -491,7 +510,32 @@ h1.heading {
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+  <script>
+    $(document).ready(function(){
+        $('#myForm').submit(function(event){
+            event.preventDefault();  // Prevent the default form submission
 
+            $.ajax({
+                url: "{% url 'sponsorships' %}",
+                type: "POST",
+                data: $(this).serialize(),
+                success: funcftion(response){
+                    // Handle the success response here
+                    $('#myModal').modal('hide');
+                    alert('Form submitted successfully, Thank you!');
+                },
+                error: function(response){
+                    // Handle the error response here
+                    alert('There was an error submitting the form.');
+                }
+            });
+        });
+    });
+</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="{% static 'js/jquery.min.js' %}"></script>
   <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
   <script src="{% static 'js/popper.min.js' %}"></script>

@@ -86,10 +86,21 @@ def sponsorship_packages(request):
 
     pdf = Document.objects.filter(title = 'sponsorships')
     sponsorships = Sponsorships.objects.all()
+    if request.method == 'POST':
+        form = BookSponsorshipForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('conference_planning/sponsorship_packages.html')  # Redirect to a success page or somewhere else
+    else:
+        form = BookSponsorshipForm()
     context = {
         'sponsorships': sponsorships,
-        'documents': pdf
+        'documents': pdf,
+        'form': form,
     }
+
+     
+
     return render(request, 'conference_planning/sponsorship_packages.html', context)
 
 def exhbition(request):

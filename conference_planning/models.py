@@ -137,6 +137,18 @@ class booth(models.Model):
     description = models.TextField(max_length=10000)
     amount = models.CharField(max_length=1000)
     booth_number= models.IntegerField(default= '')
+    STATUS_CHOICES = [
+        ('book', 'Book'),
+        ('booked', 'Booked'),
+       
+    ]
+    
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='book',
+    )
+
 
     def __str__(self) -> str:
         return self.name
@@ -171,12 +183,23 @@ class BookSponsorship(models.Model):
     email = models.EmailField()
     sponsorship = models.CharField(max_length=5000)
     amount = models.CharField(max_length=100)
+    STATUS_CHOICES = [
+        ('register', 'Register'),
+        ('registered', 'Registered'),
+       
+    ]
+    
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='register',
+    )
+
 
     def __str__(self):
         return self.sponsorships
 
-
-
 class Countdown(models.Model):
     end_time = models.DateTimeField()
+
 

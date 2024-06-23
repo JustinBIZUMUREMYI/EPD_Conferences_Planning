@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-e406!im%dbjup%q%45ll-m#8t@0g%4_ey(nd*4tfck&z%!2tt$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.epdconference.com', 'epdconference.com']
+ALLOWED_HOSTS = ['www.epdconference.com', 'epdconference.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
