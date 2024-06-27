@@ -1,5 +1,5 @@
 from django import forms
-from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship 
+from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship, FloorPlan, BookAccessory,BookBooth 
 
 class registerForm(forms.Form):
     name = forms.CharField(max_length=200, required=True)
@@ -87,9 +87,27 @@ class PDFFileForm(forms.ModelForm):
         model = Document
         fields = ['title', 'pdf_document']
 
+class FloorplanForm(forms.ModelForm):
+    class Meta:
+        model = FloorPlan
+        fields = ['title', 'picture', 'date']
+
 
 class BookSponsorshipForm(forms.ModelForm):
     class Meta:
         model = BookSponsorship
         fields = '__all__'
+        exclude = ['status']
+
+class BookAccessoryForm(forms.ModelForm):
+    class Meta:
+        model = BookAccessory
+        fields = '__all__'
+        exclude = ['status']
+
+class BookBoothForm(forms.ModelForm):
+    class Meta:
+        model = BookBooth
+        fields = '__all__'
+        exclude = ['status']
 

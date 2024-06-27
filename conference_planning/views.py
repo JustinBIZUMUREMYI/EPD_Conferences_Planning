@@ -2,9 +2,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm 
+from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm, BookAccessoryForm, BookBoothForm 
 from django.contrib import messages
-from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document
+from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory  
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, TemplateView
 from django.views.generic.edit import FormView
@@ -90,25 +90,62 @@ def sponsorship_packages(request):
         form = BookSponsorshipForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('conference_planning/sponsorship_packages.html')  # Redirect to a success page or somewhere else
+            success_message = "Thank you for registering, Kindly check your email for further information regarding your sponsorship. "
+            messages.success(request, success_message)
+            return redirect('sponsorships')
+            
+            
     else:
         form = BookSponsorshipForm()
     context = {
         'sponsorships': sponsorships,
         'documents': pdf,
-        'form': form,
+        'form': form
+        
     }
-
-     
 
     return render(request, 'conference_planning/sponsorship_packages.html', context)
 
+
+
+
 def exhbition(request):
     pdf = Document.objects.filter(title = 'exhibition')
+    floorplan = FloorPlan.objects.all()
     exhibition = booth.objects.all()
+    accessories = accessory.objects.all()
+
+    if request.method == 'POST':
+        form_Booth = BookBoothForm(request.POST)
+        from_Accessory = BookAccessoryForm(request.POST)
+
+        
+
+        if form_Booth.is_valid():
+            form_Booth.save()
+            success_message = "Thank you for booking, Kindly check your email for further information regarding exhibition. "
+            messages.success(request, success_message)
+            return redirect('exhbition')
+
+        elif from_Accessory.is_valid():
+              from_Accessory.save()
+              success_message = "Thank you for booking, Kindly check your email for further information regarding your exhibition. "
+              messages.success(request, success_message)
+              return redirect('exhbition')
+            
+    else:
+        form_Booth = BookBoothForm()
+        form_Accessory = BookAccessoryForm()
+
+
     context = {
         'booths':  exhibition,
-         'documents': pdf
+         'documents': pdf,
+         'floorplan':floorplan,
+         'accessories':accessories,
+         'form_booth': form_Booth,
+         'form_accessory': form_Accessory
+
     }
     return render(request, 'conference_planning/exhbitions.html', context)
 
@@ -170,7 +207,7 @@ def register(request):
                 organization=form.cleaned_data['organization']
             )
             attendee.save()
-            success_message = "Greetings from Energy Private Developers Association (EPD), We Thank you for registering to be part of Renewable Energy Week Conference Sept 2024. We are pleased to inform you that you have completed the first step (1/2) of the registration process. Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. We appreciate your step and look forward to hosting you. Best regards, EPD"
+            success_message = "Greetings from Energy Private Developers Association (EPD), Thank you for registering to be part of Renewable Energy Week Conference Sept 2024. We are pleased to inform you that you have completed the first step (1/2) of the registration process. Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. We appreciate your step and look forward to hosting you. Best regards, EPD"
             redirect_url = request.META.get('HTTP_REFERER', '/')
             messages.success(request, success_message)
             return redirect(redirect_url)

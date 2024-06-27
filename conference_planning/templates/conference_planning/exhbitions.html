@@ -1,5 +1,6 @@
 {% load static %}
-
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -146,7 +147,17 @@ h1.heading {
   font-size: 15px;
   text-transform: uppercase;
   color: darkblue;
+
+  
 }
+
+.zoom {
+            transition: transform 0.2s; /* Animation */
+        }
+
+        .zoom:hover {
+            transform: scale(1.5); /* Zoom effect */
+        }
   </style>
   </head>
   <body>
@@ -265,10 +276,7 @@ h1.heading {
         <div class="container-fostrap">
             <div>
                 
-                <h1 class="heading" style="font-size: 30px;color:wheat;">
-                    Exhibition Booths and Accessories 
-                </h1>
-                <br>
+               
             </div>
             <div class="content">
                 <div class="container">
@@ -277,57 +285,65 @@ h1.heading {
                     <div class="col-md-12 text-right">
 
                       <button type="button" class="btn btn-primary">
-                      <a href="{{ document.pdf_document.url }}" target="_blank" style="color: white;font-family: Arial, Helvetica, sans-serif;font-weight:bold ;">PDF Document</a></button>
+                      <a href="{{ document.pdf_document.url }}" target="_blank" style="color: white;font-family: Arial, Helvetica, sans-serif;font-weight:bold ;">More details</a></button>
                         
                     
                     </div>
                   
                 
                     {% endfor %}
+
+                    {% if messages %}
+                <div class="container mt-5">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Booked!</strong>  
+            
+                  {% for message in messages %}
+                   {{ message }}
+                  {% endfor %}
+             
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+ {% endif %} 
             
                 </div>
                 <br>
-                    <div class="row">
+                    <div class="row" style=""> 
+                      {% for plan in floorplan %}
+                      <div class="col-sm-12">
+                        <p style="color:wheat; font-family: Arial, Helvetica, sans-serif;font-weight: bolder;">{{plan.title}}</p>
+                        <img src="{{ plan.picture.url }}" class="img-fluid zoom" style="width: auto; height: 450px;" alt="Floor_Plan">
+                        
+                      </div>
+                      {% endfor %}
+                      <div class="col-sm-12">
+                        <br>
+                        <br>
+                        <p style="color:wheat; font-family: Arial, Helvetica, sans-serif;font-weight: bolder;">
+                          Exhibition Booths and Accessories 
+                        </p>
+                      </h4>
+                      <br>
 
+                      </div>
+                   
                         {% for booth in booths %}
-                        <div class="col-xs-12 col-sm-4">
+                        <div class="col-sm-4" >
                             <div class="card">
                                 <a class="img-card" data-toggle="modal" data-target="#registrationModal" height="50" width="50" alt="Booth Image">
                                 <img class="card-img-top img-fluid" src="{{booth.picture.url}}"  height="50" width="50" alt="Booth Image"/>
                               </a>
                                 <div class="card-content">
-                                  {% if booth.booth_number <= 2 %}  
-                                    <h4 class="card-title">
+                                   <h4 class="card-title">
                                       
-                                        <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
-                                          
-                                          <p class="text-center" style="font-size: 25px;"> 
-                                      
-                                            {{booth.booth_number}}
-
-                                          </p> 
-                                          
-                                          {{booth.name}}: {{booth.size}}
-
-                                        
+                                   <a href="#">      
+                                          {{booth.name}}                     
                                       </a>
                                     </h4>
-                                    {% else %}
-                                    <h4 class="card-title">
-                                      
-                                      <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
-                                        
-                        
-                                        
-                                        {{booth.name}}
-
-                                      
-                                    </a>
-                                  </h4>
-                                  {% endif %}
-                                    
-                                    
-
+                                  
 
                                     <h4 class="card-title">
                                         
@@ -348,48 +364,143 @@ h1.heading {
                                         Book
                                     </button>
                                 </div>
- <!-- Modal -->
- <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="registrationModalLabel">Please fill this form to book your booth!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="registrationForm">
-                    <div class="form-group">
-                        <label for="username">Exhibitor Name</label>
-                        <input type="text" class="form-control" id="username" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Booth</label>
-                        <input type="password" class="form-control" id="password" required>
-                    </div>
-                  
-                    <button type="submit" class="btn btn-primary">Seve</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
                             </div>
                         </div>
-                    {% endfor %}
+                        
+                        {% endfor %}
+
+                        {% for accessory in accessories %}
+                        <div class="col-sm-4" >
+                            <div class="card">
+                                <a class="img-card" data-toggle="modal" data-target="#registrationModal" height="50" width="50" alt="Booth Image">
+                                <img class="card-img-top img-fluid" src="{{accessory.picture.url}}"  height="50" width="50" alt="Booth Image"/>
+                              </a>
+                                <div class="card-content">
+                                   <h4 class="card-title">
+                                      
+                                   <a href="#">      
+                                          {{accessory.name}}                     
+                                      </a>
+                                    </h4>
+                                  
+
+                                    <h4 class="card-title">
+                                        
+                                    <p>{{accessory.amount}}</p>
+                                  </h4>
+                                    <p class="">
+                                        {{accessory.description}}
+                                    </p>
+
+                                    <h4 class="card-title">
+                                        
+                                      </a>
+                                    </h4>
+
+                                </div>
+                                <div class="card-read-more">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrationModalAccessory">
+                                        Book
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
+                        
+                     
                     </div>
                 </div>
             </div>
         </div>
     </section>
+  
 
+    <!-- model for exhibition booths -->
+    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title text-center" id="registrationModalLabel" style="color: darkblue;">Booking Exhibition Booth</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form method="post"  class="register-form" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form_booth|crispy }}
+                  <button 
+                  type="submit" 
+                  style="border: none"
+                  name="register"
+                  class="btn btn-primary btn-sm"
+                  data-target="#success"
+                  >Submit</button>
+              </form>           
+                 </div>                  
+          </div>
+      </div>
+  </div>
+
+  <!-- model for exhibition booths -->
+  <div class="modal fade" id="registrationModalAccessory" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="registrationModalLabel" style="color: darkblue;">Booking Exhibition Accessories</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <form method="post"  class="register-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form_accessory|crispy }}
+                <button 
+                type="submit" 
+                style="border: none"
+                name="register"
+                class="btn btn-primary btn-sm"
+                data-target="#success"
+                >Submit</button>
+            </form>           
+               </div>                  
+        </div>
+    </div>
+</div>
+
+
+    <!-- <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true"> 
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title text-center" id="registrationModalLabel">Please fill this form to book your booth!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form id="registrationForm">
+                      <div class="form-group">
+                          <label for="username">Exhibitor Name</label>
+                          <input type="text" class="form-control" id="username" placeholder="" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Email address</label>
+                          <input type="email" class="form-control" id="email" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="password">Booth</label>
+                          <input type="password" class="form-control" id="password" required>
+                      </div>
+                    
+                      <button type="submit" class="btn btn-primary">Seve</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>  -->
     <footer class="ftco-footer"  >
       <div class="container">
         <div class="row mb-5">
@@ -492,7 +603,17 @@ h1.heading {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+{% if messages %}
+      <script>
+        $(document).ready(function(){
+          $("#success").modal('show');
+        });
+      </script>
+      {% endif %}
+
 <script>
+
+  
     $(document).ready(function() {
         $('#registrationForm').on('submit', function(event) {
             event.preventDefault();

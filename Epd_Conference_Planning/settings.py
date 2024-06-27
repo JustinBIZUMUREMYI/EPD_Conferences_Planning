@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'conference_planning',
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    # 'phonenumber_field',
 ]
 
 MIDDLEWARE = [

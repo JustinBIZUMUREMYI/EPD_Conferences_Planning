@@ -38,12 +38,19 @@ class Partner(models.Model):
         return reverse("partner-detail", kwargs={"pk": self.pk})
 
 
+class Amount(models.Model):
+    amount = models.CharField(max_length=100)
+
+
+    def __str__(self):
+        return self.amount
+
+
 class Sponsorships(models.Model):
     kind = models.CharField(max_length=100)
-    amount = models.CharField(max_length=100)
+    payment = models.ForeignKey(Amount, on_delete=models.CASCADE, default='')
     benefits = models.TextField(max_length=100000)
    
-    
 
     def __str__(self) -> str:
         return self.kind
@@ -137,17 +144,16 @@ class booth(models.Model):
     description = models.TextField(max_length=10000)
     amount = models.CharField(max_length=1000)
     booth_number= models.IntegerField(default= '')
-    STATUS_CHOICES = [
-        ('book', 'Book'),
-        ('booked', 'Booked'),
-       
-    ]
+
+    def __str__(self) -> str:
+        return self.name
     
-    status = models.CharField(
-        max_length=10,
-        choices=STATUS_CHOICES,
-        default='book',
-    )
+class accessory(models.Model):
+    name = models.CharField(max_length=400)
+    quantity = models.IntegerField()
+    picture = models.ImageField(upload_to='images/')
+    description = models.TextField(max_length=10000)
+    amount = models.CharField(max_length=1000)
 
 
     def __str__(self) -> str:
@@ -178,28 +184,101 @@ class Document(models.Model):
         return self.title
 
 
+
+
+
 class BookSponsorship(models.Model):
     sponsor_name = models.CharField(max_length = 100)
+    company = models.CharField(max_length=100, default = '')
     email = models.EmailField()
-    sponsorship = models.CharField(max_length=5000)
-    amount = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=100, default = '')
+    sponsorship_package = models.ForeignKey(Sponsorships, on_delete=models.CASCADE, default='')
+    # amount = models.CharField(max_length=100)
     STATUS_CHOICES = [
-        ('register', 'Register'),
+        ('registering', 'Registering'),
         ('registered', 'Registered'),
        
     ]
     
     status = models.CharField(
-        max_length=10,
+        max_length=100,
         choices=STATUS_CHOICES,
         default='register',
     )
 
 
     def __str__(self):
-        return self.sponsorships
+        return self.sponsor_name
 
 class Countdown(models.Model):
     end_time = models.DateTimeField()
+
+
+class FloorPlan(models.Model):
+    title = models.CharField(max_length=100)
+    picture = models.ImageField(upload_to='images/')
+    date = models.DateField()
+
+
+    def __str__(self):
+        return self.title
+
+
+class Booth_space(models.Model):
+    space_number = models.CharField(max_length=100) 
+     
+    def __str__(self):
+        return self.space_number
+
+class BookBooth(models.Model):
+    Exhibitor_name = models.CharField(max_length = 100)
+    Company = models.CharField(max_length=100, default = '')
+    Email = models.EmailField()
+    Phone_number = models.CharField(max_length=100, default = '')
+    Booth = models.ForeignKey(booth, on_delete=models.CASCADE, default='')
+    Booth_space = models.ForeignKey(Booth_space, on_delete=models.CASCADE, default='')
+
+    STATUS_CHOICES = [
+        ('book', 'Book'),
+        ('booked', 'Booked'),
+       
+    ]
+    
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='book',
+    )
+
+    def __str__(self) -> str:
+        return self.Exhibitor_name
+
+    
+class BookAccessory(models.Model):
+    Exhibitor_name = models.CharField(max_length = 100)
+    Company = models.CharField(max_length=100, default = '')
+    Email = models.EmailField()
+    Phone_number = models.CharField(max_length=100, default = '')
+    Accessory = models.ForeignKey(accessory, on_delete=models.CASCADE, default='')
+    
+
+    STATUS_CHOICES = [
+        ('book', 'Book'),
+        ('booked', 'Booked'),
+       
+    ]
+    
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='book',
+    )
+
+    def __str__(self) -> str:
+        return self.Exhibitor_name
+
+
+
+
 
 
