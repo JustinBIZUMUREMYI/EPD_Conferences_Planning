@@ -203,6 +203,7 @@ def register(request):
                 attendee_type=attendee_type,
                 university=school,
                 student_number=stud_number,
+                category = form.cleaned_data['category'],
                 country=form.cleaned_data['country'],
                 organization=form.cleaned_data['organization']
             )

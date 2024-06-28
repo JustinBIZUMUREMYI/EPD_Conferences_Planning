@@ -10,15 +10,17 @@ class registerForm(forms.Form):
     university = forms.CharField(max_length=100, required=False)
     country = forms.CharField(max_length=100, required=True)
     student_number = forms.CharField(max_length=50, required=False)
+    category = forms.CharField(max_length=100, required=False)
     organization = forms.CharField(max_length=100, required=False)
     agree_term = forms.BooleanField(required=True, initial=True)
     return_url = forms.CharField(required=True)
-    
+
     def clean_agree_term(self):
-        agree_term = self.cleaned_data.get('agree_term')
-        if not agree_term:
-            raise forms.ValidationError("You need to accept the terms of conditions to continue.")
-        return agree_term
+            agree_term = self.cleaned_data.get('agree_term')
+            if not agree_term:
+                raise forms.ValidationError("You need to accept the terms of conditions to continue.")
+            return agree_term
+    
     
     
 class LoginForm(forms.Form):

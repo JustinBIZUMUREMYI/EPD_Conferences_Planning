@@ -128,6 +128,51 @@
                 </p>
                 {% endif %}
 
+
+
+                <!-- the field for the attends categories -->
+
+                <div class="form-group"  style="display: flex; gap: 1em; width: 200px;">
+                 
+                  <select
+                  
+                  name="category"
+                  id=""
+                  value="{{ form.category.value }}"
+                  required
+                >
+                <option value="Select_category">
+                  Select Category
+                </option>
+                  <option value="organizer">
+                    Organizer
+                  </option>
+                  <option value="delegate">
+                    Delegate
+                  </option>
+                  <option value="exhibitor">
+                    Exhibitor
+                  </option>
+                  <option value="student">
+                    Student
+                  </option>
+                  <option value="media">
+                    Media
+                  </option>
+                  </select>
+                 
+                </div>
+              
+
+                {% if form.category.errors %}
+                <p class="error" style="">
+                  {% for error in form.category.errors %} {{ error }} {% endfor %}
+                </p>
+                {% endif %}
+
+
+
+
                 <div class="form-group" style="display: flex; gap: 1em">
                   <select
                     name="country_code"
