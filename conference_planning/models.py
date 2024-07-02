@@ -60,7 +60,7 @@ class Amount(models.Model):
 
 class Sponsorships(models.Model):
     kind = models.CharField(max_length=100)
-    payment = models.ForeignKey(Amount, on_delete=models.CASCADE, default='')
+    payment = models.CharField(max_length=100)
     benefits = models.TextField(max_length=100000)
    
 
