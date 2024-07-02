@@ -4,9 +4,9 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm, BookAccessoryForm, BookBoothForm 
 from django.contrib import messages
-from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory  
+from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory,PreviousConferences  
 from django.urls import reverse
-from django.views.generic import ListView, CreateView, UpdateView, TemplateView
+from django.views.generic import ListView, CreateView, UpdateView, TemplateView, DetailView
 from django.views.generic.edit import FormView
 from .forms import PartnerForm
 from django.urls import reverse_lazy
@@ -26,6 +26,7 @@ def index(request):
     total_partners = Partner.objects.all().count()
     total_panalists = Panalist.objects.all().count()
     total_speakers = Speaker.objects.all().count()
+    list_videos = PreviousVideos.objects.filter(title='Higlight')
 
     # fetching testimonials
     testimonials = Testimonial.objects.all()
@@ -44,7 +45,8 @@ def index(request):
              'partner_number': total_partners,
              'panalist_number': total_panalists,
              'speaker_number': total_speakers,
-              'end_time': countdown.end_time.isoformat()
+              'end_time': countdown.end_time.isoformat(),
+              'list_videos': list_videos
              }
     return render(request, 'conference_planning/index.html', context)
 
@@ -156,8 +158,11 @@ def lighting_homes(request):
     }
     return render(request, 'conference_planning/lighting_homes.html', context)
 
-class ConferenceEdition(TemplateView):
+class ConferenceEdition(ListView):
     template_name = 'conference_planning/editions.html'
+    model = PreviousConferences
+    context_object_name = 'editions'
+    
 
 def local_registration(request):
     return render(request, 'conference_planning/registration/registration_local.html')

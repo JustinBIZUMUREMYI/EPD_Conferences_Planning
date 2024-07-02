@@ -51,13 +51,14 @@
     >
       <div class="container">
         <img
-          src="{% static 'images/background-images/epdlogo.png' %}"
+          src="{% static 'images/epdlogo.png' %}"
           alt="..."
-          height="50px"
-          width="50px"
+          height="80px"
+          width="100px"
         />
         <a
           class="navbar-brand animate-charcter"
+          style="font-size: 15px;"
           href="{% url 'index' %}"
           >Energy Week <span> 4th Edition</span></a
         >
@@ -85,7 +86,7 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                The Conference
+                Events
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
@@ -267,9 +268,10 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Useful Links</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Agenda</a></li>
-                <li><a href="#" class="py-2 d-block">Speakers</a></li>
-                <li><a href="#" class="py-2 d-block">Sponsors</a></li>
+                <li><a href="{% url 'agenda' %}" class="nav-link">Agenda</a></li>
+                
+                <li><a href="{% url 'speakers' %}" class="nav-link">Speakers</a></li>
+                <li><a href="{% url 'sponsors' %}" class="nav-link">Sponsors</a></li>
               </ul>
             </div>
           </div>
@@ -320,13 +322,16 @@
               class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
             >
               <li class="ftco-animate">
-                <a href="#"><span class="icon-twitter"></span></a>
+                <a href="https://x.com/epd_rwanda?s=11&t=SFEGo_mAwPOsKTq_r001sw"><span class="icon-twitter"></span></a>
               </li>
               <li class="ftco-animate">
-                <a href="#"><span class="icon-facebook"></span></a>
+                <a href="https://www.facebook.com/epdRwanda?mibextid=LQQJ4d"><span class="icon-facebook"></span></a>
               </li>
               <li class="ftco-animate">
-                <a href="#"><span class="icon-instagram"></span></a>
+                <a href="https://www.instagram.com/epdrwanda/"><span class="icon-instagram"></span></a>
+              </li>
+              <li class="ftco-animate">
+                <a href="https://www.epdrwanda.com"><span class="icon-web"></span></a>
               </li>
             </ul>
           </div>

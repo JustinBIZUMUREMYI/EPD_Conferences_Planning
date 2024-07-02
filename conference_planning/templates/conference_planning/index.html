@@ -6,7 +6,7 @@
     <title>Energy Week 4th Edition</title>
     <link
       rel="icon"
-      href="{% static 'images/background-images/epdlogo.png' %}"
+      href="{% static 'images/epdlogo.png' %}"
       type="image/x-icon"
     />
     <meta charset="utf-8" />
@@ -45,23 +45,48 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
   </head>
+
+<style>
+.video-container {
+    margin: 50px 0;
+    overflow: hidden; /* Ensure the container hides the overflow during zoom */
+    display: inline-block; /* Allows the container to fit the video size */
+    position: relative;
+}
+
+.zoom-video {
+    width: 100%; /* Make the video take the full width of the container */
+    transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+}
+
+.zoom-video:hover {
+    transform: scale(1.1); /* Zoom the video to 110% of its original size */
+}
+
+
+</style>
+
   <body>
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light " 
       id="ftco-navbar" 
     >
+    
+      
       <div class="container">
+
         <img
-          src="{% static 'images/background-images/epdlogo.png' %}"
+          src="{% static 'images/epdlogo.png' %}"
           alt="..."
-          height="50px"
-          width="50px"
+          height="120px"
+          width="200px"
         />
-        <a
+        <br>
+        <!-- <a
           class="navbar-brand animate-charcter"
           href="{% url 'index' %}"
           >Energy Week <span> 4th Edition</span></a
-        >
+        > -->
         <button
           class="navbar-toggler"
           type="button"
@@ -86,7 +111,7 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                The Conference
+                Events
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
@@ -143,32 +168,35 @@
 
     <div
       class="hero-wrap js-fullheight"
-      style="background-image: url(''); opacity: 9;
+      style="background-image: url('{% static 'images/background-images/marriot.jpg' %}'); opacity: 100;
     transition: opacity 0.5s ease-in-out;"
       data-stellar-background-ratio="0.5"
     >
-      <div class="overlay bg-dark""></div>
+      
       <div class="container">
         <div
           class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
           data-scrollax-parent="true"
+          style="color: white;"
         >
           <div
-            class="col-xl-6 ftco-animate" style="background-color:;"
+            class="col-xl-6 ftco-animate" style="color:white;"
             data-scrollax=" properties: { translateY: '100%', opacity: 1 }"
           >
             <h1
-              class="mb-4"
+              class="mb-4 section-title animate-charcter"
               data-scrollax="properties: { translateY: '50%', opacity: 1.6 }"
-              style="text-decoration: underline; font-size: 40px;color: darkblue;"
+              style="text-decoration: underline; font-size: 20px;color: white;"
             >
-              Energy Week 
-              <span style="text-decoration: underline; font-size: 40px;">4th Edition</span><br /><br /><span>Conference 2024</span> 
+            Renewable Energy for Sustainable Growth
+            <span style="font-size: 40px;">RE4SG - </span>
+              <span style="text-decoration: underline; font-size: 40px; text-align: center;">4th Edition</span><br /><br /><span>Conference 2024</span> 
             </h1>
 
             <p
               class="mb-4"
               data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"
+              style="color: white;font-size: 20px;font-weight: bold;"
             >
               September 09-11, Kigali Marriott Hotel - Rwanda
             </p>
@@ -177,44 +205,118 @@
             </div>
           </div>
           <div class="col-xl-6"  style="" >
-     <img src="{% static 'images/img1.png' %}" class="d-block w-100" alt="Second slide" width="500px" height="500px">
+    
      
     </div>
 
 
-   
-
         </div>
       </div>
     </div>
 
-    <!-- <section class="ftco-section services-section bg-light">
-      <div class="container">
-        <div class="flex-row d-flex">
-          <div class="col-sm-8 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block">
+    <section class="ftco-section services-section text-center" style="background-color: black;">
+      <div class="container video-container">
+        
             
-              <div class="media-body">
-                <h3 class="heading mb-3">Advert video of the conference</h3>
-                <p>	</p>
-              </div>
-            </div>      
-          </div>
+             
+                {% for video_list in list_videos %}
+         
+
+          <video class="zoom-video scroll-video" height="600" width="800" controls muted>
+            <source src="{{video_list.video_file.url}}" type="video/mp4" >
+          </video>
+         
+        	
+        {% endfor %}
+                
+
+               
+       
        
         </div>
       </div>
-    </section> -->
-    <br />
+    </section>
+  
+  <section class="ftco-counter img" id="section-counter" style="background-image:url('{% static 'images/background-images/airplane1.jpeg' %}');">
+    <div class="container">
+      <br>
+      <div class="row d-flex">
+        
+        <div class="col-md-12 text-center" style="color:darkblue;font-family: Arial, Helvetica, sans-serif;font-weight: bold;">
+          Promo code as” REW24” with a discount of 15% (Base Fare only)
+        </div>
+        <div class="col-md-12 text-center" style="color:darkblue;font-family: Arial, Helvetica, sans-serif;font-weight: bold;">
+          Terms and Conditions
+        </div>
+        
+        <div class="col-md-4 pl-md-5 py-5">
+          
+          <div class="card style="width: 20rem;">
+            <img src="{% static 'images/rwandairlogo.png' %}" class="card-img-top" alt="..." width="50" height="80">
+            
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Q Discount level: Discount is applicable for economy fares (from M-class upwards) and Business
+                fares (from D-class upwards) in the system.</li>
+              <li class="list-group-item">Q The discount applies from network to KGL</li>
+              <li class="list-group-item">Q Sales period: Immediate until 11th September 2024.</li>
+              <li class="list-group-item">Q Travel period: 26th August 2024 - 25th September 2024.</li>
+              <li class="list-group-item">Q Advance purchase restriction: N/A</li>
+              <li class="list-group-item">Q Mode of sales: all WB offices, website and Mobile App.</li>
+            </ul>
+           
+          </div>
+         </div>
+
+         <div class="col-md-4 pl-md-5 py-5">
+          <div class="card" style="width: 20rem;">
+            
+           
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Q No-show = USD150 (Waived if cancelled at least 24hrs to flight).</li>
+              <li class="list-group-item">Q Date change/Reissue fee = USD100. Fare difference shall apply.</li>
+              <li class="list-group-item">Q Refund before departure: USD150</li>
+              <li class="list-group-item">Q Refund after departure: Non-refundable.</li>
+              <li class="list-group-item">Q Reissue: No manual reissue on this promotion is permitted across all our network stations/offices.
+                Use ATC reissue only and charge all fees displayed in the system.</li>
+                <li class="list-group-item">Q Discount code: Apply REW24 for 15% discount.</li>
+              
+            </ul>
+
+           
+            
+          </div>
+         </div>
+
+
+         <div class="col-md-4 pl-md-5 py-5">
+          <div class="card" style="width: 20rem;">
+            
+            <ul class="list-group list-group-flush">
+             
+              <li class="list-group-item">Q Blackout: N/A.</li>
+              <li class="list-group-item">Q Procedure: Passenger inserts the promo code in the website at the point of booking and the code
+                discounts the current selling fare by 15%.</li>
+              <li class="list-group-item">Q Discount code Applies to base fare only. Taxes/Fess/Charges (TFCs) are not discountable.</li>
+              <li class="list-group-item">Q This promotion is not available for groups.</li>
+              <li class="list-group-item">Q This promo is NOT commissionable.</li>
+              
+            </ul>
+          </div>
+         </div>
+      </div>
+    </div>
+  </section>
+  <br>
     <section class="ftco-counter img" id="section-counter">
       <div class="container">
         <div class="row d-flex">
-        
-          <div class="col-md-12 pl-md-5 py-5">
+          <div class="col-md-6 d-flex">
+    				<div class="img d-flex align-self-stretch" style="background-image:url('{% static 'images/background-images/statback.jpg' %}');"></div>
+    			</div>
+          <div class="col-md-6 pl-md-5 py-5">
             <div class="row justify-content-start pb-3">
               <div class="col-md-12 heading-section ftco-animate">
                 <span class="subheading">Summary</span>
-                <h2 class="mb-4"><span>Statistics</span></h2>
-                <p>Total number</p>
               </div>
             </div>
             <div class="row">
@@ -278,7 +380,7 @@
                   </div>
                 </div>
               </div>
-              <div
+              <!-- <div
                 class="col-md-6 justify-content-center counter-wrap ftco-animate"
               >
                 <div class="block-18 text-center py-4 bg-light mb-4">
@@ -292,8 +394,8 @@
                     <span>Attends</span>
                   </div>
                 </div>
-              </div>
-              <div
+              </div> -->
+              <!-- <div
                 class="col-md-6 justify-content-center counter-wrap ftco-animate"
               >
                 <div class="block-18 text-center py-4 bg-light mb-4">
@@ -307,7 +409,7 @@
                     <span>Topics</span>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -887,9 +989,10 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Useful Links</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Agenda</a></li>
-                <li><a href="#" class="py-2 d-block">Speakers</a></li>
-                <li><a href="#" class="py-2 d-block">Sponsors</a></li>
+                <li><a href="{% url 'agenda' %}" class="nav-link">Agenda</a></li>
+                
+                <li><a href="{% url 'speakers' %}" class="nav-link">Speakers</a></li>
+                <li><a href="{% url 'sponsors' %}" class="nav-link">Sponsors</a></li>
               </ul>
             </div>
           </div>
@@ -940,13 +1043,16 @@
               class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
             >
               <li class="ftco-animate">
-                <a href="#"><span class="icon-twitter"></span></a>
+                <a href="https://x.com/epd_rwanda?s=11&t=SFEGo_mAwPOsKTq_r001sw"><span class="icon-twitter"></span></a>
               </li>
               <li class="ftco-animate">
-                <a href="#"><span class="icon-facebook"></span></a>
+                <a href="https://www.facebook.com/epdRwanda?mibextid=LQQJ4d"><span class="icon-facebook"></span></a>
               </li>
               <li class="ftco-animate">
-                <a href="#"><span class="icon-instagram"></span></a>
+                <a href="https://www.instagram.com/epdrwanda/"><span class="icon-instagram"></span></a>
+              </li>
+              <li class="ftco-animate">
+                <a href="https://www.epdrwanda.com"><span class="icon-web"></span></a>
               </li>
             </ul>
           </div>
@@ -1037,5 +1143,33 @@
           }
       }, 1000);
   </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const videos = document.querySelectorAll('.scroll-video');
+
+      const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.5
+      };
+
+      const callback = (entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.play();
+              } else {
+                  entry.target.pause();
+              }
+          });
+      };
+
+      const observer = new IntersectionObserver(callback, options);
+
+      videos.forEach(video => {
+          observer.observe(video);
+      });
+  });
+</script>
   </body>
 </html>

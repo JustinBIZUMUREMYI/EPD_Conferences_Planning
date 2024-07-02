@@ -4,7 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -7394,7 +7394,7 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav > .nav-item.cta > a:hover {
       background: none;
       border: 1px solid green; 
-      color: green;
+      color: blue;
     }
       
   .ftco-navbar-light .navbar-nav > .nav-item.cta.cta-colored a {
@@ -7444,13 +7444,15 @@ h1, h2, h3, h4, h5,
       -ms-border-radius: 5px;
       border-radius: 5px; }
       .ftco-navbar-light.scrolled .nav-item.cta> a:hover {
-        background-color: none;
-        color: blue;
+      background: none;
+      border: 1px solid green; 
+      color: blue;
+        
        
       }
       .ftco-navbar-light.scrolled .nav-item.cta > a span {
         display: inline-block;
-        color: green !important; }
+        color: #fff !important; }
     .ftco-navbar-light.scrolled .nav-item.cta.cta-colored span {
       border-color: #6b76ff; }
     @media (max-width: 991.98px) {
@@ -7488,7 +7490,7 @@ h1, h2, h3, h4, h5,
       -o-transition: .3s all ease-out;
       transition: .3s all ease-out; }
     .ftco-navbar-light.scrolled .navbar-brand {
-      color: white; }
+      color: #000000; }
 
   .dropdown-item{
       color: #107FDD;
@@ -7538,7 +7540,7 @@ h1, h2, h3, h4, h5,
 
 .slider-text h1 {
   font-size: 64px;
-  color: #6b76ff;
+  color: white;
   line-height: 1.2;
   font-weight: 200;
   background: #6b75ff;
@@ -7573,7 +7575,7 @@ h1, h2, h3, h4, h5,
   margin-bottom: 20px;
   z-index: 99; }
   .slider-text .breadcrumbs span {
-    color: rgba(0, 0, 0, 0.3); }
+    color: white; }
     .slider-text .breadcrumbs span i {
       color: rgba(0, 0, 0, 0.2); }
     .slider-text .breadcrumbs span a {

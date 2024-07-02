@@ -7444,8 +7444,9 @@ h1, h2, h3, h4, h5,
       -ms-border-radius: 5px;
       border-radius: 5px; }
       .ftco-navbar-light.scrolled .nav-item.cta> a:hover {
-        background-color: none;
-        color: blue;
+      background: white;
+      border: 1px solid green; 
+      color: blue;
         
        
       }
@@ -7539,7 +7540,7 @@ h1, h2, h3, h4, h5,
 
 .slider-text h1 {
   font-size: 64px;
-  color: #6b76ff;
+  color: white;
   line-height: 1.2;
   font-weight: 200;
   background: #6b75ff;
@@ -7574,7 +7575,7 @@ h1, h2, h3, h4, h5,
   margin-bottom: 20px;
   z-index: 99; }
   .slider-text .breadcrumbs span {
-    color: rgba(0, 0, 0, 0.3); }
+    color: white; }
     .slider-text .breadcrumbs span i {
       color: rgba(0, 0, 0, 0.2); }
     .slider-text .breadcrumbs span a {

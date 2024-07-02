@@ -175,6 +175,7 @@ class accessory(models.Model):
 class PreviousVideos(models.Model):
     title = models.CharField(max_length=400)
     video_file = models.FileField(upload_to='videos/')
+    conference_year = models.CharField(max_length=100, default='')
 
     def __str__(self):
         return self.title
@@ -288,6 +289,18 @@ class BookAccessory(models.Model):
 
     def __str__(self) -> str:
         return self.Exhibitor_name
+
+
+
+class PreviousConferences(models.Model):
+    edition = models.CharField(max_length=1000)
+    year  = models.CharField(max_length=100)
+    short_description = models.CharField(max_length=5000)
+
+
+    def __str__(self) -> str:
+        return self.edition
+
 
 
 

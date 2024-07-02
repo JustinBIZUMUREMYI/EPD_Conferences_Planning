@@ -51,15 +51,15 @@
     >
       <div class="container">
         <img
-          src="{% static 'images/background-images/epdlogo.png' %}"
+          src="{% static 'images/epdlogo.png' %}"
           alt="..."
-          height="50px"
-          width="50px"
+          height="80px"
+          width="100px"
         />
         <a
           class="navbar-brand animate-charcter"
+          style="font-size: 15px;"
           href="{% url 'index' %}"
-          style="color: #107fdd"
           >Energy Week <span> 4th Edition</span></a
         >
         <button
@@ -86,7 +86,7 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                The Conference
+                Events
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'videos' %}">Videos</a>
