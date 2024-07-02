@@ -45,7 +45,7 @@ def index(request):
              'partner_number': total_partners,
              'panalist_number': total_panalists,
              'speaker_number': total_speakers,
-              'end_time': countdown.end_time.isoformat(),
+             'end_time': countdown.end_time.isoformat(),
               'list_videos': list_videos
              }
     return render(request, 'conference_planning/index.html', context)
