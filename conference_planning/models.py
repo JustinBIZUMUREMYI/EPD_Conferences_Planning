@@ -25,7 +25,7 @@ class Attendees(models.Model):
     organization = models.CharField(max_length=100, null=True, blank=True)
     university = models.CharField(max_length=100, null=True, blank=True)
     student_number = models.CharField(max_length=50, null=True, blank=True)
-    category = models.CharField(max_length=100, choices=STATUS_CHOICES, default='choose your category')   
+    # category = models.CharField(max_length=100, choices=STATUS_CHOICES, default='choose your category')   
     attendee_type = models.CharField(max_length=30, choices=AttendeeType.choices, default=AttendeeType.LOCAL, unique=False)
     registered_on = models.DateTimeField(auto_now_add=True)
     
