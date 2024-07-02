@@ -50,12 +50,12 @@ class Partner(models.Model):
         return reverse("partner-detail", kwargs={"pk": self.pk})
 
 
-class Amount(models.Model):
-    amount = models.CharField(max_length=100)
+# class Amount(models.Model):
+#     amount = models.CharField(max_length=100)
 
 
-    def __str__(self):
-        return self.amount
+#     def __str__(self):
+#         return self.amount
 
 
 class Sponsorships(models.Model):
