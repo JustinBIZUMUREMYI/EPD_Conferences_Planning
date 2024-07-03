@@ -28,6 +28,18 @@ class Attendees(models.Model):
     category = models.CharField(max_length=100, choices=STATUS_CHOICES, default='choose your category')   
     attendee_type = models.CharField(max_length=30, choices=AttendeeType.choices, default=AttendeeType.LOCAL, unique=False)
     registered_on = models.DateTimeField(auto_now_add=True)
+    STATUS_CHOICES = [
+        ('unpaid', 'Unpaid'),
+        ('paid', 'Paid'),
+       
+    ]
+    
+    status = models.CharField(
+        max_length=100,
+        choices=STATUS_CHOICES,
+        default='unpaid',
+    )
+    
     
     class Meta:
         verbose_name_plural = 'Attendees'
