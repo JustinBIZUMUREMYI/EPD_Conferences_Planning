@@ -14,6 +14,11 @@ SECRET_KEY = 'django-insecure-e406!im%dbjup%q%45ll-m#8t@0g%4_ey(nd*4tfck&z%!2tt$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# allowing django to use HTTPS
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
 ALLOWED_HOSTS = ['www.epdconference.com', 'epdconference.com', 'localhost', '127.0.0.1']
 
 
