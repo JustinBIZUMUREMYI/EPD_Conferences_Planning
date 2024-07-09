@@ -43,28 +43,51 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<script>
+  $('.popover-dismiss').popover({
+  trigger: 'focus'
+})
+</script>
 
-  </head>
 
 <style>
-.video-container {
-    margin: 50px 0;
-    overflow: hidden; /* Ensure the container hides the overflow during zoom */
-    display: inline-block; /* Allows the container to fit the video size */
-    position: relative;
-}
+  .video-container {
+      margin: 50px 0;
+      overflow: hidden; /* Ensure the container hides the overflow during zoom */
+      display: inline-block; /* Allows the container to fit the video size */
+      position: relative;
+  }
+  
+  .zoom-video {
+      width: 100%; /* Make the video take the full width of the container */
+      transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+  }
+  
+  .zoom-video:hover {
+      transform: scale(1.1); /* Zoom the video to 110% of its original size */
+  }
+  
+          .circle {
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              background-color: #1e2ca8;
+              color: rgb(227, 245, 35);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 17px;
+              text-align: center;
+          }
+          .circle img {
+              max-width: 80%;
+              max-height: 80%;
+              border-radius: 50%;
+          }
+  
+  </style>
+  </head>
 
-.zoom-video {
-    width: 100%; /* Make the video take the full width of the container */
-    transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
-}
-
-.zoom-video:hover {
-    transform: scale(1.1); /* Zoom the video to 110% of its original size */
-}
-
-
-</style>
 
   <body>
     <nav
@@ -241,26 +264,107 @@
   
   <section class="ftco-counter img" id="section-counter" style="background-image:url('{% static 'images/background-images/airplane1.jpeg' %}');">
     <div class="container">
-      <br>
+      
       <div class="row d-flex">
         
-        <div class="col-md-6 text-center" style="color:rgb(59, 59, 214);font-family: Arial, Helvetica, sans-serif;font-weight: bold;">
+        <div class="col-md-12 text-center" style="color:rgb(59, 59, 214);font-family: Arial, Helvetica, sans-serif;font-weight: bold;">
           
           <div class="js-fullheight">
-            <br><br><br>
-            <p><img src="{% static 'images/rwandairlogo.png' %}" alt=""></p>
-            <br>
-            <p style="font-size: 40px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;"> Promo code ” REW24” </p>
-            <a href="#">
-            <span 
-            style="font-size: 20px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-            Read Terms and Conditions </span> 
-          </a>
+            <div class="row">
+
+              <div class="col-md-6">
+                <p><img src="{% static 'images/rwandairlogo.png' %}" alt=""></p>
+            
+                <p style="font-size: 30px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;"> Promo code ” REW24” </p>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  Read Terms and Conditions
+              </button>
+              </div>
+
+              <div class="col-md-6">
+
+            <div class="row justify-content-center">
+              <div class="circle">
+                <span>15%<br>Discount</span>
+      </div>
+             
+      </div>
+              </div>
+            </div>
+            
+            
+
+          
+          
+        
+              <!-- Button to trigger the collapse -->
+            
+              
+              <!-- Collapsible content -->
+              <div class="collapse" id="collapseExample">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="card card-body mt-3">
+                              
+                              <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">Q Discount level: Discount is applicable for economy fares (from M-class upwards) and Business fares (from D-class upwards) in the system.</li>
+                                  <li class="list-group-item">Q The discount applies from network to KGL</li>
+                                  <li class="list-group-item">Q Sales period: Immediate until 11th September 2024.</li>
+                                  <li class="list-group-item">Q Travel period: 26th August 2024 - 25th September 2024.</li>
+                                  <li class="list-group-item">Q Advance purchase restriction: N/A</li>
+                                  <li class="list-group-item">Q Mode of sales: all WB offices, website, and Mobile App.</li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card card-body mt-3">
+                              
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Q No-show = USD150 (Waived if cancelled at least 24hrs to flight).</li>
+                            <li class="list-group-item">Q Date change/Reissue fee = USD100. Fare difference shall apply.</li>
+                           
+                            <li class="list-group-item">Q Refund after departure: Non-refundable.</li>
+                            <li class="list-group-item">Q Reissue: No manual reissue on this promotion is permitted across all our network stations/offices.
+                              Use ATC reissue only and charge all fees displayed in the system.</li>
+                              <li class="list-group-item">Q Discount code: Apply REW24 for 15% discount.</li>
+                            
+                          </ul>
+                      </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card card-body mt-3">
+                              
+                          <ul class="list-group list-group-flush">
+             
+                            <li class="list-group-item">Q Blackout: N/A.</li>
+                            <li class="list-group-item">Q Procedure: Passenger inserts the promo code in the website at the point of booking and the code
+                              discounts the current selling fare by 15%.</li>
+                            <li class="list-group-item">Q Discount code Applies to base fare only. Taxes/Fess/Charges (TFCs) are not discountable.</li>
+                            <li class="list-group-item">Q This promotion is not available for groups.</li>
+                            <li class="list-group-item">Q Refund before departure: USD150</li>
+                            <li class="list-group-item">Q This promo is NOT commissionable.</li>
+                            
+                          </ul>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+   
+
+       
           </div>  
           
-          
-          
-        </div>
+        
+
+
+
 
         <!-- <div class="modal fade bd-example-modal-lg w-100" 
         id="exampleModalLong" tabindex="-1" 
@@ -341,8 +445,8 @@
           </div>
         </div> -->
     
-<!--         
-        <div class="col-md-4 pl-md-5 py-5">
+        
+        <!-- <div class="col-md-4 pl-md-5 py-5">
           
           <div class="card style="width: 20rem;">
             <img src="{% static 'images/rwandairlogo.png' %}" class="card-img-top" alt="..." width="50" height="80">
@@ -362,8 +466,7 @@
 
          <div class="col-md-4 pl-md-5 py-5">
           <div class="card" style="width: 20rem;">
-            
-           
+
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Q No-show = USD150 (Waived if cancelled at least 24hrs to flight).</li>
               <li class="list-group-item">Q Date change/Reissue fee = USD100. Fare difference shall apply.</li>
@@ -884,11 +987,11 @@
     <section class="ftco-section" style="background-image:url('{% static 'images/exhbition/ex2.jpeg'%}')">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
+          <div class="col-md-7 heading-section text-center ftco-animate text-light">
             <!-- <span class="subheading"
               >Would you like to review the previous conferences?</span
             > -->
-            <h2><span>Previous</span> Conferences!</h2>
+            <h2 style="color: aquamarine;"><span>Previous</span> Conferences!</h2>
           </div>
         </div>
         <div class="row d-flex">
@@ -908,7 +1011,7 @@
                     <span class="day">2017</span>
                   </div>
                 </div>
-                <h3 class="heading mt-2"><a href="{% url 'edition' %}">1st Edition</a></h3>
+                <h3 class="heading mt-2"><a href="{% url 'first_edition' %}">1st Edition</a></h3>
                 <p>Matchmaking Conference and Exhibition</p>
               </div>
             </div>
@@ -933,7 +1036,7 @@
 						<span class="mos">M</span>
               		</div> -->
                 </div>
-                <h3 class="heading mt-2"><a href="#"> 2nd Edition</a></h3>
+                <h3 class="heading mt-2"><a href="{% url 'second_edition' %}"> 2nd Edition</a></h3>
                 <p>Accelerating Investment in the Clean Cooking Sector</p>
               </div>
             </div>
@@ -958,7 +1061,7 @@
               			<span class="mos">M</span>
               		</div> -->
                 </div>
-                <h3 class="heading mt-2"><a href="#">3rd Edition</a></h3>
+                <h3 class="heading mt-2"><a href="{% url 'third_edition' %}">3rd Edition</a></h3>
                 <p>Achieving Universal Green Energy Access in Africa</p>
               </div>
             </div>
@@ -1212,7 +1315,15 @@
     <script src="{% static 'js/google-map.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 
+
+    
     <script>
+$(function () {
+  $('.example-popover').popover({
+    container: 'body'
+  })
+})
+
       // Get the countdown end time from the context
       const endTime = new Date("{{ end_time }}").getTime();
 
@@ -1266,5 +1377,8 @@
       });
   });
 </script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

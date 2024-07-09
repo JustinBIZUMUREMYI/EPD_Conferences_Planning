@@ -158,10 +158,26 @@ def lighting_homes(request):
     }
     return render(request, 'conference_planning/lighting_homes.html', context)
 
-class ConferenceEdition(ListView):
-    template_name = 'conference_planning/editions.html'
-    model = PreviousConferences
-    context_object_name = 'editions'
+def First_edition(request):
+    pdf = Document.objects.filter(title = 'first_edition')
+    context = {
+        'documents': pdf
+    }
+    return render(request, 'conference_planning/editions/firstedition.html', context)
+
+def Second_edition(request):
+    pdf = Document.objects.filter(title = 'second_edition')
+    context = {
+        'documents': pdf
+    }
+    return render(request, 'conference_planning/editions/secondedition.html', context)
+
+def Third_edition(request):
+    pdf = Document.objects.filter(title = 'third_edition')
+    context = {
+        'documents': pdf
+    }
+    return render(request, 'conference_planning/editions/thirdeditions.html', context)
     
 
 def local_registration(request):
