@@ -38,6 +38,31 @@
   <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
   <link rel="stylesheet" href="{% static 'css/icomoon.css' %}" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+      .speaker {
+    margin-bottom: 20px;
+}
+
+.image-container {
+    width: 100%;
+    padding-top: 100%; /* This maintains a 1:1 aspect ratio (square) */
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+    object-fit: cover; /* This ensures the image covers the container without distortion */
+    border-radius: 10px; /* Optional: to make the image corners rounded */
+}
+
+
+    </style>
+
   </head>
   <body>
     <nav
@@ -160,8 +185,12 @@
         <div class="row">
           {% for speaker_list in speakers_list %}
           <div class="col-md-3 speaker border rounded">
+            
             <a href="#" class="biography" data-toggle="modal" data-biography="{{ speaker_list.bio }}" data-target="#exampleModalLong">
+              <div class="image-container">
               <img src="{{ speaker_list.picture.url}}" class="img-fluid" alt="speaker">
+
+            </div>
               <div class="text text-center pt-3">
                 <h3>{{ speaker_list.names }}</h3>
                 <span class="position">{{ speaker_list.title }}</span>
@@ -202,16 +231,18 @@
         <div class="row">
 
           {% for panelist in panelists_list %}
-        	<div class="col-md-3 speaker border rounded">
-            <a href="#" class="panelist" data-toggle="modal" data-biography="{{ panelist.bio }}" data-target="#exampleModalLong">
-        		<img src="{{ panelist.picture.url }}" class="img-fluid" alt="speaker">
-        		<div class="text text-center pt-3">
-        			<h3>{{panelist.names}}</h3>
-        			<span class="position">{{panelist.title}}</span>
+    <div class="col-md-3 speaker border rounded">
+        <a href="#" class="panelist" data-toggle="modal" data-biography="{{ panelist.bio }}" data-target="#exampleModalLong">
+            <div class="image-container">
+                <img src="{{ panelist.picture.url }}" class="img-fluid" alt="speaker">
+            </div>
+            <div class="text text-center pt-3">
+                <h3>{{panelist.names}}</h3>
+                <span class="position">{{panelist.title}}</span>
             </a>
-        		</div>
-        	</div>
-          {% endfor %}
+        </div>
+    </div>
+{% endfor %}
           
 
         </div>
