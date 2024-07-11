@@ -174,22 +174,26 @@
       </div>
     </section> -->
 
-    <section class="ftco-section bg-light">
+    <section class="ftco-section" style="background-color: rgb(223, 227, 225);">
+
+
+
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 text-center heading-section ftco-animate">
           	<span class="subheading">Energy Week</span>
-            <h4 class="mb-4" style="color:#107FDD;"> Speakers and Panelists</h4>
+            <h4 class="mb-4" style="color:#107FDD;font-weight: bold;"> Speakers and Panelists</h4>
           </div>
         </div>
+        
         <div class="row">
           {% for speaker_list in speakers_list %}
-          <div class="col-md-3 speaker border rounded">
+          <div class="col-md-3 speaker rounded">
             
             <a href="#" class="biography" data-toggle="modal" data-biography="{{ speaker_list.bio }}" data-target="#exampleModalLong">
               <div class="image-container">
               <img src="{{ speaker_list.picture.url}}" class="img-fluid" alt="speaker">
-
+                
             </div>
               <div class="text text-center pt-3">
                 <h3>{{ speaker_list.names }}</h3>
@@ -221,17 +225,17 @@
         </div>
     	</div>
     </section>
-    <section class="ftco-section bg-light">
+    <section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2 class="mb-4" style="color:#107FDD;"><span></span>  Panelists</h2>
+            <h4 class="mb-4" style="color:#107FDD;font-size: 20;font-weight: bold;">Panelists</h4>
           </div>
         </div>
         <div class="row">
 
           {% for panelist in panelists_list %}
-    <div class="col-md-3 speaker border rounded">
+    <div class="col-md-3 speaker rounded">
         <a href="#" class="panelist" data-toggle="modal" data-biography="{{ panelist.bio }}" data-target="#exampleModalLong">
             <div class="image-container">
                 <img src="{{ panelist.picture.url }}" class="img-fluid" alt="speaker">
