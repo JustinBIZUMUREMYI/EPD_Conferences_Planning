@@ -158,8 +158,36 @@ h1.heading {
         .zoom:hover {
             transform: scale(1.5); /* Zoom effect */
         }
+  
+  
+
+    .speaker {
+  margin-bottom: 20px;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  padding-top: 100%; /* This maintains a 1:1 aspect ratio (square) */
+  position: relative;
+ 
+}
+
+.image-container img {
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width:50%;
+  height: 50%;
+  object-fit: cover; /* This ensures the image covers the container without distortion */
+  border-radius: 10px; /* Optional: to make the image corners rounded */
+}
+
+
   </style>
-  </head>
+
+</head>
   <body>
     
     <nav
@@ -336,7 +364,9 @@ h1.heading {
                         <div class="col-sm-4" >
                             <div class="card">
                                 <a class="img-card" data-toggle="modal" data-target="#registrationModal" height="50" width="50" alt="Booth Image">
-                                <img class="card-img-top img-fluid" src="{{booth.picture.url}}"  height="50" width="50" alt="Booth Image"/>
+                                  <div class="image-container">
+                                  <img class="card-img-top img-fluid" src="{{booth.picture.url}}"  height="50" width="50" alt="Booth Image"/>
+                                  </div>
                               </a>
                                 <div class="card-content">
                                    <h4 class="card-title">
@@ -375,8 +405,11 @@ h1.heading {
                         <div class="col-sm-4" >
                             <div class="card">
                                 <a class="img-card" data-toggle="modal" data-target="#registrationModal" height="50" width="50" alt="Booth Image">
-                                <img class="card-img-top img-fluid" src="{{accessory.picture.url}}"  height="50" width="50" alt="Booth Image"/>
-                              </a>
+                                  <div class="image-container">
+                                  <img class="card-img-top img-fluid" src="{{accessory.picture.url}}"  height="50" width="50" alt="accessory Image"/>
+                                  </div>
+
+                                </a>
                                 <div class="card-content">
                                    <h4 class="card-title">
                                       
