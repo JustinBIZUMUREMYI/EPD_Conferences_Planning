@@ -43,6 +43,14 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+
+  <style type="stylesheet">
+  .position{
+      font-size: 10px;
+    }
+
+  </style>  
   </head>
   <body>
     <nav
@@ -152,13 +160,16 @@
         </div>
       </div>
     </section> -->
-
-    <section class="ftco-section bg-light">
+<br>
+<br>
+<br>
+<br>
+    <section class="ftco-section" style="background-image: url({% static 'images/background-images/image1.jpg'%});">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 text-center heading-section ftco-animate">
             <span class="subheading">Energy Week</span>
-            <h2 class="mb-4" style="color: #107fdd"><span></span> Agenda</h2>
+            <h2 class="mb-4" style="color: #fafbfc"><span></span> Agenda</h2>
           </div>
 
         </div>
@@ -291,11 +302,8 @@
                   role="tabpanel"
                   aria-labelledby="day-1-tab"
                 >
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="background-image: url()"
-                    ></div>
+                  <div class="speaker-wrap ftco-animate d-flex" style="border: #107fdd 2px;">
+                    
                     <div class="text pl-md-5">
                       <span class="time">08:00am - 08:45am</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">
@@ -304,6 +312,64 @@
                           Staff</a
                         >
                       </h5>
+                      <br>
+                      <div 
+                      class="row">                     
+                      <div class="img speaker-img"  style="background-image: url({% static 'images/serge.jpg'%}); width:100px; height:100px;"
+                      >                  
+                    </div>
+                      <div class="img speaker-img"  style="width:70px; height:100px;"
+                      ></div>
+                      <div class="img speaker-img"  style="background-image: url({% static 'images/emmy.jpg'%}); width:100px; height:100px;"
+                      >                  
+                    </div>
+                    <div class="img speaker-img"  style="width:100px; height:70px;"
+                    ></div>
+                    <div class="img speaker-img"  style="background-image: url({% static 'images/jd.jpeg'%}); width:100px; height:100px;"
+                    >                  
+                  </div>
+                  <div class="img speaker-img"  style="width:100px; height:70px;"
+                  ></div>
+                  <div class="img speaker-img"  style="background-image: url({% static 'images/justin.jpg'%}); width:100px; height:100px;"
+                  >                  
+                </div>
+                  </div>
+                  <div 
+                  class="row">
+            
+                  <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  Serge Wilson Muhizi
+                  <span class="position" style="font-size: 9px;">EPD Chief Executive Officer</span>
+                
+                </div>
+                <div class="img speaker-img"  style="width:70px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px;width:140px; height:50px;" 
+                  > 
+                  Emmanuel NDAGIJIMANA <br>
+                  <span class="position" style="font-size: 9px;">EPD Head of Business</span>
+                
+                </div>
+
+                <div class="img speaker-img"  style="width:50px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px; width:150px; height:70px;"
+                  > 
+                  Jean de Dieu KUBWIMANA <br>
+                  <span class="position" style="font-size: 9px;">EPD Head of Finance</span>
+                
+                </div>
+                <div class="img speaker-img"  style="width:50px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px; width:150px; height:70px;"
+                  > 
+                  Justin BIZUMUREMYI <br>
+                  <span class="position" style="font-size: 9px;">EPD IT & COM Officer</span>
+                
+                </div>
+                
+              </div>
                       <!-- <p>Description</p>
                       <h3 class="speaker-name">
                         &mdash; <a href="#">EPD</a>
@@ -334,20 +400,11 @@
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div>
+                    <div class="img speaker-img"  style="background-image: url({% static 'images/serge.jpg'%}); width:100px; height:100px;"></div>
                     <div class="text pl-md-5">
                       <span class="time">09:00am - 09:05am</span>
-                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">Welcome Remarks by EPD</a></h5>
-                      <!-- <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">EPD</a>
-                        <span class="position"></span>
-                      </h3> -->
+                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">Welcome Remarks by EPD Chief Executive Officer</a></h5>
+                      <p class="subheading">Serge Wilson Muhizi</p>
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -368,20 +425,19 @@
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div>
+                    <div 
+                      class="row">                     
+                      <div class="img speaker-img"  style="background-image: url({% static 'images/gatare.jpeg'%}); width:100px; height:100px;"
+                      >                  
+                    </div>
+                    
+                  </div>
+                  
                     <div class="text pl-md-5">
                       <span class="time">09:15am - 09:25am</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Remarks by RDB Chief Executive Officer</a></h5>
-                      <!-- <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">Partner 2</a>
-                        <span class="position"></span>
-                      </h3> -->
+                      <p class="subheading">Hon. Gatare Francis</p>
+                      
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -402,20 +458,17 @@
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div>
+                    <div 
+                      class="row">                     
+                      <div class="img speaker-img"  style="background-image: url({% static 'images/speaker3.png'%}); width:100px; height:120px;"
+                      >                  
+                    </div>
+                    
+                  </div>
                     <div class="text pl-md-5">
                       <span class="time">09:35am - 09:45am</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Remarks by EPD Executive Chairman</a></h5>
-                      <!-- <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">EPD</a>
-                        <span class="position"></span>
-                      </h3> -->
+                      <p class="subheading">Dr. Ivan Twagirashema</p>
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -437,12 +490,7 @@
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div>
+                    
                     <div class="text pl-md-5">
                       <span class="time">10:00am - 11:00am</span>
                       
@@ -452,11 +500,85 @@
                         Driving Energy Transition towards Achieving COP28 Goals and SDG 7: different perspectives
                       </h5>
                      
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a>Panelist: </a>
                         <span class="position">CEO RDB, CEO REG, CEO BRD,
                           African Development Bank, EPD Executive Chairman</span>
-                      </h3>
+                      </h3> -->
+                    <br>
+                      <div 
+                      class="row">                     
+                      <div class="img speaker-img"  style="background-image: url({% static 'images/gatare.jpeg'%}); width:100px; height:100px;"
+                      >                  
+                    </div>
+                      <div class="img speaker-img"  style="width:70px; height:100px;"
+                      ></div>
+                      <div class="img speaker-img"  style="background-image: url({% static 'images/speaker3.png'%}); width:100px; height:100px;"
+                      >                  
+                    </div>
+                    <div class="img speaker-img"  style="width:100px; height:70px;"
+                    ></div>
+                    <div class="img speaker-img"  style="background-image: url({% static 'images/.jpeg'%}); width:100px; height:100px;"
+                    >                  
+                  </div>
+                  <div class="img speaker-img"  style="width:100px; height:70px;"
+                  ></div>
+                  <div class="img speaker-img"  style="background-image: url({% static 'images/.jpeg'%}); width:100px; height:100px;"
+                  >                  
+                </div>
+                <div class="img speaker-img"  style="width:100px; height:70px;"
+                ></div>
+                <div class="img speaker-img"  style="background-image: url({% static 'images/.jpeg'%}); width:100px; height:100px;"
+                >                  
+              </div>
+                  </div>
+                  <div 
+                  class="row">
+            
+                  <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  Hon. Gatare Francis
+                 <span class="position" style="font-size: 9px;">CEO RDB</span>
+                
+                </div>
+                <div class="img speaker-img"  style="width:80px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px;width:110px; height:70px;" 
+                  > 
+                  Dr. Ivan Twagirashema
+                  <br>
+                  <span class="position" style="font-size: 9px;">EPD Executive Chairman</span>
+                
+                </div>
+
+                <div class="img speaker-img"  style="width:100px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  <!-- name -->
+                  <span class="position" style="font-size: 10px;">CEO REG</span>
+                
+                </div>
+
+                <div class="img speaker-img"  style="width:100px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  <!-- name -->
+                  <span class="position" style="font-size: 10px;">CEO BRD</span>
+                
+                </div>
+
+                <div class="img speaker-img"  style="width:80px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  <!-- name -->
+                  <span class="position" style="font-size: 10px;">African Development Bank</span>
+                
+                </div>
+                
+              </div>
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -538,12 +660,7 @@
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div>
+                   
                     <div class="text pl-md-5">
                       <span class="time">02:00pm - 02:45pm</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">
@@ -553,11 +670,105 @@
                           Nexus</a>
                        
                       </h5>
-                      <h3 class="speaker-name">
+                      <!-- <h3 class="speaker-name">
                         &mdash; <a>Panelist: </a>
                         <span class="position">Mr. Tony NSANGANIRA(TBI), GIZ, Gogla,
                           MINAGRI, EPD Company 1</span>
-                      </h3>
+                      </h3> -->
+
+                      <br>
+                      <div 
+                      class="row">                     
+                      <div class="img speaker-img"  style="background-image: url({% static 'images/speaker4.png'%}); width:100px; height:100px;"
+                      >                  
+                    </div>
+                    <div class="img speaker-img"  style="width:50px; height:100px;"
+                    ></div>
+                    <div class="img speaker-img"  style="background-image: url({% static 'images/'%}); width:100px; height:100px;"
+                    >                  
+                  </div>
+                      <div class="img speaker-img"  style="width:50px; height:100px;"
+                      ></div>
+                      <div class="img speaker-img"  style="background-image: url({% static 'images/'%}); width:100px; height:100px;"
+                      >                  
+                    </div>
+                    <div class="img speaker-img"  style="width:50px; height:100px;"
+                    ></div>
+                    <div class="img speaker-img"  style="background-image: url({% static 'images/'%}); width:100px; height:100px;"
+                    >                  
+                  </div>
+                  <div class="img speaker-img"  style="width:50px; height:100px;"
+                  ></div>
+                  <div class="img speaker-img"  style="background-image: url({% static 'images/'%}); width:100px; height:100px;"
+                  >                  
+                </div>
+                <div class="img speaker-img"  style="width:50px; height:100px;"
+                ></div>
+                <div class="img speaker-img"  style="background-image: url({% static 'images/'%}); width:100px; height:100px;"
+                >                  
+              </div>
+                  </div>
+                  <div 
+                  class="row">
+            
+                  <div class="" style="font-size: 10px; width:120px; height:70px;"
+                  > 
+                  Mr. Tony NSANGANIRA <br>
+                 <span class="position" style="font-size: 9px;">TBI</span>
+                
+                </div>
+
+                <div class="img speaker-img"  style="width:50px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  <!-- name -->
+                  <span class="position" style="font-size: 10px;"> Dr. Mathew Matimbwi</span>
+                
+                </div>
+
+
+                <div class="img speaker-img"  style="width:50px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px;width:110px; height:70px;" 
+                  > 
+                  <!-- name -->
+                  
+                  <span class="position" style="font-size: 9px;">GIZ</span>
+                
+                </div>
+
+                <div class="img speaker-img"  style="width:50px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  <!-- name -->
+                  <span class="position" style="font-size: 10px;">Gogla</span>
+                
+                </div>
+
+                <div class="img speaker-img"  style="width:50px; height:70px;"
+                ></div>
+                <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  <!-- name -->
+                  <span class="position" style="font-size: 10px;">MINAGRI</span>
+                
+                </div>
+                <div class="img speaker-img"  style="width:50px; height:70px;"
+                ></div> 
+                <div class="" style="font-size: 10px; width:100px; height:70px;"
+                  > 
+                  <!-- name -->
+                  <span class="position" style="font-size: 10px;">EPD Company 1</span>
+                
+                </div>
+
+                
+
+               
+                
+              </div>
                     </div>
                   </div>
                   <div class="speaker-wrap ftco-animate d-flex">
@@ -624,7 +835,7 @@
                       <h3 class="speaker-name">
                         &mdash; <a>Panelist: </a>
                         <span class="position">Sweden Ambassador, European Union
-                          Ambassador, EDCL, Eng. Patricie UWASE, EPD Company</span>
+                          Ambassador, EDCL, Eng. Patricie UWASE, Allen MUNGANYINKA</span>
                       </h3>
                     </div>
                   </div>
@@ -765,7 +976,7 @@
                       <h3 class="speaker-name">
                         &mdash; <a>Panelist: </a>
                         <span class="position">Dr. Sunday Stephen AKPOYIBO(CEO
-                          Asteven Group ), BYD, HUAWEI, RURA, EPD
+                          Asteven Group ), BYD, HUAWEI,Soventix, RURA, EPD
                           Company</span>
                       </h3>
                     </div>
@@ -830,9 +1041,8 @@
                       </h5>
                       <h3 class="speaker-name">
                         &mdash; <a>Panelist: </a>
-                        <span class="position">GIZ, SEForALL, Nethaland
-                          Embassy, Germany Embassy, Global
-                          Renewable Center/Scottish Government, shell Foundation.</span>
+                        <span class="position">GIZ, SEForALL, Global
+                          Renewable Center/Scottish Government, shell Foundation, USAID Power Africa</span>
                       </h3>
                     </div>
                   </div>
@@ -875,7 +1085,7 @@
                       <h3 class="speaker-name">
                         &mdash; <a>Panelist: </a>
                         <span class="position">MoE, Clean Cooking Alliance
-                          (CCA), GIZ, MININFRA, GAS Meth, EPD Company</span>
+                          (CCA), GIZ, MININFRA, GAS Meth,Mascicop, EPD Company</span>
                       </h3>
                     </div>
                   </div>
@@ -1119,10 +1329,10 @@
                         Project Development Program (PDP)- Energy Efficiency
                         Development - TBC
                       </h5>
-                      <!-- <h3 class="speaker-name">
-                        &mdash; <a href="#">Moderator</a>
+                      <h3 class="speaker-name">
+                        &mdash; <a href="#">Panelist: Malawi, Scotland, Zambia, Rwanda  </a>
                         <span class="position"></span>
-                      </h3> -->
+                      </h3>
                     </div>
                   </div>
 
@@ -1135,11 +1345,11 @@
                     ></div>
                     <div class="text pl-md-5">
                       <span class="time">12:25pm - 01:00pm</span>
-                      <h5><a href="#">Panel Discussion on Energy Efficiency - TBC</a></h5>
-                      <!-- <h3 class="speaker-name">
-                        &mdash; <a href="#">Event Management & EPD Staff</a>
-                        <span class="position"></span>
-                      </h3> -->
+                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">Panel Discussion on Energy Efficiency </h5>
+                      <h3 class="speaker-name">
+                        &mdash; <a href="#">Panelist:</a>
+                        <span class="position">WELO, Megger, PDP/GIZ</span>
+                      </h3>
                     </div>
                   </div>
 

@@ -7814,7 +7814,7 @@ h1, h2, h3, h4, h5,
   width: 100%;
   background: #fff;
   padding: 40px;
-  border: #000;
+  border-bottom: #007bff;
   border-radius: 5px;
   margin-bottom: 20px;
   -moz-transition: all 0.3s ease;
