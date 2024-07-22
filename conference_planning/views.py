@@ -255,7 +255,7 @@ def auth(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('admin:dashboard')
+                return redirect('administration:dashboard')
             else:
                 messages.error(request, 'Invalid username or password.')
     else:
@@ -306,7 +306,7 @@ class registration_froms(TemplateView):
 # Sponsors
 class Register_sponsor(CreateView):
     form_class = SponsorForm
-    success_url = reverse_lazy('admin:sponsor')
+    success_url = reverse_lazy('administration:sponsor')
     template_name = 'conference_planning/administration/sponsor_registration.html'
     model = Sponsor
 class sponsors_list(ListView):
@@ -317,7 +317,7 @@ class sponsors_list(ListView):
 # Partners
 class Register_parner(CreateView):
     form_class = PartnerForm
-    success_url = reverse_lazy('admin:partner')
+    success_url = reverse_lazy('administration:partner')
     template_name = 'conference_planning/administration/partner_registration.html'
     model = Partner
 class partners_list(ListView):
@@ -329,7 +329,7 @@ class partners_list(ListView):
 # speakers
 class Register_speaker(CreateView):
     form_class = SpeakerForm
-    success_url = reverse_lazy('admin:speaker')
+    success_url = reverse_lazy('administration:speaker')
     template_name = 'conference_planning/administration/speaker_registration.html'
     model = Speaker
 class speakers_list(ListView):
@@ -340,7 +340,7 @@ class speakers_list(ListView):
 # Panalists
 class Register_panalist(CreateView):
     form_class = PanalistForm
-    success_url = reverse_lazy('admin:panalist')
+    success_url = reverse_lazy('administration:panalist')
     template_name = 'conference_planning/administration/panalist_registration.html'
     model = Panalist
 class panalists_list(ListView):
@@ -351,7 +351,7 @@ class panalists_list(ListView):
 # Testimonials
 class Register_testimonial(CreateView):
     form_class = TestimonialForm
-    success_url = reverse_lazy('admin:testimonial')
+    success_url = reverse_lazy('administration:testimonial')
     template_name = 'conference_planning/administration/testimonial_registration.html'
     model = Testimonial
 class testimonials_list(ListView):
@@ -362,7 +362,7 @@ class testimonials_list(ListView):
 # booths
 class Register_booth(CreateView):
     form_class = boothForm
-    success_url = reverse_lazy('admin:booth')
+    success_url = reverse_lazy('administration:booth')
     template_name = 'conference_planning/administration/booth_registration.html'
     model = booth
 class booths_list(ListView):
@@ -374,7 +374,7 @@ class booths_list(ListView):
 # agenda
 class Register_agenda(CreateView):
     form_class = AgendaForm
-    success_url = reverse_lazy('admin:agendas')
+    success_url = reverse_lazy('administration:agendas')
     template_name = 'conference_planning/administration/register_agenda.html'
     model = Agenda
 class Display_agenda(ListView):
@@ -385,7 +385,7 @@ class Display_agenda(ListView):
 # Event
 class Register_event(CreateView):
     form_class = EventForm
-    success_url = reverse_lazy('admin:event')
+    success_url = reverse_lazy('administration:event')
     template_name = 'conference_planning/administration/register_event.html'
     model = Event
 class Display_event(ListView):
@@ -395,7 +395,7 @@ class Display_event(ListView):
 
 class Register_Eventday(CreateView):
     form_class = RegisterdayForm 
-    success_url = reverse_lazy('admin:dayofevent')
+    success_url = reverse_lazy('administration:dayofevent')
     template_name = 'conference_planning/administration/register_dayevent.html'
     model = Event_days
 
@@ -403,26 +403,26 @@ class Register_Eventday(CreateView):
 # previous conferences videos and photos
 class videos(CreateView):
     form_class = VideoForm
-    success_url = reverse_lazy('admin:video')
+    success_url = reverse_lazy('administration:video')
     template_name = 'conference_planning/administration/previous_videos.html'
     model =  PreviousVideos
 class photos(CreateView):
     form_class = PhotoForm
-    success_url = reverse_lazy('admin:photo')
+    success_url = reverse_lazy('administration:photo')
     template_name = 'conference_planning/administration/previous_photos.html'
     model =  PreviousPhotos
 
 # sponsorship packages  
 class sponsorship(CreateView):
     form_class = SponsorshipForm
-    success_url = reverse_lazy('admin:sponsorships')
+    success_url = reverse_lazy('administration:sponsorships')
     template_name = 'conference_planning/administration/sponsorships.html'
     model = Sponsorships
 
 # uploading a document
 class uploadPDF(CreateView):
     form_class = PDFFileForm
-    success_url = reverse_lazy('admin:sponsorships')
+    success_url = reverse_lazy('administration:sponsorships')
     template_name =  'conference_planning/administration/sponsorships.html'
     model = Document
 

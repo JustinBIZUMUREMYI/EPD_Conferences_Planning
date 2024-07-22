@@ -68,6 +68,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('auth/', views.login_view, name="login"),
     path('authenticate', views.auth, name="authenticate"),
-    path('administration/', include((admin_urls, 'admin'), namespace='admin')),
+    path('administration/', include((admin_urls, 'administration'), namespace='administration')),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

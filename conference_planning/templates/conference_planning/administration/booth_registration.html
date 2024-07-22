@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'admin:dashboard' %}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'administration:dashboard' %}">
 
                 <div class="sidebar-brand-text mx-3">Conference <sup>4Th Edition</sup></div>
             </a>
@@ -47,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'admin:dashboard' %}">
+                <a class="nav-link" href="{% url 'administration:dashboard' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -70,16 +70,16 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">All</h6>
-                        <a class="collapse-item" href="{% url 'admin:partner' %}">Official partner</a>
-                        <a class="collapse-item" href="{% url 'admin:sponsor' %}">Sponsor</a>
-                        <a class="collapse-item" href="{% url 'admin:speaker' %}">Speaker</a>
-                        <a class="collapse-item" href="{% url 'admin:panalist' %}">Panalist</a>
-                        <a class="collapse-item" href="{% url 'admin:testimonial' %}">Testimonial</a>
-                        <a class="collapse-item" href="{% url 'admin:booth' %}">Exhbition Booth</a>
-                        <a class="collapse-item" href="{% url 'admin:event' %}">Event</a>
-                        <a class="collapse-item" href="{% url 'admin:agendas' %}">Agenda</a>
-                        <a class="collapse-item" href="{% url 'admin:dayofevent' %}">Event Days</a>
-                        <a class="collapse-item" href="{% url 'admin:sponsorships' %}">Sponsorships</a>
+                        <a class="collapse-item" href="{% url 'administration:partner' %}">Official partner</a>
+                        <a class="collapse-item" href="{% url 'administration:sponsor' %}">Sponsor</a>
+                        <a class="collapse-item" href="{% url 'administration:speaker' %}">Speaker</a>
+                        <a class="collapse-item" href="{% url 'administration:panalist' %}">Panalist</a>
+                        <a class="collapse-item" href="{% url 'administration:testimonial' %}">Testimonial</a>
+                        <a class="collapse-item" href="{% url 'administration:booth' %}">Exhbition Booth</a>
+                        <a class="collapse-item" href="{% url 'administration:event' %}">Event</a>
+                        <a class="collapse-item" href="{% url 'administration:agendas' %}">Agenda</a>
+                        <a class="collapse-item" href="{% url 'administration:dayofevent' %}">Event Days</a>
+                        <a class="collapse-item" href="{% url 'administration:sponsorships' %}">Sponsorships</a>
 
                     </div>
                 </div>
@@ -96,9 +96,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Attendees categories</h6>
-                        <a class="collapse-item" href="{% url 'admin:locals' %}">Locals</a>
-                        <a class="collapse-item" href="{% url 'admin:internationals' %}">Internationals</a>
-                        <a class="collapse-item" href="{% url 'admin:students' %}">Students</a>
+                        <a class="collapse-item" href="{% url 'administration:locals' %}">Locals</a>
+                        <a class="collapse-item" href="{% url 'administration:internationals' %}">Internationals</a>
+                        <a class="collapse-item" href="{% url 'administration:students' %}">Students</a>
                         
                     </div>
                 </div>
@@ -122,14 +122,14 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">All</h6>
-                        <a class="collapse-item" href="{% url 'admin:partners_list' %}">Official Partners</a>
-                        <a class="collapse-item" href="{% url 'admin:sponsors_list' %}">Sponsors</a>
-                        <a class="collapse-item" href="{% url 'admin:speakers_list' %}">Speakers</a>
-                        <a class="collapse-item" href="{% url 'admin:panalists_list' %}">Panalists</a>
-                        <a class="collapse-item" href="{% url 'admin:testimonials_list' %}">Testimonies</a>
-                        <a class="collapse-item" href="{% url 'admin:booths_list' %}">Exhbition Booths</a>
-                        <a class="collapse-item" href="{% url 'admin:eventDisplay' %}">Event</a>
-                        <a class="collapse-item" href="{% url 'admin:agendaDisplay' %}">Agenda</a>
+                        <a class="collapse-item" href="{% url 'administration:partners_list' %}">Official Partners</a>
+                        <a class="collapse-item" href="{% url 'administration:sponsors_list' %}">Sponsors</a>
+                        <a class="collapse-item" href="{% url 'administration:speakers_list' %}">Speakers</a>
+                        <a class="collapse-item" href="{% url 'administration:panalists_list' %}">Panalists</a>
+                        <a class="collapse-item" href="{% url 'administration:testimonials_list' %}">Testimonies</a>
+                        <a class="collapse-item" href="{% url 'administration:booths_list' %}">Exhbition Booths</a>
+                        <a class="collapse-item" href="{% url 'administration:eventDisplay' %}">Event</a>
+                        <a class="collapse-item" href="{% url 'administration:agendaDisplay' %}">Agenda</a>
                     </div>
                 </div>
             </li>
@@ -143,7 +143,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'admin:attendees' %}">
+                <a class="nav-link" href="{% url 'administration:attendees' %}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Attendees list</span></a>
             </li>
