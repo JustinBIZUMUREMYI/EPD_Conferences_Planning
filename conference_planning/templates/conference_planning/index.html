@@ -119,6 +119,26 @@
         .zoom:hover {
             transform: scale(1.5);
         }
+    
+        .carousel-item {
+            height: 100vh;
+            min-height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+        .carousel-caption img {
+            max-height: 50vh;
+            width: auto;
+        }
+        @media (max-width: 768px) {
+            .carousel-caption {
+                bottom: 20px;
+            }
+            .carousel-caption img {
+                max-height: 30vh;
+                width: auto;
+            }
+        }
   </style>
   </head>
 
@@ -545,69 +565,58 @@
   </section>
   
   <section class="wrapper">
-   
-
-
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
-   
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
         </ol>
         <div class="carousel-inner">
-          
             <div class="carousel-item active" style="background-image: url('{% static 'images/touroperator/marriott.jpg' %}');">
-                <div class="carousel-caption d-none d-md-block text-center">
-                
-                    <img src="{% static 'images/touroperator/hotel_discount.png' %}" alt="Logo" class="img-fluid" height="400" width="700">
+                <div class="carousel-caption d-md-block text-center">
+                    <img src="{% static 'images/touroperator/hotel_discount.png' %}" alt="Logo" class="img-fluid">
                 </div>
             </div>
             <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/akagera.jpg' %}');">
-                <div class="carousel-caption d-none d-md-block"> 
-                 
-                    <img src="{% static 'images/touroperator/package.png' %}" alt="Logo" class="img-fluid" height="400" width="700">
+                <div class="carousel-caption d-md-block text-center">
+                    <img src="{% static 'images/touroperator/package.png' %}" alt="Logo" class="img-fluid">
                 </div>
             </div>
             <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/lemigo.jpg' %}');">
-                <div class="carousel-caption d-none d-md-block">
-                  
-                    <img src="{% static 'images/touroperator/hotel_discount.png' %}" alt="Logo" class="img-fluid" height="400" width="700">
+                <div class="carousel-caption d-md-block text-center">
+                    <img src="{% static 'images/touroperator/hotel_discount.png' %}" alt="Logo" class="img-fluid">
                 </div>
             </div>
             <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/gorilla.jpg' %}');">
-                <div class="carousel-caption d-none d-md-block">
-                  
-                    <img src="{% static 'images/touroperator/package.png' %}" alt="Logo" class="img-fluid" height="400" width="700">
+                <div class="carousel-caption d-md-block text-center">
+                    <img src="{% static 'images/touroperator/package.png' %}" alt="Logo" class="img-fluid">
                 </div>
             </div>
             <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/serena.jpg' %}');">
-                <div class="carousel-caption d-none d-md-block">
-                    
-                    <img src="{% static 'images/touroperator/hotel_discount.png' %}" alt="Logo" class="img-fluid" height="400" width="700">
+                <div class="carousel-caption d-md-block text-center">
+                    <img src="{% static 'images/touroperator/hotel_discount.png' %}" alt="Logo" class="img-fluid">
                 </div>
             </div>
             <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/kigali_tour.jpg' %}');">
-              <div class="carousel-caption d-none d-md-block">
-             
-                  <img src="{% static 'images/touroperator/package.png' %}" alt="Logo" class="img-fluid" height="400" width="700">
-              </div>
-          </div>
-          <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/ubumwehotel.jpg' %}');">
-            <div class="carousel-caption d-none d-md-block">
-                
-                <img src="{% static 'images/touroperator/hotel_discount.png' %}" alt="Logo" class="img-fluid" height="400" width="700">
+                <div class="carousel-caption d-md-block text-center">
+                    <img src="{% static 'images/touroperator/package.png' %}" alt="Logo" class="img-fluid">
+                </div>
             </div>
-        </div>
-
-        <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/kigali_tour1.webp' %}');">
-          <div class="carousel-caption d-none d-md-block">
-             
-              <img src="{% static 'images/touroperator/package.png' %}" alt="Logo" class="img-fluid" height="400" width="700">
-          </div>
-      </div>
+            <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/ubumwehotel.jpg' %}');">
+                <div class="carousel-caption d-md-block text-center">
+                    <img src="{% static 'images/touroperator/hotel_discount.png' %}" alt="Logo" class="img-fluid">
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('{% static 'images/touroperator/kigali_tour1.webp' %}');">
+                <div class="carousel-caption d-md-block text-center">
+                    <img src="{% static 'images/touroperator/package.png' %}" alt="Logo" class="img-fluid">
+                </div>
+            </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -618,10 +627,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
-    
 </section>
-
 
 
 
