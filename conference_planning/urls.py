@@ -6,11 +6,13 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 registration_patterns = [
     path('local/', views.local_registration, name='local_registration'),
     path('international/', views.international_registration, name='international_registration'),
     path('students/', views.students_registration, name='students_registration'),
-    path('registration/', views.registration_froms.as_view(), name = 'registration')
+    path('registration/', views.registration_froms.as_view(), name = 'registration'),
+    
 ]
 
 admin_urls = [
@@ -26,6 +28,7 @@ admin_urls = [
     path('agendas', views.Register_agenda.as_view(), name = 'agendas'),
     path('register_eventday', views.Register_Eventday.as_view(), name = 'dayofevent'),
     path('sponsorships', views.sponsorship.as_view(), name = 'sponsorships'),
+    path('export_attendees/', views.export_attendees_to_excel, name='export_attendees_to_excel'),
 
 
     # report urls

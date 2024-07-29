@@ -10,6 +10,9 @@ from django.views.generic import ListView, CreateView, UpdateView, TemplateView,
 from django.views.generic.edit import FormView
 from .forms import PartnerForm
 from django.urls import reverse_lazy
+from django.core.exceptions import ValidationError
+import openpyxl
+from django.http import HttpResponse
 
 
 def index(request):
@@ -215,7 +218,12 @@ def register(request):
             if 'university' in form.cleaned_data and form.cleaned_data['university']:
                 school = form.cleaned_data['university']
                 attendee_type = 'Student'
-            
+            # validating phone number to accept only digits 
+            phone = form.cleaned_data['phone']
+            if not phone.isdigit():
+                form.add_error('phone', 'Phone number must contain only digits.')
+                return_url = form.cleaned_data['return_url']
+                return render(request, return_url, {'form': form})
             # Check for existing attendee
             if Attendees.objects.filter(
                 identity=form.cleaned_data['identity']
@@ -378,6 +386,8 @@ class sponsors_list(ListView):
     model = Sponsor
     context_object_name = 'sponsors'
 
+    
+
 # Partners
 class Register_parner(CreateView):
     form_class = PartnerForm
@@ -520,3 +530,40 @@ def students(request):
     context = {'students': student_list}
     
     return render(request, 'conference_planning/administration/students_list.html', context)
+
+
+
+
+# reports
+
+# exporting all the registered attends 
+def export_attendees_to_excel(request):
+    # Create an in-memory output file for the new workbook.
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=attendees.xlsx'
+
+    # Create a workbook and add a worksheet.
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Attendees"
+
+    # Add column headers
+    columns = ['Name', 'Identity', 'Email', 'Category', 'Country', 'Organization']
+    for col_num, column_title in enumerate(columns, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = column_title
+
+    # Fetch data from the database
+    attendees = Attendees.objects.all()
+    for attendee_num, attendee in enumerate(attendees, 2):
+        ws.cell(row=attendee_num, column=1, value=attendee.names)
+        ws.cell(row=attendee_num, column=2, value=attendee.identity)
+        ws.cell(row=attendee_num, column=3, value=attendee.email)
+        ws.cell(row=attendee_num, column=4, value=attendee.category)
+        ws.cell(row=attendee_num, column=5, value=attendee.country)
+        ws.cell(row=attendee_num, column=6, value=attendee.organization)
+
+    wb.save(response)
+    return response

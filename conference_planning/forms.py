@@ -16,10 +16,12 @@ class registerForm(forms.Form):
     return_url = forms.CharField(required=True)
 
     def clean_agree_term(self):
-            agree_term = self.cleaned_data.get('agree_term')
-            if not agree_term:
-                raise forms.ValidationError("You need to accept the terms of conditions to continue.")
-            return agree_term
+        agree_term = self.cleaned_data.get('agree_term')
+        if not agree_term:
+            raise forms.ValidationError("You need to accept the terms of conditions to continue.")
+        return agree_term
+    
+   
     
     
     
