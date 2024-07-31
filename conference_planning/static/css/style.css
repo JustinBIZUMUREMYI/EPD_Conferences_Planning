@@ -7737,84 +7737,139 @@ h1, h2, h3, h4, h5,
       background: #fff;
       border-color: #fff;
       color: #6b76ff; }
-
+/* General styles */
 .ftco-search {
   position: relative;
   width: 100%;
-  display: block; }
-  .ftco-search .nav-pills {
-    width: 100%;
-    display: block; }
-    .ftco-search .nav-pills p {
-      margin-bottom: 0; }
-    .ftco-search .nav-pills .nav-link {
-      padding: 35px 30px !important;
-      border-radius: 0;
-      margin-bottom: 0;
-      color: #000000;
-      font-size: 22px;
-      font-weight: 700;
-      position: relative;
-      display: inline-block;
-      border: 1px solid transparent;
-      background: #fff;
-      width: 25%;
-      -webkit-border-radius: 0;
-      -moz-border-radius: 0;
-      -ms-border-radius: 0;
-      border-radius: 0; }
-      .ftco-search .nav-pills .nav-link:after {
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        right: 0;
-        width: 0;
-        content: '';
-        height: 0;
-        margin: 0 auto;
-        border-style: solid;
-        border-width: 10px 10px 0 10px;
-        border-color: #6b76ff transparent transparent transparent;
-        opacity: 0; }
-      .ftco-search .nav-pills .nav-link span {
-        display: block;
-        font-size: 14px; }
-      @media (max-width: 991.98px) {
-        .ftco-search .nav-pills .nav-link {
-          color: rgba(255, 255, 255, 0.7); } }
-      .ftco-search .nav-pills .nav-link:hover {
-        background: #525eff;
-        color: #fff; }
-      .ftco-search .nav-pills .nav-link.active {
-        color: #fff;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -webkit-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-        border: 1px solid transparent;
-        background: #6b76ff; }
-        .ftco-search .nav-pills .nav-link.active:after {
-          opacity: 1; }
-        @media (max-width: 767.98px) {
-          .ftco-search .nav-pills .nav-link.active:after {
-            opacity: 0; } }
-      @media (max-width: 767.98px) {
-        .ftco-search .nav-pills .nav-link {
-          display: block;
-          margin-bottom: 5px; } }
-  .ftco-search .tab-content {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0;
-    margin-top: 15px; }
+  display: block;
+}
+
+.ftco-search .nav-pills {
+  width: 100%;
+  display: block;
+}
+
+.ftco-search .nav-pills p {
+  margin-bottom: 0;
+}
+
+.ftco-search .nav-pills .nav-link {
+  padding: 35px 30px !important;
+  border-radius: 0;
+  margin-bottom: 0;
+  color: #000000;
+  font-size: 22px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  border: 1px solid transparent;
+  background: #fff;
+  width: 25%;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+}
+
+.ftco-search .nav-pills .nav-link:after {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  width: 0;
+  content: '';
+  height: 0;
+  margin: 0 auto;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: #6b76ff transparent transparent transparent;
+  opacity: 0;
+}
+
+.ftco-search .nav-pills .nav-link span {
+  display: block;
+  font-size: 14px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 991.98px) {
+  .ftco-search .nav-pills .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .ftco-search .nav-pills .nav-link {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff; /* Set text color to white for small screens */
+    font-size: 18px; /* Adjust font size for better readability */
+  }
+  
+  .ftco-search .nav-pills .nav-link span {
+    font-size: 12px; /* Adjust font size of spans for better readability */
+  }
+
+  .ftco-search .nav-pills .nav-link.active:after {
+    opacity: 0;
+  }
+}
+
+.ftco-search .nav-pills .nav-link:hover {
+  background: #525eff;
+  color: #fff;
+}
+
+.ftco-search .nav-pills .nav-link.active {
+  color: #fff;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  background: #6b76ff;
+}
+
+.ftco-search .nav-pills .nav-link.active:after {
+  opacity: 1;
+}
+
+.ftco-search .tab-content {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+  margin-top: 15px;
+}
+
+/* Additional styles to improve visibility when zoomed */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ftco-search .nav-pills .nav-link {
+    font-size: 20px; /* Slightly reduce font size for medium screens */
+  }
+  
+  .ftco-search .nav-pills .nav-link span {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ftco-search .nav-pills .nav-link {
+    font-size: 22px; /* Maintain larger font size for larger screens */
+  }
+  
+  .ftco-search .nav-pills .nav-link span {
+    font-size: 14px;
+  }
+}
+
 
 .speaker-wrap {
   width: 100%;
   background: #fff;
   padding: 40px;
-  border-bottom: #007bff;
+  border-bottom: ;
   border-radius: 5px;
   margin-bottom: 20px;
   -moz-transition: all 0.3s ease;

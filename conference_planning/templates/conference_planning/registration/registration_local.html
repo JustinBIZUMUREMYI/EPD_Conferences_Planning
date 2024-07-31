@@ -133,35 +133,15 @@
 
                  <!-- the field for the attends categories -->
 
-                 <div class="form-group"  style="display: flex; gap: 1em; width: 200px;">
-                 
-                  <select
-                  
-                  name="category"
-                  id=""
-                  value="{{ form.category.value }}"
-                  required
-                >
-                <option value="Select_category">
-                  Select Category
-                </option>
-                  <option value="organizer">
-                    Organizer
-                  </option>
-                  <option value="delegate">
-                    Delegate
-                  </option>
-                  <option value="exhibitor">
-                    Exhibitor
-                  </option>
-                  <option value="student">
-                    Student
-                  </option>
-                  <option value="media">
-                    Media
-                  </option>
+                 <div class="form-group" style="display: flex; gap: 1em; width: 200px;">
+                  <select name="category" id="category" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="organizer" {% if form.category.value == "organizer" %}selected{% endif %}>Organizer</option>
+                    <option value="delegate" {% if form.category.value == "delegate" %}selected{% endif %}>Delegate</option>
+                    <option value="exhibitor" {% if form.category.value == "exhibitor" %}selected{% endif %}>Exhibitor</option>
+                    <option value="student" {% if form.category.value == "student" %}selected{% endif %}>Student</option>
+                    <option value="media" {% if form.category.value == "media" %}selected{% endif %}>Media</option>
                   </select>
-                 
                 </div>
               
 

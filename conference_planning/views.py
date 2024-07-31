@@ -232,7 +232,7 @@ def register(request):
             ).exists() or Attendees.objects.filter(
                 phone=form.cleaned_data['country_code'] + form.cleaned_data['phone']
             ).exists():
-                error_message = "You are already registered."
+                error_message = "You are already registered, Please click back to home."
                 return_url = form.cleaned_data['return_url']
                 return render(request, return_url, {'error': error_message})
                 # return render(request, 'conference_planning/registration/registration_local.html', {'form': form, 'error': error_message})

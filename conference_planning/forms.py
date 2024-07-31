@@ -1,5 +1,6 @@
 from django import forms
 from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship, FloorPlan, BookAccessory,BookBooth 
+import re
 
 class registerForm(forms.Form):
     name = forms.CharField(max_length=200, required=True)
@@ -20,7 +21,18 @@ class registerForm(forms.Form):
         if not agree_term:
             raise forms.ValidationError("You need to accept the terms of conditions to continue.")
         return agree_term
-    
+
+    # def clean_identity(self):
+    #     identity = self.cleaned_data.get('identity')
+
+    #     # More flexible regex patterns
+    #     id_pattern = re.compile(r'^\d{0,16}$')  # IDs between 6 and 12 digits
+    #     passport_pattern = re.compile(r'^[A-Z0-9]{8,9}$')  # Passports are 8 to 9 alphanumeric characters
+
+    #     if not (id_pattern.match(identity) or passport_pattern.match(identity)):
+    #         raise forms.ValidationError("Invalid ID or Passport number")
+
+    #     return identity
    
     
     
