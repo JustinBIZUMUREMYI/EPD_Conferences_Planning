@@ -1,6 +1,7 @@
 from django import forms
 from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship, FloorPlan, BookAccessory,BookBooth 
 import re
+from .models import Attendees 
 
 class registerForm(forms.Form):
     name = forms.CharField(max_length=200, required=True)
@@ -22,19 +23,44 @@ class registerForm(forms.Form):
             raise forms.ValidationError("You need to accept the terms of conditions to continue.")
         return agree_term
 
-    # def clean_identity(self):
-    #     identity = self.cleaned_data.get('identity')
+    def clean_identity(self):
+        identity = self.cleaned_data.get('identity')
 
-    #     # More flexible regex patterns
-    #     id_pattern = re.compile(r'^\d{0,16}$')  # IDs between 6 and 12 digits
-    #     passport_pattern = re.compile(r'^[A-Z0-9]{8,9}$')  # Passports are 8 to 9 alphanumeric characters
+        # More flexible regex patterns
+        id_pattern = re.compile(r'^\d{0,16}$')  # IDs between 6 and 12 digits
+        passport_pattern = re.compile(r'^[A-Z0-9]{8,9}$')  # Passports are 8 to 9 alphanumeric characters
 
-    #     if not (id_pattern.match(identity) or passport_pattern.match(identity)):
-    #         raise forms.ValidationError("Invalid ID or Passport number")
+        if not (id_pattern.match(identity) or passport_pattern.match(identity)):
+            raise forms.ValidationError("Invalid ID or Passport number")
 
-    #     return identity
+        return identity
    
-    
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+        if not phone.isdigit():
+            raise forms.ValidationError('Phone number must contain only digits.')
+        return phone
+
+    def clean(self):
+        cleaned_data = super().clean()
+        identity = cleaned_data.get('identity')
+        email = cleaned_data.get('email')
+        country_code = cleaned_data.get('country_code')
+        phone = cleaned_data.get('phone')
+
+        if country_code and phone:
+            full_phone = country_code + phone
+
+        if Attendees.objects.filter(identity=identity).exists():
+            raise forms.ValidationError('You are already registered with this identity.')
+        
+        if Attendees.objects.filter(email=email).exists():
+            raise forms.ValidationError('You are already registered with this email.')
+
+        if Attendees.objects.filter(phone=phone).exists():
+            raise forms.ValidationError('You are already registered with this phone number.')
+
+        return cleaned_data
     
     
 class LoginForm(forms.Form):
