@@ -1,5 +1,5 @@
 from django import forms
-from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship, FloorPlan, BookAccessory,BookBooth 
+from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship, FloorPlan, BookAccessory,BookBooth, Booth_space 
 import re
 from .models import Attendees 
 
@@ -23,44 +23,44 @@ class registerForm(forms.Form):
             raise forms.ValidationError("You need to accept the terms of conditions to continue.")
         return agree_term
 
-    def clean_identity(self):
-        identity = self.cleaned_data.get('identity')
+    # def clean_identity(self):
+    #     identity = self.cleaned_data.get('identity')
 
-        # More flexible regex patterns
-        id_pattern = re.compile(r'^\d{0,16}$')  # IDs between 6 and 12 digits
-        passport_pattern = re.compile(r'^[A-Z0-9]{8,9}$')  # Passports are 8 to 9 alphanumeric characters
+    #     # More flexible regex patterns
+    #     id_pattern = re.compile(r'^\d{0,16}$')  # IDs between 6 and 12 digits
+    #     passport_pattern = re.compile(r'^[A-Z0-9]{8,9}$')  # Passports are 8 to 9 alphanumeric characters
 
-        if not (id_pattern.match(identity) or passport_pattern.match(identity)):
-            raise forms.ValidationError("Invalid ID or Passport number")
+    #     if not (id_pattern.match(identity) or passport_pattern.match(identity)):
+    #         raise forms.ValidationError("Invalid ID or Passport number")
 
-        return identity
+    #     return identity
    
-    def clean_phone(self):
-        phone = self.cleaned_data.get('phone')
-        if not phone.isdigit():
-            raise forms.ValidationError('Phone number must contain only digits.')
-        return phone
+    # def clean_phone(self):
+    #     phone = self.cleaned_data.get('phone')
+    #     if not phone.isdigit():
+    #         raise forms.ValidationError('Phone number must contain only digits.')
+    #     return phone
 
-    def clean(self):
-        cleaned_data = super().clean()
-        identity = cleaned_data.get('identity')
-        email = cleaned_data.get('email')
-        country_code = cleaned_data.get('country_code')
-        phone = cleaned_data.get('phone')
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     identity = cleaned_data.get('identity')
+    #     email = cleaned_data.get('email')
+    #     country_code = cleaned_data.get('country_code')
+    #     phone = cleaned_data.get('phone')
 
-        if country_code and phone:
-            full_phone = country_code + phone
+    #     if country_code and phone:
+    #         full_phone = country_code + phone
 
-        if Attendees.objects.filter(identity=identity).exists():
-            raise forms.ValidationError('You are already registered with this identity.')
+    #     if Attendees.objects.filter(identity=identity).exists():
+    #         raise forms.ValidationError('You are already registered with this identity.')
         
-        if Attendees.objects.filter(email=email).exists():
-            raise forms.ValidationError('You are already registered with this email.')
+    #     if Attendees.objects.filter(email=email).exists():
+    #         raise forms.ValidationError('You are already registered with this email.')
 
-        if Attendees.objects.filter(phone=phone).exists():
-            raise forms.ValidationError('You are already registered with this phone number.')
+    #     if Attendees.objects.filter(phone=phone).exists():
+    #         raise forms.ValidationError('You are already registered with this phone number.')
 
-        return cleaned_data
+    #     return cleaned_data
     
     
 class LoginForm(forms.Form):
@@ -153,3 +153,21 @@ class BookBoothForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['status']
 
+
+    @staticmethod
+    def get_available_booths():
+        # Get all booked booth spaces
+        booked_booths = BookBooth.objects.values_list('Booth_space', flat=True)
+        # Return only the booth spaces that are not booked
+        return Booth_space.objects.exclude(id__in=booked_booths)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Define booked_booths within the __init__ method
+        booked_booths = BookBooth.objects.values_list('Booth_space', flat=True)
+        # Set the queryset for the Booth_space field to only include available booth spaces
+        self.fields['Booth_space'].queryset = Booth_space.objects.exclude(id__in=booked_booths)
+        # Optional: Disable the dropdown options that are booked, but still show them as disabled
+        for choice in self.fields['Booth_space'].choices:
+            if choice[0] in booked_booths:
+                self.fields['Booth_space'].widget.attrs.update({'disabled': 'disabled'})
