@@ -29,6 +29,8 @@ admin_urls = [
     path('register_eventday', views.Register_Eventday.as_view(), name = 'dayofevent'),
     path('sponsorships', views.sponsorship.as_view(), name = 'sponsorships'),
     path('export_attendees/', views.export_attendees_to_excel, name='export_attendees_to_excel'),
+    path('export_locals/', views.export_locals_to_excel, name='export_locals_to_excel'),
+    path('export_internationals/', views.export_internationals_to_excel, name='export_internationals_to_excel'),
 
 
     # report urls

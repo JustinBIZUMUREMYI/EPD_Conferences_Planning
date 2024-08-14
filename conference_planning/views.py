@@ -507,7 +507,12 @@ class PDFFile(ListView):
 @login_required
 def locals(request):
     local_list = Attendees.objects.filter(attendee_type='Local').order_by('id')
-    context = {'locals': local_list}
+    locals_attends = Attendees.objects.filter(attendee_type='Local').count()
+    context = {
+        'locals': local_list,
+        'total_locals': locals_attends
+    
+    }
     
     return render(request, 'conference_planning/administration/locals_list.html', context)
 
@@ -516,7 +521,8 @@ def locals(request):
 @login_required
 def internationals(request):
     international_list = Attendees.objects.filter(attendee_type='International').order_by('id')
-    context = {'internationals': international_list}
+    total_international = Attendees.objects.filter(attendee_type='International').count()
+    context = {'internationals': international_list, 'total_internationls': total_international}
     
     return render(request, 'conference_planning/administration/internationals_list.html', context)
 
@@ -562,6 +568,77 @@ def export_attendees_to_excel(request):
         ws.cell(row=attendee_num, column=4, value=attendee.category)
         ws.cell(row=attendee_num, column=5, value=attendee.country)
         ws.cell(row=attendee_num, column=6, value=attendee.organization)
+
+    wb.save(response)
+    return response
+
+
+# exporting locals  
+
+def export_locals_to_excel(request):
+    # Create an in-memory output file for the new workbook.
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=Locals.xlsx'
+
+    # Create a workbook and add a worksheet.
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Local Delegates"
+
+    # Add column headers
+    columns = ['Name', 'Identity', 'Phone','Email', 'Category', 'Country', 'Organization']
+    for col_num, column_title in enumerate(columns, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = column_title
+
+    # Fetch data from the database
+    attendees = Attendees.objects.filter(attendee_type='Local')
+    for attendee_num, attendee in enumerate(attendees, 2):
+        ws.cell(row=attendee_num, column=1, value=attendee.names)
+        ws.cell(row=attendee_num, column=2, value=attendee.identity)
+        ws.cell(row=attendee_num, column=3, value=attendee.phone)
+        ws.cell(row=attendee_num, column=4, value=attendee.email)
+        ws.cell(row=attendee_num, column=5, value=attendee.category)
+        ws.cell(row=attendee_num, column=6, value=attendee.country)
+        ws.cell(row=attendee_num, column=7, value=attendee.organization)
+
+    wb.save(response)
+    return response
+
+
+
+# exporting Internationls 
+
+def export_internationals_to_excel(request):
+    # Create an in-memory output file for the new workbook.
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=Internationals.xlsx'
+
+    # Create a workbook and add a worksheet.
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "International Delegates"
+
+    # Add column headers
+    columns = ['Name', 'Identity', 'Phone','Email', 'Category', 'Country', 'Organization']
+    for col_num, column_title in enumerate(columns, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = column_title
+
+    # Fetch data from the database
+    attendees = Attendees.objects.filter(attendee_type='International')
+    for attendee_num, attendee in enumerate(attendees, 2):
+        ws.cell(row=attendee_num, column=1, value=attendee.names)
+        ws.cell(row=attendee_num, column=2, value=attendee.identity)
+        ws.cell(row=attendee_num, column=3, value=attendee.phone)
+        ws.cell(row=attendee_num, column=4, value=attendee.email)
+        ws.cell(row=attendee_num, column=5, value=attendee.category)
+        ws.cell(row=attendee_num, column=6, value=attendee.country)
+        ws.cell(row=attendee_num, column=7, value=attendee.organization)
 
     wb.save(response)
     return response
