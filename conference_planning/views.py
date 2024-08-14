@@ -336,11 +336,22 @@ def auth(request):
 @login_required
 def dashboard(request):
     attendees_list = Attendees.objects.all()
+    partner_total = Partner.objects.all().count()
+    sponsor_total = Sponsor.objects.all().count()
+    speaker_total = Speaker.objects.all().count()
+    panalist_total = Panalist.objects.all().count()
     locals = Attendees.objects.filter(attendee_type='Local').count()
     internationals = Attendees.objects.filter(attendee_type='International').count()
     students = Attendees.objects.filter(attendee_type='Student').count()
     counting_attendees = attendees_list.count()
-    context = {'attendees_number':counting_attendees, 'locals_number': locals, 'internationals_number':internationals, 'students_number': students }
+    context = {'attendees_number':counting_attendees, 
+               'locals_number': locals, 
+               'internationals_number':internationals, 
+               'students_number': students,
+               'total_partner': partner_total,
+               'total_sponsor':sponsor_total,
+               'total_speaker':speaker_total,
+               'total_panelist':panalist_total}
     return render(request, 'conference_planning/administration/index.html', context)
 
 
@@ -610,7 +621,6 @@ def export_locals_to_excel(request):
 
 
 # exporting Internationls 
-
 def export_internationals_to_excel(request):
     # Create an in-memory output file for the new workbook.
     response = HttpResponse(
@@ -642,3 +652,107 @@ def export_internationals_to_excel(request):
 
     wb.save(response)
     return response
+
+
+
+# # exporting the list of speakers
+# def export_speakers_to_excel(request):
+#     # Create an in-memory output file for the new workbook.
+#     response = HttpResponse(
+#         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+#     )
+#     response['Content-Disposition'] = 'attachment; filename=Speakers.xlsx'
+
+#     # Create a workbook and add a worksheet.
+#     wb = openpyxl.Workbook()
+#     ws = wb.active
+#     ws.title = "International Delegates"
+
+#     # Add column headers
+#     columns = ['Name', 'Phone','Email', 'Title']
+#     for col_num, column_title in enumerate(columns, 1):
+#         cell = ws.cell(row=1, column=col_num)
+#         cell.value = column_title
+
+#     # Fetch data from the database
+#     attendees = Attendees.objects.filter(attendee_type='International')
+#     for attendee_num, attendee in enumerate(attendees, 2):
+#         ws.cell(row=attendee_num, column=1, value=attendee.names)
+#         ws.cell(row=attendee_num, column=2, value=attendee.identity)
+#         ws.cell(row=attendee_num, column=3, value=attendee.phone)
+#         ws.cell(row=attendee_num, column=4, value=attendee.email)
+#         ws.cell(row=attendee_num, column=5, value=attendee.category)
+#         ws.cell(row=attendee_num, column=6, value=attendee.country)
+#         ws.cell(row=attendee_num, column=7, value=attendee.organization)
+
+#     wb.save(response)
+#     return response
+
+
+
+# # exporting the list panelist
+# def export_panelists_to_excel(request):
+#     # Create an in-memory output file for the new workbook.
+#     response = HttpResponse(
+#         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+#     )
+#     response['Content-Disposition'] = 'attachment; filename=Panelists.xlsx'
+
+#     # Create a workbook and add a worksheet.
+#     wb = openpyxl.Workbook()
+#     ws = wb.active
+#     ws.title = "International Delegates"
+
+#     # Add column headers
+#     columns = ['Name', 'Phone','Email', 'Title']
+#     for col_num, column_title in enumerate(columns, 1):
+#         cell = ws.cell(row=1, column=col_num)
+#         cell.value = column_title
+
+#     # Fetch data from the database
+#     attendees = Attendees.objects.filter(attendee_type='International')
+#     for attendee_num, attendee in enumerate(attendees, 2):
+#         ws.cell(row=attendee_num, column=1, value=attendee.names)
+#         ws.cell(row=attendee_num, column=2, value=attendee.identity)
+#         ws.cell(row=attendee_num, column=3, value=attendee.phone)
+#         ws.cell(row=attendee_num, column=4, value=attendee.email)
+#         ws.cell(row=attendee_num, column=5, value=attendee.category)
+#         ws.cell(row=attendee_num, column=6, value=attendee.country)
+#         ws.cell(row=attendee_num, column=7, value=attendee.organization)
+
+#     wb.save(response)
+#     return response
+
+
+# # exporting the list of partners
+# def export_Partners_to_excel(request):
+#     # Create an in-memory output file for the new workbook.
+#     response = HttpResponse(
+#         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+#     )
+#     response['Content-Disposition'] = 'attachment; filename=Partners.xlsx'
+
+#     # Create a workbook and add a worksheet.
+#     wb = openpyxl.Workbook()
+#     ws = wb.active
+#     ws.title = "Partners"
+
+#     # Add column headers
+#     columns = ['Name', 'Phone','Email', 'Title']
+#     for col_num, column_title in enumerate(columns, 1):
+#         cell = ws.cell(row=1, column=col_num)
+#         cell.value = column_title
+
+#     # Fetch data from the database
+#     attendees = Attendees.objects.filter(attendee_type='International')
+#     for attendee_num, attendee in enumerate(attendees, 2):
+#         ws.cell(row=attendee_num, column=1, value=attendee.names)
+#         ws.cell(row=attendee_num, column=2, value=attendee.identity)
+#         ws.cell(row=attendee_num, column=3, value=attendee.phone)
+#         ws.cell(row=attendee_num, column=4, value=attendee.email)
+#         ws.cell(row=attendee_num, column=5, value=attendee.category)
+#         ws.cell(row=attendee_num, column=6, value=attendee.country)
+#         ws.cell(row=attendee_num, column=7, value=attendee.organization)
+
+#     wb.save(response)
+#     return response
