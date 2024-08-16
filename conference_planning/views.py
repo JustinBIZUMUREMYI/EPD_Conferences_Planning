@@ -184,6 +184,70 @@ def Third_edition(request):
     
 
 def local_registration(request):
+
+    # if request.method == 'POST':
+    #         form = registerForm(request.POST)
+    #         if form.is_valid():     
+    #             if form.cleaned_data['country_code'] == '250':
+    #                 attendee_type = 'Local'
+                
+    #             # if 'student_number' in form.cleaned_data and form.cleaned_data['student_number']:
+    #             #     stud_number = form.cleaned_data['student_number']
+    #             #     attendee_type = 'Student'
+                    
+    #             # if 'university' in form.cleaned_data and form.cleaned_data['university']:
+    #             #     school = form.cleaned_data['university']
+    #             #     attendee_type = 'Student'
+    #             # validating phone number to accept only digits 
+    #             # phone = form.cleaned_data['phone']
+    #             # if not phone.isdigit():
+    #             #     form.add_error('phone', 'Phone number must contain only digits.')
+    #             #     return_url = form.cleaned_data['return_url']
+    #             #     return render(request, return_url, {'form': form})
+    #             # Check for existing attendee
+    #             if Attendees.objects.filter(
+    #                 identity=form.cleaned_data['identity']
+    #             ).exists() or Attendees.objects.filter(
+    #                 email=form.cleaned_data['email']
+    #             ).exists():
+    #                 error_message = "You are already registered, Please click back to home."
+    #                 return_url = form.cleaned_data['return_url']
+    #                 return render(request, return_url, {'error': error_message, 'form': form})
+                
+                
+    #             attendee = Attendees(
+    #                 names=form.cleaned_data['name'],
+    #                 identity=form.cleaned_data['identity'],
+    #                 email=form.cleaned_data['email'],
+    #                 phone=form.cleaned_data['country_code'] + form.cleaned_data['phone'],
+    #                 attendee_type=attendee_type,
+    #                 # university=school,
+    #                 # student_number=stud_number,
+    #                 category=form.cleaned_data['category'],
+    #                 country=form.cleaned_data['country'],
+    #                 organization=form.cleaned_data['organization']
+    #             )
+    #             attendee.save()
+    #             success_message = (
+    #                 "Greetings from Energy Private Developers Association (EPD), "
+    #                 "Thank you for registering to be part of Renewable Energy Week Conference Sept 2024. "
+    #                 "We are pleased to inform you that you have completed the first step (1/2) of the registration process. "
+    #                 "Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. "
+    #                 "We appreciate your step and look forward to hosting you. Best regards, EPD"
+    #             )
+    #             redirect_url = request.META.get('HTTP_REFERER', '/')
+    #             messages.success(request, success_message)
+    #             return redirect(redirect_url)
+    #         else:
+    #             # return_url = form.cleaned_data['return_url']
+    #             # return render(request, return_url, {'form': form})
+    #             return render(request, 'conference_planning/registration/registration_local.html')
+    # else:
+    #     form = registerForm()
+    #     return render(request, 'conference_planning/registration/registration_local.html', {'form':form})
+
+
+
     return render(request, 'conference_planning/registration/registration_local.html')
 
 
@@ -198,72 +262,6 @@ def international_registration(request):
 def students_registration(request):
     return render(request, 'conference_planning/registration/registration_students.html')
 
-
-
-def register(request):
-    if request.method == 'POST':
-        form = registerForm(request.POST)
-        if form.is_valid():
-            attendee_type = 'Local'
-            stud_number = None
-            school = None
-            
-            if form.cleaned_data['country_code'] != '250':
-                attendee_type = 'International'
-            
-            if 'student_number' in form.cleaned_data and form.cleaned_data['student_number']:
-                stud_number = form.cleaned_data['student_number']
-                attendee_type = 'Student'
-                
-            if 'university' in form.cleaned_data and form.cleaned_data['university']:
-                school = form.cleaned_data['university']
-                attendee_type = 'Student'
-            # validating phone number to accept only digits 
-            # phone = form.cleaned_data['phone']
-            # if not phone.isdigit():
-            #     form.add_error('phone', 'Phone number must contain only digits.')
-            #     return_url = form.cleaned_data['return_url']
-            #     return render(request, return_url, {'form': form})
-            # Check for existing attendee
-            if Attendees.objects.filter(
-                identity=form.cleaned_data['identity']
-            ).exists() or Attendees.objects.filter(
-                email=form.cleaned_data['email']
-            ).exists():
-                error_message = "You are already registered, Please click back to home."
-                return_url = form.cleaned_data['return_url']
-                return render(request, return_url, {'error': error_message, 'form': form})
-               
-            
-            attendee = Attendees(
-                names=form.cleaned_data['name'],
-                identity=form.cleaned_data['identity'],
-                email=form.cleaned_data['email'],
-                phone=form.cleaned_data['country_code'] + form.cleaned_data['phone'],
-                attendee_type=attendee_type,
-                university=school,
-                student_number=stud_number,
-                category=form.cleaned_data['category'],
-                country=form.cleaned_data['country'],
-                organization=form.cleaned_data['organization']
-            )
-            attendee.save()
-            success_message = (
-                "Greetings from Energy Private Developers Association (EPD), "
-                "Thank you for registering to be part of Renewable Energy Week Conference Sept 2024. "
-                "We are pleased to inform you that you have completed the first step (1/2) of the registration process. "
-                "Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. "
-                "We appreciate your step and look forward to hosting you. Best regards, EPD"
-            )
-            redirect_url = request.META.get('HTTP_REFERER', '/')
-            messages.success(request, success_message)
-            return redirect(redirect_url)
-        else:
-            return_url = form.cleaned_data['return_url']
-            return render(request, return_url, {'form': form})
-    else:
-        form = registerForm()
-        return render(request, return_url, {'form': form})
 
 
 
@@ -285,6 +283,22 @@ def register(request):
 #             if 'university' in form.cleaned_data and form.cleaned_data['university']:
 #                 school = form.cleaned_data['university']
 #                 attendee_type = 'Student'
+#             # validating phone number to accept only digits 
+#             # phone = form.cleaned_data['phone']
+#             # if not phone.isdigit():
+#             #     form.add_error('phone', 'Phone number must contain only digits.')
+#             #     return_url = form.cleaned_data['return_url']
+#             #     return render(request, return_url, {'form': form})
+#             # Check for existing attendee
+#             if Attendees.objects.filter(
+#                 identity=form.cleaned_data['identity']
+#             ).exists() or Attendees.objects.filter(
+#                 email=form.cleaned_data['email']
+#             ).exists():
+#                 error_message = "You are already registered, Please click back to home."
+#                 return_url = form.cleaned_data['return_url']
+#                 return render(request, return_url, {'error': error_message, 'form': form})
+               
             
 #             attendee = Attendees(
 #                 names=form.cleaned_data['name'],
@@ -294,22 +308,73 @@ def register(request):
 #                 attendee_type=attendee_type,
 #                 university=school,
 #                 student_number=stud_number,
-#                 category = form.cleaned_data['category'],
+#                 category=form.cleaned_data['category'],
 #                 country=form.cleaned_data['country'],
 #                 organization=form.cleaned_data['organization']
 #             )
 #             attendee.save()
-#             success_message = "Greetings from Energy Private Developers Association (EPD), Thank you for registering to be part of Renewable Energy Week Conference Sept 2024. We are pleased to inform you that you have completed the first step (1/2) of the registration process. Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. We appreciate your step and look forward to hosting you. Best regards, EPD"
+#             success_message = (
+#                 "Greetings from Energy Private Developers Association (EPD), "
+#                 "Thank you for registering to be part of Renewable Energy Week Conference Sept 2024. "
+#                 "We are pleased to inform you that you have completed the first step (1/2) of the registration process. "
+#                 "Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. "
+#                 "We appreciate your step and look forward to hosting you. Best regards, EPD"
+#             )
 #             redirect_url = request.META.get('HTTP_REFERER', '/')
 #             messages.success(request, success_message)
 #             return redirect(redirect_url)
 #         else:
-#             return_url = form.cleaned_data['return_url']
+#             form = registerForm()
 #             return render(request, return_url, {'form': form})
 #     else:
 #         form = registerForm()
+#         return render(request, return_url, {'form': form})
+
+
+
+def register(request):
+    if request.method == 'POST':
+        form = registerForm(request.POST)
+        if form.is_valid():
+            attendee_type = 'Local'
+            stud_number = None
+            school = None
+            
+            if form.cleaned_data['country_code'] != '250':
+                attendee_type = 'International'
+            
+            if 'student_number' in form.cleaned_data and form.cleaned_data['student_number']:
+                stud_number = form.cleaned_data['student_number']
+                attendee_type = 'Student'
+                
+            if 'university' in form.cleaned_data and form.cleaned_data['university']:
+                school = form.cleaned_data['university']
+                attendee_type = 'Student'
+            
+            attendee = Attendees(
+                names=form.cleaned_data['name'],
+                identity=form.cleaned_data['identity'],
+                email=form.cleaned_data['email'],
+                phone=form.cleaned_data['country_code'] + form.cleaned_data['phone'],
+                attendee_type=attendee_type,
+                university=school,
+                student_number=stud_number,
+                category = form.cleaned_data['category'],
+                country=form.cleaned_data['country'],
+                organization=form.cleaned_data['organization']
+            )
+            attendee.save()
+            success_message = "Greetings from Energy Private Developers Association (EPD), Thank you for registering to be part of Renewable Energy Week Conference Sept 2024. We are pleased to inform you that you have completed the first step (1/2) of the registration process. Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. We appreciate your step and look forward to hosting you. Best regards, EPD"
+            redirect_url = request.META.get('HTTP_REFERER', '/')
+            messages.success(request, success_message)
+            return redirect(redirect_url)
+        else:
+            return_url = form.cleaned_data['return_url']
+            return render(request, return_url, {'form': form})
+    else:
+        form = registerForm()
     
-#     return render(request, return_url, {'form': form})
+    return render(request, return_url, {'form': form})
 
 
 def login_view(request):
