@@ -756,7 +756,7 @@ def export_panelists_to_excel(request):
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
-    response['Content-Disposition'] = 'attachment; filename=Current_speakers_list.xlsx'
+    response['Content-Disposition'] = 'attachment; filename=Current_Panelists_list.xlsx'
 
     # Create a workbook and add a worksheet.
     wb = openpyxl.Workbook()
