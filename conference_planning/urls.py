@@ -31,6 +31,8 @@ admin_urls = [
     path('export_attendees/', views.export_attendees_to_excel, name='export_attendees_to_excel'),
     path('export_locals/', views.export_locals_to_excel, name='export_locals_to_excel'),
     path('export_internationals/', views.export_internationals_to_excel, name='export_internationals_to_excel'),
+    path('export_speakers/', views.export_speakers_to_excel, name='export_speakers_to_excel'),
+    path('export_panelists/', views.export_panelists_to_excel, name='export_panelists_to_excel'),
 
 
     # report urls

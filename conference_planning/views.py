@@ -719,6 +719,67 @@ def export_internationals_to_excel(request):
     return response
 
 
+# exporting the list of the speakers 
+def export_speakers_to_excel(request):
+    # Create an in-memory output file for the new workbook.
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=Current_speakers_list.xlsx'
+
+    # Create a workbook and add a worksheet.
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "the Speakers of the conference"
+
+    # Add column headers
+    columns = ['Name', 'Title','Email']
+    for col_num, column_title in enumerate(columns, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = column_title
+
+    # Fetch data from the database
+    attendees = Speaker.objects.all()
+    for attendee_num, attendee in enumerate(attendees, 2):
+        ws.cell(row=attendee_num, column=1, value=attendee.names)
+        ws.cell(row=attendee_num, column=2, value=attendee.title)
+        ws.cell(row=attendee_num, column=3, value=attendee.email)
+
+
+    wb.save(response)
+    return response
+
+
+# exporting the list of the Panelist 
+def export_panelists_to_excel(request):
+    # Create an in-memory output file for the new workbook.
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=Current_speakers_list.xlsx'
+
+    # Create a workbook and add a worksheet.
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "the Speakers of the conference"
+
+    # Add column headers
+    columns = ['Name', 'Title','Email']
+    for col_num, column_title in enumerate(columns, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = column_title
+
+    # Fetch data from the database
+    attendees = Panalist.objects.all()
+    for attendee_num, attendee in enumerate(attendees, 2):
+        ws.cell(row=attendee_num, column=1, value=attendee.names)
+        ws.cell(row=attendee_num, column=2, value=attendee.title)
+        ws.cell(row=attendee_num, column=3, value=attendee.email)
+
+
+    wb.save(response)
+    return response
+
 
 # # exporting the list of speakers
 # def export_speakers_to_excel(request):
