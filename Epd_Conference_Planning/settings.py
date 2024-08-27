@@ -21,7 +21,7 @@ CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
 
 
-LLOWED_HOSTS = ['www.epdconference.com', 'epdconference.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['www.epdconference.com', 'epdconference.com', 'localhost', '127.0.0.1']
 
 
 
