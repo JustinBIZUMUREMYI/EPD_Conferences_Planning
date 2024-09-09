@@ -46,9 +46,157 @@
 
 
   <style type="stylesheet">
-  .position{
-      font-size: 10px;
+ 
+
+
+    .speakers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.speaker {
+    text-align: center;
+    flex: 1 1 150px;
+    min-width: 100px;
+    font-size: 8px;
+}
+
+.speaker-img {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.speaker-name {
+    font-size: 2px;
+    font-weight: normal;
+}
+
+.position {
+    font-size: 8px;
+    color: #666;
+}
+
+/* Responsive for tablets */
+@media (max-width: 768px) {
+    .speaker-img {
+        width: 80px;
+        height: 80px;
     }
+
+    .speaker-name {
+        font-size: 11px;
+    }
+
+    .position {
+        font-size: 9px;
+    }
+}
+
+Ensure the nav-pills container is responsive
+.nav-pills {
+  flex-direction: column;
+}
+
+
+
+/* Responsive for small screens */
+/* @media (max-width: 480px) {
+    .speakers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .speaker-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .speaker-name {
+        font-size: 8px;
+    }
+
+    .position {
+        font-size: 8px;
+    }
+} */
+
+
+/* .speaker-wrap {
+  margin-bottom: 20px;
+}
+
+.speaker-img {
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+.speaker-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.position {
+  font-size: 12px;
+  color: gray;
+}
+
+@media (max-width: 768px) {
+  .speaker-img {
+    height: 80px;
+  }
+
+  .speaker-name {
+    font-size: 12px;
+  }
+
+  .position {
+    font-size: 10px;
+  }
+} */
+
+
+
+/* Default: Vertical tabs on small screens */
+.nav-pills {
+  display: flex;
+  flex-direction: column; /* Vertical layout by default */
+  width: 100%; /* Ensure tabs take full width */
+}
+
+.nav-link {
+  display: block; /* Make links block-level for better spacing */
+  padding: 10px; /* Adjust padding for touch targets */
+  font-size: 14px; /* Adjust font size for readability */
+  text-align: center; /* Center text for vertical layout */
+}
+
+/* Horizontal Layout on Larger Screens */
+@media (min-width: 768px) {
+  .nav-pills {
+    flex-direction: row; /* Horizontal layout */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    white-space: nowrap; /* Prevent wrapping */
+  }
+
+  .nav-link {
+    flex: 1; /* Ensure equal width for all tabs */
+    text-align: center; /* Center text for horizontal layout */
+    padding: 10px 15px; /* Adjust padding for horizontal layout */
+    font-size: 14px; /* Adjust font size as needed */
+  }
+}
+
 
   </style>  
   </head>
@@ -191,7 +339,7 @@
         <div class="ftco-search">
           <div class="row">
             <div class="col-md-12 nav-link-wrap">
-              <div
+           <div
                 class="nav nav-pills d-flex text-center col-md-12"
                 id="v-pills-tab"
                 role="tablist"
@@ -263,7 +411,11 @@
                   aria-selected="false"
                   >Friday<span> September 13, 2024</span></a
                 >
-              </div>
+              </div> 
+            
+            
+              
+            
             </div>
             <div class="col-md-12 tab-wrap">
               <div class="tab-content" id="v-pills-tabContent">
@@ -313,11 +465,9 @@
                         >
                       </h5>
                       <br>
-                      <div 
+                      <!-- <div 
                       class="row">                     
-                      <!-- <div class="img speaker-img"  style="background-image: url({% static 'images/serge.jpg'%}); width:100px; height:100px;"
-                      >                  
-                    </div> -->
+                   
                      
                       <div class="img speaker-img"  style="background-image: url({% static 'images/emmy.jpg'%}); width:100px; height:100px;"
                       >                  
@@ -352,12 +502,7 @@
                   <div 
                   class="row">
             
-                  <!-- <div class="" style="font-size: 10px; width:100px; height:70px;"
-                  > 
-                  Serge Wilson Muhizi
-                  <span class="position" style="font-size: 9px;">EPD Chief Executive Officer</span>
-                
-                </div> -->
+               
                 
                 <div class="" style="font-size: 10px;width:100px; height:50px;" 
                   > 
@@ -455,7 +600,7 @@
                 
                 </div>
               
-              </div>
+              </div> -->
              
                       <!-- <p>Description</p>
                       <h3 class="speaker-name">
@@ -464,6 +609,82 @@
                           >Event Management and Staff
                         </span>
                       </h3> -->
+
+                      <div class="row speakers">
+                        <!-- First Row -->
+                        <div class="speaker">
+                            <div class="img speaker-img" style="background-image: url({% static 'images/emmy.jpg'%});"></div>
+                            <p class="speaker-name">Emmanuel NDAGIJIMANA<br>
+                                <span class="position">EPD Head of Business Development</span>
+                            </p>
+                        </div>
+                    
+                        <div class="img speaker-img" style="width:50px; height:70px;"></div>
+                    
+                        <div class="speaker">
+                            <div class="img speaker-img" style="background-image: url({% static 'images/jd.jpeg'%});"></div>
+                            <p class="speaker-name">Jean de Dieu KUBWIMANA<br>
+                                <span class="position">EPD Head of Finance</span>
+                            </p>
+                        </div>
+                    
+                        <div class="img speaker-img" style="width:50px; height:70px;"></div>
+                    
+                        <div class="speaker">
+                            <div class="img speaker-img" style="background-image: url({% static 'images/justin.jpg'%});"></div>
+                            <p class="speaker-name">Justin BIZUMUREMYI<br>
+                                <span class="position">EPD IT & COM Officer</span>
+                            </p>
+                        </div>
+                    
+                        <div class="img speaker-img" style="width:50px; height:70px;"></div>
+                    
+                        <div class="speaker">
+                            <div class="img speaker-img" style="background-image: url({% static 'images/tracy.jpeg'%});"></div>
+                            <p class="speaker-name">Tracy KAMIKAZI<br>
+                                <span class="position">EPD Membership Coordinator</span>
+                            </p>
+                        </div>
+                    
+                        <div class="img speaker-img" style="width:50px; height:70px;"></div>
+                    
+                        <div class="speaker">
+                            <div class="img speaker-img" style="background-image: url({% static 'images/claudeepd.jpeg'%});"></div>
+                            <p class="speaker-name">Claude HAGENIMANA<br>
+                                <span class="position">EPD Research Desk and Gender Development Officer</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Second Row -->
+                    <div class="row speakers">
+                        <div class="speaker">
+                            <div class="img speaker-img" style="background-image: url({% static 'images/brian.jpeg'%});"></div>
+                            <p class="speaker-name">Brian<br>
+                                <span class="position">EPD Consultant</span>
+                            </p>
+                        </div>
+                    
+                        <div class="img speaker-img" style="width:50px; height:70px;"></div>
+                    
+                        <div class="speaker">
+                            <div class="img speaker-img" style="background-image: url({% static 'images/logan.jpg'%});"></div>
+                            <p class="speaker-name">Logan<br>
+                                <span class="position">EPD Consultant</span>
+                            </p>
+                        </div>
+                    
+                        <div class="img speaker-img" style="width:50px; height:70px;"></div>
+                    
+                        <div class="speaker">
+                            <div class="img speaker-img" style="background-image: url({% static 'images/Daphne.jpeg'%});"></div>
+                            <p class="speaker-name">Daphne<br>
+                                <span class="position">Tour Operator</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+
                     </div>
                   </div>
                   
@@ -494,37 +715,7 @@
                       <p class="subheading">Serge Wilson Muhizi</p>
                     </div>
                   </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url({% static 'images/speakers/damiel.jpeg'%});
-                      "
-                    ></div>
-                    <div class="text pl-md-5">
-                      <span class="time">09:05am - 09:15am</span>
-                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Remarks by Strathclyde University</a></h5>
-                      <!-- <p>Description</p>-->
-                      
-                        <p class="subheading">Damien Frame</p>
 
-                    </div>
-                  </div>
-                  <!-- <div class="speaker-wrap ftco-animate d-flex">
-                                     
-                      <div class="img speaker-img"  style="background-image: url({% static 'images/gatare.jpeg'%});"
-                      >                  
-                   
-                    
-                  </div>
-                  
-                    <div class="text pl-md-5">
-                      <span class="time">09:15am - 09:25am</span>
-                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Remarks by RDB Chief Executive Officer</a></h5>
-                      <p class="subheading">Hon. Gatare Francis</p>
-                      
-                    </div>
-                  </div> -->
                   <div class="speaker-wrap ftco-animate d-flex">
                     <div
                       class="img speaker-img"
@@ -533,17 +724,49 @@
                       "
                     ></div>
                     <div class="text pl-md-5">
-                      <span class="time">09:15am - 09:25am</span>
+                      <span class="time">09:05am - 09:10am</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Remarks by PSF Chief Executive Officer</a></h5>
                       <p class="subheading">Stephen Ruzibiza</p>
                       
-                      <!-- <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">Sponsor 1</a>
-                        <span class="position"></span>
-                      </h3> -->
+            
                     </div>
                   </div>
+
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div
+                      class="img speaker-img"
+                      style="
+                        background-image: url({% static 'images/speakers/damiel.jpeg'%});
+                      "
+                    ></div>
+                    <div class="text pl-md-5">
+                      <span class="time">09:10am - 09:15am</span>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Remarks by Strathclyde University</a></h5>
+                     
+                      
+                        <p class="subheading">Damien Frame</p>
+
+                    </div>
+                  </div>
+
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div
+                      class="img speaker-img"
+                      style="
+                        background-image: url({% static 'images/speakers/.jpeg'%});
+                      "
+                    ></div>
+                    <div class="text pl-md-5">
+                      <span class="time">09:15am - 09:20am</span>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Remarks by Minister for Climate Action /Scottish Government </a></h5>
+                     
+                      
+                        <p class="subheading">Alasdair Allan</p>
+
+                    </div>
+                  </div>
+              
+                 
                   <div class="speaker-wrap ftco-animate d-flex">
                                        
                       <div class="img speaker-img"  style="background-image: url({% static 'images/speaker3.png'%});"
@@ -552,30 +775,57 @@
                     
                   </div>
                     <div class="text pl-md-5">
-                      <span class="time">09:25am - 09:45am</span>
+                      <span class="time">09:20am - 09:30am</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Remarks by EPD Executive Chairman</a></h5>
                       <p class="subheading">Dr. Ivan Twagirashema</p>
                     </div>
                   </div>
+
+                  
                   <div class="speaker-wrap ftco-animate d-flex">
                     <div
                       class="img speaker-img"
                       style="
-                        background-image: url(images/speakers/speaker4.jpeg);
+                        background-image: url({% static 'images/gasore.jpeg'%});
                       "
                     ></div>
                     <div class="text pl-md-5">
-                      <span class="time">09:45am - 10:00am</span>
+                      <span class="time">09:30am - 09:45am</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Official Opening by Minister of Infrastructure,
                         Transport and Energy</a></h5>
-                      <!-- <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">Minifra</a>
-                        <span class="position"></span>
-                      </h3> -->
+
+                        <p class="subheading">Dr. Jimmy GASORE</p>
+                   
                     </div>
                   </div>
+
                   <div class="speaker-wrap ftco-animate d-flex">
+                    
+                    <div class="text pl-md-5">
+                      <span class="time">09:45am - 10:00am</span>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;"><a>Celebrating 10 Years of EPD and the Launch of Engie's New Product: Engie Energy Access – Empowering the Future of Energy!"</a></h5>
+
+                      
+                   
+                    </div>
+                  </div>
+
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    
+                    <div class="text pl-md-5">
+                      <span class="time">10:00am - 10:30am</span>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">
+                        <a>
+                          Group Photo, Networking Coffee & Exhibition Tour</a
+                        >
+                      </h5>
+                    
+                    </div>
+                  </div>
+
+
+                  
+                  <!-- <div class="speaker-wrap ftco-animate d-flex">
                     
                     <div class="text pl-md-5">
                       <span class="time">10:00am - 11:00am</span>
@@ -586,11 +836,7 @@
                         Driving Energy Transition towards Achieving COP28 Goals and SDG 7: different perspectives
                       </h5>
                      
-                      <!-- <h3 class="speaker-name">
-                        &mdash; <a>Panelist: </a>
-                        <span class="position">CEO RDB, CEO REG, GGGI,
-                          African Development Bank, EPD Executive Chairman</span>
-                      </h3> -->
+                     
                     <br>
                       <div 
                       class="row">                     
@@ -687,135 +933,107 @@
                 
               </div>
                     </div>
-                  </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div>
-                    <div class="text pl-md-5">
-                      <span class="time">11:00am - 11:30am</span>
-                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">
-                        <a>
-                          Group Photo, Networking Coffee & Exhibition Tour</a
-                        >
-                      </h5>
-                      <!-- <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">Moderator</a>
-                        <span class="position"></span>
-                      </h3> -->
-                    </div>
-                  </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
+                  </div> -->
+
+                  <div class="container">
+                    <div class="speaker-wrap ftco-animate d-flex flex-column">
+                      <div class="text pl-md-5 mb-4">
+                        <span class="time">10:30am - 11:30am</span>
+                        <h5><a>Panel Discussion</a></h5>
+                        <h5 style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: darkblue;">
+                          Driving Energy Transition towards Achieving COP28 Goals and SDG 7: Different Perspectives
+                        </h5>
+                      </div>
                   
-                    <div class="text pl-md-5">
-                      <span class="time">11:30am - 12:30pm</span>
-                      <h5><a>Panel Discussion</a></h5>
-                      <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">
-                        Strategies for Developing Green and Sustainable Industry
-                        Policies"
-                      </h5>
-                      <!-- <h3 class="speaker-name">
-                        &mdash; <a>Panelist: </a>
-                        <span class="position">: DG Energy Division/ MININFRA, MoE , RICA, RURA, RSB </span>
-                      </h3> -->
-
-                      <br>
-                      <div 
-                      class="row">                     
-                      <div class="img speaker-img"  style="background-image: url({% static 'images/bosco.jpeg'%}); width:100px; height:100px;"
-                      >                  
+                      <!-- Speaker Info Row -->
+                      <div class="row">
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/divine.jpeg'%});"></div>
+                          <p class="speaker-name">Divine Nakanyange</p>
+                          <span class="position">RDB</span>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/speaker3.png'%});"></div>
+                          <p class="speaker-name">Dr. Ivan Twagirashema</p>
+                          <span class="position">EPD Executive Chairman</span>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/speakers/EDC_MD.jpg'%});"></div>
+                          <p class="speaker-name"> Felix GAKUBA</p>
+                          <span class="position">MD EDCL</span>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/Calorine.jpg'%});"></div>
+                          <p class="speaker-name">Caroline Raes</p>
+                          <span class="position">GGGI Country Representative</span>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/tonui.jpg'%});"></div>
+                          <p class="speaker-name">Patrick K. Tonui</p>
+                          <span class="position">Gogla</span>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/speakers/Shallirosena.jpg'%});"></div>
+                          <p class="speaker-name">Shallirosena Paschal Mbwette</p>
+                          <span class="position">Moderator</span>
+                        </div>
+                      </div>
                     </div>
-                      <div class="img speaker-img"  style="width:40px; height:100px;"
-                      ></div>
-                      <div class="img speaker-img"  style="background-image: url({% static 'images/theophile.jpeg'%}); width:100px; height:100px;"
-                      >                  
-                    </div>
-                    <div class="img speaker-img"  style="width:20px; height:70px;"
-                    ></div>
-                    <div class="img speaker-img"  style="background-image: url({% static 'images/patrick_mugabo.jpeg'%}); width:100px; height:100px;"
-                    >                  
                   </div>
-                  <div class="img speaker-img"  style="width:30px; height:70px;"
-                  ></div>
-                  <div class="img speaker-img"  style="background-image: url({% static 'images/florien_rura.jpeg'%}); width:100px; height:100px;"
-                  >                  
-                </div>
-                <div class="img speaker-img"  style="width:20px; height:70px;"
-                ></div>
-                <div class="img speaker-img"  style="background-image: url({% static 'images/patrick_rsb.jpg'%}); width:100px; height:100px;"
-                >                  
+                  
+
+
+
+
+                 
+
+
+          <div class="container">
+            <div class="speaker-wrap ftco-animate d-flex flex-column">
+              <div class="text pl-md-5 mb-4">
+                <span class="time">11:30am - 12:30pm</span>
+                <h5><a>Panel Discussion</a></h5>
+                <h5 style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: darkblue;">
+                  Strategies for Developing Green and Sustainable Industry Policies
+                </h5>
               </div>
-
-              <div class="img speaker-img"  style="width:20px; height:70px;"
-                ></div>
-                <div class="img speaker-img"  style="background-image: url({% static 'images/pacifique.jpeg'%}); width:100px; height:100px;"
-                >                  
-              </div>
-              
-                  </div>
-                  <div 
-                  class="row">
-            
-                  <div class="" style="font-size: 10px; width:130px; height:70px;"
-                  > 
-                  Jean Bosco MUGIRANEZA <br>
-              
-                 <span class="position" style="font-size: 9px;"> DG Energy Division/ MININFRA</span>
-                
+          
+              <!-- Speaker Info Row -->
+              <div class="row">
+                <div class="col-md-2 col-4 text-center mb-4">
+                  <div class="img speaker-img" style="background-image: url({% static 'images/bosco.jpeg'%});"></div>
+                  <p class="speaker-name">Jean Bosco MUGIRANEZA</p>
+                  <p class="position">DG Energy Division/ MININFRA</p>
                 </div>
-                <div class="img speaker-img"  style="width:20px; height:70px;"
-                ></div>
-                <div class="" style="font-size: 10px;width:110px; height:70px;" 
-                  > 
-                  Theophile DUSENGIMANA
-               
-                  <span class="position" style="font-size: 9px;">Specialist of Social Risk Management/MoE</span>
-                
+                <div class="col-md-2 col-4 text-center mb-4">
+                  <div class="img speaker-img" style="background-image: url({% static 'images/theophile.jpeg'%});"></div>
+                  <p class="speaker-name">Theophile DUSENGIMANA</p>
+                  <p class="position">Specialist of Social Risk Management/MoE</p>
                 </div>
-
-                <div class="img speaker-img"  style="width:20px; height:70px;"
-                ></div>
-                <div class="" style="font-size: 10px; width:100px; height:70px;"
-                  > 
-                  Patrick MUGABO
-                  <span class="position" style="font-size: 10px;">ENGIE Energy Access</span>
-                
+                <div class="col-md-2 col-4 text-center mb-4">
+                  <div class="img speaker-img" style="background-image: url({% static 'images/patrick_mugabo.jpeg'%});"></div>
+                  <p class="speaker-name">Patrick MUGABO</p>
+                  <p class="position">ENGIE Energy Access</p>
                 </div>
-
-                <div class="img speaker-img"  style="width:20px; height:70px;"
-                ></div>
-                <div class="" style="font-size: 10px; width:100px; height:70px;"
-                  > 
-                  Florien Gumyusenge<br>
-                  <span class="position" style="font-size: 10px;">RURA</span>
-                
+                <div class="col-md-2 col-4 text-center mb-4">
+                  <div class="img speaker-img" style="background-image: url({% static 'images/florien_rura.jpeg'%});"></div>
+                  <p class="speaker-name">Florien Gumyusenge</p>
+                  <p class="position">RURA</p>
                 </div>
-
-                <div class="img speaker-img"  style="width:20px; height:70px;"
-                ></div>
-                <div class="" style="font-size: 10px; width:100px; height:70px;"
-                  > 
-                  NZABAMWITA Patrick <br>
-                  <span class="position" style="font-size: 10px;">RSB</span>
-                
+                <div class="col-md-2 col-4 text-center mb-4">
+                  <div class="img speaker-img" style="background-image: url({% static 'images/patrick_rsb.jpg'%});"></div>
+                  <p class="speaker-name">NZABAMWITA Patrick</p>
+                  <p class="position">RSB</p>
                 </div>
-
-                <div class="img speaker-img"  style="width:20px; height:70px;"
-                ></div>
-                <div class="" style="font-size: 10px; width:100px; height:70px;"
-                  > 
-                  Pacifique NIYONKURU
-                  <span class="position" style="font-size: 10px;">Moderator</span>
-                
+                <div class="col-md-2 col-4 text-center mb-4">
+                  <div class="img speaker-img" style="background-image: url({% static 'images/pacifique.jpeg'%});"></div>
+                  <p class="speaker-name">Pacifique NIYONKURU</p>
+                  <p class="position">Moderator</p>
                 </div>
-                
               </div>
             </div>
           </div>
+          
                   <div class="speaker-wrap ftco-animate d-flex">
                     <div
                       class="img speaker-img"
@@ -833,13 +1051,8 @@
                       </h3> -->
                     </div>
                   </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <!-- <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div> -->
+                  <!-- <div class="speaker-wrap ftco-animate d-flex">
+                   
                     <div class="text pl-md-5">
                       <span class="time">01:30pm - 02:00pm</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">
@@ -910,7 +1123,53 @@
               </div>
             
                     </div>
+                  </div> -->
+
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div class="text pl-md-5">
+                      <span class="time">01:30pm - 02:00pm</span>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: darkblue;">
+                        <a>
+                          Presentations by Companies and Partners on Current Initiatives for Enhancing Productive Use of Renewable Energy
+                        </a>
+                      </h5>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/claude.jpeg' %});"></div>
+                          <p class="speaker-name">Jean Claude UWIZEYE</p>
+                          <p class="position">Head of PURE Sub-Sector</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/charles.jpeg' %});"></div>
+                          <p class="speaker-name">Charles Dakalira</p>
+                          <p class="position">REIAMA (Malawi)</p>
+                        </div>
+                       
+                        <!-- <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/placeholder1.jpeg' %});"></div>
+                          <p class="speaker-name">Name Here</p>
+                          <p class="position">Position Here</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/placeholder2.jpeg' %});"></div>
+                          <p class="speaker-name">Name Here</p>
+                          <p class="position">Position Here</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/placeholder3.jpeg' %});"></div>
+                          <p class="speaker-name">Name Here</p>
+                          <p class="position">Position Here</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/placeholder4.jpeg' %});"></div>
+                          <p class="speaker-name">Name Here</p>
+                          <p class="position">Position Here</p>
+                        </div> -->
+                      </div>
+                    </div>
                   </div>
+<!--                   
                   <div class="speaker-wrap ftco-animate d-flex">
                    
                     <div class="text pl-md-5">
@@ -922,12 +1181,8 @@
                           Nexus</a>
                        
                       </h5>
-                      <!-- <h3 class="speaker-name">
-                        &mdash; <a>Panelist: </a>
-                        <span class="position">Mr. Tony NSANGANIRA(TBI), GIZ, Gogla,
-                          MINAGRI, EPD Company 1</span>
-                      </h3> -->
-
+                      
+                    
                       <br>
                 <div 
                       class="row">                     
@@ -1004,7 +1259,7 @@
                 ></div>
                 <div class="" style="font-size: 10px; width:100px; height:70px;"
                   > 
-                  <!-- name -->
+                  
                   <span class="position" style="font-size: 10px;">MINAGRI</span>
                 
                 </div>
@@ -1017,20 +1272,60 @@
                 
                 </div>  
               </div>
-
-
-                          <!-- end of the row -->
-
-
             </div>
-                  </div>
+                  </div> -->
+
                   <div class="speaker-wrap ftco-animate d-flex">
-                    <!-- <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div> -->
+                    <div class="text pl-md-5">
+                      <span class="time">02:00pm - 02:45pm</span>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: darkblue;">
+                        <a>
+                          Advancing the Adoption of Productive Use of Renewable Energy (PURE) within the Energy-Water-Food Nexus
+                        </a>
+                      </h5>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/speaker4.png' %});"></div>
+                          <p class="speaker-name">Mr. Tony NSANGANIRA</p>
+                          <p class="position">TBI</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/methew.jpg' %});"></div>
+                          <p class="speaker-name">Dr. Mathew Matimbwi</p>
+                          <p class="position">TAREA</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/tonui.jpg' %});"></div>
+                          <p class="speaker-name">Patrick K. Tonui</p>
+                          <p class="position">Gogla</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/kizito.png' %});"></div>
+                          <p class="speaker-name">John KIZITO</p>
+                          <p class="position">GIZ</p>
+                        </div>
+
+                        <!-- <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/placeholder.jpeg' %});"></div>
+                          <p class="speaker-name">Name Here</p>
+                          <p class="position">Position Here</p>
+                        </div> -->
+
+
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/claude.jpeg' %});"></div>
+                          <p class="speaker-name">Jean Claude UWIZEYE</p>
+                          <p class="position">Moderator</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+<!-- 
+                  <div class="speaker-wrap ftco-animate d-flex">
+                   
                     <div class="text pl-md-5">
                       <span class="time">02:45pm - 03:15pm</span>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">
@@ -1038,13 +1333,7 @@
                           Presentations by Green Investors and Banks on
                           Ongoing Initiatives for Green Investment</a>
                       </h5>
-                      <!-- <p>Description</p>
-                      <h3 class="speaker-name">
-                        &mdash; <a href="#">MC</a>
-                        <span class="position"></span>
-                      </h3> -->
-
-                      
+  
                       <div 
                             class="row">                     
                             <div class="img speaker-img"  style="background-image: url({% static 'images/tonny.jpeg'%}); width:100px; height:100px;"
@@ -1103,7 +1392,7 @@
                      
                       <div class="" style="font-size: 10px; width:100px; height:70px;"
                         > 
-                        <!-- NAME --> <br>
+                   
                 
                         <span class="position" style="font-size: 10px;"></span>
                       
@@ -1112,38 +1401,50 @@
                       ></div>
                       <div class="" style="font-size: 10px;width:110px; height:70px;" 
                       > 
-                      <!-- NAME -->
+                 
                       <br>
                       <span class="position" style="font-size: 9px;"></span>
                     
                     </div>
       
                   
-                      <div class="img speaker-img"  style="width:50px; height:70px;"
-                      ></div>
-                      <div class="" style="font-size: 10px; width:100px; height:70px;"
-                        > 
-                        <!-- name -->
-                         <br>
-                        <span class="position" style="font-size: 10px;"></span>
                       
-                      </div>
-                      <div class="img speaker-img"  style="width:30px; height:70px;"
-                      ></div> 
-                      <div class="" style="font-size: 10px; width:100px; height:70px;"
-                        > 
-                        
-
-                        <span class="position" style="font-size: 10px;"></span>
-                      
-                      </div>  
                     </div>
 
 
 
 
+                    </div>
+                  </div> -->
+
+
+                  <div class="speaker-wrap ftco-animate d-flex">
+                    <div class="text pl-md-5">
+                      <span class="time">02:45pm - 03:15pm</span>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: darkblue;">
+                        <a>
+                          Presentations by Green Investors and Banks on Ongoing Initiatives for Green Investment
+                        </a>
+                      </h5>
+                     <br>
+                      <div class="row">
+                       
+
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/tonny.jpeg' %});"></div>
+                          <p class="speaker-name">Tony SHYAKA</p>
+                          <p class="position">Rwanda Green Fund</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/adelphine.png' %});"></div>
+                          <p class="speaker-name">ADELPHINE MUDASHAMAGIRA, MSC</p>
+                          <p class="position">Equity Bank</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  
+<!-- 
                   <div class="speaker-wrap ftco-animate d-flex">
                     
                     <div class="text pl-md-5">
@@ -1158,11 +1459,7 @@
                         COP28 Goals and Achieving SDG 7
                       </h5>
                     
-                      <!-- <h3 class="speaker-name">
-                        &mdash; <a>Panelist: </a>
-                        <span class="position">FONERWA, World Bank,Equity Bank, I&M Bank, BK, BPR,
-                          </span>
-                      </h3> -->
+                    
 
                       <br>
                       <div 
@@ -1261,25 +1558,68 @@
 
 
                     </div>
+                  </div> -->
+
+
+                  <div class="speaker-wrap ftco-animate d-flex flex-column">
+                    <div class="text pl-md-5">
+                      <span class="time">03:15pm - 04:00pm</span>
+                      <h5>
+                        <a>Financial Institutions Panel Discussion (Developers & Banks)</a>
+                      </h5>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: darkblue;">
+                        Green Investment in Energy Transition: Aligning with COP28 Goals and Achieving SDG 7
+                      </h5>
+                  
+                      <br>
+                      <div class="row">
+                        <!-- Speaker Details with Photos -->
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/david.jpeg' %});"></div>
+                          <p class="speaker-name">David L. Ross</p>
+                          <p class="position">Founder and MD of Stratera Capital</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/alida_ikuzwe1.jpeg' %});"></div>
+                          <p class="speaker-name">Alida IKUZWE</p>
+                          <p class="position">BRD</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/silvie.jpeg' %});"></div>
+                          <p class="speaker-name">Sylvie ISINGIZWE</p>
+                          <p class="position">Head of Professional Services, Research and Scientists Sub-Sector</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/kirezi.png' %});"></div>
+                          <p class="speaker-name">Ms. Alice Kirezi</p>
+                          <p class="position">Equity Bank</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/ines.png' %});"></div>
+                          <p class="speaker-name">UMUTONI Inès</p>
+                          <p class="position">Bank of Kigali</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/sosthene.jpeg' %});"></div>
+                          <p class="speaker-name">Sosthene MUBERA</p>
+                          <p class="position">Moderator</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="speaker-wrap ftco-animate d-flex">
-                    <!-- <div
-                      class="img speaker-img"
-                      style="
-                        background-image: url(images/speakers/speaker4.jpeg);
-                      "
-                    ></div> -->
+                  
+                  
+
+
+                  <!-- <div class="speaker-wrap ftco-animate d-flex">
+
+
                     <div class="text pl-md-5">
                       <span class="time">04:00pm - 05:00pm</span>
                       <h5><a>Just Transition and Gender</a></h5>
                       <h5 style="font-family: Arial, Helvetica, sans-serif;font-size:20px; color: darkblue;">
                         Empowering Women for an Inclusive Energy Transition
                       </h5>
-                      <!-- <h3 class="speaker-name">
-                        &mdash; <a>Panelist:</a>
-                        <span class="position">Allen MUNGANYINKA, Alain Harelimana</span>
-                      </h3> -->
-
                       <br>
                       <div 
                             class="row">                     
@@ -1323,9 +1663,6 @@
                        <span class="position" style="font-size: 9px;">Head of Energy Female inclusion Sub-Sector</span>
                       
                       </div>
-      
-      
-      
                       <div class="img speaker-img"  style="width:50px; height:70px;"
                       ></div>
                      
@@ -1341,8 +1678,7 @@
                       > 
                       Chikuku Katebe
                       
-                      <span class="position" style="font-size: 9px;">ZARENA</span>
-                    
+                      <span class="position" style="font-size: 9px;">ZARENA</span>                 
                     </div>
       
                     
@@ -1375,8 +1711,58 @@
                     </div>
       
                     </div>
+                  </div> -->
+                  
+                  <div class="speaker-wrap ftco-animate d-flex flex-column">
+                    <div class="text pl-md-5">
+                      <span class="time">04:00pm - 05:00pm</span>
+                      <h5><a>Just Transition and Gender</a></h5>
+                      <h5 style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: darkblue;">
+                        Empowering Women for an Inclusive Energy Transition
+                      </h5>
+                  
+                      <br>
+                      <div class="row">
+                        <!-- Speaker Details with Photos -->
+                        <div class="col-md-2 col-4  text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/allen.jpeg' %});"></div>
+                          <p class="speaker-name">Allen MUNGANYINKA</p>
+                          <p class="position">Head of Energy Female inclusion Sub-Sector</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/doreen1.jpeg' %});"></div>
+                          <p class="speaker-name">Doreen Orishaba</p>
+                          <p class="position">MD - BasiGo Rwanda</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/chikuku.jpeg' %});"></div>
+                          <p class="speaker-name">Chikuku Katebe</p>
+                          <p class="position">ZARENA</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/alain.png' %});"></div>
+                          <p class="speaker-name">Alain Harelimana</p>
+                          <p class="position">Solektra</p>
+                        </div>
+                        <div class="col-md-2 col-4 text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/mercy.jpg' %});"></div>
+                          <p class="speaker-name">Mercy Rose</p>
+                          <p class="position">Mercy Corps</p>
+                        </div>
+                        <div class="col-md-2 col-4  text-center mb-4">
+                          <div class="img speaker-img" style="background-image: url({% static 'images/benigne.jpeg' %});"></div>
+                          <p class="speaker-name">Bénigne Mugwaneza</p>
+                          <p class="position">Moderator</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  </div>
+                  
+
+
+
+                
+                </div>
 
                  
 
