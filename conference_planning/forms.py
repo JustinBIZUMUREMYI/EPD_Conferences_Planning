@@ -1,7 +1,9 @@
 from django import forms
 from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship, FloorPlan, BookAccessory,BookBooth, Booth_space 
 import re
-from .models import Attendees 
+from .models import Attendees, Interns
+from django.core.exceptions import ValidationError
+
 
 class registerForm(forms.Form):
     name = forms.CharField(max_length=200, required=True)
@@ -171,3 +173,48 @@ class BookBoothForm(forms.ModelForm):
         for choice in self.fields['Booth_space'].choices:
             if choice[0] in booked_booths:
                 self.fields['Booth_space'].widget.attrs.update({'disabled': 'disabled'})
+
+
+
+class InternsForm(forms.ModelForm):
+    class Meta:
+        model = Interns
+        fields = ['Host_Company','Full_Name','Email','ID_number', 'Phone','Country','University', 'Education_level' , 'Qualification', 'Graduation_date','Degree', 'Resume', 'Other_documents']
+    Graduation_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    
+     # Custom validation for phone number
+    def clean_phone(self):
+        phone = self.cleaned_data.get('Phone')
+        if phone:
+            # Validate phone number using regex (for example, it must start with + and have 9-15 digits)
+            phone_regex = r'^\+?\d{9,15}$'
+            if not re.match(phone_regex, phone):
+                raise ValidationError('Enter a valid phone number, starting with "+" followed by 9 to 15 digits.')
+        else:
+            raise ValidationError('Phone number is required.')
+        return phone
+
+    # Custom validation for ID number
+    def clean_ID_number(self):
+        id_number = self.cleaned_data.get('ID_number')
+        if id_number:
+            if not id_number.isdigit() or len(id_number) != 16:  # Example: Rwanda ID numbers are 16 digits
+                raise ValidationError('Enter a valid 16-digit ID number.')
+        else:
+            raise ValidationError('ID number is required.')
+        return id_number
+    
+    def clean_Email(self):
+        email = self.cleaned_data.get('Email')
+        if Interns.objects.filter(Email=email).exists():
+            raise forms.ValidationError('An intern with this email already exists.')
+        return email
+
+    def clean_ID_number(self):
+        id_number = self.cleaned_data.get('ID_number')
+        if Interns.objects.filter(ID_number=id_number).exists():
+            raise forms.ValidationError('An intern with this ID number already exists.')
+        return id_number
+
+
+    

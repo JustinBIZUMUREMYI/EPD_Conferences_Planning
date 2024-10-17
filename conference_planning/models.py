@@ -314,6 +314,37 @@ class PreviousConferences(models.Model):
         return self.edition
 
 
+# the table for the professional internship 
+
+class Interns(models.Model):
+    Host_Company = models.ForeignKey(Testimonial, on_delete=models.CASCADE, default=1)
+    STATUS_CHOICES = [
+        ('advanced diploma', 'Advanced Diploma'),
+        ('bachelor degree', 'Bachelor Degree'),
+        ('master degree', 'Master Degree'),
+    
+    ]
+    Full_Name = models.CharField(max_length=250)
+    Email = models.EmailField()
+    ID_number = models.CharField(max_length=50)
+    Phone = models.CharField(max_length=20)
+    Country = models.CharField(max_length=100)
+    University = models.CharField(max_length=100)
+    Education_level = models.CharField(max_length=100, choices=STATUS_CHOICES, default='choose your category') 
+    Qualification = models.CharField(max_length=100)  
+    Graduation_date = models.DateField()
+    Degree = models.FileField(upload_to='uploads/')
+    Resume = models.FileField(upload_to='uploads/')
+    Other_documents = models.FileField(upload_to='uploads/', blank=True, null=True)
+    registered_on = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        verbose_name_plural = 'Interns'
+        
+    def __str__(self) -> str:
+        return self.Full_Name
+
+    
+
 
 
 

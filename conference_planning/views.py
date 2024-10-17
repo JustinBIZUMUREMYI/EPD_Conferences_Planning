@@ -2,9 +2,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm, BookAccessoryForm, BookBoothForm 
+from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm, BookAccessoryForm, BookBoothForm, InternsForm 
 from django.contrib import messages
-from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory,PreviousConferences  
+from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory,PreviousConferences, Interns  
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, TemplateView, DetailView
 from django.views.generic.edit import FormView
@@ -779,6 +779,70 @@ def export_panelists_to_excel(request):
 
     wb.save(response)
     return response
+
+
+
+ 
+class Register_Interns(CreateView):
+    form_class = InternsForm
+    success_url = reverse_lazy('administration:internship_Application')
+    template_name = 'conference_planning/register_interns.html'
+    model = Interns
+
+# class interns_list(TemplateView):
+#    template_name = 'conference_planning/register_interns.html'
+
+#    def get_context_data(self, **kwargs):
+
+
+#     context = super().get_context_data(**kwargs)
+
+#         # Adding two different contexts
+#     context['members_list'] = Testimonial.objects.all()  # First context
+#     context['documents'] = Document.objects.filter(title='AESG')  # Second context
+        
+#     return context
+
+class interns_list(ListView):
+    model = Interns  # Define the model that should be listed
+    template_name = 'conference_planning/register_interns.html'
+    context_object_name = 'interns'  # Name for the list of interns in the template
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adding two additional contexts
+        context['members_list'] = Testimonial.objects.all()  # First context
+        context['documents'] = Document.objects.filter(title='AESG')  # Second context
+        return context
+
+
+class submit_application(CreateView):
+    form_class = InternsForm
+    success_url = reverse_lazy('internship_Application')
+    template_name = 'conference_planning/regitration_form.html'
+    model = Interns
+
+    def form_valid(self, form):
+      
+        response = super().form_valid(form)
+        
+        # Add a success message to be displayed after form submission
+        messages.success(self.request, "Thank you for your application! We will be in touch with you shortly.")
+        
+        return response
+        
+
+  
+
+
+
+
+
+
+
+
+
+
 
 
 # # exporting the list of speakers

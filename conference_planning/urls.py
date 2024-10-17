@@ -53,6 +53,8 @@ admin_urls = [
     # medias upload
     path('videos', views.videos.as_view(), name = 'video'),
     path('photos', views.photos.as_view(), name = 'photo'),
+    path('internship', views.Register_Interns.as_view(), name = 'internship_Application'),
+
 
 
 ]
@@ -61,6 +63,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('videos/', views.previous_videos, name = 'videos'),
     path('photos/', views.previous_photos, name = 'photos'),
+    path('Internship_Application/', views.interns_list.as_view(), name = 'internship_Application'),
+    path('Submit_application/', views.submit_application.as_view(), name = 'submit_application'),
     path('agenda/', views.agenda, name='agenda'),
     path('speakers/', views.speakers, name='speakers'),
     path('sponsors/', views.sponsors, name='sponsors'),
