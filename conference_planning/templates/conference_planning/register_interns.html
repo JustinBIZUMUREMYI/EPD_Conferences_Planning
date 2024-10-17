@@ -309,9 +309,9 @@ h1.heading {
 
          
             <div class="row">
-                
+                {% for company in members_list %}
                 <div class="col-md-4">
-                    {% for company in members_list %}
+                   
                  <div class="card mb-3" style="max-width: 540px;">
                      <div class="row g-0">
                        <div class="col-md-4">
@@ -334,12 +334,13 @@ h1.heading {
                        </div>
                      </div>
                    </div>
-                   {% endfor %}
+                  
                   
                 </div>
-              
+                {% endfor %}
 
                    
+             </div>
              </div>
                   
             
