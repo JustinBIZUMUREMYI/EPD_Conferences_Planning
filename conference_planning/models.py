@@ -346,7 +346,7 @@ class Interns(models.Model):
     
 
 class internship_documents(models.Model):
-    company = models.CharField(max_length=100)
+    company_name = models.CharField(max_length=100)
     title = models.CharField(max_length=100, null=True)
     logo = models.ImageField(upload_to='images/')
     document = models.FileField(upload_to='uploads/')
