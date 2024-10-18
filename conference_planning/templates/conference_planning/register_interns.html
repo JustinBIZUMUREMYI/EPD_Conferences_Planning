@@ -179,7 +179,7 @@ h1.heading {
         />
 
         <h3 class="heading" style="font-size: 20px;color:darkblue;">
-            EPD Member Companies
+            Welcome to the Internship Program!
         </h3>
         <a
           class="navbar-brand animate-charcter"
@@ -284,7 +284,10 @@ h1.heading {
         <div class="container-fostrap ">
         
               
-             
+             <p style="border: 1px solid darkblue; background-color:green;color: white;">
+                We're excited to have you here. Please take a moment to review the list of EPD member companies and select the one that best aligns with your career goals and interests. 
+                Each company offers unique opportunities for growth and learning. Choose wisely, and good luck!</p>
+             <br>
 
                 {% if messages %}
                 <div class="container mt-5">
@@ -301,24 +304,25 @@ h1.heading {
         </div>
     </div>
  {% endif %} 
-
+ <br>
+ <br>
          
             <div class="row">
-                {% for company in members_list %}
+                {% for company in interns %}
                 <div class="col-md-4">
                    
                  <div class="card mb-3" style="max-width: 540px;">
                      <div class="row g-0">
                        <div class="col-md-4">
-                         <img src="{{company.picture.url}}" class="img-fluid rounded-start" alt="..." height="300px" width="300px">
+                         <img src="{{company.logo.url}}" class="img-fluid rounded-start" alt="..." height="300px" width="300px">
                        </div>
                        <div class="col-md-8">
                          <div class="card-body">
                            <h5 class="card-title" style="color: darkblue;font-size: 15px;">{{company.names}}</h5>
-                           <p class="card-text">{{company.testimony|slice:":100"}} ...... <i> 
-                            {% for  document in documents %}
-                            <p > <a href="{{ document.pdf_document.url }}">Read More</a></p>
-                            {% endfor %}
+                           <p class="card-text">{{company.summary|slice:":100"}} ...... <i> 
+                         
+                            <p > <a href="{{ company.document.url }}">Read More</a></p>
+                        
                            
                           
                             

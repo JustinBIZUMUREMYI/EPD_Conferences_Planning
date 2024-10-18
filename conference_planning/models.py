@@ -345,6 +345,18 @@ class Interns(models.Model):
 
     
 
+class internship_documents(models.Model):
+    company = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, null=True)
+    logo = models.ImageField(upload_to='images/')
+    document = models.FileField(upload_to='uploads/')
+    summary = models.TextField(max_length=10000)
+
+    def __str__(self) -> str:
+        return self.company
+
+
+
 
 
 
