@@ -353,7 +353,7 @@ class internship_document(models.Model):
     summary = models.TextField(max_length=10000)
 
     def __str__(self) -> str:
-        return self.company
+        return self.company_name
 
 
 
