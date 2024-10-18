@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm, BookAccessoryForm, BookBoothForm, InternsForm 
 from django.contrib import messages
-from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory,PreviousConferences, Interns, internship_documents  
+from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory,PreviousConferences, Interns, internship_document  
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, TemplateView, DetailView
 from django.views.generic.edit import FormView
@@ -804,7 +804,7 @@ class Register_Interns(CreateView):
 #     return context
 
 class interns_list(ListView):
-    model = internship_documents  # Define the model that should be listed
+    model = internship_document  # Define the model that should be listed
     template_name = 'conference_planning/register_interns.html'
     context_object_name = 'interns'  # Name for the list of interns in the template
 
