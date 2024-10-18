@@ -316,8 +316,18 @@ class PreviousConferences(models.Model):
 
 # the table for the professional internship 
 
+class internship_document(models.Model):
+    company_name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, null=True)
+    logo = models.ImageField(upload_to='images/')
+    document = models.FileField(upload_to='uploads/')
+    summary = models.TextField(max_length=10000)
+
+    def __str__(self) -> str:
+        return self.company_name
+
 class Interns(models.Model):
-    Host_Company = models.ForeignKey(Testimonial, on_delete=models.CASCADE, default=1)
+    Host_Company = models.ForeignKey(internship_document, on_delete=models.CASCADE)
     STATUS_CHOICES = [
         ('advanced diploma', 'Advanced Diploma'),
         ('bachelor degree', 'Bachelor Degree'),
@@ -345,15 +355,7 @@ class Interns(models.Model):
 
     
 
-class internship_document(models.Model):
-    company_name = models.CharField(max_length=100)
-    title = models.CharField(max_length=100, null=True)
-    logo = models.ImageField(upload_to='images/')
-    document = models.FileField(upload_to='uploads/')
-    summary = models.TextField(max_length=10000)
 
-    def __str__(self) -> str:
-        return self.company_name
 
 
 
