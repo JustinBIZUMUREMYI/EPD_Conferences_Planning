@@ -33,8 +33,7 @@ admin_urls = [
     path('export_internationals/', views.export_internationals_to_excel, name='export_internationals_to_excel'),
     path('export_speakers/', views.export_speakers_to_excel, name='export_speakers_to_excel'),
     path('export_panelists/', views.export_panelists_to_excel, name='export_panelists_to_excel'),
-
-
+    path('export_applicants/', views.export_applicants_to_excel, name='export_applicants_to_excel'),
     # report urls
     path('partners_list', views.partners_list.as_view(), name = 'partners_list'),
     path('sponsors_list', views.sponsors_list.as_view(), name = 'sponsors_list'),
@@ -49,6 +48,7 @@ admin_urls = [
     path('locals', views.locals, name = 'locals'),
     path('internationls', views.internationals, name = 'internationals'),
     path('students', views.students, name = 'students'),
+    path('internship', views.interns, name='interns'),
 
     # medias upload
     path('videos', views.videos.as_view(), name = 'video'),

@@ -13,6 +13,7 @@ from django.urls import reverse_lazy
 from django.core.exceptions import ValidationError
 import openpyxl
 from django.http import HttpResponse
+from datetime import datetime
 
 
 def index(request):
@@ -832,8 +833,62 @@ class submit_application(CreateView):
         return response
         
 
-  
+def interns(request):
+    interns_list = Interns.objects.all().order_by('id')
+    context = {'interns': interns_list}
+    
+    return render(request, 'conference_planning/administration/internship.html', context)
 
+  
+# exporting the list of the interns
+def export_applicants_to_excel(request):
+    # Create an in-memory output file for the new workbook.
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=Applicants.xlsx'
+
+    # Create a workbook and add a worksheet.
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "The list of Applicants"
+
+    # Add column headers
+    columns = ['Name', 'Phone Number','Email', 'University', 'Education Level', 'Qualification','Graduation Date','Campany','Degree','Resume','Additional Documents', 'Application Date']
+    for col_num, column_title in enumerate(columns, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = column_title
+
+    # Fetch data from the database
+    interns = Interns.objects.all()
+    for intern_num, intern in enumerate(interns, 2):
+        ws.cell(row=intern_num, column=1, value=intern.Full_Name)
+        ws.cell(row=intern_num, column=2, value=intern.Phone)
+        ws.cell(row=intern_num, column=3, value=intern.Email)
+        ws.cell(row=intern_num, column=4, value=intern.University)
+        ws.cell(row=intern_num, column=5, value=intern.Education_level)
+        ws.cell(row=intern_num, column=6, value=intern.Qualification)
+        ws.cell(row=intern_num, column=7, value=intern.Graduation_date)
+
+        ws.cell(row=intern_num, column=8, value=str(intern.Host_Company))
+        ws.cell(row=intern_num, column=9, value=intern.Degree.name if intern.Degree else 'No file uploaded')
+        
+        # Get Resume and Additional Documents Names
+        ws.cell(row=intern_num, column=10, value=intern.Resume.name if intern.Resume else 'No file uploaded')
+        ws.cell(row=intern_num, column=11, value=intern.Other_documents.name if intern.Other_documents else 'No file uploaded')
+
+        # Handle registered_on (checking if it's timezone-aware)
+        if isinstance(intern.registered_on, datetime):
+            if intern.registered_on.tzinfo is not None:  # If timezone-aware
+                registered_on_naive = intern.registered_on.astimezone().replace(tzinfo=None)
+            else:
+                registered_on_naive = intern.registered_on
+            ws.cell(row=intern_num, column=12, value=registered_on_naive.strftime('%Y-%m-%d %H:%M:%S'))
+        else:
+            ws.cell(row=intern_num, column=12, value='')
+
+    wb.save(response)
+    return response
 
 
 
