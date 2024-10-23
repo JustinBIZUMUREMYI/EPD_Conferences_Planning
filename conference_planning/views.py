@@ -406,6 +406,7 @@ def dashboard(request):
     sponsor_total = Sponsor.objects.all().count()
     speaker_total = Speaker.objects.all().count()
     panalist_total = Panalist.objects.all().count()
+    interns_total = Interns.objects.all().count()
     locals = Attendees.objects.filter(attendee_type='Local').count()
     internationals = Attendees.objects.filter(attendee_type='International').count()
     students = Attendees.objects.filter(attendee_type='Student').count()
@@ -417,7 +418,9 @@ def dashboard(request):
                'total_partner': partner_total,
                'total_sponsor':sponsor_total,
                'total_speaker':speaker_total,
-               'total_panelist':panalist_total}
+               'total_panelist':panalist_total,
+               'interns_total':interns_total,
+               }
     return render(request, 'conference_planning/administration/index.html', context)
 
 
