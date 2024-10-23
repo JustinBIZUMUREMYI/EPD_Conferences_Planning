@@ -426,7 +426,14 @@
                                             <td>{{ intern.Host_Company}}</td>
                                             <td>{{ intern.Degree}} - <a href="{{intern.Degree.url}}">Download</a></td>
                                             <td>{{ intern.Resume}} - <a href="{{intern.Resume.url}}">Download</a></td>
-                                            <td>{{ intern.Other_documents}} - <a href="{{intern.Other_documents.url}}">Download</a></td>
+                                            <td>
+                                                {% if intern.other_documents %}
+                                                    {{ intern.other_documents }} - <a href="{{ intern.other_documents.url }}">Download</a>
+                                                {% else %}
+                                                    <p style="color: red;"> No Documents Provided</p>
+                                                {% endif %}
+                                            </td>
+                                            
                                             <td>{{ intern.registered_on}}</td>
                                          
                         
