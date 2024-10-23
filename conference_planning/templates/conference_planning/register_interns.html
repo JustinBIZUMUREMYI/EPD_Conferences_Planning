@@ -333,7 +333,15 @@ h1.heading {
                             
                         </i></p>
                            <p class="card-text"><b style="color: darkblue;">Position: </b> <small class="text-muted">{{company.title}}</small></p>
+
+                           {% if company.company_name != 'EPD'%}
                            <p class="" style="color: red;"> Application closed </p> </a>
+
+                           {% else %}
+                           <p > <a href="{%url 'submit_application' %}"><button type="button" class="btn btn-primary">Apply</button></p> </a>
+                           {%endif%}
+
+                           
                         </div>
                        </div>
                      </div>

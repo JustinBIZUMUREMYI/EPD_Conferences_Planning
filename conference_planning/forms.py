@@ -1,5 +1,5 @@
 from django import forms
-from .models import Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship, FloorPlan, BookAccessory,BookBooth, Booth_space 
+from .models import internship_document, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Event, Agenda, Event_days,Sponsorships, Document, BookSponsorship, FloorPlan, BookAccessory,BookBooth, Booth_space 
 import re
 from .models import Attendees, Interns
 from django.core.exceptions import ValidationError
@@ -181,6 +181,13 @@ class InternsForm(forms.ModelForm):
         model = Interns
         fields = ['Host_Company','Full_Name','Email','ID_number', 'Phone','Country','University', 'Education_level' , 'Qualification', 'Graduation_date','Degree', 'Resume', 'Other_documents']
     Graduation_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        # Display only companies with the name 'EPD'
+        self.fields['Host_Company'].queryset = internship_document.objects.filter(company_name='EPD')
     
      # Custom validation for phone number
     def clean_phone(self):
