@@ -1,0 +1,77 @@
+{% load static %}
+{% include 'conference_planning/includes/nav.html' %}
+<section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;"
+
+>
+
+  <img src="{% static 'assets/img/exhibition.jpg'%}" alt="" data-aos="fade-in" class="" style="max-height: 500px;width: 100%; object-fit: cover; ">
+
+  <div class="container d-flex flex-column align-items-center text-center mt-auto">
+    <h2 data-aos="fade-up" data-aos-delay="100" class="" style="font-size: 40px; margin: 30px 0;"><br><span>RE4SG</span> Corporate Sicial Responsibility</h2>
+  </div>
+  
+
+</section><!-- /Hero Section -->
+    <section class="ftco-section bg-light">
+      <div class="container">
+      
+
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Light up School and health facility</h2>
+        </div>
+        <div class="ftco-search">
+          <div class="row" >
+          <div class="col-xs-12 col-sm-8">
+            <h4 class="mb-4" style="font-weight: 600;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> 
+            Support Our Initiative at the 5th Edition of the Renewable Energy for Sustainable Growth (RE4SG) Conference & Exhibition.</h4>
+            <b>Off-Grid Solar Electrification for a School and Health Facility in Rwanda
+            </b>
+
+           <p>Access to electricity remains a major challenge in many rural and off-grid communities in Rwanda, hindering both educational progress and the delivery of quality healthcare services. Schools are unable to adopt modern teaching tools, while health facilities struggle to preserve essential medicines and operate basic diagnostic equipment. The absence of reliable electricity also limits administrative efficiency and slows overall community development.
+
+            To address these challenges, the Energy Private Developers Association (EPD) proposes the implementation of a clean, reliable, and sustainable solar energy system to electrify one school and one health center located in an off-grid region of Rwanda. This project directly supports Rwanda’s national objectives to expand rural electrification and promote renewable energy as a sustainable solution for development.
+            </p>
+
+            <ul type = '1'>
+              <li>Electrify the school, to enhance the quality of education through access to digital learning tools and adequate lighting.
+              </li>
+              <li>Provide solar power to the health facility, enabling reliable lighting, water pumping, operation of diagnostic equipment, and mobile phone charging.
+              </li>
+              <li>Reduce dependence on diesel generators and kerosene, thereby cutting operational costs and minimizing environmental and health impacts.
+              </li>
+
+            </ul>
+
+            <b>This project offers a transformative, sustainable solution for education and healthcare delivery in Off-grid zone in Rwanda.</b>
+
+          </div>
+
+          <div class="col-xs-12 col-sm-4 bg-green  text-center">
+            <img
+          src="{% static 'images/lighting_homes/lighting2.jpeg' %}"
+          alt="..."
+            width="400"
+            height="650"
+        />
+        
+            
+          </div>
+          </div>
+          <div class="row">
+            {% for  document in documents %}
+            <div class="col-md-12 text-center">
+
+             <!-- <a href="{{ document.pdf_document.url }}" target="_blank">Read More >></a> -->
+                
+            
+            </div>
+          
+        
+            {% endfor %}
+    
+        </div>
+        <br>
+        </div>
+      </div>
+    </section>
+    {% include 'conference_planning/includes/footer.html'%}

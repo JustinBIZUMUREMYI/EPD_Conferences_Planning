@@ -8,8 +8,8 @@ from django.conf import settings
 
 
 registration_patterns = [
-    path('local/', views.local_registration, name='local_registration'),
-    path('international/', views.international_registration, name='international_registration'),
+    path('attendees/', views.local_registration, name='attendees_registeration'),
+    # path('international/', views.international_registration, name='international_registration'),
     path('students/', views.students_registration, name='students_registration'),
     path('registration/', views.registration_froms.as_view(), name = 'registration'),
     
@@ -67,11 +67,13 @@ urlpatterns = [
     path('Submit_application/', views.submit_application.as_view(), name = 'submit_application'),
     path('agenda/', views.agenda, name='agenda'),
     path('speakers/', views.speakers, name='speakers'),
+    path('speakers_details/<int:speaker_id>', views.speakers_details, name='speaker_details'),
+    path('panelist_details/<int:panelist_id>', views.panelist_details, name='panelist_details'),
     path('sponsors/', views.sponsors, name='sponsors'),
     path('partners/', views.official_partners, name = 'partners'),
     path('sponsorships/', views.sponsorship_packages, name = 'sponsorships'),
     path('exhbitions/', views.exhbition, name = 'exhbition'),
-    path('lightinghomes/', views.lighting_homes, name = 'lighting_homes'),
+    path('csr/', views.csr, name = 'csr'),
     path('firstedition/', views.First_edition, name='first_edition'),
     path('secondedition/', views.Second_edition, name='second_edition'),
     path('thirdedition/', views.Third_edition, name='third_edition'),

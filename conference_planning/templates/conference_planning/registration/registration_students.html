@@ -55,9 +55,13 @@
     <div class="main">
       <!-- Attend Registration Form -->
       <section class="signup">
+        
         <div class="container">
+            <img src="{% static 'images/HEADER.png' %}" alt="Description of the image" class="sub-heading">
           <div class="signup-content">
             <div class="signup-form">
+                
+
               <h2
                 class="form-title"
                 style="color: darkblue; font-size: 20px; font-weight: bold"
@@ -376,14 +380,24 @@
                   <label for="student_card"
                     ><i class="zmdi zmdi-card"></i
                   ></label>
-                  <input
+                  <!-- <input
                     type="number"
                     name="student_number"
                     id="student_card"
                     value="{{ form.student_number.value }}"
                     placeholder="Your student number"
                     required
-                  />
+                  /> -->
+                  <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      pattern="^[0-9]{6,15}$"
+                      title="Enter a valid phone number (6 to 15 digits)"
+                      value="{{ form.phone.value }}"
+                      placeholder="Phone number (digits only)"
+                      required
+                    />
                 </div>
 
                 {% if form.student_number.errors %}
@@ -433,7 +447,7 @@
                 {% endif %}
 
                 <div class="form-group">
-                  <input
+                    <input
                     type="checkbox"
                     name="agree_term"
                     id="agree-term"
@@ -441,6 +455,8 @@
                     style="margin: 7px 10px 0px 0px"
                     {% if form.agree_term.value %} checked {% endif %}
                     required
+                    oninvalid="this.setCustomValidity('You must agree to the statements before submitting.')"
+                    oninput="this.setCustomValidity('')"
                   />
                   <label for="agree-term" class="label-agree-term"
                     ><span><span></span></span>I agree all statements in

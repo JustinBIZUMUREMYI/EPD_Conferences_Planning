@@ -57,13 +57,14 @@
       <!-- Attend Registration Form -->
       <section class="signup">
         <div class="container">
+           <img src="{% static 'images/HEADER.png' %}" alt="Description of the image" class="sub-heading">
           <div class="signup-content">
             <div class="signup-form">
               <h2
                 class="form-title"
                 style="color: darkblue; font-size: 20px; font-weight: bold"
               >
-                Local - Registration
+                Participant - Registration
               </h2>
               <form
                 method="POST"
@@ -374,13 +375,24 @@
                   </select>
 
                   <div class="form-group" style="width: 100%">
-                    <input
+                    <!-- <input
                       style="padding: 5px"
                       type="text"
                       name="phone"
                       id="phone"
                       value="{{ form.phone.value }}"
                       placeholder="Phone number must contain only digits after the country code"
+                      required
+                    /> -->
+
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      pattern="^[0-9]{6,15}$"
+                      title="Enter a valid phone number (6 to 15 digits)"
+                      value="{{ form.phone.value }}"
+                      placeholder="Phone number (digits only)"
                       required
                     />
                   </div>

@@ -1,0 +1,43 @@
+{% load static %}
+{% include 'conference_planning/includes/nav.html' %}
+<section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;"
+
+>
+
+ <img src="{% static 'assets/img/second.jpg'%}" alt="" data-aos="fade-in" class="" style="max-height: 500px;width: 100%; object-fit: cover; ">
+
+ <div class="container d-flex flex-column align-items-center text-center mt-auto">
+   <h2 data-aos="fade-up" data-aos-delay="100" class="" style="font-size: 40px; margin: 30px 0;"><br><span>RE4SG</span> Speaker Details</h2>
+ </div>
+ 
+
+</section><!-- /Hero Section -->
+
+    <!-- Events Section -->
+    <section id="events" class="events section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+          <div class="col-md-6">
+            <img src="{{ speaker.picture.url }}" alt="Speaker" class="img-fluid">
+          </div>
+
+          <div class="col-md-6">
+            <div class="details">
+              <h2>{{ speaker.names }}</h2>
+             
+              <p>{{ speaker.bio }}</p>
+
+               
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Events Section -->
+
+    {% include 'conference_planning/includes/footer.html' %}
+
+  

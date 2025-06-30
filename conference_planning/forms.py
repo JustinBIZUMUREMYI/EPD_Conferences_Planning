@@ -24,6 +24,15 @@ class registerForm(forms.Form):
         if not agree_term:
             raise forms.ValidationError("You need to accept the terms of conditions to continue.")
         return agree_term
+    
+    def clean_phone(self):
+        phone = self.cleaned_data['phone']
+        if not phone.isdigit():
+            raise forms.ValidationError("Phone number must contain digits only.")
+        if len(phone) < 6 or len(phone) > 15:
+            raise forms.ValidationError("Phone number must be between 6 and 15 digits.")
+        return phone
+
 
     # def clean_identity(self):
     #     identity = self.cleaned_data.get('identity')
@@ -191,14 +200,11 @@ class InternsForm(forms.ModelForm):
     
      # Custom validation for phone number
     def clean_phone(self):
-        phone = self.cleaned_data.get('Phone')
-        if phone:
-            # Validate phone number using regex (for example, it must start with + and have 9-15 digits)
-            phone_regex = r'^\+?\d{9,15}$'
-            if not re.match(phone_regex, phone):
-                raise ValidationError('Enter a valid phone number, starting with "+" followed by 9 to 15 digits.')
-        else:
-            raise ValidationError('Phone number is required.')
+        phone = self.cleaned_data['phone']
+        if not phone.isdigit():
+            raise forms.ValidationError("Phone number must contain digits only.")
+        if len(phone) < 6 or len(phone) > 15:
+            raise forms.ValidationError("Phone number must be between 6 and 15 digits.")
         return phone
 
     # Custom validation for ID number

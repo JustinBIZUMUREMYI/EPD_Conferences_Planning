@@ -1,7 +1,7 @@
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm, BookAccessoryForm, BookBoothForm, InternsForm 
 from django.contrib import messages
 from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory,PreviousConferences, Interns, internship_document  
@@ -14,6 +14,8 @@ from django.core.exceptions import ValidationError
 import openpyxl
 from django.http import HttpResponse
 from datetime import datetime
+
+
 
 
 def index(request):
@@ -30,10 +32,14 @@ def index(request):
     total_partners = Partner.objects.all().count()
     total_panalists = Panalist.objects.all().count()
     total_speakers = Speaker.objects.all().count()
-    list_videos = PreviousVideos.objects.filter(title='Higlight')
+    list_videos = PreviousVideos.objects.filter(title='Higlight')\
+    
 
     # fetching testimonials
     testimonials = Testimonial.objects.all()
+
+    # fetching sponsors    
+    sponsors = Sponsor.objects.all()
 
     # counting down timer
 
@@ -50,7 +56,8 @@ def index(request):
              'panalist_number': total_panalists,
              'speaker_number': total_speakers,
              'end_time': countdown.end_time.isoformat(),
-              'list_videos': list_videos
+              'list_videos': list_videos,
+            'sponsors': sponsors
              }
     return render(request, 'conference_planning/index.html', context)
 
@@ -73,6 +80,13 @@ def speakers(request):
     }
     return render(request, 'conference_planning/speakers.html', context)
 
+def speakers_details(request, speaker_id):
+    speaker = get_object_or_404(Speaker, id=speaker_id)
+    return render(request, 'conference_planning/speakers_details.html', {'speaker': speaker})
+
+def panelist_details(request, panelist_id):
+    panelist = get_object_or_404(Panalist, id=panelist_id)
+    return render(request, 'conference_planning/panelist_details.html', {'panelist': panelist})
 
 def sponsors(request):
     list_sponsors = Sponsor.objects.all()
@@ -115,52 +129,106 @@ def sponsorship_packages(request):
 
 
 
+# def exhbition(request):
+#     pdf = Document.objects.filter(title = 'exhibition')
+#     floorplan = FloorPlan.objects.all()
+#     exhibition = booth.objects.all()
+#     accessories = accessory.objects.all()
+
+#     if request.method == 'POST':
+#         form_Booth = BookBoothForm(request.POST)
+#         from_Accessory = BookAccessoryForm(request.POST)
+
+        
+
+#         if form_Booth.is_valid():
+#             form_Booth.save()
+#             success_message = "Thank you for booking, Kindly check your email for further information regarding exhibition. "
+#             messages.success(request, success_message)
+#             return redirect('exhbition')
+
+#         elif from_Accessory.is_valid():
+#               from_Accessory.save()
+#               success_message = "Thank you for booking, Kindly check your email for further information regarding your exhibition. "
+#               messages.success(request, success_message)
+#               return redirect('exhbition')
+            
+#     else:
+#         form_Booth = BookBoothForm()
+#         form_Accessory = BookAccessoryForm()
+
+
+#     context = {
+#         'booths':  exhibition,
+#          'documents': pdf,
+#          'floorplan':floorplan,
+#          'accessories':accessories,
+#          'form_booth': form_Booth,
+#          'form_accessory': form_Accessory
+
+#     }
+#     return render(request, 'conference_planning/exhbitions.html', context)
+
+
 def exhbition(request):
-    pdf = Document.objects.filter(title = 'exhibition')
+    pdf = Document.objects.filter(title='exhibition')
     floorplan = FloorPlan.objects.all()
     exhibition = booth.objects.all()
     accessories = accessory.objects.all()
 
     if request.method == 'POST':
-        form_Booth = BookBoothForm(request.POST)
-        from_Accessory = BookAccessoryForm(request.POST)
+        booth_id = request.POST.get('booth_id')
+        booth_space = request.POST.get('booth_space')
 
-        
+        accessory_id = request.POST.get('accessory_id')
+        accessory_name = request.POST.get('accessory_name')
+
+        form_Booth = BookBoothForm(request.POST)
+        form_Accessory = BookAccessoryForm(request.POST)
 
         if form_Booth.is_valid():
-            form_Booth.save()
-            success_message = "Thank you for booking, Kindly check your email for further information regarding exhibition. "
-            messages.success(request, success_message)
+            booking = form_Booth.save(commit=False)
+            if booth_id:
+                booking.booth = booth.objects.get(id=booth_id)
+            if booth_space:
+                booking.booth_space = booth_space
+            booking.save()
+            messages.success(request, "Thank you for booking a booth.")
             return redirect('exhbition')
 
-        elif from_Accessory.is_valid():
-              from_Accessory.save()
-              success_message = "Thank you for booking, Kindly check your email for further information regarding your exhibition. "
-              messages.success(request, success_message)
-              return redirect('exhbition')
-            
+        elif form_Accessory.is_valid():
+            booking = form_Accessory.save(commit=False)
+            if accessory_id:
+                booking.accessory = accessory.objects.get(id=accessory_id)
+            if accessory_name:
+                booking.accessory_name = accessory_name  # if applicable
+            booking.save()
+            messages.success(request, "Thank you for booking an accessory.")
+            return redirect('exhbition')
+
     else:
         form_Booth = BookBoothForm()
         form_Accessory = BookAccessoryForm()
 
-
     context = {
-        'booths':  exhibition,
-         'documents': pdf,
-         'floorplan':floorplan,
-         'accessories':accessories,
-         'form_booth': form_Booth,
-         'form_accessory': form_Accessory
-
+        'booths': exhibition,
+        'documents': pdf,
+        'floorplan': floorplan,
+        'accessories': accessories,
+        'form_booth': form_Booth,
+        'form_accessory': form_Accessory,
     }
     return render(request, 'conference_planning/exhbitions.html', context)
 
-def lighting_homes(request):
+    
+
+
+def csr(request):
     pdf = Document.objects.filter(title = 'lighting')
     context = {
         'documents': pdf
     }
-    return render(request, 'conference_planning/lighting_homes.html', context)
+    return render(request, 'conference_planning/csr.html', context)
 
 def First_edition(request):
     pdf = Document.objects.filter(title = 'first_edition')
