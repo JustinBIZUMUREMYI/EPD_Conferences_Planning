@@ -140,7 +140,7 @@
                     <option value="organizer" {% if form.category.value == "organizer" %}selected{% endif %}>Organizer</option>
                     <option value="delegate" {% if form.category.value == "delegate" %}selected{% endif %}>Delegate</option>
                     <option value="exhibitor" {% if form.category.value == "exhibitor" %}selected{% endif %}>Exhibitor</option>
-                    <option value="student" {% if form.category.value == "student" %}selected{% endif %}>Student</option>
+                    <!-- <option value="student" {% if form.category.value == "student" %}selected{% endif %}>Student</option> -->
                     <option value="media" {% if form.category.value == "media" %}selected{% endif %}>Media</option>
                   </select>
                 </div>
@@ -390,7 +390,7 @@
                       name="phone"
                       id="phone"
                       pattern="^[0-9]{6,15}$"
-                      title="Enter a valid phone number (6 to 15 digits)"
+                      title="Enter a valid phone number without the country code (e.g., 788310434)"
                       value="{{ form.phone.value }}"
                       placeholder="Phone number (digits only)"
                       required

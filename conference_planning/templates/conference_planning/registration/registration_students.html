@@ -353,14 +353,15 @@
 
                   <div class="form-group" style="width: 100%">
                     <input
-                      style="padding: 5px"
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      value="{{ form.phone.value }}"
-                      placeholder="Phone number"
-                      required
-                    />
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    pattern="^[0-9]{6,15}$"
+                    title="Enter a valid phone number without the country code (e.g., 788310434)"
+                    value="{{ form.phone.value }}"
+                    placeholder="Phone number (digits only)"
+                    required
+                  />
                   </div>
                 </div>
 
@@ -380,24 +381,15 @@
                   <label for="student_card"
                     ><i class="zmdi zmdi-card"></i
                   ></label>
-                  <!-- <input
+                  <input
                     type="number"
                     name="student_number"
                     id="student_card"
                     value="{{ form.student_number.value }}"
                     placeholder="Your student number"
                     required
-                  /> -->
-                  <input
-                      type="tel"
-                      name="phone"
-                      id="phone"
-                      pattern="^[0-9]{6,15}$"
-                      title="Enter a valid phone number (6 to 15 digits)"
-                      value="{{ form.phone.value }}"
-                      placeholder="Phone number (digits only)"
-                      required
-                    />
+                  />
+                
                 </div>
 
                 {% if form.student_number.errors %}
