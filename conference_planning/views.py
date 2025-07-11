@@ -433,7 +433,44 @@ def register(request):
                 organization=form.cleaned_data['organization']
             )
             attendee.save()
-            success_message = "Greetings from Energy Private Developers Association (EPD), Thank you for registering to be part of Renewable Energy Week Conference Sept 2025. We are pleased to inform you that you have completed the first step (1/2) of the registration process. Within the next 24 hours, you will receive an email from us containing all the necessary details regarding the payment to complete your registration. We appreciate your step and look forward to hosting you. Best regards, EPD"
+            success_message = """
+            Greetings from Energy Private Developers Association (EPD),<br><br>
+
+            Thank you for registering to attend the Renewable Energy Week Conference in September 2025. You have successfully completed the first step (1/2) of the registration process.<br><br>
+
+            <strong>To complete your registration, please proceed with the payment using one of the options below:</strong><br><br>
+
+            <strong>💳 ECOBANK RWANDA</strong><br>
+            Account Name: Energy Private Developers<br>
+            USD Account: 6775009645<br>
+            RWF Account: 6775008215<br>
+            SWIFT Code: ECOCRWRWXX<br>
+            Branch: Head Office, Avenue de la Paix, PO Box 3268, Kigali-Rwanda<br><br>
+
+            <strong>🏦 Bank of Kigali (USD)</strong><br>
+            Account Name: Energy Private Developers Association<br>
+            Account Number: 100188383844<br>
+            IBAN: RW43040100188383844840<br>
+            SWIFT Code: BKIGRWRWXXX<br>
+            Branch: Head Office<br><br>
+
+            <strong>🏦 Bank of Kigali (RWF)</strong><br>
+            Account Name: Energy Private Developers Association<br>
+            Account Number: 100188383097<br>
+            IBAN: RW27040100188383097646<br>
+            SWIFT Code: BKIGRWRWXXX<br>
+            Branch: Head Office<br><br>
+
+            <strong>📱 MoMo Pay</strong><br>
+            Code: *182*8*1*077863#<br>
+            Name: Energy Private Developers Association<br><br>
+
+            Once the payment is made, please keep your proof of payment. You will receive a confirmation email from us within the next 24 hours.<br><br>
+
+            We appreciate your participation and look forward to hosting you!<br><br>
+            Best regards,<br>
+            EPD Team
+            """
             redirect_url = request.META.get('HTTP_REFERER', '/')
             messages.success(request, success_message)
             return redirect(redirect_url)

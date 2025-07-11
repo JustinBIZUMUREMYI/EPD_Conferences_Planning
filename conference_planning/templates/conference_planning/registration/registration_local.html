@@ -606,7 +606,7 @@
           <div class="modal-body">
             {% if messages %}
                   {% for message in messages %}
-                    {{ message }}
+                    {{ message|safe }}
                   {% endfor %}
               {% endif %}
           </div>
