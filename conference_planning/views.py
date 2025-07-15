@@ -558,7 +558,7 @@ def register(request):
                 Code: *182*8*1*077863#<br>
                 Name: Energy Private Developers Association<br><br>
 
-                Once the payment is made, please keep your proof of payment. You will receive a confirmation email from us within the next 24 hours.<br><br>
+                After payment, kindly send your proof of payment to: <br> 📧 <strong>kubwijean@epdrwanda.com</strong> and <strong>info@epdrwanda.com</strong><br><br>
 
                 We appreciate your participation and look forward to hosting you!<br><br>
                 Best regards,<br>
