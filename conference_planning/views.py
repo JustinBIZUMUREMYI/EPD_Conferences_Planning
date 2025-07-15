@@ -401,6 +401,95 @@ def students_registration(request):
 
 
 
+# the current register codes.
+
+
+# def register(request):
+#     if request.method == 'POST':
+#         form = registerForm(request.POST)
+#         if form.is_valid():
+#             attendee_type = 'Local'
+#             stud_number = None
+#             school = None
+            
+#             if form.cleaned_data['country_code'] != '250':
+#                 attendee_type = 'International'
+            
+#             if 'student_number' in form.cleaned_data and form.cleaned_data['student_number']:
+#                 stud_number = form.cleaned_data['student_number']
+#                 attendee_type = 'Student'
+                
+#             if 'university' in form.cleaned_data and form.cleaned_data['university']:
+#                 school = form.cleaned_data['university']
+#                 attendee_type = 'Student'
+            
+#             attendee = Attendees(
+#                 names=form.cleaned_data['name'],
+#                 identity=form.cleaned_data['identity'],
+#                 email=form.cleaned_data['email'],
+#                 phone=form.cleaned_data['country_code'] + form.cleaned_data['phone'],
+#                 attendee_type=attendee_type,
+#                 university=school,
+#                 student_number=stud_number,
+#                 category = form.cleaned_data['category'],
+#                 country=form.cleaned_data['country'],
+#                 organization=form.cleaned_data['organization']
+#             )
+#             attendee.save()
+#             success_message = """
+#             Greetings from Energy Private Developers Association (EPD),<br><br>
+
+#             Thank you for registering to attend the Renewable Energy Week Conference in September 2025. You have successfully completed the first step (1/2) of the registration process.<br><br>
+
+#             <strong>To complete your registration, please proceed with the payment using one of the options below:</strong><br><br>
+
+#             <strong>💳 ECOBANK RWANDA</strong><br>
+#             Account Name: Energy Private Developers<br>
+#             USD Account: 6775009645<br>
+#             RWF Account: 6775008215<br>
+#             SWIFT Code: ECOCRWRWXX<br>
+#             Branch: Head Office, Avenue de la Paix, PO Box 3268, Kigali-Rwanda<br><br>
+
+#             <strong>🏦 Bank of Kigali (USD)</strong><br>
+#             Account Name: Energy Private Developers Association<br>
+#             Account Number: 100188383844<br>
+#             IBAN: RW43040100188383844840<br>
+#             SWIFT Code: BKIGRWRWXXX<br>
+#             Branch: Head Office<br><br>
+
+#             <strong>🏦 Bank of Kigali (RWF)</strong><br>
+#             Account Name: Energy Private Developers Association<br>
+#             Account Number: 100188383097<br>
+#             IBAN: RW27040100188383097646<br>
+#             SWIFT Code: BKIGRWRWXXX<br>
+#             Branch: Head Office<br><br>
+
+#             <strong>📱 MoMo Pay</strong><br>
+#             Code: *182*8*1*077863#<br>
+#             Name: Energy Private Developers Association<br><br>
+
+#             Once the payment is made, please keep your proof of payment. You will receive a confirmation email from us within the next 24 hours.<br><br>
+
+#             We appreciate your participation and look forward to hosting you!<br><br>
+#             Best regards,<br>
+#             EPD Team
+#             """
+#             redirect_url = request.META.get('HTTP_REFERER', '/')
+#             messages.success(request, success_message)
+#             return redirect(redirect_url)
+#         else:
+#             return_url = form.cleaned_data['return_url']
+#             return render(request, return_url, {'form': form})
+#     else:
+#         form = registerForm()
+    
+#     return render(request, return_url, {'form': form})
+
+
+# Trying to send the authomatic email
+from django.core.mail import EmailMessage
+from django.utils.html import strip_tags
+
 def register(request):
     if request.method == 'POST':
         form = registerForm(request.POST)
@@ -428,12 +517,14 @@ def register(request):
                 attendee_type=attendee_type,
                 university=school,
                 student_number=stud_number,
-                category = form.cleaned_data['category'],
+                category=form.cleaned_data['category'],
                 country=form.cleaned_data['country'],
                 organization=form.cleaned_data['organization']
             )
             attendee.save()
-            success_message = """
+
+            # Compose email message
+            html_message = """
             Greetings from Energy Private Developers Association (EPD),<br><br>
 
             Thank you for registering to attend the Renewable Energy Week Conference in September 2025. You have successfully completed the first step (1/2) of the registration process.<br><br>
@@ -471,16 +562,34 @@ def register(request):
             Best regards,<br>
             EPD Team
             """
-            redirect_url = request.META.get('HTTP_REFERER', '/')
-            messages.success(request, success_message)
-            return redirect(redirect_url)
+
+            plain_message = strip_tags(html_message)  # fallback for non-HTML email readers
+            recipient = form.cleaned_data['email']
+
+            email = EmailMessage(
+                subject='EPD Conference 2025 Registration Confirmation',
+                body=plain_message,
+                from_email=None,  # Uses DEFAULT_FROM_EMAIL
+                to=[recipient],
+            )
+            email.content_subtype = 'html'
+            email.body = html_message
+            email.send()
+
+            # Show success message on website
+            messages.success(request, "Thank you for registering! A confirmation email has been sent to your inbox.")
+            return redirect(request.META.get('HTTP_REFERER', '/'))
         else:
             return_url = form.cleaned_data['return_url']
             return render(request, return_url, {'form': form})
     else:
         form = registerForm()
-    
+
     return render(request, return_url, {'form': form})
+
+
+
+
 
 
 def login_view(request):
