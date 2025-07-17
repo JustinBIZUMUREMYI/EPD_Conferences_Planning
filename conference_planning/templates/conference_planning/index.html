@@ -1,7 +1,18 @@
 {% load static %}
 {% include 'conference_planning/includes/nav.html' %}
+<style>
+.site-visit-hosts .card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
 
-  
+.site-visit-hosts .card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+</style>
+
 <main class="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
@@ -144,6 +155,58 @@
       </div>
 
     </section><!-- /Venue Section -->
+
+
+    <!-- the section for the visibility of the companies who have accepted to host the delegate during the site visit -->
+
+    <!-- the first company is Energycotel -->
+
+    <!-- Site Visit Hosts Section -->
+<section id="site-visit-hosts" class="site-visit-hosts section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Site Visit Hosts</h2>
+    <p>Delegates will visit the following companies as part of the official site visit program.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+      
+      <!-- Example Host Company 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 text-center">
+          <div class="card-img">
+            <img src="{% static 'assets/img/site_visits/energycotel_logo.png' %}" alt="EnergyCotel" class="img-fluid p-3">
+          </div>
+          <a href="https://www.energicotel.com/index.php/projects/">
+          <h4 class="pt-2">KEYA HYDROPOWER PLANT (HPP)</h4>
+          <p class="px-3">Keya HPP is located in Nyundo Sector, Rubavu District in the Western
+            Province of Rwanda. The Plant draws its water from Sebeya River.
+            The largest of ECTL’s HPPs.
+            Keya became operative in 2012 with an installed capacity of 2.2MW.
+            Capacity factor in 2020 was 62%.</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Host Company 2 -->
+      <!-- <div class="col-lg-4 col-md-6">
+        <div class="card h-100 text-center">
+          <div class="card-img">
+            <img src="{% static 'assets/img/site-hosts/company2_logo.png' %}" alt="Company 2 Logo" class="img-fluid p-3">
+          </div>
+          <h4 class="pt-2">Company Name 2</h4>
+          <p class="px-3">Short description or site visit activity.</p>
+        </div>
+      </div> -->
+
+      <!-- Add more companies as needed -->
+
+    </div>
+  </div>
+</section>
+<!-- /Site Visit Hosts Section -->
 
     <!-- Hotels Section -->
     <section id="hotels" class="hotels section">
