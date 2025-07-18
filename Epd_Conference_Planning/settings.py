@@ -13,7 +13,6 @@ SECRET_KEY = 'django-insecure-e406!im%dbjup%q%45ll-m#8t@0g%4_ey(nd*4tfck&z%!2tt$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
 # allowing django to use HTTPS
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
