@@ -96,13 +96,12 @@
 
 </section><!-- /Booth Section -->
 
-<section id="hotels" class="hotels section">
+<!-- <section id="hotels" class="hotels section">
 
-  <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
     <h2>Accessories</h2>
     <p></p>
-  </div><!-- End Section Title -->
+  </div>
  
   <div class="container">
    
@@ -118,7 +117,7 @@
           <p>{{ accessory.description }}</p>
           <div class="card-read-more mt-auto">
             <center>
-              <!-- Unique modal per accessory -->
+           
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accessoryModal{{ accessory.id }}">
                 Book
               </button>
@@ -127,7 +126,7 @@
         </div>
       </div>
       
-      <!-- Modal per accessory -->
+
       <div class="modal fade" id="accessoryModal{{ accessory.id }}" tabindex="-1" aria-labelledby="accessoryModalLabel{{ accessory.id }}" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -141,7 +140,7 @@
               <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
       
-                <!-- Hidden inputs for pre-filling -->
+         
                 <input type="hidden" name="accessory_id" value="{{ accessory.id }}">
                 <input type="hidden" name="accessory_name" value="{{ accessory.name }}">
       
@@ -168,9 +167,9 @@
       </div>
   </div>
 
-</section>
+</section> -->
 
-<section>
+<!-- <section>
 
   <div class="container"  style="text-align:center;">
        {% for  document in documents %}
@@ -179,7 +178,7 @@
           </div>
           {% endfor %}
   </div>
-</section>
+</section> -->
 
 <!-- /Booth Section -->
 <!-- jQuery, Popper.js, and Bootstrap JS (Bootstrap 4 versions) -->

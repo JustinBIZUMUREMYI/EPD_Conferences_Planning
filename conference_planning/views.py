@@ -170,6 +170,114 @@ def sponsorship_packages(request):
 #     return render(request, 'conference_planning/exhbitions.html', context)
 
 
+# def exhbition(request):
+#     pdf = Document.objects.filter(title='exhibition')
+#     floorplan = FloorPlan.objects.all()
+#     exhibition = booth.objects.all()
+#     accessories = accessory.objects.all()
+
+#     if request.method == 'POST':
+#         booth_id = request.POST.get('booth_id')
+#         booth_space = request.POST.get('booth_space')
+
+#         accessory_id = request.POST.get('accessory_id')
+#         accessory_name = request.POST.get('accessory_name')
+
+#         form_Booth = BookBoothForm(request.POST)
+#         form_Accessory = BookAccessoryForm(request.POST)
+
+#         if form_Booth.is_valid():
+#             booking = form_Booth.save(commit=False)
+#             if booth_id:
+#                 booking.booth = booth.objects.get(id=booth_id)
+#             if booth_space:
+#                 booking.booth_space = booth_space
+#             booking.save()
+#             # Send confirmation email to user
+#             html_message = f"""
+#                 Dear <strong>{booking.Exhibitor_name} from {booking.Company}</strong>,<br><br>
+
+#                 Greetings from the Energy Private Developers Association (EPD).<br><br>
+
+#                 Thank you for booking a booth for the Renewable Energy Week Conference scheduled for September 2025. This email confirms that we have received your booth booking details.<br><br>
+
+#                 <strong>To finalize your booking, please proceed with the payment using one of the options provided below:</strong><br><br>
+
+#                 <strong>💳 ECOBANK RWANDA</strong><br>
+#                 Account Name: Energy Private Developers<br>
+#                 USD Account: 6775009645<br>
+#                 RWF Account: 6775008215<br>
+#                 SWIFT Code: ECOCRWRWXX<br>
+#                 Branch: Head Office, Avenue de la Paix, PO Box 3268, Kigali-Rwanda<br><br>
+
+#                 <strong>🏦 Bank of Kigali (USD)</strong><br>
+#                 Account Name: Energy Private Developers Association<br>
+#                 Account Number: 100188383844<br>
+#                 IBAN: RW43040100188383844840<br>
+#                 SWIFT Code: BKIGRWRWXXX<br>
+#                 Branch: Head Office<br><br>
+
+#                 <strong>🏦 Bank of Kigali (RWF)</strong><br>
+#                 Account Name: Energy Private Developers Association<br>
+#                 Account Number: 100188383097<br>
+#                 IBAN: RW27040100188383097646<br>
+#                 SWIFT Code: BKIGRWRWXXX<br>
+#                 Branch: Head Office<br><br>
+
+#                 <strong>📱 MoMo Pay</strong><br>
+#                 Code: *182*8*1*077863#<br>
+#                 Name: Energy Private Developers Association<br><br>
+
+#                 After payment, kindly send your proof of payment to: <br>
+#                 📧 <strong>kubwijean@epdrwanda.com</strong> and <strong>info@epdrwanda.com</strong><br><br>
+
+#                 🧾 <em>Once we receive your proof of payment, our Finance Department will verify and send your official payment receipt via email.</em><br><br>
+
+#                 We truly appreciate your participation and look forward to engaging with you during the exhibition.<br><br>
+
+#                 Warm regards,<br>
+#                 <strong>EPD Team</strong>
+#             """
+
+# plain_message = strip_tags(html_message)
+# recipient = booking.Email
+
+# email = EmailMessage(
+#     subject='RE4SG 2025 Booth Booking - Payment Instructions',
+#     body=plain_message,
+#     from_email=None,  # Or your custom from email
+#     to=[recipient],
+# )
+# email.content_subtype = 'html'
+# email.body = html_message
+# email.send()
+           
+
+#         messages.success(request, "Thank you for booking a booth. A confirmation email has been sent.")
+#             return redirect('exhbition')
+
+#         elif form_Accessory.is_valid():
+#             booking = form_Accessory.save(commit=False)
+#             if accessory_id:
+#                 booking.accessory = accessory.objects.get(id=accessory_id)
+#             if accessory_name:
+#                 booking.accessory_name = accessory_name  # if applicable
+#             booking.save()
+#             messages.success(request, "Thank you for booking an accessory.")
+#             return redirect('exhbition')
+
+#     else:
+#         form_Booth = BookBoothForm()
+#         form_Accessory = BookAccessoryForm()
+
+#     context = {
+#         'booths': exhibition,
+#         'documents': pdf,
+#         'floorplan': floorplan,
+#         'accessories': accessories,
+#         'form_booth': form_Booth,
+#         'form_accessory': form_Accessory,
+#     }
 def exhbition(request):
     pdf = Document.objects.filter(title='exhibition')
     floorplan = FloorPlan.objects.all()
@@ -186,24 +294,142 @@ def exhbition(request):
         form_Booth = BookBoothForm(request.POST)
         form_Accessory = BookAccessoryForm(request.POST)
 
+        # Booth booking logic
         if form_Booth.is_valid():
             booking = form_Booth.save(commit=False)
             if booth_id:
-                booking.booth = booth.objects.get(id=booth_id)
+                booking.Booth = booth.objects.get(id=booth_id)
             if booth_space:
-                booking.booth_space = booth_space
+                booking.Booth_space = Booth_space.objects.get(id=booth_space)
             booking.save()
-            messages.success(request, "Thank you for booking a booth.")
+
+            html_message = f"""
+                Dear <strong>{booking.Exhibitor_name} from {booking.Company}</strong>,<br><br>
+
+                Greetings from the Energy Private Developers Association (EPD).<br><br>
+
+                Thank you for booking a booth for the Renewable Energy Week Conference scheduled for September 2025. This email confirms that we have received your booth booking details.<br><br>
+
+                <strong>To finalize your booking, please proceed with the payment using one of the options provided below:</strong><br><br>
+
+                <strong>💳 ECOBANK RWANDA</strong><br>
+                Account Name: Energy Private Developers<br>
+                USD Account: 6775009645<br>
+                RWF Account: 6775008215<br>
+                SWIFT Code: ECOCRWRWXX<br>
+                Branch: Head Office, Avenue de la Paix, PO Box 3268, Kigali-Rwanda<br><br>
+
+                <strong>🏦 Bank of Kigali (USD)</strong><br>
+                Account Name: Energy Private Developers Association<br>
+                Account Number: 100188383844<br>
+                IBAN: RW43040100188383844840<br>
+                SWIFT Code: BKIGRWRWXXX<br>
+                Branch: Head Office<br><br>
+
+                <strong>🏦 Bank of Kigali (RWF)</strong><br>
+                Account Name: Energy Private Developers Association<br>
+                Account Number: 100188383097<br>
+                IBAN: RW27040100188383097646<br>
+                SWIFT Code: BKIGRWRWXXX<br>
+                Branch: Head Office<br><br>
+
+                <strong>📱 MoMo Pay</strong><br>
+                Code: *182*8*1*077863#<br>
+                Name: Energy Private Developers Association<br><br>
+
+                After payment, kindly send your proof of payment to: <br>
+                📧 <strong>kubwijean@epdrwanda.com</strong> and <strong>info@epdrwanda.com</strong><br><br>
+
+                🧾 <em>Once we receive your proof of payment, our Finance Department will verify and send your official payment receipt via email.</em><br><br>
+
+                We truly appreciate your participation and look forward to engaging with you during the exhibition.<br><br>
+
+                Warm regards,<br>
+                <strong>EPD Team</strong>
+            """
+            plain_message = strip_tags(html_message)
+            recipient = booking.Email
+
+            email = EmailMessage(
+                subject='RE4SG 2025 Booth Booking - Payment Instructions',
+                body=plain_message,
+                from_email=None,
+                to=[recipient],
+            )
+            email.content_subtype = 'html'
+            email.body = html_message
+            email.send()
+
+            messages.success(request, "Thank you for booking a booth. A confirmation email has been sent.")
             return redirect('exhbition')
 
+        # Accessory booking logic
         elif form_Accessory.is_valid():
             booking = form_Accessory.save(commit=False)
             if accessory_id:
                 booking.accessory = accessory.objects.get(id=accessory_id)
             if accessory_name:
-                booking.accessory_name = accessory_name  # if applicable
+                booking.accessory_name = accessory_name
             booking.save()
-            messages.success(request, "Thank you for booking an accessory.")
+
+            html_message = f"""
+                Dear <strong>{booking.exhibitor_name}</strong>,<br><br>
+
+                Greetings from the Energy Private Developers Association (EPD).<br><br>
+
+                Thank you for booking an accessory for the Renewable Energy Week Conference scheduled for September 2025. We have received your booking request.<br><br>
+
+                <strong>To confirm your accessory reservation, please proceed with the payment using one of the options provided below:</strong><br><br>
+
+                <strong>💳 ECOBANK RWANDA</strong><br>
+                Account Name: Energy Private Developers<br>
+                USD Account: 6775009645<br>
+                RWF Account: 6775008215<br>
+                SWIFT Code: ECOCRWRWXX<br>
+                Branch: Head Office, Avenue de la Paix, PO Box 3268, Kigali-Rwanda<br><br>
+
+                <strong>🏦 Bank of Kigali (USD)</strong><br>
+                Account Name: Energy Private Developers Association<br>
+                Account Number: 100188383844<br>
+                IBAN: RW43040100188383844840<br>
+                SWIFT Code: BKIGRWRWXXX<br>
+                Branch: Head Office<br><br>
+
+                <strong>🏦 Bank of Kigali (RWF)</strong><br>
+                Account Name: Energy Private Developers Association<br>
+                Account Number: 100188383097<br>
+                IBAN: RW27040100188383097646<br>
+                SWIFT Code: BKIGRWRWXXX<br>
+                Branch: Head Office<br><br>
+
+                <strong>📱 MoMo Pay</strong><br>
+                Code: *182*8*1*077863#<br>
+                Name: Energy Private Developers Association<br><br>
+
+                After payment, kindly send your proof of payment to:<br>
+                📧 <strong>kubwijean@epdrwanda.com</strong> and <strong>info@epdrwanda.com</strong><br><br>
+
+                🧾 <em>Once we receive your proof of payment, our Finance Department will verify and send your official payment receipt via email.</em><br><br>
+
+                Thank you again for supporting the Renewable Energy Week!<br><br>
+
+                Warm regards,<br>
+                <strong>EPD Team</strong>
+            """
+            plain_message = strip_tags(html_message)
+            recipient = booking.email
+
+            email = EmailMessage(
+                subject='RE4SG 2025 Accessory Booking - Payment Instructions',
+                body=plain_message,
+                from_email=None,
+                to=[recipient],
+            )
+            email.content_subtype = 'html'
+            email.body = html_message
+            email.send()
+
+            messages.success(request, "Thank you for booking an accessory. A confirmation email has been sent.")
             return redirect('exhbition')
 
     else:
