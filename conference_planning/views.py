@@ -1076,7 +1076,7 @@ def export_attendees_to_excel(request):
     ws.title = "Attendees"
 
     # Add column headers
-    columns = ['Name', 'Identity', 'Email', 'Category', 'Country', 'Organization']
+    columns = ['Name', 'Identity', 'Email','Phone', 'Category', 'Country', 'Organization']
     for col_num, column_title in enumerate(columns, 1):
         cell = ws.cell(row=1, column=col_num)
         cell.value = column_title
@@ -1087,6 +1087,7 @@ def export_attendees_to_excel(request):
         ws.cell(row=attendee_num, column=1, value=attendee.names)
         ws.cell(row=attendee_num, column=2, value=attendee.identity)
         ws.cell(row=attendee_num, column=3, value=attendee.email)
+        ws.cell(row=attendee_num, column=3, value=attendee.phone)
         ws.cell(row=attendee_num, column=4, value=attendee.category)
         ws.cell(row=attendee_num, column=5, value=attendee.country)
         ws.cell(row=attendee_num, column=6, value=attendee.organization)
