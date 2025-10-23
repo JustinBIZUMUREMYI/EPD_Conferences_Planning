@@ -255,12 +255,8 @@
             <small class="text-muted">{{ company.title }}</small>
           </p>
   
-          <!-- Action -->
-          {% if company.company_name != 'EPD' %}
-            <p class="text-danger mb-0">Application Closed</p>
-          {% else %}
             <a href="{% url 'submit_application' %}" class="btn btn-primary btn-sm">Apply</a>
-          {% endif %}
+        
         </div>
   
       </div>
