@@ -1258,7 +1258,7 @@ class interns_list(ListView):
 
     def get_queryset(self):
         # Only fetch records where title contains 'Company'
-        return internship_document.objects.filter(title__icontains='Company').order_by('-id')
+        return internship_document.objects.filter(title__icontains='Position').order_by('-id')
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
