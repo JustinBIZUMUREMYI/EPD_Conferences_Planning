@@ -1251,10 +1251,15 @@ class Register_Interns(CreateView):
 #     return context
 
 class interns_list(ListView):
-    model = internship_document  # Define the model that should be listed
+    model = internship_document
     template_name = 'conference_planning/register_interns.html'
-    context_object_name = 'interns'  
+    context_object_name = 'interns'
     ordering = ['-id']
+
+    def get_queryset(self):
+        # Only fetch records where title contains 'Company'
+        return internship_document.objects.filter(title__icontains='Company').order_by('-id')
+
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     # Adding two additional contexts
