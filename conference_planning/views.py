@@ -1286,8 +1286,8 @@ class submit_application(CreateView):
         response = super().form_valid(form)
 
         # Extract applicant info from the form
-        applicant_name = form.cleaned_data.get('Full_Name')
-        applicant_email = form.cleaned_data.get('Email')
+        applicant_name = form.cleaned_data.get('full_name')
+        applicant_email = form.cleaned_data.get('email')
 
         # Email content (HTML version)
         html_message = f"""
