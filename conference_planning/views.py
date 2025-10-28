@@ -1283,12 +1283,6 @@ class interns_list(ListView):
         
 #         return response
         
-from django.core.mail import send_mail
-from django.contrib import messages
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
-from .forms import InternsForm
-from .models import Interns
 
 class submit_application(CreateView):
     form_class = InternsForm
@@ -1301,12 +1295,12 @@ class submit_application(CreateView):
         
         # Applicant's email and name
         applicant_email = form.cleaned_data.get('Email')
-        applicant_name = form.cleaned_data.get('Full_Name')
+       
 
         # Email subject and message
-        subject = "Your Internship Application Confirmation – EPD"
-        message = f"""
-                    Dear {applicant_name},
+       
+        html_message= f"""
+                   Dear <strong>{Full_Name}</strong>,<br><br>
 
                     Thank you for submitting your internship application with Energy Private Developers (EPD). 
                     We’ve successfully received your application and will review it carefully.
@@ -1326,14 +1320,17 @@ class submit_application(CreateView):
                             """
 
         # Send confirmation email
-        send_mail(
-            subject,
-            message,
-            'epdrwanda@gmail.com', 
-            [applicant_email],
-            fail_silently=False,
-        )
-
+        plain_message = strip_tags(html_message)
+        recipient = form.cleaned_data['Email']
+        email = EmailMessage(
+                subject='Your Internship Application Confirmation – EPD',
+                body=plain_message,
+                from_email=None,  # Uses DEFAULT_FROM_EMAIL
+                to=[recipient],
+            )
+        email.content_subtype = 'html'
+        email.body = html_message
+        email.send()
         # Success message on screen
         messages.success(self.request, "Thank you for your application! A confirmation email has been sent to your inbox.")
         
