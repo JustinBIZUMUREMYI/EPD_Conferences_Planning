@@ -196,7 +196,7 @@ class InternsForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         
         # Display only companies with the name 'EPD'
-        self.fields['Host_Company'].queryset = internship_document.objects.filter(company_name='EPD')
+        self.fields['Host_Company'].queryset = internship_document.objects.filter(title__icontains='Position')
     
      # Custom validation for phone number
     def clean_phone(self):
