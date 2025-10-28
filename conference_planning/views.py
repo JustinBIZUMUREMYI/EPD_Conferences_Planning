@@ -1268,6 +1268,28 @@ class interns_list(ListView):
     #     return context
 
 
+# class submit_application(CreateView):
+#     form_class = InternsForm
+#     success_url = reverse_lazy('internship_Application')
+#     template_name = 'conference_planning/regitration_form.html'
+#     model = Interns
+
+#     def form_valid(self, form):
+      
+#         response = super().form_valid(form)
+        
+#         # Add a success message to be displayed after form submission
+#         messages.success(self.request, "Thank you for your application! We will be in touch with you shortly.")
+        
+#         return response
+        
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from .forms import InternsForm
+from .models import Interns
+
 class submit_application(CreateView):
     form_class = InternsForm
     success_url = reverse_lazy('internship_Application')
@@ -1275,14 +1297,48 @@ class submit_application(CreateView):
     model = Interns
 
     def form_valid(self, form):
-      
         response = super().form_valid(form)
         
-        # Add a success message to be displayed after form submission
-        messages.success(self.request, "Thank you for your application! We will be in touch with you shortly.")
+        # Applicant's email and name
+        applicant_email = form.cleaned_data.get('Email')
+        applicant_name = form.cleaned_data.get('Full_Name')
+
+        # Email subject and message
+        subject = "Your Internship Application Confirmation – EPD"
+        message = f"""
+Dear {applicant_name},
+
+Thank you for submitting your internship application with Energy Private Developers (EPD). 
+We’ve successfully received your application and will review it carefully.
+
+Please take note of the following important dates:
+
+📅 Confirmation email to shortlisted candidates: November 3–4, 2025  
+📅 Interview period: November 5–6, 2025  
+📅 Final confirmation email to selected interns: November 7, 2025  
+🚀 Onboarding: November 10, 2025
+
+We appreciate your interest in joining EPD and look forward to the possibility of working together.
+
+Best regards,  
+HR Department  
+Energy Private Developers (EPD)
+        """
+
+        # Send confirmation email
+        send_mail(
+            subject,
+            message,
+            'epdrwanda@gmail.com', 
+            [applicant_email],
+            fail_silently=False,
+        )
+
+        # Success message on screen
+        messages.success(self.request, "Thank you for your application! A confirmation email has been sent to your inbox.")
         
         return response
-        
+
 
 def interns(request):
     interns_list = Interns.objects.all().order_by('id')
