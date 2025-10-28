@@ -1268,13 +1268,7 @@ class interns_list(ListView):
     #     return context
 
 
-from django.core.mail import EmailMessage
-from django.utils.html import strip_tags
-from django.contrib import messages
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
-from .forms import InternsForm
-from .models import Interns
+
 
 class submit_application(CreateView):
     form_class = InternsForm
@@ -1283,9 +1277,7 @@ class submit_application(CreateView):
     model = Interns
 
     def form_valid(self, form):
-        response = super().form_valid(form)
-
-        # Extract applicant info from the form
+        self.object = form.save()
         applicant_name = form.cleaned_data.get('full_name')
         applicant_email = form.cleaned_data.get('email')
 
@@ -1311,13 +1303,13 @@ class submit_application(CreateView):
         """
 
         plain_message = strip_tags(html_message)
-
+        recipient = form.cleaned_data['email']
         # Send confirmation email
         email = EmailMessage(
             subject='Internship Application Confirmation – Energy Private Developers (EPD)',
             body=plain_message,
             from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings.py
-            to=[applicant_email],
+            to=[recipient],
         )
         email.content_subtype = 'html'
         email.body = html_message
