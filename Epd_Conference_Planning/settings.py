@@ -25,7 +25,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'epdrwanda@gmail.com'
-EMAIL_HOST_PASSWORD = 'qancljvgrzfhqxpf' 
+EMAIL_HOST_PASSWORD = 'bvnxnvprwsyrgxko' 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 ALLOWED_HOSTS = ['www.epdconference.com', 'epdconference.com', 'localhost', '127.0.0.1']
