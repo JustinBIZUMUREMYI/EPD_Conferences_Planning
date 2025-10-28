@@ -1268,6 +1268,14 @@ class interns_list(ListView):
     #     return context
 
 
+from django.core.mail import EmailMessage
+from django.utils.html import strip_tags
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from .forms import InternsForm
+from .models import Interns
+
 class submit_application(CreateView):
     form_class = InternsForm
     success_url = reverse_lazy('internship_Application')
@@ -1275,13 +1283,50 @@ class submit_application(CreateView):
     model = Interns
 
     def form_valid(self, form):
-      
         response = super().form_valid(form)
-        
-        # Add a success message to be displayed after form submission
-        messages.success(self.request, "Thank you for your application! We will be in touch with you shortly.")
-        
+
+        # Extract applicant info from the form
+        applicant_name = form.cleaned_data.get('Full_Name')
+        applicant_email = form.cleaned_data.get('Email')
+
+        # Email content (HTML version)
+        html_message = f"""
+        Dear <strong>{applicant_name}</strong>,<br><br>
+
+        Thank you for submitting your internship application with <strong>Energy Private Developers (EPD)</strong>.<br>
+        We’ve successfully received your application and will review it carefully.<br><br>
+
+        Please take note of the following important dates:<br><br>
+
+        📅 <strong>Confirmation email to shortlisted candidates:</strong> November 3–4, 2025<br>
+        📅 <strong>Interview Period:</strong> November 5–6, 2025<br>
+        📅 <strong>Final confirmation email to selected interns:</strong> November 7, 2025<br>
+        🚀 <strong>Onboarding:</strong> November 10, 2025<br><br>
+
+        We appreciate your interest in joining EPD and look forward to the possibility of working together.<br><br>
+
+        Best regards,<br>
+        <strong>HR Department</strong><br>
+        Energy Private Developers (EPD)
+        """
+
+        plain_message = strip_tags(html_message)
+
+        # Send confirmation email
+        email = EmailMessage(
+            subject='Internship Application Confirmation – Energy Private Developers (EPD)',
+            body=plain_message,
+            from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings.py
+            to=[applicant_email],
+        )
+        email.content_subtype = 'html'
+        email.body = html_message
+        email.send()
+
+        # Show success message
+        messages.success(self.request, "Thank you for your application! A confirmation email has been sent to your inbox.")
         return response
+
         
 
 def interns(request):
