@@ -1306,24 +1306,24 @@ class submit_application(CreateView):
         # Email subject and message
         subject = "Your Internship Application Confirmation – EPD"
         message = f"""
-Dear {applicant_name},
+                    Dear {applicant_name},
 
-Thank you for submitting your internship application with Energy Private Developers (EPD). 
-We’ve successfully received your application and will review it carefully.
+                    Thank you for submitting your internship application with Energy Private Developers (EPD). 
+                    We’ve successfully received your application and will review it carefully.
 
-Please take note of the following important dates:
+                    Please take note of the following important dates:
 
-📅 Confirmation email to shortlisted candidates: November 3–4, 2025  
-📅 Interview period: November 5–6, 2025  
-📅 Final confirmation email to selected interns: November 7, 2025  
-🚀 Onboarding: November 10, 2025
+                    📅 Confirmation email to shortlisted candidates: November 3–4, 2025  
+                    📅 Interview period: November 5–6, 2025  
+                    📅 Final confirmation email to selected interns: November 7, 2025  
+                    🚀 Onboarding: November 10, 2025
 
-We appreciate your interest in joining EPD and look forward to the possibility of working together.
+                    We appreciate your interest in joining EPD and look forward to the possibility of working together.
 
-Best regards,  
-HR Department  
-Energy Private Developers (EPD)
-        """
+                    Best regards,  
+                    HR Department  
+                    Energy Private Developers (EPD)
+                            """
 
         # Send confirmation email
         send_mail(
