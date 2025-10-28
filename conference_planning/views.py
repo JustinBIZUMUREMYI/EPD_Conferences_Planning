@@ -1270,6 +1270,61 @@ class interns_list(ListView):
 
 
 
+# class submit_application(CreateView):
+#     form_class = InternsForm
+#     success_url = reverse_lazy('internship_Application')
+#     template_name = 'conference_planning/regitration_form.html'
+#     model = Interns
+
+#     def form_valid(self, form):
+#         self.object = form.save()
+#         applicant_name = form.cleaned_data.get('full_name')
+#         applicant_email = form.cleaned_data.get('email')
+
+#         # Email content (HTML version)
+#         html_message = f"""
+#         Dear <strong>{applicant_name}</strong>,<br><br>
+
+#         Thank you for submitting your internship application with <strong>Energy Private Developers (EPD)</strong>.<br>
+#         We’ve successfully received your application and will review it carefully.<br><br>
+
+#         Please take note of the following important dates:<br><br>
+
+#         📅 <strong>Confirmation email to shortlisted candidates:</strong> November 3–4, 2025<br>
+#         📅 <strong>Interview Period:</strong> November 5–6, 2025<br>
+#         📅 <strong>Final confirmation email to selected interns:</strong> November 7, 2025<br>
+#         🚀 <strong>Onboarding:</strong> November 10, 2025<br><br>
+
+#         We appreciate your interest in joining EPD and look forward to the possibility of working together.<br><br>
+
+#         Best regards,<br>
+#         <strong>HR Department</strong><br>
+#         Energy Private Developers (EPD)
+#         """
+
+#         plain_message = strip_tags(html_message)
+#         recipient = form.cleaned_data['email']
+#         # Send confirmation email
+#         email = EmailMessage(
+#             subject='Internship Application Confirmation – Energy Private Developers (EPD)',
+#             body=plain_message,
+#             from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings.py
+#             to=[recipient],
+#         )
+#         email.content_subtype = 'html'
+#         email.body = html_message
+#         email.send()
+
+#         # Show success message
+#         messages.success(self.request, "Thank you for your application! A confirmation email has been sent to your inbox.")
+#         return response
+
+        
+from django.core.mail import EmailMessage
+from django.utils.html import strip_tags
+from django.contrib import messages
+from django.shortcuts import redirect
+
 class submit_application(CreateView):
     form_class = InternsForm
     success_url = reverse_lazy('internship_Application')
@@ -1277,16 +1332,19 @@ class submit_application(CreateView):
     model = Interns
 
     def form_valid(self, form):
+        # Save the intern application
         self.object = form.save()
+        
+        # Get applicant details
         applicant_name = form.cleaned_data.get('full_name')
         applicant_email = form.cleaned_data.get('email')
 
-        # Email content (HTML version)
+        # Compose HTML email message
         html_message = f"""
         Dear <strong>{applicant_name}</strong>,<br><br>
 
         Thank you for submitting your internship application with <strong>Energy Private Developers (EPD)</strong>.<br>
-        We’ve successfully received your application and will review it carefully.<br><br>
+        We've successfully received your application and will review it carefully.<br><br>
 
         Please take note of the following important dates:<br><br>
 
@@ -1302,25 +1360,29 @@ class submit_application(CreateView):
         Energy Private Developers (EPD)
         """
 
+        # Create plain text version as fallback
         plain_message = strip_tags(html_message)
-        recipient = form.cleaned_data['email']
+
         # Send confirmation email
         email = EmailMessage(
             subject='Internship Application Confirmation – Energy Private Developers (EPD)',
             body=plain_message,
             from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings.py
-            to=[recipient],
+            to=[applicant_email],
         )
         email.content_subtype = 'html'
         email.body = html_message
         email.send()
 
-        # Show success message
-        messages.success(self.request, "Thank you for your application! A confirmation email has been sent to your inbox.")
-        return response
-
+        # Show success message to user
+        messages.success(
+            self.request, 
+            "Thank you for your application! A confirmation email has been sent to your inbox."
+        )
         
-
+        # Call parent's form_valid to handle redirect
+        return super().form_valid(form)
+        
 def interns(request):
     interns_list = Interns.objects.all().order_by('id')
     context = {'interns': interns_list}
