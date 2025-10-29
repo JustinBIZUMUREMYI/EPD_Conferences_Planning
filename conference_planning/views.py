@@ -848,7 +848,7 @@ def dashboard(request):
     sponsor_total = Sponsor.objects.all().count()
     speaker_total = Speaker.objects.all().count()
     panalist_total = Panalist.objects.all().count()
-    interns_total = Interns.objects.all().count()
+    interns_total = Interns.objects.filter(registered_on__year=2025).count()
     locals = Attendees.objects.filter(attendee_type='Local').count()
     internationals = Attendees.objects.filter(attendee_type='International').count()
     students = Attendees.objects.filter(attendee_type='Student').count()
@@ -1387,14 +1387,14 @@ class submit_application(CreateView):
     model = Interns
 
     def form_valid(self, form):
-        # 1️⃣ Save the intern application before doing anything else
+        # Save the intern application before doing anything else
         self.object = form.save()
 
-        # 2️⃣ Safely extract applicant details
+        # Safely extract applicant details
         applicant_name = form.cleaned_data.get('Full_Name')  # check capitalization in form fields
         applicant_email = form.cleaned_data.get('Email')
 
-        # 3️⃣ Compose HTML email message
+        # Compose HTML email message
         html_message = f"""
         Dear <strong>{applicant_name}</strong>,<br><br>
 
@@ -1415,10 +1415,10 @@ class submit_application(CreateView):
         Energy Private Developers (EPD)
         """
 
-        # 4️⃣ Create plain text version for fallback
+        # Create plain text version for fallback
         plain_message = strip_tags(html_message)
 
-        # 5️⃣ Send confirmation email (with error handling)
+        # Send confirmation email (with error handling)
         try:
             email = EmailMessage(
                 subject='Internship Application Confirmation – Energy Private Developers (EPD)',
@@ -1435,18 +1435,18 @@ class submit_application(CreateView):
             print("❌ Email sending failed:", e)
             messages.warning(self.request, "Application received, but the email could not be sent.")
 
-        # 6️⃣ Show success message
+        #  Show success message
         messages.success(
             self.request,
             "Thank you for your application! A confirmation email has been sent to your inbox."
         )
 
-        # 7️⃣ Finally, return parent method to handle the redirect
+        # Finally, return parent method to handle the redirect
         return super().form_valid(form)
 
 
 def interns(request):
-    interns_list = Interns.objects.all().order_by('id')
+    interns_list = Interns.objects.filter(registered_on__year=2024).order_by('id')
     context = {'interns': interns_list}
     
     return render(request, 'conference_planning/administration/internship.html', context)
@@ -1472,7 +1472,7 @@ def export_applicants_to_excel(request):
         cell.value = column_title
 
     # Fetch data from the database
-    interns = Interns.objects.all()
+    interns = Interns.objects.filter(registered_on__year=2025)
     for intern_num, intern in enumerate(interns, 2):
         ws.cell(row=intern_num, column=1, value=intern.Full_Name)
         ws.cell(row=intern_num, column=2, value=intern.Phone)
