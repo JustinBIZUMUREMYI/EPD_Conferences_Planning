@@ -21,11 +21,13 @@ SECURE_SSL_REDIRECT = True
 
 # setting up the email send
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'epdrwanda@gmail.com'
-EMAIL_HOST_PASSWORD = 'bvnxnvprwsyrgxko' 
+EMAIL_HOST = 'mail.epdrwanda.com'       # This works for most cPanel servers
+EMAIL_PORT = 465                        # Use 465 for SSL or 587 for TLS
+EMAIL_USE_SSL = True                    # If 465
+# EMAIL_USE_TLS = True                  # If you use port 587 instead (then disable SSL)
+
+EMAIL_HOST_USER = 'info@epdrwanda.com'
+EMAIL_HOST_PASSWORD = 'energyPD@2023'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 ALLOWED_HOSTS = ['www.epdconference.com', 'epdconference.com', 'localhost', '127.0.0.1']

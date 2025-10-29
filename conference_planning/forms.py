@@ -217,17 +217,17 @@ class InternsForm(forms.ModelForm):
             raise ValidationError('ID number is required.')
         return id_number
     
-    def clean_Email(self):
-        email = self.cleaned_data.get('Email')
-        if Interns.objects.filter(Email=email).exists():
-            raise forms.ValidationError('An intern with this email already exists.')
-        return email
+    # def clean_Email(self):
+    #     email = self.cleaned_data.get('Email')
+    #     if Interns.objects.filter(Email=email).exists():
+    #         raise forms.ValidationError('An intern with this email already exists.')
+    #     return email
 
-    def clean_ID_number(self):
-        id_number = self.cleaned_data.get('ID_number')
-        if Interns.objects.filter(ID_number=id_number).exists():
-            raise forms.ValidationError('An intern with this ID number already exists.')
-        return id_number
+    # def clean_ID_number(self):
+    #     id_number = self.cleaned_data.get('ID_number')
+    #     if Interns.objects.filter(ID_number=id_number).exists():
+    #         raise forms.ValidationError('An intern with this ID number already exists.')
+    #     return id_number
 
 
     
