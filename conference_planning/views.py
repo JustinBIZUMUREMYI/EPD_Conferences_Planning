@@ -1446,7 +1446,7 @@ class submit_application(CreateView):
 
 
 def interns(request):
-    interns_list = Interns.objects.filter(registered_on__year=2024).order_by('id')
+    interns_list = Interns.objects.filter(registered_on__year=2025).order_by('id')
     context = {'interns': interns_list}
     
     return render(request, 'conference_planning/administration/internship.html', context)
