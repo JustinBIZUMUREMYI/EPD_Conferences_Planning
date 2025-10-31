@@ -1265,9 +1265,9 @@ class interns_list(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         now = timezone.now()
-        # open_time = timezone.make_aware(datetime(2025, 10, 23, 12, 0, 0)) 
-        close_time = timezone.make_aware(datetime(2025, 10, 31, 11, 14, 59))  
-        context['can_apply'] = now <= close_time 
+        open_time = timezone.make_aware(datetime(2025, 10, 31, 12, 10, 0))  
+        close_time = timezone.make_aware(datetime(2025, 10, 31, 11, 29, 59))  
+        context['can_apply'] = open_time <= now <= close_time
         return context
 
     # def get_context_data(self, **kwargs):
