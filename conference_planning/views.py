@@ -1264,10 +1264,22 @@ class interns_list(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        now = timezone.now()
-        open_time = timezone.make_aware(datetime(2025, 10, 31, 12, 10, 0))  
-        close_time = timezone.make_aware(datetime(2025, 10, 31, 12, 29, 59))  
-        context['can_apply'] = open_time <= now <= close_time
+        
+        try:
+            now = timezone.now()  # Current timezone-aware datetime
+
+            # Define the application window
+            open_time = timezone.make_aware(datetime(2025, 10, 23, 12, 0, 0))  # 12:00 PM
+            close_time = timezone.make_aware(datetime(2025, 10, 23, 12, 30, 0))  # 12:30 PM
+
+            # Determine if "Apply" button should be shown
+            context['can_apply'] = open_time <= now <= close_time
+
+        except Exception as e:
+            # Fail-safe: disable applying if any error occurs
+            context['can_apply'] = False
+            print("Error in get_context_data:", e)
+
         return context
 
     # def get_context_data(self, **kwargs):
