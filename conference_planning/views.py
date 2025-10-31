@@ -1250,6 +1250,8 @@ class Register_Interns(CreateView):
         
 #     return context
 
+from datetime import datetime
+from django.utils import timezone
 class interns_list(ListView):
     model = internship_document
     template_name = 'conference_planning/register_interns.html'
@@ -1257,8 +1259,16 @@ class interns_list(ListView):
     ordering = ['-id']
 
     def get_queryset(self):
-        # Only fetch records where title contains 'Company'
+       
         return internship_document.objects.filter(title__icontains='Position').order_by('-id')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        now = timezone.now()
+        # open_time = timezone.make_aware(datetime(2025, 10, 23, 12, 0, 0)) 
+        close_time = timezone.make_aware(datetime(2025, 10, 31, 11, 14, 59))  
+        context['can_apply'] = now <= close_time 
+        return context
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
