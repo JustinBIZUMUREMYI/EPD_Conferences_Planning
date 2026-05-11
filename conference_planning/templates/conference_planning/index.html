@@ -1,0 +1,848 @@
+{% load static %}
+{% include 'conference_planning/includes/nav.html' %}
+<style>
+.site-visit-hosts .card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.site-visit-hosts .card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+
+/* --- Hero Slideshow --- */
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-slideshow .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+
+}
+
+.hero-slideshow .slide.active {
+  opacity: 1;
+}
+
+/* Dark overlay on top of all slides */
+.hero-slideshow .slideshow-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+
+/* Ensure hero content sits above the slideshow */
+#hero .container,
+#hero .about-info {
+  position: relative;
+  z-index: 2;
+}
+
+</style>
+
+<main class="main">
+ 
+    <!-- Hero Section -->
+
+    <!-- <section id="hero" class="hero section dark-background">
+      <img src="{% static 'assets/img/second.JPG'%}" alt="" data-aos="fade-in" class="" width="100">
+      <div class="container d-flex flex-column align-items-center text-center mt-auto">
+        <h2 data-aos="fade-up" data-aos-delay="100" class=""><br><span style="color: #FFBF00;" data-aos="fade-in">Energy Week is back in </span>Kigali. <span style="color: #FFBF00;" data-aos="fade-in">Get ready</span></h2>
+        
+        <p data-aos="fade-up" data-aos-delay="200">The Future of Energy Starts Here, Bring together: Policy makers, Energy developers, Innovators and Energy Professionals.</p>
+        <p data-aos="fade-up" data-aos-delay="200" style="padding: 70px;"><span style="color: #FFBF00;" data-aos="fade-in">Come connect, network, collaborate, and shape the future of energy together.</span></p>
+      
+        <div data-aos="fade-up" data-aos-delay="300" class="">
+          
+          
+       
+        </div>
+      </div>
+      <div class="about-info mt-auto position-relative" style="padding: -100px;" >
+
+        <div class="container position-relative" data-aos="fade-up">
+          <div class="row" text-center>
+            <div class="col-lg-4">
+              <h3>Theme of 6th Edition</h3>
+              <p style="font-style: italic;">"Accelerating Africa's Energy Transition: Innovation, Inclusion and Scalable Sustainable Solutions"</p>
+            </div>
+            <div class="col-lg-4">
+              <h3 style="text-align: center;">Venue</h3>
+              <p style="text-align:center;">Kigali Conference & Exhibition Village(KCEV)</p>
+            </div>
+            <div class="col-lg-4">
+              <h3 style="text-align:right;">Date of the event</h3>
+              <p style="text-align:right;">September 8th - 10th, 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+       
+      </div>
+    </section> -->
+
+    <section id="hero" class="hero section dark-background">
+
+      <!-- Background Slideshow -->
+      <div class="hero-slideshow">
+        <div class= style="position: relative; overflow: hidden; height: 100%;">
+          {% for video_list in list_videos %}
+            <video 
+              autoplay 
+              muted 
+              loop 
+              playsinline
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+              <source src="{{ video_list.video_file.url }}" type="video/mp4">
+            </video>
+          {% endfor %}
+        </div>     
+      </div>
+      <div class="container d-flex flex-column align-items-center text-center mt-auto">
+        <h2 data-aos="fade-up" data-aos-delay="100">
+          <br><span style="color: #FFBF00;" data-aos="fade-in">Energy Week is back in </span>Kigali.
+          <span style="color: #FFBF00;" data-aos="fade-in">Get ready </span><br>
+    
+          <span style="color:white;" data-aos="fade-in"> For the 6th Edition of   <span style="color: #FFBF00;" data-aos="fade-in">RE4SG</span></span>
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="200" style="padding: 20px;">The Future of Energy Starts Here, Bring together: Policy makers, Energy developers, Innovators and Energy Professionals.</p>
+        <p data-aos="fade-up" data-aos-delay="200" style="padding: 70px;">
+          <span style="color: #FFBF00;" data-aos="fade-in">Come connect, network, collaborate, and shape the future of energy together.....</span>
+        </p>
+        <div  class="d-flex mb-3 text-center" data-aos="fade-up" style="width: cover; font-size: 25px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color:red; text-align: center;"  id="countdown-timer">
+          <span id="countdown-display" style="color: white;">Loading... </span> {{end_time}}
+        </div>
+    
+      </div>
+    
+      <div class="about-info mt-auto position-relative">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row">
+            <div class="col-lg-4">
+              <h3>Theme of 6th Edition</h3>
+              <p style="font-style: italic;">"Accelerating Africa's Energy Transition: Innovation, Inclusion and Scalable Sustainable Solutions"</p>
+            </div>
+            <div class="col-lg-4">
+              <h3 style="text-align: center;">Venue</h3>
+              <p style="text-align:center;">Kigali Conference & Exhibition Village (KCEV)</p>
+            </div>
+            <div class="col-lg-4">
+              <h3 style="text-align:right;">Date of the event</h3>
+              <p style="text-align:right;">September 8th - 10th, 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </section>
+
+
+<!-- why attend section -->
+
+<section class="wrapper">
+
+  <div class="container mt-5">
+    <div class="row">
+       
+      
+        <div class="col-md-4 text-center">
+            <div class="media block-6 services d-block">
+                <div class="icon"><span class="flaticon-hotel"></span></div>
+                <div class="media-body">
+                    <h3 class="heading mb-3 fw-bold">Why attend?</h3>
+                    <p style="padding: 30px ;font-style: italic;"> "Join a powerful gathering of policymakers, private sector leaders, 
+                      financiers, utilities, development partners, researchers, academics, 
+                      and civil society - all united around one goal: 
+                      shaping integrated energy solutions for a better tomorrow.
+                      
+                      This is your opportunity to connect, collaborate, and drive 
+                      the change your community needs".
+                      </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4"> 
+              <div class="hero-slideshow" style="border: 2px #FFBF00;">
+                <div class="slide active" style="background-image: url('{% static 'assets/img/second.jpg' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/first.jpg' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/third.JPG' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/4.JPG' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/5.jpg' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/6.JPG' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/7.JPG' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/8.JPG' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/9.JPG' %}');"></div>
+                <div class="slideshow-overlay"></div>
+              </div>
+
+      </div>
+
+      <div class="col-md-4"> 
+        <div>
+          <video 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+          <source src="https://youtu.be/9MC90qzp4j0?si=I0pwpWlB4RW1Ld26" type="video/mp4">
+        </video>
+        </div>
+        </div>
+
+</div>
+    </div>
+</div>
+</section>
+
+    <section id="guest-of-honor" class="py-5" style="background: linear-gradient(135deg, #ffffff, #e2e3e6);">
+      <div class="container" data-aos="fade-up">
+        
+      
+        <div class="section-title text-center mb-5">
+          <h2 class="display-4 fw-bold" style="color: #1a3d7c;">Guest of Honor of the event</h2>
+          <p class="lead">
+            Official Guest of Honor – Opening the 5th Edition of the Renewable Energy for Sustainable Growth Conference & Exhibition
+          </p>
+        </div>
+  
+        <div class="card shadow-lg border-0 w-100" style="background-color: #ffffff;">
+          <div class="row g-0 align-items-center">
+      
+            <div class="col-md-4">
+              <img src="{% static 'images/gasore.jpeg' %}" 
+                   alt="Guest of Honor Photo" 
+                   class="img-fluid rounded-start" 
+                   style="height: 100%; object-fit: cover; width: 100%;">
+            </div>
+    
+     
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="fw-bold mb-2" style="color: #284e96;">Dr. Jimmy Gasore</h3>
+                <p class="text-muted fs-5 mb-3">Minister of Infrastructure</p>
+                <p class="mb-0" style="line-height: 1.6; color: #000000;">
+                  Dr. Jimmy Gasore is the Minister of Infrastructure. Prior to his appointment, 
+                  Dr. Gasore served as Project Manager at REMA and led the establishment of 
+                  the first and only ambient air quality monitoring system in Rwanda that monitors 
+                  and reports air quality levels in real-time between 2017 and 2021.<br><br>
+    
+                  Dr. Gasore holds a Ph.D. degree in Atmospheric Sciences from Massachusetts 
+                  Institute of Technology (MIT) and is a former lecturer at the University of Rwanda.  
+                  Since 2013, Dr. Gasore has led the establishment of the Rwanda Climate Observatory; a
+                  comprehensive field station that monitors atmospheric composition related to climate change, 
+                  air pollution, and ozone depletion—the first and only one of its kind on the African continent.<br><br>
+    
+                  Dr. Gasore contributed to various studies, consultancies, 
+                  and reports that form the bulk of knowledge on ambient air quality in Rwanda and has 
+                  made significant contributions to the understanding of air quality in Africa.  
+                  He has served on various national and international expert panels and technical committees.
+                </p>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+    
+      </div>
+    </section>
+    
+    
+       <!-- <section>
+       
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Event Venue<br></h2>
+        <p>Energy Week Conference Exhibition Venues & Activities</p>
+        
+      </div>
+
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="row g-0">
+          
+          <div class="col-lg-3 venue-info">
+            <div class="row justify-content-center">
+              <div class="col-11 col-lg-8 position-relative">
+                <h3> Norrsken House Kigali </h3>
+                <p>Stakeholders engagement</p>
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-lg-3 venue-info">
+            <div class="row justify-content-center">
+              <div class="col-11 col-lg-8 position-relative">
+                <h3> Norrsken House Kigali</h3>
+                <p>2 Days of Exhibition </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 venue-info">
+            <div class="row justify-content-center">
+              <div class="col-11 col-lg-8 position-relative">
+                <h3>Site Visits</h3>
+                <p>50 megawatts Methane gas project, Hydropower, Agri photovoltaic project and E-mobility
+                  project</p>
+              </div>
+            </div>
+          </div>
+           <div class="col-lg-3 venue-info">
+            <div class="row justify-content-center">
+              <div class="col-11 col-lg-8 position-relative">
+                <h3>Kigali City</h3>
+                <p>Visit Rwanda</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container-fluid venue-gallery-container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-0">
+
+          <div class="col-lg-3 col-md-4">
+            <div class="venue-gallery">
+              <a href="{% static 'assets/img/venue-gallery/image.png'%}" class="glightbox" data-gall="venue-gallery">
+                <img src="{% static 'assets/img/venue-gallery/image.png'%}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          
+
+          <div class="col-lg-3 col-md-4">
+            <div class="venue-gallery">
+              <a href="{% static 'assets/img/venue-gallery/image.png'%}" class="glightbox" data-gall="venue-gallery">
+                <img src="{% static 'assets/img/venue-gallery/image.png'%}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="venue-gallery">
+              <a href="{% static 'assets/img/venue-gallery/nasho_irrigation.jpg'%}" class="glightbox" data-gall="venue-gallery">
+                <img src="{% static 'assets/img/venue-gallery/nasho_irrigation.jpg'%}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="venue-gallery">
+              <a href="{% static 'assets/img/venue-gallery/kigali_city.jpg'%}" class="glightbox" data-gall="venue-gallery">
+                <img src="{% static 'assets/img/venue-gallery/kigali_city.jpg'%}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+         
+
+        </div>
+      </div>
+
+    </section>  -->
+
+<!-- the section for agenda snapshot  -->
+
+
+<section id="site-visit-hosts" class="site-visit-hosts section">
+
+
+  <div class="container section-title col-lg-12" data-aos="fade-up" >
+    <h2>Agenda Overview</h2>
+    <p>A snapshot of key sessions and highlights. 
+      click here <a href="{% url 'agenda' %}" style="color:#0000EE;text-decoration: dashed;">Agenda</a> to view the complete agenda</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+      
+    
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100">
+          <div class="card-img">
+            <img src="{% static 'assets/img/speaker1.JPG' %}" alt="EnergyCotel" class="img-fluid p-3">
+          </div>
+          <a href="https://www.energicotel.com/index.php/projects/">
+          <h4 class="pt-2" style="text-align: center;">Plenary Sessions</h4>
+          
+          </a>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100">
+          <div class="card-img">
+            <img src="{% static 'assets/img/highlights/ex1.jpg' %}" alt="Nasho Solar-powered irrigation" class="img-fluid p-3">
+          </div>
+          <a href="https://www.energicotel.com/index.php/projects/">
+            <h4 class="pt-2" style="text-align: center;">Exhibition</h4>
+            
+            </a>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100">
+          <div class="card-img">
+            <img src="{% static 'assets/img/sitevisit.JPG' %}" alt="Gas Methane Power Plant" class="img-fluid p-3">
+          </div>
+          <a href="https://www.energicotel.com/index.php/projects/">
+            <h4 class="pt-2" style="text-align: center;">Site visits</h4>
+            
+            </a>
+        </div>
+      </div>
+
+
+      
+    </div>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100" style="padding: 20px;">
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100">
+          <div class="card-img">
+            <img src="{% static 'assets/img/matchmaking.JPG' %}" alt="EnergyCotel" class="img-fluid p-3">
+          </div>
+          <a href="https://www.energicotel.com/index.php/projects/">
+          <h4 class="pt-2" style="text-align: center;">Matchmaking sessions (B2B, B2G)</h4>
+          
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100">
+          <div class="card-img">
+            <img src="{% static 'assets/img/presentation.JPG' %}" alt="Nasho Solar-powered irrigation" class="img-fluid p-3">
+          </div>
+          <a href="https://www.energicotel.com/index.php/projects/">
+            <h4 class="pt-2" style="text-align: center;">Project Presentation</h4>
+            
+            </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100">
+          <div class="card-img">
+            <img src="{% static 'assets/img/panel1.JPG' %}" alt="Gas Methane Power Plant" class="img-fluid p-3">
+          </div>
+          <a href="https://www.energicotel.com/index.php/projects/">
+            <h4 class="pt-2" style="text-align: center;">Panel Descussions</h4>
+            
+            </a>
+        </div>
+      </div>
+
+
+      
+    </div>
+  </div>
+</section>
+
+<!-- <section id="site-visit-hosts" class="site-visit-hosts section">
+
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Site Visit Hosts</h2>
+    <p>Delegates will visit the following companies as part of the official site visit program.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+      
+    
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 text-center">
+          <div class="card-img">
+            <img src="{% static 'assets/img/site_visits/energycotel_logo.png' %}" alt="EnergyCotel" class="img-fluid p-3">
+          </div>
+          <a href="https://www.energicotel.com/index.php/projects/">
+          <h4 class="pt-2">KEYA HYDROPOWER PLANT (HPP)</h4>
+          <p class="px-3">Keya HPP is located in Nyundo Sector, Rubavu District in the Western
+            Province of Rwanda. The Plant draws its water from Sebeya River.
+            The largest of ECTL’s HPPs.
+            Keya became operative in 2012 with an installed capacity of 2.2MW.
+            Capacity factor in 2020 was 62%.</p>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 text-center">
+          <div class="card-img">
+            <img src="{% static 'assets/img/site_visits/nasho.jpg' %}" alt="Nasho Solar-powered irrigation" class="img-fluid p-3">
+          </div>
+          <h4 class="pt-2">Nasho Solar-powered irrigation Project</h4>
+          <p class="px-3">Thursday, 12 March 2020 - President Kagame 
+            on Thursday inaugurated the Nasho Solar-powered Irrigation 
+            Project that includes pivot irrigation systems serving 2099 small scale farmers, 
+            with a capacity of 3.3 megawatts to power the irrigation system, 
+            with 2.4 MW battery storage and a model village of 144 houses.</p>
+        </div>
+      </div>
+
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 text-center">
+          <div class="card-img">
+            <img src="{% static 'assets/img/site_visits/shema.png' %}" alt="Gas Methane Power Plant" class="img-fluid p-3">
+          </div>
+          <h4 class="pt-2">Gas Methane Power Plant in Rubavu District now supplying 50 Megawatts of electricity to the grid</h4>
+          <p class="px-3">Shema Power Lake Kivu (SPLK), is a Gas Methane Power Plant that produces electricity from methane gas in Lake Kivu, the construction work of this plant  has been completed, it was built by a British company called Shema Power Lake Kivu Ltd (SPLK), 
+            and it is located in Busoro Cell, Nyamyumba Sector, Rubavu District.</p>
+        </div>
+      </div>
+
+
+      
+    </div>
+  </div>
+</section> -->
+
+
+
+<!-- section for the hotels provide discouns -->
+
+
+
+  <!-- <section id="hotels" class="hotels section">
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Hotels</h2>
+        <p>The hotels within Kigali where you can stay during the conference</p>
+      </div>
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100">
+              <div class="card-img">
+                <a href="https://www.marriott.com/">
+                <img src="{% static 'assets/img/hotels/marriot.jpg'%}" alt="" class="img-fluid">
+                </a>
+              </div>
+              <h3><a href="https://www.marriott.com/" class="stretched-link">Kigali Marriott Hotel</a></h3>
+              <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <p>3 min (450.0 m) via KN 4 Ave and KN 65 St from the Venue</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100">
+              <div class="card-img">
+                <img src="{% static 'assets/img/hotels/mhotel.jpg'%}" alt="" class="img-fluid">
+              </div>
+              <h3><a href="https://mhotelkigali.com/" class="stretched-link">M Hotel</a></h3>
+              <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <p>7 min (2.8 km) via KN 3 Rd from the venue</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100">
+              <div class="card-img">
+                <a href="https://www.onomohotels.com/" class="stretched-link">
+                <img src="{% static 'assets/img/hotels/onomo.webp'%}" alt="" class="img-fluid">
+                </a>  
+              </div>
+              <h3><a href="https://www.onomohotels.com/" class="stretched-link">Onomo Hotel</a></h3>
+              <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <p>6 min (2.5 km) via KN 3 Rd from the Venue</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section> -->
+
+
+    <!-- <section id="discounted-hotels" class="hotels section">
+
+  
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Hotels with Special Discounts</h2>
+        <p>These hotels are offering exclusive rates for conference participants</p>
+      </div>
+    
+      <div class="container">
+    
+        <div class="row gy-4">
+    
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 border border-success shadow-lg rounded-3">
+              
+       
+              <div class="card-img">
+                <a href="https://www.radissonhotels.com/en-us/hotels/radisson-blu-kigali">
+                  <img src="{% static 'assets/img/hotels/homefree.jpeg' %}" alt="HomeFree Hotel" class="img-fluid rounded-top">
+                </a>
+              </div>
+          
+            
+              <div class="card-body text-center">
+                <h3>
+                  <a href="https://signature-hotels.vercel.app/contact" class="text-success text-decoration-none">
+                    HomeFree Hotel
+                  </a>
+                </h3>
+          
+    
+                <div class="stars mb-3 text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+          
+             
+                <h5 class="text-dark fw-bold mb-3">Our Special Rates</h5>
+                <ul class="list-group text-start mb-4">
+                  <li class="list-group-item">
+                    Accommodation with airport pick-up & drop-off:
+                    <strong>USD 80 / night</strong>
+                  </li>
+                  <li class="list-group-item">
+                    Accommodation with full transportation (includes airport pick-up, drop-off & daily transfers to/from conference venue):
+                    <strong>USD 85 / night</strong>
+                  </li>
+                  <li class="list-group-item">
+                    Accommodation only (bed & breakfast):
+                    <strong>USD 75 / night</strong>
+                  </li>
+                </ul>
+                <div class="contact-person p-3 border rounded bg-light text-start">
+                  <h6 class="fw-bold mb-1">Reach Out</h6>
+                  <p class="mb-1"><i class="bi bi-person-fill text-success"></i>  Email: reservation@signaturehospitality.xyz</p>
+                  <p class="mb-1"><i class="bi bi-person-fill text-success"></i>chantal.iradukunda@signaturehospitality.xyz</p> 
+                  <p class="mb-1"><i class="bi bi-telephone-fill text-success"></i> Tel:+250781290531</p>
+               
+                </div>
+           
+                <p class="text-muted">
+                  <i class="bi bi-geo-alt-fill text-success"></i>
+                  20 min (6.9 km) via KN 5 Rd/RN3 and KN 5 Rd
+                </p>
+              
+          
+                <a href="https://signaturehospitality.xyz" class="btn btn-success btn-sm mt-2">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+          
+    
+        
+    
+        </div>
+    
+      </div>
+    
+    </section> -->
+  
+
+
+
+    <section id="gallery" class="gallery section">
+
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2>RE4SG - 4 Edition Highlights</h2>
+        <p>Highlights from the previous conference</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "centeredSlides": true,
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 0
+                },
+                "768": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 20
+                },
+                "1200": {
+                  "slidesPerView": 5,
+                  "spaceBetween": 20
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/first.JPG'%}"><img src="{% static 'assets/img/highlights/first.JPG'%}" class="img-fluid" alt=""></a></div>
+                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex1.JPG' %}"><img src="{% static 'assets/img/highlights/ex1.JPG' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex2.JPG'%}"><img src="{% static 'assets/img/highlights/ex2.JPG'%}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex3.JPG' %}"><img src="{% static 'assets/img/highlights/ex3.JPG' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/second.JPG' %}"><img src="{% static 'assets/img/highlights/second.JPG' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/third.JPG'%}"><img src="{% static 'assets/img/highlights/third.JPG'%}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/forth.JPG' %}"><img src="{% static 'assets/img/highlights/forth.JPG' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/fifth.JPG' %}"><img src="{% static 'assets/img/highlights/fifth.JPG' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/sixth.JPG' %}"><img src="{% static 'assets/img/highlights/sixth.JPG' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/seventh.JPG' %}"><img src="{% static 'assets/img/highlights/seventh.JPG' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/eighth.jpg' %}"><img src="{% static 'assets/img/highlights/eighth.jpg' %}" class="img-fluid" alt=""></a></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- <section id="sponsors" class="sponsors section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Our Sponsors</h2>
+        <p></p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-0 clients-wrap">
+             {% for sponsor in sponsors %}
+          <div class="col-xl-3 col-md-4 client-logo">
+            <a href="{{ sponsor.url }}">
+            <img src="{{ sponsor.logo.url }}" class="img-fluid" alt="{{ sponsor.organization_name }} Logo">
+              </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section> -->
+    
+    <section id="contact" class="contact section" style="background-color: #01003b;padding-bottom: -20px;">
+
+
+
+      
+      <div class="container section-title" data-aos="fade-up">
+        <h2 style="color: white;">RE4SG in Numbers</h2>
+        <p></p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        
+
+        <div class="row gy-4 mt-1">
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
+            <img 
+            src="{% static 'assets/img/states.png' %}" 
+            frameborder="0" 
+            style="border:0; width: 100%; height: 100%;" 
+            allowfullscreen="" 
+          
+            >
+          </img>
+          
+          </div>
+
+         
+        </div>
+
+      </div>
+
+    </section>
+
+
+    
+
+          <!-- Contact Section -->
+    <!-- <section id="contact" class="contact section">
+
+
+
+      
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p></p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Address</h3>
+              <p>KG 630 St No 1
+                Kimihurura-Rugando</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-telephone"></i>
+              <h3>Give us a call</h3>
+              <p>(+250) 788-310-434</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-envelope"></i>
+              <h3>Email Us</h3>
+              <p>info@epdrwanda.com</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
+            <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.01622030673!2d30.057089!3d-1.9440729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca6d65b8df281%3A0x25ee8d92e0f0cfc6!2sKigali!5e0!3m2!1sen!2srw!4v1715177731790!5m2!1sen!2srw" 
+            frameborder="0" 
+            style="border:0; width: 100%; height: 400px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          
+          </div>
+
+         
+        </div>
+
+      </div>
+
+    </section> -->
+       
+      </div>
+
+    </section><!-- /Buy Tickets Section -->
+  </main>
+  {% include 'conference_planning/includes/footer.html'%}

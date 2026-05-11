@@ -1,0 +1,99 @@
+ 
+ {% load static %}
+ {% include 'conference_planning/includes/nav.html' %}
+ <section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;"
+
+>
+
+  <img src="{% static 'assets/img/second.JPG'%}" alt="" data-aos="fade-in" class="" style="max-height: 500px;width: 100%; object-fit: cover; ">
+
+  <div class="container d-flex flex-column align-items-center text-center mt-auto">
+    <h2 data-aos="fade-up" data-aos-delay="100" class="" style="font-size: 40px; margin: 30px 0;"><br><span>RE4SG</span> Speakers & Panelists</h2>
+  </div>
+  
+
+</section><!-- /Hero Section -->
+ <!-- Speakers Section -->
+ <section id="speakers" class="speakers section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Meet our Speakers & Panelists<br></h2>
+
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+    <div class="row gy-4">
+      {% for speaker_list in speakers_list %}
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="member h-100 d-flex flex-column">
+          <a href="{% url 'speaker_details' speaker_list.id %}">
+            <div class="member-img">
+              <img src="{{ speaker_list.picture.url}}" class="img-fluid speaker-img" alt="">
+            </div>
+         
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4><a href="{% url 'speaker_details' speaker_list.id %}">{{ speaker_list.names }}</a></h4>
+              <span>{{ speaker_list.title }}</span>
+            </div>
+         
+            <div class="social">
+              
+            </div>
+          </div>
+        </a>
+        </div>
+      </div><!-- End Team Member -->
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section><!-- /Speakers Section -->
+
+
+ <!-- Panelists Section -->
+ <!-- <section id="speakers" class="speakers section">
+
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Meet our Panelists<br></h2>
+
+  </div>
+
+  <div class="container">
+
+    <div class="row gy-4">
+      {% for panelist in panelists_list %}
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="member h-100 d-flex flex-column">
+          <a href="{% url 'panelist_details' panelist.id %}">
+            <div class="member-img">
+              <img src="{{ panelist.picture.url}}" class="img-fluid speaker-img" alt="">
+            </div>
+         
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4><a href="{% url 'panelist_details' panelist.id %}">{{ panelist.names }}</a></h4>
+              <span>{{ panelist.title }}</span>
+            </div>
+         
+            <div class="social">
+              
+            </div>
+          </div>
+        </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section> -->
+
+<!-- /End of Panelist Section -->
+
+{% include 'conference_planning/includes/footer.html' %}

@@ -1,0 +1,472 @@
+{% load static %}
+{% include 'conference_planning/includes/nav.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+<section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;"
+
+>
+
+  <img src="{% static 'assets/img/exhibition.JPG'%}" alt="" data-aos="fade-in" class="" style="max-height: 500px;width: 100%; object-fit: cover; ">
+
+  <div class="container d-flex flex-column align-items-center text-center mt-auto">
+    <h2 data-aos="fade-up" data-aos-delay="100" class="" style="font-size: 40px; margin: 30px 0;"><br><span>RE4SG</span> Sponsorship</h2>
+  </div>
+  
+
+</section><!-- /Hero Section -->
+
+<section class="wrapper">
+
+    <div class="container-fostrap">
+        <div>
+         
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Packages<br></h2>
+
+  </div>
+
+{% if messages %}
+            <div class="container mt-5">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Registered!</strong>  
+        
+              {% for message in messages %}
+               {{ message }}
+              {% endfor %}
+         
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+{% endif %} 
+        </div>
+        <div class="content">
+            <div class="container">
+             
+                
+                <div class="row">
+
+                    {% for sponsor in sponsorships %}
+
+                    {% if sponsor.kind == 'PLATINUM SPONSOR' %}
+                    <div class="col-xs-12 col-sm-4 ">
+                    
+                        <div class="card border border-5 border-primary rounded-lg" style="background-color:#E5E4E2;">
+                         
+                            <a class="img-card" data-toggle="modal" data-target="#registrationModal">
+                            <img src="{% static 'images/sponsors/s2.jpeg' %}"/>
+                          </a>
+                            <div class="card-content">
+                                <h4 class="card-title">
+                                    <a href="">  {{sponsor.kind}}: {{sponsor.payment}}
+                                  </a>
+                                </h4>
+                                <p class="" style="color:black">
+                                    {{sponsor.benefits|slice:":100" }}....
+                                    <a href="#" class="biography" data-toggle="modal" data-biography="{{sponsor.benefits}}" data-target="#exampleModalLong">Read more</a>
+                                  
+                                   
+                                </p>
+
+                               
+                            </div>
+          
+
+                            <div class="card-read-more">
+                              
+                              <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#myModal">
+                              Join
+                            </button>
+                               
+                          </div>
+    
+
+                        </div>
+                    </div>
+                    
+                    {% elif sponsor.kind == 'DIAMOND SPONSOR' %}
+
+                    <div class="col-xs-12 col-sm-4">
+                    
+                      <div class="card" style="background-color:#B9F2FF;">
+                       
+                          <a class="img-card" data-toggle="modal" data-target="#registrationModal">
+                          <img src="{% static 'images/sponsors/s2.jpeg' %}"/>
+                        </a>
+                          <div class="card-content">
+                              <h4 class="card-title">
+                                  <a href="">  {{sponsor.kind}}: {{sponsor.payment}}
+                                </a>
+                              </h4>
+                              <p class="" style="color:black">
+                                  {{sponsor.benefits|slice:":100" }}....
+                                  <a href="#" class="biography" data-toggle="modal" data-biography="{{sponsor.benefits}}" data-target="#exampleModalLong">Read more</a>
+                                
+                                 
+                              </p>
+
+                             
+                          </div>
+        
+
+                          <div class="card-read-more">
+                            
+                            <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#myModal">
+                            Join
+                          </button>
+                             
+                        </div>
+       
+
+                      </div>
+                  </div>
+
+                  {% elif sponsor.kind == 'GOLD SPONSOR' %}
+
+                  <div class="col-xs-12 col-sm-4">
+                    
+                    <div class="card" style="background-color:#FFD700;">
+                     
+                        <a class="img-card" data-toggle="modal" data-target="#registrationModal">
+                        <img src="{% static 'images/sponsors/s2.jpeg' %}"/>
+                      </a>
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                <a href="">  {{sponsor.kind}}: {{sponsor.payment}}
+                              </a>
+                            </h4>
+                            <p class="" style="color:black">
+                                {{sponsor.benefits|slice:":100" }}....
+                                <a href="#" class="biography" data-toggle="modal" data-biography="{{sponsor.benefits}}" data-target="#exampleModalLong">Read more</a>
+                              
+                               
+                            </p>
+
+                           
+                        </div>
+      
+
+                        <div class="card-read-more">
+                          
+                          <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#myModal">
+                         Join
+                        </button>
+                           
+                      </div>
+                
+
+                    </div>
+                </div>
+
+                {% elif  sponsor.kind == 'SILVER SPONSOR' %}
+
+                <div class="col-xs-12 col-sm-4">
+                    
+                  <div class="card" style="background-color:#C0C0C0;">
+                   
+                      <a class="img-card" data-toggle="modal" data-target="#registrationModal">
+                      <img src="{% static 'images/sponsors/s2.jpeg' %}"/>
+                    </a>
+                      <div class="card-content">
+                          <h4 class="card-title">
+                              <a href="">  {{sponsor.kind}}: {{sponsor.payment}}
+                            </a>
+                          </h4>
+                          <p class="" style="color:black">
+                              {{sponsor.benefits|slice:":100" }}....
+                              <a href="#" class="biography" data-toggle="modal" data-biography="{{sponsor.benefits}}" data-target="#exampleModalLong">Read more</a>
+                            
+                             
+                          </p>
+
+                         
+                      </div>
+    
+
+                      <div class="card-read-more">
+                        
+                        <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#myModal">
+                      Join 
+                      </button>
+                         
+                    </div>
+        
+
+                  </div>
+              </div>
+
+              {% elif sponsor.kind == 'WELCOME PACKAGE SPONSOR' %}
+               
+              <div class="col-xs-12 col-sm-4">
+                    
+                <div class="card" style="background-color:#F6FAF8;">
+                 
+                    <a class="img-card" data-toggle="modal" data-target="#registrationModal">
+                    <img src="{% static 'images/sponsors/s2.jpeg' %}"/>
+                  </a>
+                    <div class="card-content">
+                        <h4 class="card-title">
+                            <a href="">  {{sponsor.kind}}: {{sponsor.payment}}
+                          </a>
+                        </h4>
+                        <p class="" style="color:black">
+                            {{sponsor.benefits|slice:":100" }}....
+                            <a href="#" class="biography" data-toggle="modal" data-biography="{{sponsor.benefits}}" data-target="#exampleModalLong">Read more</a>
+                          
+                           
+                        </p>
+
+                       
+                    </div>
+  
+
+                    <div class="card-read-more">
+                      
+                      <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#myModal">
+                       Join 
+                    </button>
+                       
+                  </div>
+       
+
+                </div>
+            </div>
+
+            {% elif sponsor.kind == 'COVERAGE SPONSOR' %}
+
+            <div class="col-xs-12 col-sm-4">
+                    
+              <div class="card" style="background-color:#5DA1E9 ;">
+               
+                  <a class="img-card" data-toggle="modal" data-target="#registrationModal">
+                  <img src="{% static 'images/sponsors/s2.jpeg' %}"/>
+                </a>
+                  <div class="card-content">
+                      <h4 class="card-title">
+                          <a href="">  {{sponsor.kind}}: {{sponsor.payment}}
+                        </a>
+                      </h4>
+                      <p class="" style="color:black">
+                          {{sponsor.benefits|slice:":100" }}....
+                          <a href="#" class="biography" data-toggle="modal" data-biography="{{sponsor.benefits}}" data-target="#exampleModalLong">Read more</a>
+                        
+                         
+                      </p>
+
+                     
+                  </div>
+
+
+                  <div class="card-read-more">
+                    
+                    <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#myModal">
+                    Join 
+                  </button>
+                     
+                </div>
+          
+
+              </div>
+          </div>
+
+          {% else %}
+
+          <div class="col-xs-12 col-sm-4">
+                    
+            <div class="card" style="background-color: #05763E;">
+             
+                <a class="img-card" data-toggle="modal" data-target="#registrationModal">
+                <img src="{% static 'images/sponsors/s2.jpeg' %}"/>
+              </a>
+                <div class="card-content">
+                    <h4 class="card-title">
+                        <a href="">  {{sponsor.kind}}: {{sponsor.payment}}
+                      </a>
+                    </h4>
+                    <p class="" style="color:black">
+                        {{sponsor.benefits|slice:":100" }}....
+                        <a href="#" class="biography" data-toggle="modal" data-biography="{{sponsor.benefits}}" data-target="#exampleModalLong">Read more</a>
+                      
+                       
+                    </p>
+
+                   
+                </div>
+
+
+                <div class="card-read-more">
+                  
+                  <button type="button" class="btn btn-primary text-right" data-toggle="modal" data-target="#myModal">
+                  Join 
+                </button>        
+              </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+                  {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title text-center" id="registrationModalLabel" style="color: darkblue;">Registering for Sponsorship</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form method="post"  class="register-form" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form|crispy }}
+                  <button 
+                  type="submit" 
+                  style="border: none"
+                  name="register"
+                  class="btn btn-primary btn-sm"
+                  data-target="#success"
+                  >Submit</button>
+              </form>           
+                 </div>                  
+          </div>
+      </div>
+  </div>
+
+</section>
+
+
+<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {% if messages %}
+                {% for message in messages %}
+                 {{ message }}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-secondary" href="{% url 'index' %}">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade modal-fullscreen" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Your Benefits </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="bio"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<section>
+   <div class="row" style="text-align: center;">
+          {% for  document in documents %}
+          <div class="col-md-12 ">
+
+          <a href="{{ document.pdf_document.url }}" target="_blank" style="font-family: Arial, Helvetica, sans-serif;font-weight:bold ;""> Download PDF</a>
+              
+          
+          </div>
+        
+      
+          {% endfor %}
+  
+      </div>
+ </section>
+    <!-- <section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h3">Contact Information</h2>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-3">
+            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+          </div>
+          <div class="col-md-3">
+            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+          </div>
+          <div class="col-md-3">
+            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+          </div>
+          <div class="col-md-3">
+            <p><span>Website</span> <a href="#">yoursite.com</a></p>
+          </div>
+        </div>
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex">
+            <form action="#" class="bg-light p-5 contact-form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Email">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+              <div class="form-group">
+                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          
+          </div>
+
+          <div class="col-md-6 d-flex">
+          	<div id="map" class="bg-white"></div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    
+{% if messages %}
+<script>
+  $(document).ready(function(){
+    $("#success").modal('show');
+  });
+</script>
+{% endif %}
+
+<script>
+document.querySelectorAll('.biography').forEach(bioBtn => {
+bioBtn.addEventListener('click', () => {
+    document.getElementById('bio').textContent = bioBtn.getAttribute('data-biography');
+});
+});
+</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    {% include 'conference_planning/includes/footer.html'%}

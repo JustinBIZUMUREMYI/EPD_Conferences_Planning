@@ -1,0 +1,100 @@
+{% load static %}
+{% include 'conference_planning/includes/nav.html' %}
+
+
+<section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;"
+
+>
+
+  <img src="{% static 'assets/img/second.JPG'%}" alt="" data-aos="fade-in" class="" style="max-height: 500px;width: 100%; object-fit: cover; ">
+
+  <div class="container d-flex flex-column align-items-center text-center mt-auto">
+    <h2 data-aos="fade-up" data-aos-delay="100" class="" style="font-size: 40px; margin: 30px 0;"><br><span>RE4SG</span> REGISTRATION</h2>
+  </div>
+  
+
+</section><!-- /Hero Section -->
+<!-- Schedule Section -->
+
+<section id="schedule" class="schedule section">
+
+   <!-- Section Title -->
+   <div class="container section-title" data-aos="fade-up">
+
+    <h2>Categories<br></h2>
+    
+     <!-- <p>Agenda -  5th Edition of The Renewable Energy for Sustainable Growth (RE4SG) Conference and Exhibition</p> -->
+   </div><!-- End Section Title -->
+
+   <div class="container">
+
+  
+
+     <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <!-- Buy Tickets Section -->
+    <section id="buy-tickets" class="buy-tickets section">
+
+    
+        <div class="container">
+          <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+              <h3>Students</h3>
+            </div>
+            <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center">
+              <h4><sup>$</sup>30 <span>(International)</span></h4>
+              <h5><strong>or</strong></h5>
+              <h4><sup>RWF</sup>43,800 <span>(Local)</span></h4>
+            </div>
+            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Attending 2 days of the conference</span></li>
+                <li><i class="bi bi-check"></i> <span>Access to networking and business matchmaking opportunities</span></li>
+                <li><i class="bi bi-check"></i> <span>Access to exhibition</span></li>
+                <li><i class="bi bi-check"></i> <span>Coffee break and Lunch</span></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+              <div class="text-center">
+                <a href="{% url 'registration:students_registration' %}" class="buy-btn">Register</a>
+              </div>
+            </div>
+          </div>
+          <!-- End Pricing Item -->
+  
+          <div class="row gy-4 pricing-item featured mt-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+              <h3>All Other Delegates</h3>
+            </div>
+            <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center">
+              <h4><sup>$</sup>60<span> (International)</span></h4>
+              <h5><strong>or</strong></h5>
+              <h4><sup>RWF</sup>87,600<span> (Local)</span></h4>
+            </div>
+            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Attending 2 days of the conference</span></li>
+                <li><i class="bi bi-check"></i> <span>Access to networking and business matchmaking opportunities</span></li>
+                <li><i class="bi bi-check"></i> <span>Access to exhibition</span></li>
+                <li><i class="bi bi-check"></i> <span>Coffee break and Lunch</span></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+              <div class="text-center">
+                <a href="{% url 'registration:attendees_registeration' %}" class="buy-btn">Register</a>
+              </div>
+            </div>
+          </div>
+          <!-- End Pricing Item -->
+          </div>
+          </section>
+
+           
+
+        
+
+     </div>
+
+   </div>
+ </section><!-- /Schedule Section -->
+
+ {% include 'conference_planning/includes/footer.html' %}
