@@ -2,5 +2,10 @@ conference_planning//__pycache__
 Epd_Conference_Planning//__pycache__
 db.sqlite3
 media/
+staticfiles/
+.DS_Store
+**/ .DS_Store
+__pycache__/
+*.pyc
 
 

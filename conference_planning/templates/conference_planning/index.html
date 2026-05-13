@@ -98,7 +98,8 @@
 
       <!-- Background Slideshow -->
       <div class="hero-slideshow">
-        <div class= style="position: relative; overflow: hidden; height: 100%;">
+        <!-- <div class="slide active" style="background-image: url('{% static 'assets/img/second.jpg' %}');"></div> -->
+        <div class="container-slideshow" style="position: relative; overflow: hidden; height: 100%;">
           {% for video_list in list_videos %}
             <video 
               autoplay 
@@ -109,8 +110,10 @@
               <source src="{{ video_list.video_file.url }}" type="video/mp4">
             </video>
           {% endfor %}
-        </div>     
+        </div>
+     
       </div>
+    
       <div class="container d-flex flex-column align-items-center text-center mt-auto">
         <h2 data-aos="fade-up" data-aos-delay="100">
           <br><span style="color: #FFBF00;" data-aos="fade-in">Energy Week is back in </span>Kigali.
@@ -152,13 +155,14 @@
 
 <!-- why attend section -->
 
+
 <section class="wrapper">
 
   <div class="container mt-5">
     <div class="row">
        
       
-        <div class="col-md-4 text-center">
+        <div class="col-md-6 text-center">
             <div class="media block-6 services d-block">
                 <div class="icon"><span class="flaticon-hotel"></span></div>
                 <div class="media-body">
@@ -175,14 +179,17 @@
             </div>
         </div>
 
-        <div class="col-md-4"> 
+        <div class="col-md-6">
+       
+              <!-- <div class=""><p><img src="{% static 'assets/img/first.JPG' %}" height="300" width="500"></p></div> -->
+              
               <div class="hero-slideshow" style="border: 2px #FFBF00;">
                 <div class="slide active" style="background-image: url('{% static 'assets/img/second.jpg' %}');"></div>
                 <div class="slide" style="background-image: url('{% static 'assets/img/first.jpg' %}');"></div>
                 <div class="slide" style="background-image: url('{% static 'assets/img/third.JPG' %}');"></div>
                 <div class="slide" style="background-image: url('{% static 'assets/img/4.JPG' %}');"></div>
-                <div class="slide" style="background-image: url('{% static 'assets/img/5.jpg' %}');"></div>
-                <div class="slide" style="background-image: url('{% static 'assets/img/6.JPG' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/5.JPG' %}');"></div>
+                <div class="slide" style="background-image: url('{% static 'assets/img/6.jpg' %}');"></div>
                 <div class="slide" style="background-image: url('{% static 'assets/img/7.JPG' %}');"></div>
                 <div class="slide" style="background-image: url('{% static 'assets/img/8.JPG' %}');"></div>
                 <div class="slide" style="background-image: url('{% static 'assets/img/9.JPG' %}');"></div>
@@ -190,17 +197,6 @@
               </div>
 
       </div>
-
-      <div class="col-md-4"> 
-        <div>
-          <video 
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-          <source src="https://youtu.be/9MC90qzp4j0?si=I0pwpWlB4RW1Ld26" type="video/mp4">
-        </video>
-        </div>
-        </div>
-
-</div>
     </div>
 </div>
 </section>
@@ -370,7 +366,7 @@
       <div class="col-lg-4 col-md-6">
         <div class="card h-100">
           <div class="card-img">
-            <img src="{% static 'assets/img/speaker1.JPG' %}" alt="EnergyCotel" class="img-fluid p-3">
+            <img src="{% static 'assets/img/speaker1.jpg' %}" alt="EnergyCotel" class="img-fluid p-3">
           </div>
           <a href="https://www.energicotel.com/index.php/projects/">
           <h4 class="pt-2" style="text-align: center;">Plenary Sessions</h4>
@@ -392,16 +388,19 @@
         </div>
       </div>
 
-
       <div class="col-lg-4 col-md-6">
         <div class="card h-100">
-          <div class="card-img">
-            <img src="{% static 'assets/img/sitevisit.JPG' %}" alt="Gas Methane Power Plant" class="img-fluid p-3">
+      
+          <div class="card-img p-3">
+            <div class="ratio ratio-16x9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/L6yzYRG0hJ4?si=0qTTOff96BUImSTK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
           </div>
+      
           <a href="https://www.energicotel.com/index.php/projects/">
-            <h4 class="pt-2" style="text-align: center;">Site visits</h4>
-            
-            </a>
+            <h4 class="pt-2 text-center">Site visits</h4>
+          </a>
+      
         </div>
       </div>
 
@@ -415,7 +414,7 @@
       <div class="col-lg-4 col-md-6">
         <div class="card h-100">
           <div class="card-img">
-            <img src="{% static 'assets/img/matchmaking.JPG' %}" alt="EnergyCotel" class="img-fluid p-3">
+            <img src="{% static 'assets/img/matchmaking.jpg' %}" alt="EnergyCotel" class="img-fluid p-3">
           </div>
           <a href="https://www.energicotel.com/index.php/projects/">
           <h4 class="pt-2" style="text-align: center;">Matchmaking sessions (B2B, B2G)</h4>
@@ -426,7 +425,7 @@
       <div class="col-lg-4 col-md-6">
         <div class="card h-100">
           <div class="card-img">
-            <img src="{% static 'assets/img/presentation.JPG' %}" alt="Nasho Solar-powered irrigation" class="img-fluid p-3">
+            <img src="{% static 'assets/img/presentation.jpg' %}" alt="Nasho Solar-powered irrigation" class="img-fluid p-3">
           </div>
           <a href="https://www.energicotel.com/index.php/projects/">
             <h4 class="pt-2" style="text-align: center;">Project Presentation</h4>
@@ -437,7 +436,7 @@
       <div class="col-lg-4 col-md-6">
         <div class="card h-100">
           <div class="card-img">
-            <img src="{% static 'assets/img/panel1.JPG' %}" alt="Gas Methane Power Plant" class="img-fluid p-3">
+            <img src="{% static 'assets/img/panel1.jpg' %}" alt="Gas Methane Power Plant" class="img-fluid p-3">
           </div>
           <a href="https://www.energicotel.com/index.php/projects/">
             <h4 class="pt-2" style="text-align: center;">Panel Descussions</h4>
@@ -702,16 +701,16 @@
             }
           </script>
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/first.JPG'%}"><img src="{% static 'assets/img/highlights/first.JPG'%}" class="img-fluid" alt=""></a></div>
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex1.JPG' %}"><img src="{% static 'assets/img/highlights/ex1.JPG' %}" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex2.JPG'%}"><img src="{% static 'assets/img/highlights/ex2.JPG'%}" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex3.JPG' %}"><img src="{% static 'assets/img/highlights/ex3.JPG' %}" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/second.JPG' %}"><img src="{% static 'assets/img/highlights/second.JPG' %}" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/third.JPG'%}"><img src="{% static 'assets/img/highlights/third.JPG'%}" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/forth.JPG' %}"><img src="{% static 'assets/img/highlights/forth.JPG' %}" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/fifth.JPG' %}"><img src="{% static 'assets/img/highlights/fifth.JPG' %}" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/sixth.JPG' %}"><img src="{% static 'assets/img/highlights/sixth.JPG' %}" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/seventh.JPG' %}"><img src="{% static 'assets/img/highlights/seventh.JPG' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/first.jpg'%}"><img src="{% static 'assets/img/highlights/first.jpg'%}" class="img-fluid" alt=""></a></div>
+                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex1.jpg' %}"><img src="{% static 'assets/img/highlights/ex1.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex2.jpg'%}"><img src="{% static 'assets/img/highlights/ex2.jpg'%}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/ex3.jpg' %}"><img src="{% static 'assets/img/highlights/ex3.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/second.jpg' %}"><img src="{% static 'assets/img/highlights/second.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/third.jpg'%}"><img src="{% static 'assets/img/highlights/third.jpg'%}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/forth.jpg' %}"><img src="{% static 'assets/img/highlights/forth.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/fifth.jpg' %}"><img src="{% static 'assets/img/highlights/fifth.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/sixth.jpg' %}"><img src="{% static 'assets/img/highlights/sixth.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/seventh.jpg' %}"><img src="{% static 'assets/img/highlights/seventh.jpg' %}" class="img-fluid" alt=""></a></div>
             <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets/img/highlights/eighth.jpg' %}"><img src="{% static 'assets/img/highlights/eighth.jpg' %}" class="img-fluid" alt=""></a></div>
           </div>
           <div class="swiper-pagination"></div>
