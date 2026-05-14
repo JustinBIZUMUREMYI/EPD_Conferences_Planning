@@ -21,18 +21,18 @@
   overflow: hidden;
 }
 
-.hero-slideshow .slide {
+/* .hero-slideshow .slide {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0;
+  opacity: 0; */
 
 }
 
-.hero-slideshow .slide.active {
+/* .hero-slideshow .slide.active {
   opacity: 1;
-}
+} */
 
 /* Dark overlay on top of all slides */
 .hero-slideshow .slideshow-overlay {
@@ -96,10 +96,10 @@
 
     <section id="hero" class="hero section dark-background">
 
-      <!-- Background Slideshow -->
+   
       <div class="hero-slideshow">
-        <!-- <div class="slide active" style="background-image: url('{% static 'assets/img/second.jpg' %}');"></div> -->
-        <div class="container" style="position: relative; overflow: hidden; height: 100%;">
+        
+        <div class="slideshow-container" style="position: relative; overflow: hidden; height: 100%;width: 100%;">
           {% for video_list in list_videos %}
             <video 
               autoplay 
@@ -196,7 +196,7 @@
         <div class="section-title text-center mb-5">
           <h2 class="display-4 fw-bold" style="color: #1a3d7c;">Guest of Honor of the event</h2>
           <p class="lead">
-            Official Guest of Honor – Opening the 5th Edition of the Renewable Energy for Sustainable Growth Conference & Exhibition
+            Official Guest of Honor – Opening the 6th Edition of the Renewable Energy for Sustainable Growth Conference & Exhibition
           </p>
         </div>
   
@@ -828,8 +828,6 @@
 
     </section> -->
        
-      </div>
-
-    </section><!-- /Buy Tickets Section -->
+     
   </main>
   {% include 'conference_planning/includes/footer.html'%}

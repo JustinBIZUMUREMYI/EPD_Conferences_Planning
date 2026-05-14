@@ -310,7 +310,7 @@ def exhbition(request):
 
                 Greetings from the Energy Private Developers Association (EPD).<br><br>
 
-                Thank you for booking a booth for the Renewable Energy Week Conference scheduled for September 2025. This email confirms that we have received your booth booking details.<br><br>
+                Thank you for booking a booth for the Renewable Energy Week Conference scheduled for September 2026. This email confirms that we have received your booth booking details.<br><br>
 
                 <strong>To finalize your booking, please proceed with the payment using one of the options provided below:</strong><br><br>
 
@@ -379,7 +379,7 @@ def exhbition(request):
 
                 Greetings from the Energy Private Developers Association (EPD).<br><br>
 
-                Thank you for booking an accessory for the Renewable Energy Week Conference scheduled for September 2025. We have received your booking request.<br><br>
+                Thank you for booking an accessory for the Renewable Energy Week Conference scheduled for September 2026. We have received your booking request.<br><br>
 
                 <strong>To confirm your accessory reservation, please proceed with the payment using one of the options provided below:</strong><br><br>
 
@@ -797,7 +797,7 @@ def register(request):
             recipient = form.cleaned_data['email']
 
             email = EmailMessage(
-                subject='5th Edition (2025) of RE4SG Registration - Pending Payment',
+                subject='6th Edition (2026) of RE4SG Registration - Pending Payment',
                 body=plain_message,
                 from_email=None,  # Uses DEFAULT_FROM_EMAIL
                 to=[recipient],
@@ -1182,7 +1182,7 @@ def export_speakers_to_excel(request):
     ws.title = "the Speakers of the conference"
 
     # Add column headers
-    columns = ['Name', 'Title','Email']
+    columns = ['Name', 'Title','Email','Bio']
     for col_num, column_title in enumerate(columns, 1):
         cell = ws.cell(row=1, column=col_num)
         cell.value = column_title
@@ -1193,6 +1193,7 @@ def export_speakers_to_excel(request):
         ws.cell(row=attendee_num, column=1, value=attendee.names)
         ws.cell(row=attendee_num, column=2, value=attendee.title)
         ws.cell(row=attendee_num, column=3, value=attendee.email)
+        ws.cell(row=attendee_num, column=4, value=attendee.bio)
 
 
     wb.save(response)
@@ -1213,7 +1214,7 @@ def export_panelists_to_excel(request):
     ws.title = "the Speakers of the conference"
 
     # Add column headers
-    columns = ['Name', 'Title','Email']
+    columns = ['Name', 'Title','Email','Bio']
     for col_num, column_title in enumerate(columns, 1):
         cell = ws.cell(row=1, column=col_num)
         cell.value = column_title
@@ -1224,6 +1225,7 @@ def export_panelists_to_excel(request):
         ws.cell(row=attendee_num, column=1, value=attendee.names)
         ws.cell(row=attendee_num, column=2, value=attendee.title)
         ws.cell(row=attendee_num, column=3, value=attendee.email)
+        ws.cell(row=attendee_num, column=4, value=attendee.bio)
 
 
     wb.save(response)
