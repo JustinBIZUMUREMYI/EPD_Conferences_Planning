@@ -757,7 +757,7 @@ def register(request):
 
                 Greetings from Energy Private Developers Association (EPD),<br><br>
 
-                Thank you for registering to attend the Renewable Energy Week Conference in September 2025. You have successfully completed the first step (1/2) of the registration process.<br><br>
+                Thank you for taking the first step of registration process to attend the 6th Edition of Renewable Energy for Sustainable Growth(RE4SG) in September 2026.<br><br>
 
                 <strong>To complete your registration, please proceed with the payment using one of the options below:</strong><br><br>
 
@@ -797,7 +797,7 @@ def register(request):
             recipient = form.cleaned_data['email']
 
             email = EmailMessage(
-                subject='6th Edition (2026) of RE4SG Registration - Pending Payment',
+                subject='6th Edition of RE4SG Registration (Rwanda Energy Week) - Pending Payment',
                 body=plain_message,
                 from_email=None,  # Uses DEFAULT_FROM_EMAIL
                 to=[recipient],
