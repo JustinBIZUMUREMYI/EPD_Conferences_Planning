@@ -4,6 +4,7 @@
 {% load crispy_forms_tags %}
 {% load crispy_forms_filters %}
 {% include 'conference_planning/includes/nav.html' %}
+
  <section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;"
 
 >
@@ -15,7 +16,203 @@
   </div>
   
 
-</section><!-- /Hero Section -->
+</section>
+
+
+<!-- Hero Section -->
+<section style="background: #fff; border-bottom: 1px solid #e8e2d4; padding: 56px 0;">
+  <div class="container">
+    <div style="display: flex; align-items: center; gap: 48px; flex-wrap: wrap;">
+
+      <!-- LEFT: Content -->
+      <div style="flex: 1; min-width: 280px;">
+
+
+        <h1 style="font-family: Georgia, serif; font-size: clamp(20px, 4vw, 30px); font-weight: 700; line-height: 1.15; color: #1a1a1a; margin: 0 0 16px;">
+          Where Africa's Energy Future is <span style="color: #C9A84C;">Exhibited</span>
+        </h1>
+
+        <p style="font-size: 15px; color: #555; max-width: 480px; line-height: 1.75; margin-bottom: 36px;">
+          Connect with innovators, investors, and decision-makers driving sustainable
+          energy transformation across the continent. Secure your space now.
+        </p>
+
+        <!-- Stats -->
+        <div style="display: flex; gap: 28px; flex-wrap: wrap;">
+
+          <div style="border-left: 3px solid #C9A84C; padding-left: 14px;">
+            <div style="font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #1a1a1a; line-height: 1;">500+</div>
+            <div style="font-size: 11px; color: #888; letter-spacing: 0.5px; margin-top: 4px;">Expected Attendees</div>
+          </div>
+
+          <div style="border-left: 3px solid #C9A84C; padding-left: 14px;">
+            <div style="font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #1a1a1a; line-height: 1;">30+</div>
+            <div style="font-size: 11px; color: #888; letter-spacing: 0.5px; margin-top: 4px;">Countries Represented</div>
+          </div>
+
+          <div style="border-left: 3px solid #C9A84C; padding-left: 14px;">
+            <div style="font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #1a1a1a; line-height: 1;">30+</div>
+            <div style="font-size: 11px; color: #888; letter-spacing: 0.5px; margin-top: 4px;">Exhibition Booths</div>
+          </div>
+
+          <div style="border-left: 3px solid #C9A84C; padding-left: 14px;">
+            <div style="font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #1a1a1a; line-height: 1;">2</div>
+            <div style="font-size: 11px; color: #888; letter-spacing: 0.5px; margin-top: 4px;">Days of Exhibition</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Image -->
+      <div style="flex: 1; min-width: 280px;">
+        <img src="{% static 'assets/img/exhibition.jpg' %}" alt="RE4SG Exhibition"
+             style="width: 100%; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,.12);">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Activity Strip -->
+<section style="background: #fdfbf7; border-bottom: 1px solid #e8e2d4;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; padding: 16px 0;">
+
+      <div style="text-align: center; padding: 14px 8px;">
+        <div style="font-size: 22px; margin-bottom: 7px;">🎤</div>
+        <div style="font-size: 13px; font-weight: 600; color: #1a1a1a;">Keynotes & Panels</div>
+        <div style="font-size: 11px; color: #888; margin-top: 2px;">In-room engagement</div>
+      </div>
+
+      <div style="text-align: center; padding: 14px 8px;">
+        <div style="font-size: 22px; margin-bottom: 7px;">🏪</div>
+        <div style="font-size: 13px; font-weight: 600; color: #1a1a1a;">Exhibition Floor</div>
+        <div style="font-size: 11px; color: #888; margin-top: 2px;">30 booths available</div>
+      </div>
+
+      <div style="text-align: center; padding: 14px 8px;">
+        <div style="font-size: 22px; margin-bottom: 7px;">🚌</div>
+        <div style="font-size: 13px; font-weight: 600; color: #1a1a1a;">Site Visits</div>
+        <div style="font-size: 11px; color: #888; margin-top: 2px;">5 Energy flagship projects</div>
+      </div>
+
+      <!-- <div style="text-align: center; padding: 14px 8px;">
+        <div style="font-size: 22px; margin-bottom: 7px;">🏔️</div>
+        <div style="font-size: 13px; font-weight: 600; color: #1a1a1a;">Visit Rwanda</div>
+        <div style="font-size: 11px; color: #888; margin-top: 2px;">Cultural experience</div>
+      </div> -->
+
+      <div style="text-align: center; padding: 14px 8px;">
+        <div style="font-size: 22px; margin-bottom: 7px;">🤝</div>
+        <div style="font-size: 13px; font-weight: 600; color: #1a1a1a;">Networking</div>
+        <div style="font-size: 11px; color: #888; margin-top: 2px;">Hosted receptions</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ 
+<!-- Why Exhibit Section -->
+<section style="padding: 48px 0; background: #ffffff;">
+  <div class="container">
+
+    <div style="display:flex; align-items:baseline; justify-content:space-between; border-bottom: 2px solid #e8e2d4; padding-bottom: 14px; margin-bottom: 32px; flex-wrap:wrap; gap:8px;">
+      <h2 style="font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #1a1a1a; margin:0;">
+        Why <span style="color: #C9A84C;">Exhibit?</span>
+      </h2>
+      <span style="font-size: 11px; color: #C9A84C; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;">
+        Your Opportunity
+      </span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 14px;">
+
+      <div style="border-left: 3px solid #C9A84C; padding: 16px 18px; background: #fdfbf7; border-radius: 0 10px 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Market Access</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Reach policy makers, utilities, and energy buyers from 30+ African nations in a single venue.</div>
+      </div>
+
+      <div style="border-left: 3px solid #C9A84C; padding: 16px 18px; background: #fdfbf7; border-radius: 0 10px 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Brand Visibility</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Logo placement across conference materials, website, and social media reaching 10,000+ industry contacts.</div>
+      </div>
+
+      <div style="border-left: 3px solid #C9A84C; padding: 16px 18px; background: #fdfbf7; border-radius: 0 10px 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Energy Developers</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Direct face-time with qualified buyers, investors, and project developers actively sourcing solutions.</div>
+      </div>
+
+      <div style="border-left: 3px solid #C9A84C; padding: 16px 18px; background: #fdfbf7; border-radius: 0 10px 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Policy makers</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">The exhibition offers a unique opportunity to engage directly with policy makers, government institutions, 
+                                                                          regulators, and development partners shaping the future of the energy sector.</div>
+      </div>
+
+      <div style="border-left: 3px solid #C9A84C; padding: 16px 18px; background: #fdfbf7; border-radius: 0 10px 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Media Coverage</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Exhibiting at the RE4SG provides your organization with 
+          valuable media exposure through coverage by media houses, industry publications, 
+          digital platforms, and social media channels.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Exhibition Activities Section -->
+<section style="padding: 48px 0; background: #f8f7f4;">
+  <div class="container">
+
+    <div style="display:flex; align-items:baseline; justify-content:space-between; border-bottom: 2px solid #e8e2d4; padding-bottom: 14px; margin-bottom: 32px; flex-wrap:wrap; gap:8px;">
+      <h2 style="font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #1a1a1a; margin:0;">
+        Exhibition <span style="color: #C9A84C;">Activities</span>
+      </h2>
+      <span style="font-size: 11px; color: #C9A84C; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;">
+        What To Expect
+      </span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+
+      <div style="background: #fff; border: 1px solid #e8e2d4; border-radius: 12px; padding: 22px; transition: box-shadow .2s;">
+        <div style="font-family: Georgia, serif; font-size: 38px; font-weight: 700; color: rgba(201,168,76,.25); line-height: 1; margin-bottom: 10px;">01</div>
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 7px;">Product & Technology Demonstrations</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Showcase innovative products, services, equipment, and live technology demonstrations to visitors and potential clients.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e8e2d4; border-radius: 12px; padding: 22px;">
+        <div style="font-family: Georgia, serif; font-size: 38px; font-weight: 700; color: rgba(201,168,76,.25); line-height: 1; margin-bottom: 10px;">02</div>
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 7px;">Business-to-Business (B2B) Networking</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Connect with investors, industry leaders, suppliers, government representatives, and potential business partners.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e8e2d4; border-radius: 12px; padding: 22px;">
+        <div style="font-family: Georgia, serif; font-size: 38px; font-weight: 700; color: rgba(201,168,76,.25); line-height: 1; margin-bottom: 10px;">03</div>
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 7px;">Panel Discussions & Knowledge Sessions</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Participate in expert-led discussions, presentations, and workshops on industry trends, policies, and innovations.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e8e2d4; border-radius: 12px; padding: 22px;">
+        <div style="font-family: Georgia, serif; font-size: 38px; font-weight: 700; color: rgba(201,168,76,.25); line-height: 1; margin-bottom: 10px;">04</div>
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 7px;">Media Interviews & Brand Promotion</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Gain visibility through media coverage, interviews, photography sessions, and social media engagement during the event.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e8e2d4; border-radius: 12px; padding: 22px;">
+        <div style="font-family: Georgia, serif; font-size: 38px; font-weight: 700; color: rgba(201,168,76,.25); line-height: 1; margin-bottom: 10px;">05</div>
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 7px;">Client Engagement</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Interact directly with prospective customers, collect business leads, and build long-term professional relationships.</div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e8e2d4; border-radius: 12px; padding: 22px;">
+        <div style="font-family: Georgia, serif; font-size: 38px; font-weight: 700; color: rgba(201,168,76,.25); line-height: 1; margin-bottom: 10px;">06</div>
+        <div style="font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 7px;">Product Launches & Company Showcases</div>
+        <div style="font-size: 13px; color: #666; line-height: 1.65;">Introduce new products, projects, services, or initiatives to a targeted audience and industry stakeholders.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
  <!-- booth Section -->
  <section id="hotels" class="hotels section">
@@ -40,12 +237,19 @@
 {% endif %} 
 
   </div>
-    <h2>Booths</h2>
+  <div style="display:flex; align-items:baseline; justify-content:space-between; border-bottom: 2px solid #e8e2d4; padding-bottom: 14px; margin-bottom: 32px; flex-wrap:wrap; gap:8px;">
+    <h2 style="font-family: Georgia, serif; font-size: 26px; font-weight: 700; color: #1a1a1a; margin:0;">
+       Exhibition <span style="color: #C9A84C;">Packages</span>
+    </h2>
+    <span style="font-size: 11px; color: #C9A84C; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;">
+      Book your booth now!
+    </span>
+  </div>
   </div>
   
   <div class="container">
     <div class="row gy-4">
-      {% for booth in booths %}
+    <!--
       <div class="col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="card h-100">
           <div class="card-img">
@@ -56,15 +260,50 @@
           <p>{{ booth.description }}</p>
           <div class="card-read-more mt-auto">
             <center>
-              <!-- Unique modal trigger per booth -->
+             
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrationModal{{ booth.id }}">
                 Book
               </button>
             </center>
           </div>
         </div>
+      </div> -->
+
+      {% for booth in booths %}
+      <div class="col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+        <div class="exh-booth-card h-100 {% if forloop.counter == 1 %}exh-booth-card--featured{% endif %}">
+
+          <div class="exh-booth-card__img">
+            <img src="{{ booth.picture.url }}" alt="{{ booth.name }}" class="img-fluid">
+            {% if forloop.counter == 1 %}
+              <span class="exh-booth-card__popular">Most Popular</span>
+            {% endif %}
+            <span class="exh-booth-card__badge">
+              {% if forloop.counter == 1 %}3 × 3 m
+              {% elif forloop.counter == 2 %}6 × 3 m
+              {% else %}4 × 4 m{% endif %}
+            </span>
+          </div>
+
+          <div class="exh-booth-card__body">
+            <h3 class="exh-booth-card__name">{{ booth.name }}</h3>
+            <div class="exh-booth-card__price">{{ booth.amount }}</div>
+            <ul class="exh-booth-card__features">
+              {% for line in booth.description.splitlines %}
+                {% if line %}<li>{{ line }}</li>{% endif %}
+              {% endfor %}
+            </ul>
+            <button type="button"
+                    class="exh-btn {% if forloop.counter == 1 %}exh-btn--solid{% endif %}"
+                    data-toggle="modal"
+                    data-target="#registrationModal{{ booth.id }}">
+              Book This Booth
+            </button>
+          </div>
+
+        </div>
       </div>
-  
+   
       <!-- Modal specific to this booth -->
       <div class="modal fade" id="registrationModal{{ booth.id }}" tabindex="-1" aria-labelledby="registrationModalLabel{{ booth.id }}" aria-hidden="true">
         <div class="modal-dialog">
@@ -194,7 +433,7 @@
       </script>
       {% endif %}
 
-<script>
+ </script>
 
 <script>
 

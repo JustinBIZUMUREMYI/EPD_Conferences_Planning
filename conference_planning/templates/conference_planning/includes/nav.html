@@ -157,8 +157,53 @@
     .RE4SG{
       color: #ffc822 !important;
     }
-    
-      </style>
+
+/* card of the booth */
+
+.exh-booth-card {
+  background: #ffffff;
+  border: 1px solid #e8e2d4;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.exh-booth-card:hover {
+  transform: translateY(-4px);
+  border-color: #C9A84C;
+  box-shadow: 0 8px 28px rgba(201,168,76,.15);
+}
+.exh-booth-card--featured { border: 2px solid #C9A84C; }
+
+.exh-booth-card__img { position: relative; height: 180px; overflow: hidden; background: #f0ebe0; }
+.exh-booth-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.exh-booth-card:hover .exh-booth-card__img img { transform: scale(1.04); }
+
+.exh-booth-card__badge {
+  position: absolute; top: 12px; right: 12px;
+  background: #C9A84C; color: #fff;
+  font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+}
+.exh-booth-card__popular {
+  position: absolute; top: 12px; left: 12px;
+  background: #8B6A1F; color: #fff;
+  font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+}
+
+.exh-booth-card__body { padding: 20px 22px; flex: 1; display: flex; flex-direction: column; }
+.exh-booth-card__name { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #1a1a1a; margin: 0 0 6px; }
+.exh-booth-card__price { color: #8B6A1F; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+.exh-booth-card__price span { color: #888; font-weight: 400; font-size: 12px; }
+
+.exh-booth-card__features { list-style: none; padding: 0; margin: 0 0 18px; flex: 1; }
+.exh-booth-card__features li { font-size: 12px; color: #555; padding: 5px 0; border-bottom: 1px solid #f0ece4; display: flex; align-items: center; gap: 8px; }
+.exh-booth-card__features li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #C9A84C; flex-shrink: 0; }
+
+.exh-btn { display: block; width: 100%; padding: 11px; border-radius: 8px; border: 1.5px solid #C9A84C; background: transparent; color: #8B6A1F; font-size: 13px; font-weight: 700; letter-spacing: .5px; cursor: pointer; text-transform: uppercase; transition: all .2s; text-align: center; }
+.exh-btn:hover, .exh-btn--solid { background: #C9A84C; color: #fff; }
+.exh-btn--solid:hover { background: #8B6A1F; }
+</style>
 </head>
 
 <body class="index-page">
