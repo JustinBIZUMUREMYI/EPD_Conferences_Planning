@@ -439,6 +439,146 @@
   </div>
 </section>
 
+
+
+
+
+
+{% load static %}
+
+<section id="rwandair-promo" class="wrapper rwandair-promo section"
+  style="background-image: url('{% static 'assets/img/rwandair.jpg' %}');
+         background-size: cover;
+         background-position: center;
+         background-repeat: no-repeat;
+         position: relative;">
+
+  <!-- Dark overlay so text is readable over the image -->
+  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); z-index:0;"></div>
+
+  <!-- All inner content needs z-index to sit above overlay -->
+  <style>
+    #rwandair-promo .container { position: relative; z-index: 1; }
+    #rwandair-promo .section-title h2,
+    #rwandair-promo .section-title p { color: #fff; }
+    #rwandair-promo .card { background: rgba(255,255,255,0.95); }
+  </style>
+
+  <div class="container section-title col-lg-12" data-aos="fade-up">
+    <h2>Travel to Kigali with RwandAir</h2>
+    <p>Exclusive discounts for 6th Edition of RE4SG Conference & Exhibition delegates. Use promo code <strong style="color:#FFBF00;">RE4SG26</strong> when booking.</p>
+  </div>
+
+  <!-- Discount Cards -->
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4 justify-content-center">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 text-center p-4" style="border-top: 4px solid #0a6abf;">
+          <div class="card-body">
+            <div style="font-size:2.5rem; color:#0a6abf; font-weight:800;">15%</div>
+            <h4 class="mt-2">Economy &amp; Business Saver</h4>
+            <p class="text-muted">Discount off base fare for Economy and Business Saver cabin classes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 text-center p-4" style="border-top: 4px solid #FFBF00;">
+          <div class="card-body">
+            <div style="font-size:2.5rem; color:#FFBF00; font-weight:800;">20%</div>
+            <h4 class="mt-2">Business Flexi</h4>
+            <p class="text-muted">Discount off base fare for Business Flexi cabin class travellers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 text-center p-4" style="border-top: 4px solid #02c1de;">
+          <div class="card-body">
+            <div style="font-size:2.5rem; color:#02c1de; font-weight:800;">15-20%</div>
+            <h4 class="mt-2">Flight + Hotel Package</h4>
+            <p class="text-muted">Up to 20% off when booking a Flight + Hotel package through
+              <a href="https://holidays.rwandair.com/" target="_blank" style="color:#2a9d8f;">RwandAir Holidays</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Promo Details -->
+  <div class="container" data-aos="fade-up" data-aos-delay="200" style="padding: 40px 20px 20px;">
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 p-4">
+          <h5 style="color:#0a6abf;">Booking &amp; Travel window</h5><hr>
+          <ul class="mt-3" style="padding-left:1.2rem; line-height:2;">
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;"><strong>Promo Code:</strong> RE4SG26</li>
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;"><strong>Sales Window:</strong> Now – 10 Sep 2026</li>
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;"><strong>Travel Window:</strong> 25 Aug – 24 Sep 2026</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 p-4">
+          <h5 style="color:#0a6abf;">How to book</h5><hr>
+          <ul class="mt-3" style="padding-left:1.2rem; line-height:2;">
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;">
+              <span style="color:#333;">RwandAir offices worldwide</span>
+            </li>
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;"><a href="https://www.rwandair.com" target="_blank" style="color:#0a6abf;">rwandair.com</a></li>
+            
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;">RwandAir mobile app</li>
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;"><a href="https://holidays.rwandair.com/" target="_blank" style="color:#2a9d8f;">holidays.rwandair.com</a> (packages)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 p-4">
+          <h5 style="color:#0a6abf;">Key conditions</h5><hr>
+         <ul class="mt-3" style="list-style:none; padding:0; margin:0;">
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;">
+              <span style="color:#090000;">Valid for travel <strong>to Kigali (KGL)</strong> only</span>
+            </li>
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;">
+              <span style="color:#333;">Applies to <strong>base fare only</strong></span>
+            </li>
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;">
+              <span style="color:#333;">Taxes &amp; fees not included</span>
+            </li>
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e9ecef;">   
+              <span style="color:#333;">Not valid for group bookings</span>
+            </li>
+            <li style="display:flex; align-items:center; gap:10px; padding:10px 0;">
+              <span style="color:#333;">Subject to public fare conditions</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA Buttons -->
+  <div class="container text-center" data-aos="fade-up" data-aos-delay="300" style="padding: 30px 20px;">
+    <a href="https://www.rwandair.com" target="_blank"
+       class="btn btn-primary btn-lg me-3"
+       style="background-color:#0a6abf; border:none; padding: 12px 32px; border-radius:4px;">
+      Book Your Flight
+    </a>
+    <a href="https://holidays.rwandair.com/" target="_blank"
+       class="btn btn-outline-success btn-lg"
+       style="padding: 12px 32px; border-radius:4px;">
+      Flight + Hotel Packages
+    </a>
+  </div>
+
+</section>
 <!-- <section id="site-visit-hosts" class="site-visit-hosts section">
 
 
