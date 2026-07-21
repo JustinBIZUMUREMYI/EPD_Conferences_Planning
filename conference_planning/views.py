@@ -42,11 +42,9 @@ def index(request):
     sponsors = Sponsor.objects.all()
 
     # counting down timer
-
-    # countdown = Countdown.objects.first()  # Assuming you only have one countdown
-
-    # countdown_date = Countdown.objects.first().end_time 
-    # time_remaining = countdown_date - timezone.now()
+    countdown = Countdown.objects.first() 
+    countdown_date = Countdown.objects.first().end_time 
+    time_remaining = countdown_date - timezone.now()
     
     context = {'number_attendees': attendees, 
              'locals_number': locals, 
@@ -57,7 +55,7 @@ def index(request):
              'partner_number': total_partners,
              'panalist_number': total_panalists,
              'speaker_number': total_speakers,
-            #  'end_time': time_remaining,
+             'end_time': time_remaining,
               'list_videos': list_videos,
             'sponsors': sponsors
              }
