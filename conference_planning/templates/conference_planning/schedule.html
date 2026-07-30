@@ -1,31 +1,25 @@
 {% load static %}
 {% include 'conference_planning/includes/nav.html' %}
 
-
-<section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;"
-
->
-
+<!-- Hero section -->
+<section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;">
   <img src="{% static 'assets/img/second.jpg'%}" alt="" data-aos="fade-in" class="" style="max-height: 500px;width: 100%; object-fit: cover; ">
-
   <div class="container d-flex flex-column align-items-center text-center mt-auto">
     <h2 data-aos="fade-up" data-aos-delay="100" class="" style="font-size: 40px; margin: 30px 0;"><br><span class="RE4SG">RE4SG</span> AGENDA</h2>
   </div>
-  
+</section>
 
-</section><!-- /Hero Section -->
+
 <!-- Schedule Section -->
-
 <section id="schedule" class="schedule section">
-
-   <!-- Section Title -->
+   <!-- title -->
    <div class="container section-title" data-aos="fade-up">
      <h2>Select a day to view its detailed schedule <br></h2>
-     <!-- <p>Agenda -  5th Edition of The Renewable Energy for Sustainable Growth (RE4SG) Conference and Exhibition</p> -->
-   </div><!-- End Section Title -->
-
+   </div>
+  
+  
+   <!-- options of selectinf the day and find the schedule of the day  -->
    <div class="container">
-
      <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
        <li class="nav-item">
          <a class="nav-link active" href="#day-1" role="tab" data-bs-toggle="tab">Day 1</a>
@@ -39,47 +33,15 @@
        <li class="nav-item">
         <a class="nav-link" href="#day-4" role="tab" data-bs-toggle="tab">Close-Door Event</a>
       </li>
-     
      </ul>
-
      <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
-       <!-- <h3 class="sub-heading">Voluptatem nulla veniam soluta et corrupti consequatur neque eveniet officia. Eius necessitatibus voluptatem quis labore perspiciatis quia.</h3> -->
+
+      
+      <!-- RE4SG header       -->
        <img src="{% static 'assets/img/HEADER2026.png' %}" alt="Description of the image" class="sub-heading">
 
-    
-          
-       <!-- Schdule Day 0 -->
-       <!-- <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
-        <div class="row schedule-item" style="background-color:;">
-          <div class="col-md-12" style="color:darkgreen; font-weight: bold;"><h4><b>A day before the conference (September 7th, 2025)</b></h4></div>
-        </div>
-        <div class="row schedule-item text-center font-weight-bold py-2 bg-light border-bottom">
-          <div class="col-md-2">
-            <h5 class="text-uppercase">Time</h5>
-          </div>
-          <div class="col-md-6">
-            <h5 class="text-uppercase">Program</h5>
-          </div>
-          <div class="col-md-4">
-            <h5 class="text-uppercase">Responsible Party</h5>
-          </div>
-        </div>
-         <div class="row schedule-item">
-           <div class="col-md-2"><time>09:00 - 17:00</time></div>
-           <div class="col-md-6">
-             <h4>Venue setup</h4>
-             <p> Exhibition and conference room setup</p>
-           </div>
-
-           <div class="col-md-4">
-            <h4>Organizing Committee</h4>
-          
-          </div>
-         </div>
-        </div> -->
-        <!-- End Schdule Day 0 -->
-
+  
        <!-- Schdule Day 1 -->
        <div role="tabpanel" class="col-lg-9  tab-pane fade show active" id="day-1">
         <div class="row schedule-item" style="background-color:;">
@@ -552,7 +514,10 @@
         </div>
 
 
-       </div><!-- End Schdule Day 1 -->
+       </div>
+       <!-- End Schdule Day 1 -->
+
+
 
         <!-- Schdule Day 2 -->
        <div role="tabpanel" class="col-lg-9  tab-pane fade show" id="day-2">
@@ -779,33 +744,25 @@
           <div class="row schedule-item">
             <div class="col-md-2"><time>13:30 – 14:30</time></div>
             <div class="col-md-6">
-              <!-- <div class="speaker">
-                <img src="{% static 'images/emmy.jpg'%}" alt="Brenden Legros">
-              </div> -->
               <h4>Panel Discussion</h4>
               <p>Power Storage Systems and Energy Solutions for Data Centers</p>
             </div>
             <div class="col-md-4">
               <h4 class="mb-3">Panelists</h4>
-              <ul class="list-unstyled mb-0">
-        
-               
+              <ul class="list-unstyled mb-0">   
                 <li><b>Kolmena</b></li>
                 <li><b>RISA</b></li>
                 <li><b>Abundio Energy Africa Ltd</b></li>
                 <li><b>Explova consult</b></li>   
                 <li><b>Dr. Sunday Stephen Akpoyibo</b></li>
-              </ul>
-        
+              </ul>    
             <div>
-      
               <p class="mb-1"><i><u>Moderator:</u></i></p>
               <h4 class="mb-0">EnerBot</h4>
-              <!-- <small><i>Jean-Claude Uwizeye, Executive Vice-Chairman and Head of Productive Use of Renewable Energy at EPD</i></small> -->
-            </div>
-            
-            
+            </div>    
           </div>
+        </div>
+
           <!-- Parallel Sessions Block: Main Room vs Side Event -->
           <div class="row schedule-item">
             <div class="col-md-12" style="font-weight: bold; color:#555;">
@@ -892,15 +849,12 @@
           
           </div>
           </div>
-          </div>
-       
-    </div><!-- End Schdule Day 3 -->
+       </div>   
+        <!-- End Schdule Day 2 -->
 
-  
 
-        
-         <!-- Schdule Day 3 -->
-         <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
+        <!-- Schdule Day 3 -->
+        <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
           <div class="row schedule-item" style="background-color:;">
             <div class="col-md-12" style="color:darkgreen; font-weight: bold;"><h4><b><i>Site visits</i></b><b> (September 10th, 2026)</b></h4></div>
           </div>
@@ -951,9 +905,10 @@
            </div>
           </div> -->
         </div> 
-         <!-- End Schdule Day 3 -->
+        <!-- End Schdule Day 3 -->
 
-         <div role="tabpanel" class="col-lg-9 tab-pane fade" id="day-4">
+        <!-- Schdule Day 4(closedoor) -->
+        <div role="tabpanel" class="col-lg-9 tab-pane fade" id="day-4">
           <div class="row schedule-item" style="background-color:;">
             <div class="col-md-12" style="color:darkgreen; font-weight: bold;"><h4><b>Friday (September 11th , 2026)</b></h4></div>
           </div>
@@ -982,21 +937,20 @@
             
             </div>
            </div>
-          </div> 
-   </div>
+        </div> 
+        <!-- End Schdule Day 4 -->
+      </div>
  </section><!-- /Schedule Section -->
 
+
+ <!-- Option of downloading the agenda(pdf document)  -->
  <!-- <section>
    <div class="row" style="text-align: center;">
           {% for  document in documents %}
           <div class="col-md-12 ">
 
-          <a href="{{ document.pdf_document.url }}" target="_blank" style="font-family: Arial, Helvetica, sans-serif;font-weight:bold ;""> Download agenda PDF</a>
-              
-          
+          <a href="{{ document.pdf_document.url }}" target="_blank" style="font-family: Arial, Helvetica, sans-serif;font-weight:bold ;""> Download agenda PDF</a> 
           </div>
-        
-      
           {% endfor %}
   
       </div>
