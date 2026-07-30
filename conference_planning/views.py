@@ -338,7 +338,7 @@ def exhbition(request):
                 Name: Energy Private Developers Association<br><br>
 
                 After payment, kindly send your proof of payment to: <br>
-                📧 <strong>kubwijean@epdrwanda.com</strong> and <strong>info@epdrwanda.com</strong><br><br>
+                📧 <strong>julienne@epdrwanda.com</strong> then CC: <strong>info@epdrwanda.com</strong> and <strong>kubwijean@epdrwanda.com</strong><br><br>
 
                 🧾 <em>Once we receive your proof of payment, our Finance Department will verify and send your official payment receipt via email.</em><br><br>
 
@@ -784,11 +784,11 @@ def register(request):
                 Code: *182*8*1*077863#<br>
                 Name: Energy Private Developers Association<br><br>
 
-                After payment, kindly send your proof of payment to: <br> 📧 <strong>kubwijean@epdrwanda.com</strong> and <strong>info@epdrwanda.com</strong><br><br>
+                After payment, kindly send your proof of payment to:  📧 <strong>julienne@epdrwanda.com</strong> then CC: <strong>info@epdrwanda.com</strong> and <strong>kubwijean@epdrwanda.com</strong><br><br>
 
                 We appreciate your participation and look forward to hosting you!<br><br>
                 Best regards,<br>
-                EPD Team
+                RE4SG Management team
                 """
 
             plain_message = strip_tags(html_message)  # fallback for non-HTML email readers

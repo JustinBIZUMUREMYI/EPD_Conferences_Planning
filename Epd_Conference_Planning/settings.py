@@ -23,7 +23,7 @@ DEBUG = False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.epdrwanda.com'       # This works for most cPanel servers
 EMAIL_PORT = 465                        # Use 465 for SSL or 587 for TLS
-EMAIL_USE_SSL = True                    # If 465
+EMAIL_USE_SSL = False                   # If 465
 # EMAIL_USE_TLS = True                  # If you use port 587 instead (then disable SSL)
 
 EMAIL_HOST_USER = 'info@epdrwanda.com'
