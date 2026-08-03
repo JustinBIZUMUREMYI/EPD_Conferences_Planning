@@ -11,7 +11,8 @@ class Attendees(models.Model):
         ('delegate', 'Delegate'),
         ('exhibitor', 'Exhibitor'),
         ('student', 'Student'),
-        ('media', 'Media')
+        ('media', 'Media'),
+        ('partnership', 'Partnership')
 
        
     ]
