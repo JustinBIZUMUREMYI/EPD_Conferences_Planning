@@ -59,9 +59,9 @@
             <div class="signup-form">
               <h2
                 class="form-title"
-                style="color: darkblue; font-size: 20px; font-weight: bold"
+                style="color: darkblue; font-size: 15px; font-weight: bold"
               >
-                International - Registration
+                China Africa Partnership - Registration
               </h2>
               <form
                 method="POST"
@@ -133,12 +133,12 @@
                 <!-- the field for the attends categories -->
                 <div class="form-group" style="display: flex; gap: 1em; width: 200px;">
                   <select name="category" id="category" required>
-                    <option value="" disabled selected>Select Category</option>
-                    <option value="organizer" {% if form.category.value == "organizer" %}selected{% endif %}>Organizer</option>
-                    <option value="delegate" {% if form.category.value == "delegate" %}selected{% endif %}>Delegate</option>
+                    <!-- <option value="" disabled selected>Select Category</option> -->
+                    <option value="partnership" {% if form.category.value == "partnership" %}selected{% endif %}>China - Africa Partnership</option>
+                    <!-- <option value="delegate" {% if form.category.value == "delegate" %}selected{% endif %}>Delegate</option>
                     <option value="exhibitor" {% if form.category.value == "exhibitor" %}selected{% endif %}>Exhibitor</option>
-                    <option value="student" {% if form.category.value == "student" %}selected{% endif %}>Student</option>
-                    <option value="media" {% if form.category.value == "media" %}selected{% endif %}>Media</option>
+                    <option value="student" {% if form.category.value == "student" %}selected{% endif %}>Panelist</option>
+                    <option value="media" {% if form.category.value == "media" %}selected{% endif %}>Media</option> -->
                   </select>
                 </div>
                 <!-- <div class="form-group"  style="display: flex; gap: 1em; width: 200px;">
@@ -923,12 +923,11 @@
                         you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
                         <b>Registration and Payment</b>
                         <ul>
-                          <li><b>Registration:</b>Participants must complete the registration form and submit the required payment to attend the conference.
+                          <li><b>Registration:</b>Participants must complete the registration form
                           </li>
-                          <li><b>Payment:</b>Payments can be made through our secure online payment system. 
+                          <li><b>Payment:</b>No payment required for a member in this partnership
                           </li>
-                          <li><b>Refund Policy: </b>Payment is non-refundable 15 days to the conference week, 30% refund if requested 30 days to the conference week, 80% refund if requested more than 30 days to the conference week. 
-                          </li>
+                          
                         </ul>
                         <br>
                         <b>Hotel Booking</b>

@@ -10,6 +10,7 @@ from django.conf import settings
 registration_patterns = [
     path('attendees/', views.local_registration, name='attendees_registeration'),
     # path('international/', views.international_registration, name='international_registration'),
+    path('china_africa_partnership/', views.international_registration, name='international_registration'),
     path('students/', views.students_registration, name='students_registration'),
     path('registration/', views.registration_froms.as_view(), name = 'registration'),
     

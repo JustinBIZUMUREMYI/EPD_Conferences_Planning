@@ -47,6 +47,8 @@ class Attendees(models.Model):
     def __str__(self) -> str:
         return self.names
 
+
+
 class Partner(models.Model):
     organization_name = models.CharField(max_length=100)
     email = models.EmailField()
