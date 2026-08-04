@@ -749,53 +749,83 @@ def register(request):
             )
             attendee.save()
             full_name = form.cleaned_data['name']
-            # Compose email message
-            html_message = f"""
-                Dear <strong>{full_name}</strong>,<br><br>
+            category = form.cleaned_data['category']
+            recipient = form.cleaned_data['email']
+         
+            if category == 'Partnership':
+                # --- Partnership-specific email: direct confirmation, no payment ---
+                subject = '6th Edition of RE4SG (Rwanda Energy Week) - Registration Confirmed'
+                html_message = f"""
+                    Dear <strong>{full_name}</strong>,<br><br>
 
-                Greetings from Energy Private Developers Association (EPD),<br><br>
+                    Greetings from Energy Private Developers Association (EPD),<br><br>
 
-                Thank you for taking the first step of registration process to attend the 6th Edition of Renewable Energy for Sustainable Growth(RE4SG) in September 2026.<br><br>
+                    Thank you for registering as a <strong>Partner</strong> for the 6th Edition of
+                    Renewable Energy for Sustainable Growth (RE4SG) in September 2026.<br><br>
 
-                <strong>To complete your registration, please proceed with the payment using one of the options below:</strong><br><br>
+                    We are pleased to confirm that your registration is complete and you are
+                    <strong>confirmed to attend</strong> the event. No payment is required on your part.<br><br>
 
-                <strong>💳 ECOBANK RWANDA</strong><br>
-                Account Name: Energy Private Developers<br>
-                USD Account: 6775009645<br>
-                RWF Account: 6775008215<br>
-                SWIFT Code: ECOCRWRWXX<br>
-                Branch: Head Office, Avenue de la Paix, PO Box 3268, Kigali-Rwanda<br><br>
+                    Our partnerships team will follow up separately with further details about your
+                    partnership package and involvement in the event.<br><br>
 
-                <strong>🏦 Bank of Kigali (USD)</strong><br>
-                Account Name: Energy Private Developers Association<br>
-                Account Number: 100188383844<br>
-                IBAN: RW43040100188383844840<br>
-                SWIFT Code: BKIGRWRWXXX<br>
-                Branch: Head Office<br><br>
+                    If you have any questions in the meantime, feel free to reach out to us at
+                    📧 <strong>info@epdrwanda.com</strong>.<br><br>
 
-                <strong>🏦 Bank of Kigali (RWF)</strong><br>
-                Account Name: Energy Private Developers Association<br>
-                Account Number: 100188383097<br>
-                IBAN: RW27040100188383097646<br>
-                SWIFT Code: BKIGRWRWXXX<br>
-                Branch: Head Office<br><br>
+                    We look forward to welcoming you at RE4SG!<br><br>
+                    Best regards,<br>
+                    RE4SG Management team
+                    """
+                success_message = "Thank you for registering as a partner! Your registration is confirmed — check your email for details."
+            else:
+                # --- Standard payment email ---
+                subject = '6th Edition of RE4SG Registration (Rwanda Energy Week) - Pending Payment'
+                html_message = f"""
+                    Dear <strong>{full_name}</strong>,<br><br>
 
-                <strong>📱 MoMo Pay</strong><br>
-                Code: *182*8*1*077863#<br>
-                Name: Energy Private Developers Association<br><br>
+                    Greetings from Energy Private Developers Association (EPD),<br><br>
 
-                After payment, kindly send your proof of payment to:  📧 <strong>julienne@epdrwanda.com</strong> then CC: <strong>info@epdrwanda.com</strong> and <strong>kubwijean@epdrwanda.com</strong><br><br>
+                    Thank you for taking the first step of registration process to attend the 6th Edition of Renewable Energy for Sustainable Growth(RE4SG) in September 2026.<br><br>
 
-                We appreciate your participation and look forward to hosting you!<br><br>
-                Best regards,<br>
-                RE4SG Management team
-                """
+                    <strong>To complete your registration, please proceed with the payment using one of the options below:</strong><br><br>
+
+                    <strong>💳 ECOBANK RWANDA</strong><br>
+                    Account Name: Energy Private Developers<br>
+                    USD Account: 6775009645<br>
+                    RWF Account: 6775008215<br>
+                    SWIFT Code: ECOCRWRWXX<br>
+                    Branch: Head Office, Avenue de la Paix, PO Box 3268, Kigali-Rwanda<br><br>
+
+                    <strong>🏦 Bank of Kigali (USD)</strong><br>
+                    Account Name: Energy Private Developers Association<br>
+                    Account Number: 100188383844<br>
+                    IBAN: RW43040100188383844840<br>
+                    SWIFT Code: BKIGRWRWXXX<br>
+                    Branch: Head Office<br><br>
+
+                    <strong>🏦 Bank of Kigali (RWF)</strong><br>
+                    Account Name: Energy Private Developers Association<br>
+                    Account Number: 100188383097<br>
+                    IBAN: RW27040100188383097646<br>
+                    SWIFT Code: BKIGRWRWXXX<br>
+                    Branch: Head Office<br><br>
+
+                    <strong>📱 MoMo Pay</strong><br>
+                    Code: *182*8*1*077863#<br>
+                    Name: Energy Private Developers Association<br><br>
+
+                    After payment, kindly send your proof of payment to:  📧 <strong>julienne@epdrwanda.com</strong> then CC: <strong>info@epdrwanda.com</strong> and <strong>kubwijean@epdrwanda.com</strong><br><br>
+
+                    We appreciate your participation and look forward to hosting you!<br><br>
+                    Best regards,<br>
+                    RE4SG Management team
+                    """
+                success_message = "Thank you for registering! Please complete your payment to confirm your registration. Check your email (inbox) for payment instructions."
 
             plain_message = strip_tags(html_message)  # fallback for non-HTML email readers
-            recipient = form.cleaned_data['email']
 
             email = EmailMessage(
-                subject='6th Edition of RE4SG Registration (Rwanda Energy Week) - Pending Payment',
+                subject=subject,
                 body=plain_message,
                 from_email=None,  # Uses DEFAULT_FROM_EMAIL
                 to=[recipient],
@@ -804,8 +834,7 @@ def register(request):
             email.body = html_message
             email.send()
 
-            # Show success message on website
-            messages.success(request, "Thank you for registering! Please complete your payment to confirm your registration. Check your email (inbox) for payment instructions.")
+            messages.success(request, success_message)
             return redirect(request.META.get('HTTP_REFERER', '/'))
         else:
             return_url = form.cleaned_data['return_url']
@@ -813,7 +842,74 @@ def register(request):
     else:
         form = registerForm()
 
-    return render(request, return_url, {'form': form})
+    return render(request, return_url, {'form': form}) 
+
+
+    #         # Compose email message
+    #         html_message = f"""
+    #             Dear <strong>{full_name}</strong>,<br><br>
+
+    #             Greetings from Energy Private Developers Association (EPD),<br><br>
+
+    #             Thank you for taking the first step of registration process to attend the 6th Edition of Renewable Energy for Sustainable Growth(RE4SG) in September 2026.<br><br>
+
+    #             <strong>To complete your registration, please proceed with the payment using one of the options below:</strong><br><br>
+
+    #             <strong>💳 ECOBANK RWANDA</strong><br>
+    #             Account Name: Energy Private Developers<br>
+    #             USD Account: 6775009645<br>
+    #             RWF Account: 6775008215<br>
+    #             SWIFT Code: ECOCRWRWXX<br>
+    #             Branch: Head Office, Avenue de la Paix, PO Box 3268, Kigali-Rwanda<br><br>
+
+    #             <strong>🏦 Bank of Kigali (USD)</strong><br>
+    #             Account Name: Energy Private Developers Association<br>
+    #             Account Number: 100188383844<br>
+    #             IBAN: RW43040100188383844840<br>
+    #             SWIFT Code: BKIGRWRWXXX<br>
+    #             Branch: Head Office<br><br>
+
+    #             <strong>🏦 Bank of Kigali (RWF)</strong><br>
+    #             Account Name: Energy Private Developers Association<br>
+    #             Account Number: 100188383097<br>
+    #             IBAN: RW27040100188383097646<br>
+    #             SWIFT Code: BKIGRWRWXXX<br>
+    #             Branch: Head Office<br><br>
+
+    #             <strong>📱 MoMo Pay</strong><br>
+    #             Code: *182*8*1*077863#<br>
+    #             Name: Energy Private Developers Association<br><br>
+
+    #             After payment, kindly send your proof of payment to:  📧 <strong>julienne@epdrwanda.com</strong> then CC: <strong>info@epdrwanda.com</strong> and <strong>kubwijean@epdrwanda.com</strong><br><br>
+
+    #             We appreciate your participation and look forward to hosting you!<br><br>
+    #             Best regards,<br>
+    #             RE4SG Management team
+    #             """
+
+    #         plain_message = strip_tags(html_message)  # fallback for non-HTML email readers
+    #         recipient = form.cleaned_data['email']
+
+    #         email = EmailMessage(
+    #             subject='6th Edition of RE4SG Registration (Rwanda Energy Week) - Pending Payment',
+    #             body=plain_message,
+    #             from_email=None,  # Uses DEFAULT_FROM_EMAIL
+    #             to=[recipient],
+    #         )
+    #         email.content_subtype = 'html'
+    #         email.body = html_message
+    #         email.send()
+
+    #         # Show success message on website
+    #         messages.success(request, "Thank you for registering! Please complete your payment to confirm your registration. Check your email (inbox) for payment instructions.")
+    #         return redirect(request.META.get('HTTP_REFERER', '/'))
+    #     else:
+    #         return_url = form.cleaned_data['return_url']
+    #         return render(request, return_url, {'form': form})
+    # else:
+    #     form = registerForm()
+
+    # return render(request, return_url, {'form': form})
 
 
 
