@@ -752,7 +752,7 @@ def register(request):
             category = form.cleaned_data['category']
             recipient = form.cleaned_data['email']
          
-            if category == 'Partnership':
+            if category == 'partnership':
                 # --- Partnership-specific email: direct confirmation, no payment ---
                 subject = '6th Edition of RE4SG (Rwanda Energy Week) - Registration Confirmed'
                 html_message = f"""
