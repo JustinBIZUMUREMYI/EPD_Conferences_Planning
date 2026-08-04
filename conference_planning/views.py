@@ -1183,10 +1183,10 @@ def export_attendees_to_excel(request):
         ws.cell(row=attendee_num, column=1, value=attendee.names)
         ws.cell(row=attendee_num, column=2, value=attendee.identity)
         ws.cell(row=attendee_num, column=3, value=attendee.email)
-        ws.cell(row=attendee_num, column=3, value=attendee.phone)
-        ws.cell(row=attendee_num, column=4, value=attendee.category)
-        ws.cell(row=attendee_num, column=5, value=attendee.country)
-        ws.cell(row=attendee_num, column=6, value=attendee.organization)
+        ws.cell(row=attendee_num, column=4, value=attendee.phone)
+        ws.cell(row=attendee_num, column=5, value=attendee.category)
+        ws.cell(row=attendee_num, column=6, value=attendee.country)
+        ws.cell(row=attendee_num, column=7, value=attendee.organization)
 
     wb.save(response)
     return response
