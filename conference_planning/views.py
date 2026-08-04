@@ -760,7 +760,7 @@ def register(request):
 
                     Greetings from Energy Private Developers Association (EPD),<br><br>
 
-                    Thank you for registering as a <strong>Partner</strong> for the 6th Edition of
+                    Thank you for registering under the <strong>China - Africa Partnership (South - South Collaboration)</strong> for the 6th Edition of
                     Renewable Energy for Sustainable Growth (RE4SG) in September 2026.<br><br>
 
                     We are pleased to confirm that your registration is complete and you are
@@ -776,7 +776,7 @@ def register(request):
                     Best regards,<br>
                     RE4SG Management team
                     """
-                success_message = "Thank you for registering as a partner! Your registration is confirmed — check your email for details."
+                success_message = "Thank you for registering under China - Africa Partnership! Your registration is confirmed — check your email for details."
             else:
                 # --- Standard payment email ---
                 subject = '6th Edition of RE4SG Registration (Rwanda Energy Week) - Pending Payment'
