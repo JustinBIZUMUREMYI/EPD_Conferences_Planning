@@ -1,6 +1,27 @@
 {% load static %}
 {% include 'conference_planning/includes/nav.html' %}
 
+<style>
+  .site-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .site-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .site-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  </style>
+  
+
 <!-- Hero section -->
 <section id="hero" class="hero section dark-background" style="padding: 70px 0;min-height: auto; height: auto;">
   <img src="{% static 'assets/img/second.jpg'%}" alt="" data-aos="fade-in" class="" style="max-height: 500px;width: 100%; object-fit: cover; ">
@@ -1004,7 +1025,7 @@
               <h5 class="text-uppercase">Site</h5>
             </div>
             <div class="col-md-2">
-              <h5 class="text-uppercase">Participant</h5>
+              <h5 class="text-uppercase">Register</h5>
             </div>
           </div>
           <div class="row schedule-item">
@@ -1023,7 +1044,7 @@
               </ul>
             </div>
             <div class="col-md-2">
-             <h4>Pre-registered Participants</h4>
+              <p><a href="https://forms.gle/rZfcBDMY2r9838sYA">Click here to register</a></p>
            </div>
           </div>
 
@@ -1037,12 +1058,13 @@
             </div>
             <div class="col-md-4">
               <ul>
-                <!-- <li>SLS Energy (Re-purposing batteries facility)</li> -->
+               
                 <li>Enviroserve Rwanda (E-Waste and Recycling Plant)</li>
               </ul>
             </div>
             <div class="col-md-2">
-             <h4>Pre-registered Participants</h4>
+             
+             <p><a href="https://forms.gle/rZfcBDMY2r9838sYA">Click here to register</a></p>
            </div>
           </div>
 
@@ -1061,7 +1083,7 @@
               </ul>
             </div>
             <div class="col-md-2">
-             <h4>Pre-registered Participants</h4>
+              <p><a href="https://forms.gle/rZfcBDMY2r9838sYA">Click here to register</a></p>
            </div>
           </div>
 
@@ -1080,26 +1102,9 @@
               </ul>
             </div>
             <div class="col-md-2">
-             <h4>Pre-registered Participants</h4>
+              <p><a href="https://forms.gle/rZfcBDMY2r9838sYA">Click here to register</a></p>
            </div>
           </div>
-
-      
-           <!-- <div class="row schedule-item" style="background-color:;">
-            <div class="col-md-12" style="color:darkgreen; font-weight: bold;"><h4><b><i>Day 5</i></b><b> (September 
-              12th, 2025)</b></h4></div>
-          </div>
-          <div class="row schedule-item">
-            <div class="col-md-2"><time>Full Day</time></div>
-            <div class="col-md-6">
-              
-              <h4>Visit Rwanda </h4>
-             
-            </div>
-            <div class="col-md-4">
-             <h4></h4>
-           </div>
-          </div> -->
         </div> 
         <!-- End Schdule Day 3 -->
 

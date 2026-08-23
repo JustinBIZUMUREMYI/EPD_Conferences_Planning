@@ -13,6 +13,7 @@ registration_patterns = [
     path('china_africa_partnership/', views.international_registration, name='international_registration'),
     path('students/', views.students_registration, name='students_registration'),
     path('registration/', views.registration_froms.as_view(), name = 'registration'),
+    path('site_visit/', views.site_visits_register, name ='site_visit')
     
 ]
 
@@ -35,6 +36,7 @@ admin_urls = [
     path('export_speakers/', views.export_speakers_to_excel, name='export_speakers_to_excel'),
     path('export_panelists/', views.export_panelists_to_excel, name='export_panelists_to_excel'),
     path('export_applicants/', views.export_applicants_to_excel, name='export_applicants_to_excel'),
+
     # report urls
     path('partners_list', views.partners_list.as_view(), name = 'partners_list'),
     path('sponsors_list', views.sponsors_list.as_view(), name = 'sponsors_list'),
@@ -75,6 +77,7 @@ urlpatterns = [
     path('sponsorships/', views.sponsorship_packages, name = 'sponsorships'),
     path('exhbitions/', views.exhbition, name = 'exhbition'),
     path('csr/', views.csr, name = 'csr'),
+    path('site_visit/', views.site_visits, name = 'site_visits'),
     path('firstedition/', views.First_edition, name='first_edition'),
     path('secondedition/', views.Second_edition, name='second_edition'),
     path('thirdedition/', views.Third_edition, name='third_edition'),

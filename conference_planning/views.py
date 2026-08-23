@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import registerForm, LoginForm, PartnerForm, SponsorForm, SpeakerForm, PanalistForm, TestimonialForm, boothForm, VideoForm, PhotoForm, AgendaForm, EventForm,RegisterdayForm, SponsorshipForm,PDFFileForm,BookSponsorshipForm,PDFFileForm, BookAccessoryForm, BookBoothForm, InternsForm 
 from django.contrib import messages
-from .models import Attendees, Partner, Sponsor, Speaker, Event, Agenda, Panalist, booth, Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory,PreviousConferences, Interns, internship_document  
+from .models import Attendees, Partner, Sponsor, Speaker, Event, Panalist, booth, Visit, Site,Testimonial, PreviousVideos, PreviousPhotos, Agenda, Event, Event_days, Sponsorships,Document,BookSponsorship, Countdown, Document, FloorPlan,accessory,Booth_space, BookBooth,BookAccessory,PreviousConferences, Interns, internship_document  
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView, TemplateView, DetailView
 from django.views.generic.edit import FormView
@@ -68,6 +68,14 @@ def agenda(request):
         'documents': pdf
     }
     return render(request, 'conference_planning/schedule.html', context)
+
+# The page of site visits registration 
+
+def site_visits_register(request):
+    return render(request, 'conference_planning/registration/site_visit.html')
+
+def site_visits(request):
+    return render(request, 'conference_planning/site_visits.html')
 
 
 def speakers(request):

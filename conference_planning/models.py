@@ -12,7 +12,7 @@ class Attendees(models.Model):
         ('exhibitor', 'Exhibitor'),
         ('student', 'Student'),
         ('media', 'Media'),
-        ('partnership', 'Partnership')
+     
 
        
     ]
@@ -48,7 +48,26 @@ class Attendees(models.Model):
     def __str__(self) -> str:
         return self.names
 
+class Site(models.Model):
+    site_name = models.CharField(max_length=30)
+    site_location = models.CharField(max_length=20)
+    year = models.CharField(max_length=20)
+    
 
+    def __str__(self) -> str:
+        return self.site_name
+
+class Visit(models.Model):
+    
+    names = models.CharField(max_length=250)
+    email = models.EmailField()
+    identity = models.CharField(max_length=50)
+    phone = models.CharField(max_length=20)
+    country = models.CharField(max_length=100)
+    organization = models.CharField(max_length=100, null=True, blank=True)
+    Site = models.ForeignKey(Site, on_delete=models.CASCADE, default='')
+    def __str__(self) -> str:
+        return self.names
 
 class Partner(models.Model):
     organization_name = models.CharField(max_length=100)
@@ -315,6 +334,9 @@ class PreviousConferences(models.Model):
 
     def __str__(self) -> str:
         return self.edition
+
+
+
 
 
 # the table for the professional internship 
