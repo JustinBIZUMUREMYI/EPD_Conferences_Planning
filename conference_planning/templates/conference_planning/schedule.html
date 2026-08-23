@@ -1,6 +1,252 @@
 {% load static %}
 {% include 'conference_planning/includes/nav.html' %}
 
+
+
+<style>
+  :root{
+    --ink:#16241C;
+    --forest:#0e1b4d;
+    --moss:#F3F5EF;
+    --gold:#ffc822;
+    --gold-dark:#ffbc03;
+    --paper:#F3F5EF;
+    --card:#FFFFFF;
+    --line:#DADFD3;
+    --muted:#0e1b4d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px 80px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:var(--forest);
+    color:#F3F5EF;
+    padding:64px 28px 0;
+    margin-bottom:56px;
+  }
+  .hero-inner{max-width:1080px; margin:0 auto; position:relative; z-index:2;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 18px;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(40px,6vw,68px);
+    line-height:1.02;
+    margin:0 0 20px;
+    max-width:760px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--gold);
+  }
+  .hero-meta{
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+    font-size:15px;
+    color:#CFE0D6;
+    padding-bottom:44px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .hero-meta strong{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#F3F5EF;
+    margin-bottom:4px;
+    font-weight:500;
+  }
+  .hills{display:block; width:100%; height:auto; margin-top:36px;}
+
+  /* ---------- SECTION LABEL ---------- */
+  .section-label{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:0 0 32px;
+  }
+  .section-label .dot{width:8px; height:8px; border-radius:50%; background:var(--gold-dark); flex:none;}
+  .section-label span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .section-label::after{content:""; flex:1; height:1px; background:var(--line);}
+
+  /* ---------- TEAM CARDS ---------- */
+  .teams{display:flex; flex-direction:column; gap:28px;}
+
+  .team-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:200px 1fr;
+  }
+
+  .team-side{
+    background:var(--forest);
+    color:#EAF1EC;
+    padding:28px 24px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+  }
+  .team-num{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:52px;
+    line-height:1;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .team-num sub{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#9FC0AC;
+    display:block;
+    margin-top:8px;
+    font-weight:500;
+  }
+  .lead{margin-top:auto;}
+  .lead-name{font-family:'Fraunces', serif; font-size:17px; font-weight:600; margin:0 0 6px; line-height:1.2;}
+  .lead-role{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 14px;
+  }
+  .lead-contact{font-size:12.5px; line-height:1.9; color:#CFE0D6;}
+  .lead-contact a{color:#CFE0D6; text-decoration:none;}
+  .lead-contact a:hover{color:#fff;}
+
+  .team-main{padding:26px 28px 28px;}
+  .sites-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 16px;
+  }
+
+  .sites{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:22px;
+  }
+  .site{
+    width:180px;
+    flex:1 1 180px;
+  }
+  .photo-slot{
+    width:100%;
+    aspect-ratio:4/3;
+    border:1.5px dashed #BFC9B8;
+    border-radius:12px;
+    background:
+      repeating-linear-gradient(135deg, rgba(82,121,111,0.05) 0 10px, transparent 10px 20px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    color:var(--moss);
+    margin-bottom:10px;
+  }
+  .photo-slot svg{width:26px; height:26px; opacity:.55;}
+  .photo-slot span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:#8B9A8F;
+    text-align:center;
+    padding:0 8px;
+  }
+  .site-name{
+    font-size:14px;
+    font-weight:500;
+    line-height:1.3;
+    color:var(--ink);
+  }
+
+  .card-footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+  .stamp{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+  }
+  .stamp svg{width:14px; height:14px; color:var(--gold-dark);}
+  .register-btn{
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    color:#fff;
+    background:var(--forest);
+    text-decoration:none;
+    padding:11px 22px;
+    border-radius:999px;
+    transition:background .15s ease;
+    white-space:nowrap;
+  }
+  .register-btn:hover{background:#0e1b4d;color:#ffc822;}
+
+  @media (max-width:680px){
+    .team-card{grid-template-columns:1fr;}
+    .team-side{flex-direction:row; align-items:center; gap:20px; padding:20px 22px;}
+    .team-num{margin-bottom:0;}
+    .lead{margin-top:0;}
+    .hero{padding:48px 20px 0;}
+  }
+
+
+  .photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+</style>
+
+
 <style>
   .site-list {
     list-style: none;
@@ -64,7 +310,7 @@
 
   
        <!-- Schdule Day 1 -->
-       <div role="tabpanel" class="col-lg-9  tab-pane fade show active" id="day-1">
+       <div role="tabpanel" class="col-lg-12  tab-pane fade show active" id="day-1">
         <div class="row schedule-item" style="background-color:;">
           <div class="col-md-12" style="color:darkgreen; font-weight: bold;"><h4><b>Day 1 (September 8th, 2026)</b></h4></div>
         </div>
@@ -687,7 +933,7 @@
 
 
         <!-- Schdule Day 2 -->
-       <div role="tabpanel" class="col-lg-9  tab-pane fade show" id="day-2">
+       <div role="tabpanel" class="col-lg-12  tab-pane fade show" id="day-2">
           <div class="row schedule-item" style="background-color:;">
             <div class="col-md-12" style="color:darkgreen; font-weight: bold;"><h4><b>Day 2 (September 9th, 2026)</b></h4></div>
           </div>
@@ -1010,106 +1256,173 @@
 
 
         <!-- Schdule Day 3 -->
-        <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
+        <div role="tabpanel" class="col-lg-12  tab-pane fade" id="day-3">
           <div class="row schedule-item" style="background-color:;">
             <div class="col-md-12" style="color:darkgreen; font-weight: bold;"><h4><b><i>Site visits</i></b><b> (September 10th, 2026)</b></h4></div>
           </div>
-          <div class="row schedule-item text-center font-weight-bold py-2 bg-light border-bottom">
-            <div class="col-md-2">
-              <h5 class="text-uppercase">Team</h5>
-            </div>
-            <div class="col-md-4">
-              <h5 class="text-uppercase">Team lead</h5>
-            </div>
-            <div class="col-md-4">
-              <h5 class="text-uppercase">Site</h5>
-            </div>
-            <div class="col-md-2">
-              <h5 class="text-uppercase">Register</h5>
-            </div>
-          </div>
-          <div class="row schedule-item">
-            <div class="col-md-2"><time>Team 1</time></div>
-            <div class="col-md-4">
-              <h4>Justin BIZUMUREMYI</h4> 
-              <p><i>justinbizumuremyi@epdrwanda.com</i></p>
-              <p><i>+250 783 151 149</i></p>
-            
-            </div>
+          <div class="teams">
 
-            <div class="col-md-4">
-              <ul>
-                <li> Sinohydro Corporation Limited</li>
-                <li>Forever TVET Institute</li>
-              </ul>
+            <!-- TEAM 1 -->
+            <div class="team-card">
+              <div class="team-side">
+                <div class="team-num">01<sub>Team</sub></div>
+                <div class="lead">
+                  <p class="lead-role">Team lead</p>
+                  <p class="lead-name">Justin Bizumuremyi</p>
+                  
+                  <p class="lead-contact">
+                    <a href="mailto:justinbizumuremyi@epdrwanda.com">justinbizumuremyi@epdrwanda <br> .com</a><br>
+                    +250 783 151 149
+                  </p>
+                </div>
+              </div>
+              <div class="team-main">
+                <p class="sites-label">Host sites</p>
+                <div class="sites">
+                  <div class="site">
+                    <div class="photo-slot">
+                      <img src="{% static 'assets/img/site_visits/sino.jpeg'%}" alt="Sinohydro" />
+                    </div>
+                    <p class="site-name">Sinohydro Corporation Limited</p>
+                  </div>
+                  <div class="site">
+                    <div class="photo-slot">
+                      <img src="{% static 'assets/img/site_visits/forever.jpg'%}" alt="Enviroserve Rwanda e-waste and recycling plant" />
+                    </div>
+                    <p class="site-name">Forever TVET Institute</p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="stamp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.1-7-11a7 7 0 0114 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                    2 stops · Kigali · Rulindo
+                  </div>
+                  <a class="register-btn" href="https://forms.gle/rZfcBDMY2r9838sYA">Register</a>
+                </div>
+              </div>
             </div>
-            <div class="col-md-2">
-              <p><a href="https://forms.gle/rZfcBDMY2r9838sYA">Click here to register</a></p>
-           </div>
-          </div>
-
-          <div class="row schedule-item">
-            <div class="col-md-2"><time>Team 2</time></div>
-            <div class="col-md-4">
-              <h4>Tracy KAMIKAZI</h4> 
-              <p><i>tracy@epdrwanda.com</i></p>
-              <p><i>+250 780 623 008</i></p>
-            
+      
+            <!-- TEAM 2 -->
+            <div class="team-card">
+              <div class="team-side">
+                <div class="team-num">02<sub>Team</sub></div>
+                <div class="lead">
+                  <p class="lead-role">Team lead</p>
+                  <p class="lead-name">Tracy Kamikazi</p>
+                  <p class="lead-contact">
+                    <a href="mailto:tracy@epdrwanda.com">tracy@epdrwanda.com</a><br>
+                    +250 780 623 008
+                  </p>
+                </div>
+              </div>
+              <div class="team-main">
+                <p class="sites-label">Host sites</p>
+                <div class="sites">
+                  <div class="site">
+                    <div class="photo-slot">
+                      <img src="{% static 'assets/img/site_visits/enviroserve1.jpg'%}" alt="Enviroserve Rwanda e-waste and recycling plant" />
+                    </div>
+                    <p class="site-name">Enviroserve Rwanda<i>(e-waste &amp; recycling plant)</i></p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="stamp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.1-7-11a7 7 0 0114 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                    1 stop · Bugesera
+                  </div>
+                  <a class="register-btn" href="https://forms.gle/rZfcBDMY2r9838sYA">Register</a>
+                </div>
+              </div>
             </div>
-            <div class="col-md-4">
-              <ul>
-               
-                <li>Enviroserve Rwanda (E-Waste and Recycling Plant)</li>
-              </ul>
+      
+            <!-- TEAM 3 -->
+            <div class="team-card">
+              <div class="team-side">
+                <div class="team-num">03<sub>Team</sub></div>
+                <div class="lead">
+                  <p class="lead-role">Team lead</p>
+                  <p class="lead-name">Jean Claude Hagenimana</p>
+                  
+                  <p class="lead-contact">
+                    <a href="mailto:claude@epdrwanda.com">claude@epdrwanda.com</a><br>
+                    +250 781 733 814
+                  </p>
+                </div>
+              </div>
+              <div class="team-main">
+                <p class="sites-label">Host sites</p>
+                <div class="sites">
+                  <div class="site">
+                    <div class="photo-slot">
+                      <img src="{% static 'assets/img/site_visits/solidafrica.jpeg'%}" alt="Solid Africa" />
+                    </div>
+                    <p class="site-name">Solid Africa - <i>centralized kitchen</i></p>
+                  </div>
+                  <div class="site">
+                    <div class="photo-slot">
+                      <img src="{% static 'assets/img/site_visits/ecogreen.jpg'%}" alt="Solid Africa" />
+                    </div>
+                    <p class="site-name">EcoGreen Clean - <i>cooking stove fuel plant</i></p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="stamp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.1-7-11a7 7 0 0114 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                    2 stops · Kigali 
+                  </div>
+                  <a class="register-btn" href="https://forms.gle/rZfcBDMY2r9838sYA">Register</a>
+                </div>
+              </div>
             </div>
-            <div class="col-md-2">
-             
-             <p><a href="https://forms.gle/rZfcBDMY2r9838sYA">Click here to register</a></p>
-           </div>
-          </div>
-
-          <div class="row schedule-item">
-            <div class="col-md-2"><time>Team 3</time></div>
-            <div class="col-md-4">
-              <h4>Jean Claude HAGENIMANA</h4> 
-              <p><i>claude@epdrwanda.com</i></p>
-              <p><i>+250 781 733 814</i></p>
-            
+      
+            <!-- TEAM 4 -->
+            <div class="team-card">
+              <div class="team-side">
+                <div class="team-num">04<sub>Team</sub></div>
+                <div class="lead">
+                  <p class="lead-role">Team lead</p>
+                  <p class="lead-name">Emmanuel Ndagijimana</p>
+                  
+                  <p class="lead-contact">
+                    <a href="mailto:emmanuel@epdrwanda.com">emmanuel@epdrwanda.com</a><br>
+                    +250 784 519 506
+                  </p>
+                </div>
+              </div>
+              <div class="team-main">
+                <p class="sites-label">Host sites</p>
+                <div class="sites">
+                  <div class="site">
+                    <div class="photo-slot">
+                      <img src="{% static 'assets/img/site_visits/enviroserve1.jpg'%}" alt="Enviroserve Rwanda e-waste and recycling plant" />
+                    </div>
+                    <p class="site-name">Spiro</p>
+                  </div>
+                  <div class="site">
+                    <div class="photo-slot">
+                      <img src="{% static 'assets/img/site_visits/auto24.jpg'%}" alt="Enviroserve Rwanda e-waste and recycling plant" />
+                    </div>
+                    <p class="site-name">AUTO24 showroom &amp; garage</p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="stamp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.1-7-11a7 7 0 0114 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                    2 stops · Kigali
+                  </div>
+                  <a class="register-btn" href="https://forms.gle/rZfcBDMY2r9838sYA">Register</a>
+                </div>
+              </div>
             </div>
-            <div class="col-md-4">
-              <ul>
-                <li>Solid Africa (Centralized Kitchen)</li>
-                <li>EcoGreen Clean (Cooking Stove Fuel Manufacturing Plant)</li>
-              </ul>
-            </div>
-            <div class="col-md-2">
-              <p><a href="https://forms.gle/rZfcBDMY2r9838sYA">Click here to register</a></p>
-           </div>
-          </div>
-
-          <div class="row schedule-item">
-            <div class="col-md-2"><time>Team 4</time></div>
-            <div class="col-md-4">
-              <h4>Emmanuel NDAGIJIMANA</h4> 
-              <p><i>emmanuel@epdrwanda.com</i></p>
-              <p><i>+250 784 519 506</i></p>
-            
-            </div>
-            <div class="col-md-4">
-              <ul>
-                <li>Spiro</li>
-                <li>AUTO24 Showroom & Garage</li>
-              </ul>
-            </div>
-            <div class="col-md-2">
-              <p><a href="https://forms.gle/rZfcBDMY2r9838sYA">Click here to register</a></p>
-           </div>
+      
           </div>
         </div> 
+        
+      
         <!-- End Schdule Day 3 -->
 
         <!-- Schdule Day 4(closedoor) -->
-        <div role="tabpanel" class="col-lg-9 tab-pane fade" id="day-4">
+        <div role="tabpanel" class="col-lg-12 tab-pane fade" id="day-4">
           <div class="row schedule-item" style="background-color:;">
             <div class="col-md-12" style="color:darkgreen; font-weight: bold;"><h4><b>Friday (September 11th , 2026)</b></h4></div>
           </div>
