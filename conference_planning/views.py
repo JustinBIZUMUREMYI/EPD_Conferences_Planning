@@ -1172,7 +1172,7 @@ def export_attendees_to_excel(request):
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
-    response['Content-Disposition'] = 'attachment; filename=attendees.xlsx'
+    response['Content-Disposition'] = 'attachment; filename=attendees2026.xlsx'
 
     # Create a workbook and add a worksheet.
     wb = openpyxl.Workbook()
@@ -1214,7 +1214,7 @@ def export_locals_to_excel(request):
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
-    response['Content-Disposition'] = 'attachment; filename=Locals.xlsx'
+    response['Content-Disposition'] = 'attachment; filename=Locals2026.xlsx'
 
     # Create a workbook and add a worksheet.
     wb = openpyxl.Workbook()
@@ -1256,7 +1256,7 @@ def export_internationals_to_excel(request):
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
-    response['Content-Disposition'] = 'attachment; filename=Internationals.xlsx'
+    response['Content-Disposition'] = 'attachment; filename=Internationals2026.xlsx'
 
     # Create a workbook and add a worksheet.
     wb = openpyxl.Workbook()
