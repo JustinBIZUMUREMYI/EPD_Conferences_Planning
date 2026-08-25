@@ -1180,7 +1180,7 @@ def export_attendees_to_excel(request):
     ws.title = "Attendees"
 
     # Add column headers
-    columns = ['Name', 'Identity', 'Email','Phone', 'Category', 'Country', 'Organization']
+    columns = ['Name', 'Identity', 'Email','Phone', 'Category', 'Country', 'Organization', 'Date of Registration']
     for col_num, column_title in enumerate(columns, 1):
         cell = ws.cell(row=1, column=col_num)
         cell.value = column_title
@@ -1195,6 +1195,13 @@ def export_attendees_to_excel(request):
         ws.cell(row=attendee_num, column=5, value=attendee.category)
         ws.cell(row=attendee_num, column=6, value=attendee.country)
         ws.cell(row=attendee_num, column=7, value=attendee.organization)
+        ws.cell(row=attendee_num, column=8, value=attendee.registered_on)
+
+        registered_on = attendee.registered_on
+        if registered_on and timezone.is_aware(registered_on):
+            registered_on = timezone.localtime(registered_on).replace(tzinfo=None)
+        ws.cell(row=attendee_num, column=8, value=registered_on)
+
 
     wb.save(response)
     return response
@@ -1215,7 +1222,7 @@ def export_locals_to_excel(request):
     ws.title = "Local Delegates"
 
     # Add column headers
-    columns = ['Name', 'Identity', 'Phone','Email', 'Category', 'Country', 'Organization']
+    columns = ['Name', 'Identity', 'Phone','Email', 'Category', 'Country', 'Organization', 'Date of Registration']
     for col_num, column_title in enumerate(columns, 1):
         cell = ws.cell(row=1, column=col_num)
         cell.value = column_title
@@ -1230,6 +1237,13 @@ def export_locals_to_excel(request):
         ws.cell(row=attendee_num, column=5, value=attendee.category)
         ws.cell(row=attendee_num, column=6, value=attendee.country)
         ws.cell(row=attendee_num, column=7, value=attendee.organization)
+        ws.cell(row=attendee_num, column=8, value=attendee.registered_on)
+
+        registered_on = attendee.registered_on
+        if registered_on and timezone.is_aware(registered_on):
+            registered_on = timezone.localtime(registered_on).replace(tzinfo=None)
+        ws.cell(row=attendee_num, column=8, value=registered_on)
+
 
     wb.save(response)
     return response
@@ -1250,7 +1264,7 @@ def export_internationals_to_excel(request):
     ws.title = "International Delegates"
 
     # Add column headers
-    columns = ['Name', 'Identity', 'Phone','Email', 'Category', 'Country', 'Organization']
+    columns = ['Name', 'Identity', 'Phone','Email', 'Category', 'Country', 'Organization', 'Date of Registration']
     for col_num, column_title in enumerate(columns, 1):
         cell = ws.cell(row=1, column=col_num)
         cell.value = column_title
@@ -1265,9 +1279,57 @@ def export_internationals_to_excel(request):
         ws.cell(row=attendee_num, column=5, value=attendee.category)
         ws.cell(row=attendee_num, column=6, value=attendee.country)
         ws.cell(row=attendee_num, column=7, value=attendee.organization)
+        ws.cell(row=attendee_num, column=8, value=attendee.registered_on)
+
+        registered_on = attendee.registered_on
+        if registered_on and timezone.is_aware(registered_on):
+            registered_on = timezone.localtime(registered_on).replace(tzinfo=None)
+        ws.cell(row=attendee_num, column=8, value=registered_on)
+
 
     wb.save(response)
     return response
+
+
+# exporting the list of the registered students 
+def export_students_to_excel(request):
+    # Create an in-memory output file for the new workbook.
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    response['Content-Disposition'] = 'attachment; filename=Students2026.xlsx'
+
+    # Create a workbook and add a worksheet.
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Student Delegates"
+
+    # Add column headers
+    columns = ['Name', 'Identity', 'Phone','Email', 'Country', 'University', 'Student number','Date of Registration']
+    for col_num, column_title in enumerate(columns, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = column_title
+
+    # Fetch data from the database
+    attendees = Attendees.objects.filter(attendee_type='Student')
+    for attendee_num, attendee in enumerate(attendees, 2):
+        ws.cell(row=attendee_num, column=1, value=attendee.names)
+        ws.cell(row=attendee_num, column=2, value=attendee.identity)
+        ws.cell(row=attendee_num, column=3, value=attendee.phone)
+        ws.cell(row=attendee_num, column=4, value=attendee.email)
+        ws.cell(row=attendee_num, column=5, value=attendee.country)
+        ws.cell(row=attendee_num, column=6, value=attendee.university)
+        ws.cell(row=attendee_num, column=7, value=attendee.student_number)
+        ws.cell(row=attendee_num, column=8, value=attendee.registered_on)
+        
+        registered_on = attendee.registered_on
+        if registered_on and timezone.is_aware(registered_on):
+            registered_on = timezone.localtime(registered_on).replace(tzinfo=None)
+        ws.cell(row=attendee_num, column=8, value=registered_on)
+
+    wb.save(response)
+    return response
+
 
 
 # exporting the list of the speakers 
